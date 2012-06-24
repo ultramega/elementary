@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <string name="app_name">Elementary</string>
+    
+    <string name="titleElementDetails">Element Details - %s</string>
+    <string name="titlePeriodicTable">Periodic Table of the Elements</string>
+    <string name="titleElementList">List of Elements</string>
+    <string name="titlePreferences">Elementary Options</string>
+    <string name="titleError">Error</string>
+    
+    <string name="errorNoConnection">No internet connection available</string>
+    <string name="errorInstallation">An error occurred during installation</string>
+    
+    <string name="buttonClose">Close</string>
+    <string name="buttonRetry">Retry</string>
+    <string name="buttonVideo">Watch Video</string>
+    <string name="buttonWiki">Wikipedia</string>
+    
+    <string name="menuOptions">Options</string>
+    <string name="menuList">List View</string>
+    <string name="menuTable">Table View</string>
+    
+    <string name="prefTitleTemp">Temperature Units</string>
+    <string name="prefSummaryTemp">Units to use to display temperature values</string>
+    
+    <string name="updateGetVersion">Checking for updates</string>
+    <string name="updateFetchData">Downloading updates</string>
+    <string name="updatePopulateDatabase">Installing updates</string>
+    <string name="updateFinished">Application up to date</string>
+    
+    <string name="labelNumber">Atomic Number:</string>
+    <string name="labelSymbol">Symbol:</string>
+    <string name="labelName">Name:</string>
+    <string name="labelWeight">Atomic Weight:</string>
+    <string name="labelCategory">Category:</string>
+    <string name="labelGPB">Group, Period, Block:</string>
+    <string name="labelConfiguration">Electron Configuration:</string>
+    <string name="labelElectrons">Electrons Per Shell:</string>
+    <string name="labelDensity">Density:</string>
+    <string name="labelMelt">Melting Point:</string>
+    <string name="labelBoil">Boiling Point:</string>
+    <string name="labelHeat">Heat:</string>
+    <string name="labelNegativity">Electronegativity:</string>
+    <string name="labelAbundance">Abundance:</string>
+    
+    <string name="hintFilter">Filter by Name or Symbol</string>
+    
+    <string name="unknown">unknown</string>
+</resources>

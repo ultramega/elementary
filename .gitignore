@@ -1,0 +1,6 @@
+default.properties
+build.properties
+local.properties
+bin/
+gen/
+nbandroid/
