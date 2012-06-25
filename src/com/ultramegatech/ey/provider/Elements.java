@@ -79,7 +79,7 @@ public class Elements implements BaseColumns {
     
     /* Column types */
     public static enum Type {
-        TEXT, INTEGER, REAL, BOOLEAN
+        UNDEFINED, TEXT, INTEGER, REAL, BOOLEAN
     }
     
     /**
@@ -89,16 +89,23 @@ public class Elements implements BaseColumns {
      * @return 
      */
     public static Type getColumnType(String c) {
-        if(c.equals(NUMBER) || c.equals(GROUP) || c.equals(PERIOD)) {
-            return Type.INTEGER;
-        } else if(c.equals(WEIGHT) || c.equals(DENSITY) || c.equals(MELT) || c.equals(BOIL)
+        if(c.equals(SYMBOL) || c.equals(NAME) || c.equals(BLOCK) || c.equals(CATEGORY)
+                || c.equals(CONFIGURATION) || c.equals(ELECTRONS) || c.equals(VIDEO)
+                || c.equals(WIKIPEDIA)) {
+            return Type.TEXT;
+        }
+        if(c.equals(WEIGHT) || c.equals(DENSITY) || c.equals(MELT) || c.equals(BOIL)
                 || c.equals(HEAT) || c.equals(NEGATIVITY) || c.equals(ABUNDANCE)) {
             return Type.REAL;
-        } else if(c.equals(UNSTABLE)) {
+        }
+        if(c.equals(NUMBER) || c.equals(GROUP) || c.equals(PERIOD)) {
+            return Type.INTEGER;
+        }
+        if(c.equals(UNSTABLE)) {
             return Type.BOOLEAN;
         }
         
-        return Type.TEXT;
+        return Type.UNDEFINED;
     }
     
     /**
