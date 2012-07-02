@@ -23,6 +23,9 @@
 
 package com.ultramegatech.ey;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import android.content.Intent;
@@ -44,6 +47,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -81,6 +85,10 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
         R.id.block
     };
     
+    /* Sort directions */
+    private static String SORT_ASC = "ASC";
+    private static String SORT_DESC = "DESC";
+    
     /* The list */
     private ListView mListView;
     
@@ -89,6 +97,9 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
     
     /* Current value to filter results by */
     private String mFilter;
+    
+    /* Current value for sorting elements */
+    private String mSort = Elements.NUMBER + " " + SORT_ASC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +123,7 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
         });
         
         setupFilter();
+        setupSort();
         
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
@@ -175,6 +187,53 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
     }
     
     /**
+     * Setup the listener for the sort button.
+     */
+    private void setupSort() {
+        final Button sortButton = (Button)findViewById(R.id.sort);
+        sortButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openSortDialog();
+            }
+        });
+    }
+    
+    /**
+     * Display the sorting dialog.
+     */
+    private void openSortDialog() {
+        // these correspond to R.array.sortFieldNames
+        final String[] fields = new String[] {
+            Elements.NUMBER,
+            Elements.NAME
+        };
+        
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.titleSort)
+                .setItems(R.array.sortFieldNames, new OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        setSort(fields[item], SORT_ASC);
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+    
+    /**
+     * Set the sorting parameters.
+     * 
+     * @param field Field to sort by
+     * @param direction Direction to sort, ASC or DESC
+     */
+    private void setSort(String field, String direction) {
+        final String oldSort = mSort;
+        mSort = field + " " + direction;
+        if(!oldSort.equals(mSort)) {
+            restartLoader();
+        }
+    }
+    
+    /**
      * Restart the Cursor Loader.
      */
     private void restartLoader() {
@@ -191,8 +250,7 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
             uri = Uri.withAppendedPath(Elements.CONTENT_URI_FILTER, mFilter);
         }
         
-        return new CursorLoader(this, uri, LIST_PROJECTION, null, null,
-                Elements.NUMBER + " ASC");
+        return new CursorLoader(this, uri, LIST_PROJECTION, null, null, mSort);
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {

@@ -29,6 +29,7 @@
     <string name="titleElementList">List of Elements</string>
     <string name="titlePreferences">Elementary Options</string>
     <string name="titleError">Error</string>
+    <string name="titleSort">Sort by:</string>
     
     <string name="errorNoConnection">No internet connection available</string>
     <string name="errorInstallation">An error occurred during installation</string>
@@ -37,6 +38,7 @@
     <string name="buttonRetry">Retry</string>
     <string name="buttonVideo">Watch Video</string>
     <string name="buttonWiki">Wikipedia</string>
+    <string name="buttonSort">Sort</string>
     
     <string name="menuOptions">Options</string>
     <string name="menuList">List View</string>

@@ -27,13 +27,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <EditText
-        android:id="@+id/filter"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hintFilter"
         android:layout_margin="4dp"
-        />
+        >
+        <EditText
+            android:id="@+id/filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hintFilter"
+            />
+        <Button
+            android:id="@+id/sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/buttonSort"
+            />
+    </LinearLayout>
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
