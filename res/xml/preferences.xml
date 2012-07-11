@@ -28,6 +28,7 @@
         android:summary="@string/prefSummaryTemp"
         android:entries="@array/tempUnitNames"
         android:entryValues="@array/tempUnits"
+        android:defaultValue="K"
         android:dialogTitle="@string/prefTitleTemp"
         />
 </PreferenceScreen>
