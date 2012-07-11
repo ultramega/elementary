@@ -66,7 +66,7 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
     
     /* Units of measurement */
     private static enum Units {
-        KELVIN, CELCIUS, FARENHEIGHT
+        KELVIN, CELCIUS, FARENHEIT
     }
     
     /* Values from the database row */
@@ -164,7 +164,7 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
         } else if("C".equals(tempUnit)) {
             mTemperatureUnits = Units.CELCIUS;
         } else {
-            mTemperatureUnits = Units.FARENHEIGHT;
+            mTemperatureUnits = Units.FARENHEIT;
         }
     }
     
@@ -282,7 +282,7 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
             switch(mTemperatureUnits) {
                 case CELCIUS:
                     return String.format("%.2f °C", UnitUtils.KtoC(kelvin));
-                case FARENHEIGHT:
+                case FARENHEIT:
                     return String.format("%.2f °F", UnitUtils.KtoF(kelvin));
                 default:
                     return String.format("%.2f K", kelvin);
