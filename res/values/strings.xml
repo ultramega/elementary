@@ -46,6 +46,8 @@
     
     <string name="prefTitleTemp">Temperature Units</string>
     <string name="prefSummaryTemp">Units to use to display temperature values</string>
+    <string name="prefTitleColors">Element Colors</string>
+    <string name="prefSummaryColors">Property to use to determine element block colors</string>
     
     <string name="updateGetVersion">Checking for updates</string>
     <string name="updateFetchData">Downloading updates</string>

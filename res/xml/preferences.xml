@@ -31,4 +31,13 @@
         android:defaultValue="K"
         android:dialogTitle="@string/prefTitleTemp"
         />
+    <ListPreference
+        android:key="elementColors"
+        android:title="@string/prefTitleColors"
+        android:summary="@string/prefSummaryColors"
+        android:entries="@array/elementColorNames"
+        android:entryValues="@array/elementColors"
+        android:defaultValue="category"
+        android:dialogTitle="@string/prefTitleColors"
+        />
 </PreferenceScreen>

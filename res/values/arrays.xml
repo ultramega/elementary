@@ -58,6 +58,15 @@
         <item>Farenheit (°F)</item>
     </string-array>
     
+    <string-array name="elementColors">
+        <item>category</item>
+        <item>block</item>
+    </string-array>
+    <string-array name="elementColorNames">
+        <item>Category</item>
+        <item>Block</item>
+    </string-array>
+    
     <string-array name="sortFieldNames">
         <item>Atomic Number</item>
         <item>Element Name</item>
