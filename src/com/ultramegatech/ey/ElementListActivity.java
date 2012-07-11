@@ -157,11 +157,11 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
         mAdapter = new SimpleCursorAdapter(this, R.layout.element_list_item,
                 null, LIST_FIELDS, LIST_VIEWS, 0);
         
+        final ElementUtils elementUtils = new ElementUtils(this);
         mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             public boolean setViewValue(View view, Cursor cursor, int i) {
                 if(view instanceof RelativeLayout) {
-                    final int background = ElementUtils.getElementColor(getApplicationContext(),
-                            cursor.getString(i));
+                    final int background = elementUtils.getElementColor(cursor.getString(i));
                     view.setBackgroundColor(background);
                     return true;
                 }

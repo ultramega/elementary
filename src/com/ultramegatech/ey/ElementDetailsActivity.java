@@ -256,7 +256,7 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
         if(category == null) {
             return;
         }
-        final int background = ElementUtils.getElementColor(this, category);
+        final int background = new ElementUtils(this).getElementColor(category);
         mElementBlock.setBackgroundColor(background);
     }
     

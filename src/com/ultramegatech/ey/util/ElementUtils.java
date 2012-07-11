@@ -34,8 +34,19 @@ import java.util.HashMap;
  * @author Steve Guidetti
  */
 public class ElementUtils {
+    private Context mContext;
+    
     /* Map of values to colors */
-    private static HashMap<String, Integer> sColorMap;
+    private HashMap<String, Integer> mColorMap;
+    
+    /**
+     * Constructor
+     * 
+     * @param context Context
+     */
+    public ElementUtils(Context context) {
+        mContext = context;
+    }
     
     /**
      * Get the element color based on the category name.
@@ -44,21 +55,21 @@ public class ElementUtils {
      * @param key The category name
      * @return Color hex value
      */
-    public static int getElementColor(Context context, String key) {
-        if(sColorMap == null) {
-            sColorMap = new HashMap<String, Integer>();
+    public int getElementColor(String key) {
+        if(mColorMap == null) {
+            mColorMap = new HashMap<String, Integer>();
             
-            final Resources res = context.getResources();
+            final Resources res = mContext.getResources();
             final String[] colorKeys = res.getStringArray(R.array.ptFamilies);
             final int[] colorValues = res.getIntArray(R.array.ptColors);
             
             if(colorKeys != null && colorValues != null && colorValues.length >= colorKeys.length) {
                 for(int i = 0; i < colorKeys.length; i++) {
-                    sColorMap.put(colorKeys[i], colorValues[i]);
+                    mColorMap.put(colorKeys[i], colorValues[i]);
                 }
             }
         }
         
-        return sColorMap.get(key);
+        return mColorMap.get(key);
     }
 }
