@@ -25,7 +25,7 @@ package com.ultramegatech.ey.util;
 
 import android.content.Context;
 import android.content.Intent;
-import com.ultramegatech.ey.ElPreferenceActivity;
+import com.ultramegatech.ey.EyPreferenceActivity;
 import com.ultramegatech.ey.R;
 
 /**
@@ -53,6 +53,6 @@ public class CommonMenuHandler {
      * @param context 
      */
     public static void launchOptionsActivity(Context context) {
-        context.startActivity(new Intent(context, ElPreferenceActivity.class));
+        context.startActivity(new Intent(context, EyPreferenceActivity.class));
     }
 }

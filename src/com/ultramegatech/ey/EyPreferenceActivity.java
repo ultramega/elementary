@@ -33,7 +33,7 @@ import com.ultramegatech.util.ActionBarWrapper;
  * 
  * @author Steve Guidetti
  */
-public class ElPreferenceActivity extends PreferenceActivity {
+public class EyPreferenceActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

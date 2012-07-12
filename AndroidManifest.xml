@@ -68,7 +68,7 @@
             android:label="@string/app_name"
             />
         <activity
-            android:name="ElPreferenceActivity"
+            android:name="EyPreferenceActivity"
             android:label="@string/titlePreferences"
             />
         <activity
