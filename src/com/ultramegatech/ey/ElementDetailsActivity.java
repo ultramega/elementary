@@ -73,7 +73,10 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
     private final ContentValues mData = new ContentValues();
     
     /* Units to use for temperature values */
-    private Units mTemperatureUnits = Units.KELVIN;
+    private Units mTemperatureUnits;
+    
+    /* Field used for coloring the element block */
+    private String mColorKey;
     
     /* Header text */
     private TextView mTxtHeader;
@@ -166,6 +169,13 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
         } else {
             mTemperatureUnits = Units.FARENHEIT;
         }
+        
+        final String colorKey = prefs.getString("elementColors", "category");
+        if(colorKey.equals("block")) {
+            mColorKey = Elements.BLOCK;
+        } else {
+            mColorKey = Elements.CATEGORY;
+        }
     }
     
     /**
@@ -246,17 +256,18 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
     private void refreshViews() {
         mTxtMelt.setText(getTemperature(Elements.MELT));
         mTxtBoil.setText(getTemperature(Elements.BOIL));
+        setBlockBackground();
     }
     
     /**
-     * Set the block color based on element category.
+     * Set the block color based on element properties.
      */
     private void setBlockBackground() {
-        final String category = mData.getAsString(Elements.CATEGORY);
-        if(category == null) {
+        final String key = mData.getAsString(mColorKey);
+        if(key == null) {
             return;
         }
-        final int background = new ElementUtils(this).getElementColor(category);
+        final int background = new ElementUtils(this).getElementColor(key);
         mElementBlock.setBackgroundColor(background);
     }
     

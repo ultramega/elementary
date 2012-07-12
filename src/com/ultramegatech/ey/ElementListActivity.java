@@ -29,9 +29,11 @@ import android.content.DialogInterface.OnClickListener;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
@@ -63,7 +65,7 @@ import com.ultramegatech.util.ActionBarWrapper;
  */
 public class ElementListActivity extends FragmentActivity implements LoaderCallbacks<Cursor> {
     /* Fields to read from the database */
-    private static final String[] LIST_PROJECTION = new String[] {
+    private final String[] mListProjection = new String[] {
         Elements._ID,
         Elements.NUMBER,
         Elements.SYMBOL,
@@ -72,13 +74,13 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
     };
     
     /* Mapping of fields to views */
-    private static final String[] LIST_FIELDS = new String[] {
+    private final String[] mListFields = new String[] {
         Elements.NUMBER,
         Elements.SYMBOL,
         Elements.NAME,
         Elements.CATEGORY
     };
-    private static final int[] LIST_VIEWS = new int[] {
+    private final int[] mListViews = new int[] {
         R.id.number,
         R.id.symbol,
         R.id.name,
@@ -111,6 +113,18 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
         setContentView(R.layout.element_list);
         mListView = (ListView)findViewById(android.R.id.list);
         
+        setupFilter();
+        setupSort();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        
+        getSupportLoaderManager().destroyLoader(0);
+        
+        loadPreferences();
+        
         setupAdapter();
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -121,9 +135,6 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
                 startActivity(intent);
             }
         });
-        
-        setupFilter();
-        setupSort();
         
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
@@ -151,11 +162,27 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
     }
     
     /**
+     * Load relevant shared preferences.
+     */
+    private void loadPreferences() {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        
+        final String colorKey = prefs.getString("elementColors", "category");
+        if(colorKey.equals("block")) {
+            mListProjection[4] = Elements.BLOCK;
+            mListFields[3] = Elements.BLOCK;
+        } else {
+            mListProjection[4] = Elements.CATEGORY;
+            mListFields[3] = Elements.CATEGORY;
+        }
+    }
+    
+    /**
      * Create and configure the list adapter.
      */
     private void setupAdapter() {
         mAdapter = new SimpleCursorAdapter(this, R.layout.element_list_item,
-                null, LIST_FIELDS, LIST_VIEWS, 0);
+                null, mListFields, mListViews, 0);
         
         final ElementUtils elementUtils = new ElementUtils(this);
         mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
@@ -250,7 +277,7 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
             uri = Uri.withAppendedPath(Elements.CONTENT_URI_FILTER, mFilter);
         }
         
-        return new CursorLoader(this, uri, LIST_PROJECTION, null, null, mSort);
+        return new CursorLoader(this, uri, mListProjection, null, null, mSort);
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {

@@ -25,8 +25,10 @@ package com.ultramegatech.ey;
 
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
@@ -35,6 +37,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.ultramegatech.ey.provider.Elements;
+import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.widget.PeriodicTableBlock;
 import com.ultramegatech.widget.PeriodicTableView;
 import java.util.ArrayList;
@@ -47,7 +50,7 @@ import java.util.ArrayList;
  */
 public class PeriodicTableActivity extends FragmentActivity implements LoaderCallbacks<Cursor> {
     /* Fields to read from the database */
-    private static final String[] PROJECTION = new String[] {
+    private final String[] mProjection = new String[] {
         Elements.NUMBER,
         Elements.SYMBOL,
         Elements.WEIGHT,
@@ -76,7 +79,13 @@ public class PeriodicTableActivity extends FragmentActivity implements LoaderCal
                 startActivity(intent);
             }
         });
-        
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadPreferences();
+        mPeriodicTableView.getLegend().setColorMap(ElementUtils.getColorMap(this));
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
@@ -101,8 +110,22 @@ public class PeriodicTableActivity extends FragmentActivity implements LoaderCal
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Load relevant shared preferences.
+     */
+    private void loadPreferences() {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        
+        final String colorKey = prefs.getString("elementColors", "category");
+        if(colorKey.equals("block")) {
+            mProjection[5] = Elements.BLOCK;
+        } else {
+            mProjection[5] = Elements.CATEGORY;
+        }
+    }
+    
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this, Elements.CONTENT_URI, PROJECTION, null, null, null);
+        return new CursorLoader(this, Elements.CONTENT_URI, mProjection, null, null, null);
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {

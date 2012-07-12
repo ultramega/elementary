@@ -24,9 +24,12 @@
 package com.ultramegatech.ey.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
 import com.ultramegatech.ey.R;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Utility class for common methods relating to chemical elements.
@@ -37,12 +40,12 @@ public class ElementUtils {
     private Context mContext;
     
     /* Map of values to colors */
-    private HashMap<String, Integer> mColorMap;
+    private HashMap<Object, Integer> mColorMap;
     
     /**
      * Constructor
      * 
-     * @param context Context
+     * @param context
      */
     public ElementUtils(Context context) {
         mContext = context;
@@ -57,19 +60,44 @@ public class ElementUtils {
      */
     public int getElementColor(String key) {
         if(mColorMap == null) {
-            mColorMap = new HashMap<String, Integer>();
-            
-            final Resources res = mContext.getResources();
-            final String[] colorKeys = res.getStringArray(R.array.ptFamilies);
-            final int[] colorValues = res.getIntArray(R.array.ptColors);
-            
-            if(colorKeys != null && colorValues != null && colorValues.length >= colorKeys.length) {
-                for(int i = 0; i < colorKeys.length; i++) {
-                    mColorMap.put(colorKeys[i], colorValues[i]);
-                }
-            }
+            mColorMap = getColorMap(mContext);
         }
         
         return mColorMap.get(key);
+    }
+    
+    /**
+     * Load the element color map from array resources.
+     * 
+     * @param context
+     * @return 
+     */
+    public static HashMap<Object, Integer> getColorMap(Context context) {
+        final HashMap<Object, Integer> colorMap = new LinkedHashMap<Object, Integer>();
+        
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final String colorKey = prefs.getString("elementColors", "category");
+        
+        final int keyArray;
+        final int colorArray;
+        if(colorKey.equals("block")) {
+            keyArray = R.array.ptBlocks;
+            colorArray = R.array.ptBlockColors;
+        } else {
+            keyArray = R.array.ptCategories;
+            colorArray = R.array.ptCategoryColors;
+        }
+
+        final Resources res = context.getResources();
+        final String[] colorKeys = res.getStringArray(keyArray);
+        final int[] colorValues = res.getIntArray(colorArray);
+
+        if(colorKeys != null && colorValues != null && colorValues.length >= colorKeys.length) {
+            for(int i = 0; i < colorKeys.length; i++) {
+                colorMap.put(colorKeys[i], colorValues[i]);
+            }
+        }
+        
+        return colorMap;
     }
 }

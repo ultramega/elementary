@@ -22,7 +22,7 @@
   THE SOFTWARE.
 -->
 <resources>
-    <array name="ptColors">
+    <array name="ptCategoryColors">
         <item>#FF2FF12F</item>
         <item>#FF79B5FF</item>
         <item>#FFFFAA00</item>
@@ -34,7 +34,7 @@
         <item>#FFFFB79B</item>
         <item>#FFDDAACC</item>
     </array>
-    <string-array name="ptFamilies">
+    <string-array name="ptCategories">
         <item>Non-metal</item>
         <item>Noble gas</item>
         <item>Alkali metal</item>
@@ -45,6 +45,18 @@
         <item>Transition metal</item>
         <item>Lanthanide</item>
         <item>Actinide</item>
+    </string-array>
+    <array name="ptBlockColors">
+        <item>#FF6699FF</item>
+        <item>#FFFFCC00</item>
+        <item>#FFFF9999</item>
+        <item>#FF00CC33</item>
+    </array>
+    <string-array name="ptBlocks">
+        <item>s</item>
+        <item>p</item>
+        <item>d</item>
+        <item>f</item>
     </string-array>
     
     <string-array name="tempUnits">
