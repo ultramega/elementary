@@ -26,6 +26,7 @@ package com.ultramegatech.ey;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -48,7 +49,8 @@ import java.util.ArrayList;
  * 
  * @author Steve Guidetti
  */
-public class PeriodicTableActivity extends FragmentActivity implements LoaderCallbacks<Cursor> {
+public class PeriodicTableActivity extends FragmentActivity implements
+        LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Fields to read from the database */
     private final String[] mProjection = new String[] {
         Elements.NUMBER,
@@ -79,13 +81,9 @@ public class PeriodicTableActivity extends FragmentActivity implements LoaderCal
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
+        
         loadPreferences();
-        mPeriodicTableView.getLegend().setColorMap(ElementUtils.getColorMap(this));
+        
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
@@ -115,6 +113,7 @@ public class PeriodicTableActivity extends FragmentActivity implements LoaderCal
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
         
         final String colorKey = prefs.getString("elementColors", "category");
         if(colorKey.equals("block")) {
@@ -129,6 +128,8 @@ public class PeriodicTableActivity extends FragmentActivity implements LoaderCal
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
+        mPeriodicTableView.getLegend().setColorMap(ElementUtils.getColorMap(this));
+        
         final ArrayList<PeriodicTableBlock> periodicTableBlocks =
                 new ArrayList<PeriodicTableBlock>();
         PeriodicTableBlock block;
@@ -153,4 +154,11 @@ public class PeriodicTableActivity extends FragmentActivity implements LoaderCal
     }
 
     public void onLoaderReset(Loader<Cursor> loader) { }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals("elementColors")) {
+            loadPreferences();
+            getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
+        }
+    }
 }
