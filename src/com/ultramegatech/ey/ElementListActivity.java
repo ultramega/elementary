@@ -30,6 +30,7 @@ import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -63,7 +64,8 @@ import com.ultramegatech.util.ActionBarWrapper;
  * 
  * @author Steve Guidetti
  */
-public class ElementListActivity extends FragmentActivity implements LoaderCallbacks<Cursor> {
+public class ElementListActivity extends FragmentActivity implements
+        LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Fields to read from the database */
     private final String[] mListProjection = new String[] {
         Elements._ID,
@@ -112,21 +114,6 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
         
         setContentView(R.layout.element_list);
         mListView = (ListView)findViewById(android.R.id.list);
-        
-        setupFilter();
-        setupSort();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        
-        getSupportLoaderManager().destroyLoader(0);
-        
-        loadPreferences();
-        
-        setupAdapter();
-        mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Intent intent =
@@ -135,6 +122,12 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
                 startActivity(intent);
             }
         });
+        
+        loadPreferences();
+        
+        setupAdapter();
+        setupFilter();
+        setupSort();
         
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
@@ -166,6 +159,7 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
         
         final String colorKey = prefs.getString("elementColors", "category");
         if(colorKey.equals("block")) {
@@ -196,6 +190,8 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
                 return false;
             }
         });
+        
+        mListView.setAdapter(mAdapter);
     }
     
     /**
@@ -288,5 +284,14 @@ public class ElementListActivity extends FragmentActivity implements LoaderCallb
 
     public void onLoaderReset(Loader<Cursor> loader) {
         mAdapter.swapCursor(null);
+    }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals("elementColors")) {
+            getSupportLoaderManager().destroyLoader(0);
+            loadPreferences();
+            setupAdapter();
+            restartLoader();
+        }
     }
 }
