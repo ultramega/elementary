@@ -29,6 +29,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -59,7 +60,8 @@ import com.ultramegatech.util.UnitUtils;
  * 
  * @author Steve Guidetti
  */
-public class ElementDetailsActivity extends FragmentActivity implements LoaderCallbacks<Cursor> {
+public class ElementDetailsActivity extends FragmentActivity implements
+        LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Intent extras */
     public static final String EXTRA_ELEMENT_ID = "element_id";
     public static final String EXTRA_ATOMIC_NUMBER = "atomic_number";
@@ -123,16 +125,9 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
         setContentView(R.layout.element_details);
         findViews();
         
-        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         loadPreferences();
-        if(mData.size() != 0) {
-            refreshViews();
-        }
+        
+        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
     @Override
@@ -160,6 +155,7 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
         
         final String tempUnit = prefs.getString("tempUnit", "K");
         if("K".equals(tempUnit)) {
@@ -248,15 +244,6 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
         mTxtHeat.setText(getHeat());
         mTxtNagativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
-    }
-    
-    /**
-     * Refill views for which values may change.
-     */
-    private void refreshViews() {
-        mTxtMelt.setText(getTemperature(Elements.MELT));
-        mTxtBoil.setText(getTemperature(Elements.BOIL));
-        setBlockBackground();
     }
     
     /**
@@ -500,4 +487,15 @@ public class ElementDetailsActivity extends FragmentActivity implements LoaderCa
     }
 
     public void onLoaderReset(Loader<Cursor> loader) { }
+
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals("tempUnit")) {
+            loadPreferences();
+            mTxtMelt.setText(getTemperature(Elements.MELT));
+            mTxtBoil.setText(getTemperature(Elements.BOIL));
+        } else if(key.equals("elementColors")) {
+            loadPreferences();
+            setBlockBackground();
+        }
+    }
 }
