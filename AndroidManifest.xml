@@ -24,8 +24,8 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ultramegatech.ey"
-    android:versionCode="1"
-    android:versionName="Hydrogen"
+    android:versionCode="2"
+    android:versionName="2 Helium"
     >
     <uses-sdk
         android:minSdkVersion="4"
