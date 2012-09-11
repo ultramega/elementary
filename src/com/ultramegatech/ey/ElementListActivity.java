@@ -24,6 +24,7 @@
 package com.ultramegatech.ey;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.ultramegatech.ey.util.CommonMenuHandler;
@@ -35,6 +36,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
@@ -225,21 +227,8 @@ public class ElementListActivity extends FragmentActivity implements
      * Display the sorting dialog.
      */
     private void openSortDialog() {
-        // these correspond to R.array.sortFieldNames
-        final String[] fields = new String[] {
-            Elements.NUMBER,
-            Elements.NAME
-        };
-        
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.titleSort)
-                .setItems(R.array.sortFieldNames, new OnClickListener() {
-                    public void onClick(DialogInterface dialog, int item) {
-                        setSort(fields[item], SORT_ASC);
-                        dialog.dismiss();
-                    }
-                })
-                .show();
+        final DialogFragment fragment = new SortDialog();
+        fragment.show(getSupportFragmentManager(), null);
     }
     
     /**
@@ -248,7 +237,7 @@ public class ElementListActivity extends FragmentActivity implements
      * @param field Field to sort by
      * @param direction Direction to sort, ASC or DESC
      */
-    private void setSort(String field, String direction) {
+    public void setSort(String field, String direction) {
         final String oldSort = mSort;
         mSort = field + " " + direction;
         if(!oldSort.equals(mSort)) {
@@ -293,5 +282,31 @@ public class ElementListActivity extends FragmentActivity implements
             setupAdapter();
             restartLoader();
         }
+    }
+    
+    public static class SortDialog extends DialogFragment {
+        // these correspond to R.array.sortFieldNames
+        private final static String[] FIELDS = new String[] {
+            Elements.NUMBER,
+            Elements.NAME
+        };
+        
+        public static final String EXTRA_FIELD = "extra_field";
+        
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Dialog d = new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.titleSort)
+                    .setItems(R.array.sortFieldNames, new OnClickListener() {
+                        public void onClick(DialogInterface dialog, int item) {
+                            ((ElementListActivity)getActivity()).setSort(FIELDS[item], SORT_ASC);
+                            dialog.dismiss();
+                        }
+                    })
+                    .create();
+            
+            return d;
+        }
+        
     }
 }
