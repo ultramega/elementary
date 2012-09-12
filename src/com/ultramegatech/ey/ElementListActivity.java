@@ -68,6 +68,9 @@ import com.ultramegatech.util.ActionBarWrapper;
  */
 public class ElementListActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
+    /* Keys for saving instance state */
+    private static final String KEY_SORT = "key_sort";
+    
     /* Fields to read from the database */
     private final String[] mListProjection = new String[] {
         Elements._ID,
@@ -127,11 +130,21 @@ public class ElementListActivity extends FragmentActivity implements
         
         loadPreferences();
         
+        if(savedInstanceState != null) {
+            mSort = savedInstanceState.getString(KEY_SORT);
+        }
+        
         setupAdapter();
         setupFilter();
         setupSort();
         
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_SORT, mSort);
     }
 
     @Override
