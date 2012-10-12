@@ -61,7 +61,7 @@ public class CommonMenuHandler {
     }
     
     /**
-     * Launch PayPal donate page
+     * Launch PayPal donate page.
      * @param context 
      */
     public static void launchDonateActivity(Context context) {
