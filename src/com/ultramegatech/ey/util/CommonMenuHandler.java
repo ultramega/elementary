@@ -53,7 +53,7 @@ public class CommonMenuHandler {
     }
     
     /**
-     * Launch ElPreferenceActivity.
+     * Launch EyPreferenceActivity.
      * @param context 
      */
     public static void launchOptionsActivity(Context context) {
