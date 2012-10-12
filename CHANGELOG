@@ -1,0 +1,12 @@
+v.3-Lithium (10/11/12):
+- Fixed sort dialog closing when rotating the screen
+- Fixed sorting resetting often
+- Added donate button to the menus
+
+v.2-Helium (7/12/12):
+- Added sorting to the list view
+- Added preference for color coding element blocks
+- Fixed possible crash while updating element data
+
+v.1-Hydrogen (6/23/12):
+- Initial release
