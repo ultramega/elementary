@@ -28,4 +28,10 @@
         android:title="@string/menuOptions"
         android:showAsAction="ifRoom"
         />
+    <item
+        android:id="@+id/menu_donate"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="@string/menuDonate"
+        android:showAsAction="ifRoom"
+        />
 </menu>

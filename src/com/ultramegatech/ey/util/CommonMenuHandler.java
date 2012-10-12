@@ -25,6 +25,7 @@ package com.ultramegatech.ey.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import com.ultramegatech.ey.EyPreferenceActivity;
 import com.ultramegatech.ey.R;
 
@@ -45,6 +46,9 @@ public class CommonMenuHandler {
             case R.id.menu_options:
                 launchOptionsActivity(context);
                 break;
+            case R.id.menu_donate:
+                launchDonateActivity(context);
+                break;
         }
     }
     
@@ -54,5 +58,15 @@ public class CommonMenuHandler {
      */
     public static void launchOptionsActivity(Context context) {
         context.startActivity(new Intent(context, EyPreferenceActivity.class));
+    }
+    
+    /**
+     * Launch PayPal donate page
+     * @param context 
+     */
+    public static void launchDonateActivity(Context context) {
+        final Uri uri = Uri.parse("http://ey.ultramegatech.com/donate");
+        final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
     }
 }
