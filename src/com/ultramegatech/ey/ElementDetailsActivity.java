@@ -49,7 +49,6 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.keyes.youtube.OpenYouTubePlayerActivity;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.util.UnitUtils;
@@ -406,15 +405,15 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
     
     /**
-     * Launch YouTube player activity.
+     * Launch YouTube video intent.
      */
     private void showVideo() {
         final String videoId = mData.getAsString(Elements.VIDEO);
         if(videoId == null) {
             return;
         }
-        final Uri uri = Uri.parse("ytv://" + videoId);
-        final Intent intent = new Intent(null, uri, this, OpenYouTubePlayerActivity.class);
+        final Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://www.youtube.com/watch?v=" + videoId));
         startActivity(intent);
     }
     
