@@ -1,3 +1,8 @@
+v.0.1.3 (11/7/12):
+- Uses native intent for viewing videos
+- Removed donate button from menus
+- Switched to numeric versioning system
+
 v.3-Lithium (10/11/12):
 - Fixed sort dialog closing when rotating the screen
 - Fixed sorting resetting often
