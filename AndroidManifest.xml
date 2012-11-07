@@ -71,10 +71,5 @@
             android:name="EyPreferenceActivity"
             android:label="@string/titlePreferences"
             />
-        <activity
-            android:name="com.keyes.youtube.OpenYouTubePlayerActivity"
-            android:label="@string/app_name"
-            android:configChanges="orientation"
-            />
     </application>
 </manifest>
