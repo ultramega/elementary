@@ -26,6 +26,12 @@ package com.ultramegatech.ey.provider;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import com.ultramegatech.ey.R;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Implementation of SQLiteOpenHelper to manage the backing database.
@@ -33,8 +39,13 @@ import android.database.sqlite.SQLiteOpenHelper;
  * @author Steve Guidetti
  */
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
+    private static final String TAG = "DatabaseOpenHelper";
+    
     /* Schema version */
     public static final int VERSION = 1;
+    
+    /* Data version */
+    public static final int DATA_VERSION = 9;
     
     /* Database file name */
     private static final String DB_NAME = "elements.db";
@@ -63,19 +74,44 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             + Elements.VIDEO + " TEXT, "
             + Elements.WIKIPEDIA + " TEXT"
             + ");";
+    
+    private final Context mContext;
 
     public DatabaseOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
+        mContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SCHEMA_ELEMENTS);
+        db.execSQL(getDataSQL());
+        PreferenceManager.getDefaultSharedPreferences(mContext).edit()
+                .putInt("version", DATA_VERSION)
+                .commit();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE " + Elements.TABLE_NAME + ";");
         onCreate(db);
+    }
+    
+    private String getDataSQL() {
+        final InputStream is = mContext.getResources().openRawResource(R.raw.elements);
+        final ByteArrayOutputStream os = new ByteArrayOutputStream();
+        try {
+            byte buf[] = new byte[1024];
+            int len;
+            while((len = is.read(buf)) != -1) {
+                os.write(buf, 0, len);
+            }
+            is.close();
+            os.close();
+        } catch(IOException e) {
+            Log.e(TAG, "Error reading raw resource!", e);
+            return null;
+        }
+        return os.toString();
     }
 }
