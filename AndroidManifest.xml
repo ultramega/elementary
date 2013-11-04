@@ -39,10 +39,12 @@
         android:label="@string/app_name"
         android:icon="@drawable/icon"
         android:theme="@style/LightTheme"
+        android:allowBackup="true"
         >
         <provider
             android:name="com.ultramegatech.ey.provider.ElementsProvider"
             android:authorities="com.ultramegatech.ey.provider"
+            android:exported="false"
             />
         <activity
             android:name="PeriodicTableActivity"
