@@ -37,6 +37,7 @@
         <item name="android:paddingRight">12dp</item>
     </style>
     <style name="ElementDetails.Value">
+        <item name="android:textIsSelectable">true</item>
     </style>
     <style name="TableRow">
     </style>
