@@ -27,8 +27,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.ultramegatech.ey.util.CommonMenuHandler;
-import com.ultramegatech.ey.util.ElementUtils;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -57,6 +55,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import com.ultramegatech.ey.provider.Elements;
+import com.ultramegatech.ey.util.CommonMenuHandler;
+import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 
 /**

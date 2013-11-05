@@ -23,8 +23,6 @@
 
 package com.ultramegatech.ey;
 
-import com.ultramegatech.ey.util.CommonMenuHandler;
-import com.ultramegatech.ey.util.ElementUtils;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -50,6 +48,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.ultramegatech.ey.provider.Elements;
+import com.ultramegatech.ey.util.CommonMenuHandler;
+import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.util.UnitUtils;
 
