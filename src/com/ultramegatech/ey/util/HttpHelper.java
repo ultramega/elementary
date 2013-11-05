@@ -106,7 +106,7 @@ public class HttpHelper {
                 final InputStream inputStream = conn.getInputStream();
                 final ByteArrayOutputStream content = new ByteArrayOutputStream();
                 try {
-                    int readBytes = 0;
+                    int readBytes;
                     while((readBytes = inputStream.read(sBuffer)) != -1) {
                         content.write(sBuffer, 0, readBytes);
                     }
