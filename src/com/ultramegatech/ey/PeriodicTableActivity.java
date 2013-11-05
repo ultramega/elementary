@@ -23,7 +23,6 @@
 
 package com.ultramegatech.ey;
 
-import com.ultramegatech.ey.util.CommonMenuHandler;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -38,6 +37,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.ultramegatech.ey.provider.Elements;
+import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.widget.PeriodicTableBlock;
 import com.ultramegatech.widget.PeriodicTableView;
@@ -83,6 +83,8 @@ public class PeriodicTableActivity extends FragmentActivity implements
         });
         
         loadPreferences();
+        
+        startService(new Intent(this, UpdateService.class));
         
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }

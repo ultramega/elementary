@@ -28,14 +28,8 @@
     <string name="titlePeriodicTable">Periodic Table of the Elements</string>
     <string name="titleElementList">List of Elements</string>
     <string name="titlePreferences">Elementary Options</string>
-    <string name="titleError">Error</string>
     <string name="titleSort">Sort by:</string>
     
-    <string name="errorNoConnection">No internet connection available</string>
-    <string name="errorInstallation">An error occurred during installation</string>
-    
-    <string name="buttonClose">Close</string>
-    <string name="buttonRetry">Retry</string>
     <string name="buttonVideo">Watch Video</string>
     <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Sort</string>
@@ -48,11 +42,6 @@
     <string name="prefSummaryTemp">Units to use to display temperature values</string>
     <string name="prefTitleColors">Element Colors</string>
     <string name="prefSummaryColors">Property to use to determine element block colors</string>
-    
-    <string name="updateGetVersion">Checking for updates</string>
-    <string name="updateFetchData">Downloading updates</string>
-    <string name="updatePopulateDatabase">Installing updates</string>
-    <string name="updateFinished">Application up to date</string>
     
     <string name="labelNumber">Atomic Number:</string>
     <string name="labelSymbol">Symbol:</string>
