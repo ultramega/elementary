@@ -84,8 +84,6 @@ public class PeriodicTableActivity extends FragmentActivity implements
         
         loadPreferences();
         
-        startService(new Intent(this, UpdateService.class));
-        
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 

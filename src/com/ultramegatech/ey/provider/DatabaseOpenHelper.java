@@ -24,10 +24,12 @@
 package com.ultramegatech.ey.provider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
 import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.UpdateService;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -91,6 +93,11 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE " + Elements.TABLE_NAME + ";");
         onCreate(db);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        mContext.startService(new Intent(mContext, UpdateService.class));
     }
     
     private void populateDatabase(SQLiteDatabase db) {
