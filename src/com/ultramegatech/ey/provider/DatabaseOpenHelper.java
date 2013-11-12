@@ -27,11 +27,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import com.ultramegatech.ey.R;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 /**
  * Implementation of SQLiteOpenHelper to manage the backing database.
@@ -39,8 +37,6 @@ import java.io.InputStream;
  * @author Steve Guidetti
  */
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
-    private static final String TAG = "DatabaseOpenHelper";
-    
     /* Schema version */
     public static final int VERSION = 1;
     
@@ -85,7 +81,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SCHEMA_ELEMENTS);
-        db.execSQL(getDataSQL());
+        populateDatabase(db);
         PreferenceManager.getDefaultSharedPreferences(mContext).edit()
                 .putInt("version", DATA_VERSION)
                 .commit();
@@ -97,21 +93,11 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
     
-    private String getDataSQL() {
+    private void populateDatabase(SQLiteDatabase db) {
         final InputStream is = mContext.getResources().openRawResource(R.raw.elements);
-        final ByteArrayOutputStream os = new ByteArrayOutputStream();
-        try {
-            byte buf[] = new byte[1024];
-            int len;
-            while((len = is.read(buf)) != -1) {
-                os.write(buf, 0, len);
-            }
-            is.close();
-            os.close();
-        } catch(IOException e) {
-            Log.e(TAG, "Error reading raw resource!", e);
-            return null;
+        final Scanner scanner = new Scanner(is).useDelimiter("\\n");
+        while(scanner.hasNext()) {
+            db.execSQL(scanner.next());
         }
-        return os.toString();
     }
 }
