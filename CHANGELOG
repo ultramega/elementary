@@ -1,3 +1,7 @@
+v.0.1.5 (11/12/13):
+- Fixed crash on start for Kindle Fire devices
+- Fixed unnecessary update on first start
+
 v.0.1.4 (11/4/13):
 - Removed requirement for internet connection on first start
 - Updates now occur in the background
