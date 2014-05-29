@@ -10,7 +10,7 @@ INSERT INTO `elements` VALUES(9,9,'F','Fluorine',17,2,'p',18.9984032,0.001696,53
 INSERT INTO `elements` VALUES(10,10,'Ne','Neon',18,2,'p',20.1797,0.0008999,24.56,27.07,1.03,NULL,0.005,'Noble gas','1s2 2s2 2p6','2,8',0,'wzv0pb7mzaw',NULL);
 INSERT INTO `elements` VALUES(11,11,'Na','Sodium',1,3,'s',22.98976928,0.971,370.87,1156,1.228,0.93,23600,'Alkali metal','[Ne] 3s1','2,8,1',0,'7IT2I3LtlNE',NULL);
 INSERT INTO `elements` VALUES(12,12,'Mg','Magnesium',2,3,'s',24.305,1.738,923,1363,1.023,1.31,23300,'Alkaline earth metal','[Ne] 3s2','2,8,2',0,'FKkWdizutxI',NULL);
-INSERT INTO `elements` VALUES(13,13,'Al','Aluminium',13,3,'p',26.9815386,2.698,933.47,2792,0.897,1.61,82300,'Metal','[Ne] 3s2 3p1','2,8,3',0,'p2cicHXMs1w',NULL);
+INSERT INTO `elements` VALUES(13,13,'Al','Aluminium',13,3,'p',26.9815386,2.698,933.47,2792,0.897,1.61,82300,'Metal','[Ne] 3s2 3p1','2,8,3',0,'4AhZ8503WPs',NULL);
 INSERT INTO `elements` VALUES(14,14,'Si','Silicon',14,3,'p',28.0855,2.3296,1687,3538,0.705,1.9,282000,'Metalloid','[Ne] 3s2 3p2','2,8,4',0,'a2aWO5cL410',NULL);
 INSERT INTO `elements` VALUES(15,15,'P','Phosphorus',15,3,'p',30.973762,1.82,317.3,553.6,0.769,2.19,1050,'Non-metal','[Ne] 3s2 3p3','2,8,5',0,'LSYLUat03A4',NULL);
 INSERT INTO `elements` VALUES(16,16,'S','Sulphur',16,3,'p',32.065,2.067,388.36,717.87,0.71,2.58,350,'Non-metal','[Ne] 3s2 3p4','2,8,6',0,'mGMR72X8V-U',NULL);
