@@ -88,7 +88,7 @@ INSERT INTO `elements` VALUES(87,87,'Fr','Francium',1,7,'s',223,1.87,300,950,NUL
 INSERT INTO `elements` VALUES(88,88,'Ra','Radium',2,7,'s',226,5.5,973,2010,NULL,0.9,0,'Alkaline earth metal','[Rn] 7s2','2,8,18,32,18,8,2',1,'5_I6vj-lXNM',NULL);
 INSERT INTO `elements` VALUES(89,89,'Ac','Actinium',0,7,'f',227,10.07,1323,3471,0.12,1.1,0,'Actinide','[Rn] 6d1 7s2','2,8,18,32,18,9,2',1,'0BlpjWBYW0k',NULL);
 INSERT INTO `elements` VALUES(90,90,'Th','Thorium',0,7,'f',232.03806,11.72,2115,5061,0.113,1.3,9.6,'Actinide','[Rn] 6d2 7s2','2,8,18,32,18,10,2',0,'KQ64Jm3dmSs',NULL);
-INSERT INTO `elements` VALUES(91,91,'Pa','Protactinium',0,7,'f',231.03588,15.37,1841,4273,NULL,1.5,0,'Actinide','[Rn] 5f2 6d1 7s2','2,8,18,32,20,9,2',0,'3nZB4u34q98',NULL);
+INSERT INTO `elements` VALUES(91,91,'Pa','Protactinium',0,7,'f',231.03588,15.37,1841,4273,NULL,1.5,0,'Actinide','[Rn] 5f2 6d1 7s2','2,8,18,32,20,9,2',0,'bsIMMa7iEKU',NULL);
 INSERT INTO `elements` VALUES(92,92,'U','Uranium',0,7,'f',238.02891,18.95,1405.3,4404,0.116,1.38,2.7,'Actinide','[Rn] 5f3 6d1 7s2','2,8,18,32,21,9,2',0,'B8vVZTvJNGk',NULL);
 INSERT INTO `elements` VALUES(93,93,'Np','Neptunium',0,7,'f',237,20.45,917,4273,NULL,1.36,0,'Actinide','[Rn] 5f4 6d1 7s2','2,8,18,32,22,9,2',1,'1D75B0_URbE',NULL);
 INSERT INTO `elements` VALUES(94,94,'Pu','Plutonium',0,7,'f',244,19.84,912.5,3501,NULL,1.28,0,'Actinide','[Rn] 5f6 7s2','2,8,18,32,24,8,2',1,'89UNPdNtOoE',NULL);
