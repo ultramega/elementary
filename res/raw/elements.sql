@@ -22,7 +22,7 @@ INSERT INTO `elements` VALUES(21,21,'Sc','Scandium',3,4,'d',44.955912,2.989,1814
 INSERT INTO `elements` VALUES(22,22,'Ti','Titanium',4,4,'d',47.867,4.54,1941,3560,0.523,1.54,5650,'Transition metal','[Ar] 3d2 4s2','2,8,10,2',0,'MpFTQYynrc4',NULL);
 INSERT INTO `elements` VALUES(23,23,'V','Vanadium',5,4,'d',50.9415,6.11,2183,3680,0.489,1.63,120,'Transition metal','[Ar] 3d3 4s2','2,8,11,2',0,'XRjb_IKDiz8',NULL);
 INSERT INTO `elements` VALUES(24,24,'Cr','Chromium',6,4,'d',51.9961,7.15,2180,2944,0.449,1.66,102,'Transition metal','[Ar] 3d5 4s1','2,8,13,1',0,'lzRb4zmGvNU',NULL);
-INSERT INTO `elements` VALUES(25,25,'Mn','Manganese',7,4,'d',54.938045,7.44,1519,2334,0.479,1.55,950,'Transition metal','[Ar] 3d5 4s2','2,8,13,2',0,'5xqsPZ7WsHw',NULL);
+INSERT INTO `elements` VALUES(25,25,'Mn','Manganese',7,4,'d',54.938045,7.44,1519,2334,0.479,1.55,950,'Transition metal','[Ar] 3d5 4s2','2,8,13,2',0,'uTVtBuY9Q-0',NULL);
 INSERT INTO `elements` VALUES(26,26,'Fe','Iron',8,4,'d',55.845,7.874,1811,3134,0.449,1.83,56300,'Transition metal','[Ar] 3d6 4s2','2,8,14,2',0,'euQUgp5AY-Y',NULL);
 INSERT INTO `elements` VALUES(27,27,'Co','Cobalt',9,4,'d',58.933195,8.86,1768,3200,0.421,1.88,25,'Transition metal','[Ar] 3d7 4s2','2,8,15,2',0,'V6ljxByu9ng',NULL);
 INSERT INTO `elements` VALUES(28,28,'Ni','Nickel',10,4,'d',58.6934,8.912,1728,3186,0.444,1.91,84,'Transition metal','[Ar] 3d8 4s2','2,8,16,2',0,'t4kRHoj0W1Y',NULL);
