@@ -42,7 +42,7 @@ public class HttpHelper {
     private static final String TAG = "HttpHelper";
     
     /* Base URL */
-    private static final String URL = "http://ey.ultramegatech.com/";
+    private static final String URL = "http://dev.ultramegasoft.com/el/";
     
     /* Output buffer */
     private static byte[] sBuffer = new byte[512];
