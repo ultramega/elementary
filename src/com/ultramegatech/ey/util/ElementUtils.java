@@ -37,8 +37,8 @@ import java.util.LinkedHashMap;
  * @author Steve Guidetti
  */
 public class ElementUtils {
-    private Context mContext;
-    
+    private final Context mContext;
+        
     /* Map of values to colors */
     private HashMap<Object, Integer> mColorMap;
     
@@ -54,7 +54,6 @@ public class ElementUtils {
     /**
      * Get the element color based on the category name.
      * 
-     * @param context
      * @param key The category name
      * @return Color hex value
      */
@@ -78,20 +77,17 @@ public class ElementUtils {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final String colorKey = prefs.getString("elementColors", "category");
         
-        final int keyArray;
-        final int colorArray;
-        if(colorKey.equals("block")) {
-            keyArray = R.array.ptBlocks;
-            colorArray = R.array.ptBlockColors;
-        } else {
-            keyArray = R.array.ptCategories;
-            colorArray = R.array.ptCategoryColors;
-        }
-
         final Resources res = context.getResources();
-        final String[] colorKeys = res.getStringArray(keyArray);
-        final int[] colorValues = res.getIntArray(colorArray);
-
+        final String[] colorKeys;
+        final int[] colorValues;
+        if(colorKey.equals("block")) {
+            colorKeys = res.getStringArray(R.array.ptBlocks);
+            colorValues = res.getIntArray(R.array.ptBlockColors);
+        } else {
+            colorKeys = new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            colorValues = res.getIntArray(R.array.ptCategoryColors);
+        }
+        
         if(colorKeys != null && colorValues != null && colorValues.length >= colorKeys.length) {
             for(int i = 0; i < colorKeys.length; i++) {
                 colorMap.put(colorKeys[i], colorValues[i]);
