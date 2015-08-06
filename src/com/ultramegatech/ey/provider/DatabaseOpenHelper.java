@@ -37,7 +37,7 @@ import java.util.Scanner;
  */
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
     /* Database version */
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
     
     /* Database file name */
     private static final String DB_NAME = "elements.db";
@@ -48,7 +48,6 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             + Elements._ID + " INTEGER PRIMARY KEY, "
             + Elements.NUMBER + " INTEGER, "
             + Elements.SYMBOL + " TEXT COLLATE NOCASE, "
-            + Elements.NAME + " TEXT COLLATE NOCASE, "
             + Elements.GROUP + " INTEGER, "
             + Elements.PERIOD + " INTEGER, "
             + Elements.BLOCK + " TEXT COLLATE NOCASE, "
@@ -59,7 +58,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             + Elements.HEAT + " REAL, "
             + Elements.NEGATIVITY + " REAL, "
             + Elements.ABUNDANCE + " REAL, "
-            + Elements.CATEGORY + " TEXT COLLATE NOCASE, "
+            + Elements.CATEGORY + " INTEGER, "
             + Elements.CONFIGURATION + " TEXT, "
             + Elements.ELECTRONS + " TEXT, "
             + Elements.UNSTABLE + " INTEGER, "

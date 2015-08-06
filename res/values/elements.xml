@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <string-array name="elements">
+        <item>Hydrogen</item>
+        <item>Helium</item>
+        <item>Lithium</item>
+        <item>Beryllium</item>
+        <item>Boron</item>
+        <item>Carbon</item>
+        <item>Nitrogen</item>
+        <item>Oxygen</item>
+        <item>Fluorine</item>
+        <item>Neon</item>
+        <item>Sodium</item>
+        <item>Magnesium</item>
+        <item>Aluminium</item>
+        <item>Silicon</item>
+        <item>Phosphorus</item>
+        <item>Sulphur</item>
+        <item>Chlorine</item>
+        <item>Argon</item>
+        <item>Potassium</item>
+        <item>Calcium</item>
+        <item>Scandium</item>
+        <item>Titanium</item>
+        <item>Vanadium</item>
+        <item>Chromium</item>
+        <item>Manganese</item>
+        <item>Iron</item>
+        <item>Cobalt</item>
+        <item>Nickel</item>
+        <item>Copper</item>
+        <item>Zinc</item>
+        <item>Gallium</item>
+        <item>Germanium</item>
+        <item>Arsenic</item>
+        <item>Selenium</item>
+        <item>Bromine</item>
+        <item>Krypton</item>
+        <item>Rubidium</item>
+        <item>Strontium</item>
+        <item>Yttrium</item>
+        <item>Zirconium</item>
+        <item>Niobium</item>
+        <item>Molybdenum</item>
+        <item>Technetium</item>
+        <item>Ruthenium</item>
+        <item>Rhodium</item>
+        <item>Palladium</item>
+        <item>Silver</item>
+        <item>Cadmium</item>
+        <item>Indium</item>
+        <item>Tin</item>
+        <item>Antimony</item>
+        <item>Tellurium</item>
+        <item>Iodine</item>
+        <item>Xenon</item>
+        <item>Caesium</item>
+        <item>Barium</item>
+        <item>Lanthanum</item>
+        <item>Cerium</item>
+        <item>Praseodymium</item>
+        <item>Neodymium</item>
+        <item>Promethium</item>
+        <item>Samarium</item>
+        <item>Europium</item>
+        <item>Gadolinium</item>
+        <item>Terbium</item>
+        <item>Dysprosium</item>
+        <item>Holmium</item>
+        <item>Erbium</item>
+        <item>Thulium</item>
+        <item>Ytterbium</item>
+        <item>Lutetium</item>
+        <item>Hafnium</item>
+        <item>Tantalum</item>
+        <item>Tungsten</item>
+        <item>Rhenium</item>
+        <item>Osmium</item>
+        <item>Iridium</item>
+        <item>Platinum</item>
+        <item>Gold</item>
+        <item>Mercury</item>
+        <item>Thallium</item>
+        <item>Lead</item>
+        <item>Bismuth</item>
+        <item>Polonium</item>
+        <item>Astatine</item>
+        <item>Radon</item>
+        <item>Francium</item>
+        <item>Radium</item>
+        <item>Actinium</item>
+        <item>Thorium</item>
+        <item>Protactinium</item>
+        <item>Uranium</item>
+        <item>Neptunium</item>
+        <item>Plutonium</item>
+        <item>Americium</item>
+        <item>Curium</item>
+        <item>Berkelium</item>
+        <item>Californium</item>
+        <item>Einsteinium</item>
+        <item>Fermium</item>
+        <item>Mendelevium</item>
+        <item>Nobelium</item>
+        <item>Lawrencium</item>
+        <item>Rutherfordium</item>
+        <item>Dubnium</item>
+        <item>Seaborgium</item>
+        <item>Bohrium</item>
+        <item>Hassium</item>
+        <item>Meitnerium</item>
+        <item>Darmstadtium</item>
+        <item>Roentgenium</item>
+        <item>Copernicium</item>
+        <item>Ununtrium</item>
+        <item>Flerovium</item>
+        <item>Ununpentium</item>
+        <item>Livermorium</item>
+        <item>Ununseptium</item>
+        <item>Ununoctium</item>
+    </string-array>
+</resources>
