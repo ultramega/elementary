@@ -235,7 +235,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mTxtWeight.setText(getWeight());
         mTxtConfiguration.setText(getElectronConfiguration());
         mTxtElectrons.setText(getElectrons());
-        mTxtCategory.setText(mData.getAsString(Elements.CATEGORY));
+        mTxtCategory.setText(getCategory());
         mTxtGPB.setText(getGPB());
         mTxtDensity.setText(getDensity());
         mTxtMelt.setText(getTemperature(Elements.MELT));
@@ -243,6 +243,16 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mTxtHeat.setText(getHeat());
         mTxtNagativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
+    }
+    
+    /**
+     * Get the category name
+     * 
+     * @return The category name
+     */
+    private CharSequence getCategory() {
+        final CharSequence[] cats = getResources().getTextArray(R.array.ptCategories);
+        return cats[mData.getAsInteger(Elements.CATEGORY)];
     }
     
     /**
@@ -478,6 +488,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
                         break;
                 }
             }
+            
+            final String[] names = getResources().getStringArray(R.array.elements);
+            mData.put(Elements.NAME, names[mData.getAsInteger(Elements.NUMBER) - 1]);
             
             populateViews();
             
