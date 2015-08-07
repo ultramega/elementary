@@ -31,8 +31,6 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import com.ultramegatech.ey.R;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -149,23 +147,6 @@ public class PeriodicTableView extends View implements Observer {
                 defStyle, 0);
         
         mTitle = a.getText(R.styleable.PeriodicTableView_title);
-        
-        final int colorsArrayId = a.getResourceId(R.styleable.PeriodicTableView_legendColors, 0);
-        if(colorsArrayId != 0) {
-            final int[] legendColors = a.getResources().getIntArray(colorsArrayId);
-            final CharSequence[] legendValues =
-                    a.getTextArray(R.styleable.PeriodicTableView_legendValues);
-            if(legendColors != null && legendValues != null
-                    && legendColors.length >= legendValues.length) {
-                final HashMap<Object, Integer> colorMap = new LinkedHashMap<Object, Integer>();
-
-                for(int i = 0; i < legendValues.length; i++) {
-                    colorMap.put(legendValues[i], legendColors[i]);
-                }
-
-                mLegend.setColorMap(colorMap);
-            }
-        }
         
         a.recycle();
         

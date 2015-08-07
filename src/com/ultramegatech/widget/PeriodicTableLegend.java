@@ -38,8 +38,8 @@ import java.util.Observable;
  * @author Steve Guidetti
  */
 public class PeriodicTableLegend extends Observable {
-    /* Map of values to colors */
-    private HashMap<Object, Integer> mColorMap;
+    /* Map of values to legend items */
+    private HashMap<Object, Item> mMap;
     
     /* Paint used to draw backgrounds */
     private final Paint mPaint = new Paint();
@@ -51,22 +51,22 @@ public class PeriodicTableLegend extends Observable {
     private final Rect mRect = new Rect();
     
     /**
-     * Set the color map.
+     * Set the legend map.
      * 
-     * @param hashMap Map of values to color hex values
+     * @param hashMap Map of values to legend items
      */
-    public void setColorMap(HashMap<Object, Integer> hashMap) {
-        mColorMap = hashMap;
+    public void setMap(HashMap<Object, Item> hashMap) {
+        mMap = hashMap;
         notifyObservers();
     }
     
     /**
-     * Get the color map.
+     * Get the legend map.
      * 
-     * @return Map of values to color hex values
+     * @return Map of values to legend items
      */
-    public HashMap<Object, Integer> getColorMap() {
-        return mColorMap;
+    public HashMap<Object, Item> getMap() {
+        return mMap;
     }
     
     /**
@@ -75,7 +75,7 @@ public class PeriodicTableLegend extends Observable {
      * @param blocks
      */
     public void colorBlocks(List<PeriodicTableBlock> blocks) {
-        if(mColorMap == null) {
+        if(mMap == null) {
             return;
         }
         
@@ -90,14 +90,11 @@ public class PeriodicTableLegend extends Observable {
      * @param block 
      */
     public void colorBlock(PeriodicTableBlock block) {
-        if(mColorMap == null) {
+        if(mMap == null) {
             return;
         }
         
-        final Integer color = mColorMap.get(block.category);
-        if(color != null) {
-            block.color = color;
-        }
+        block.color = mMap.get(block.category).color;
     }
     
     /**
@@ -109,10 +106,10 @@ public class PeriodicTableLegend extends Observable {
      * @param rect Boundaries within which to draw
      */
     public void drawLegend(Canvas canvas, Rect rect) {
-        if(mColorMap == null) {
+        if(mMap == null) {
             return;
         }
-        final int count = mColorMap.size();
+        final int count = mMap.size();
         final int rows = 4;
         final int cols = (int)Math.ceil(count / (double)rows);
         final int boxHeight = (rect.bottom - rect.top) / rows;
@@ -121,19 +118,35 @@ public class PeriodicTableLegend extends Observable {
         mTextPaint.setTextSize(boxHeight / 2);
         
         int n = 0;
-        for(Entry<Object, Integer> entry : mColorMap.entrySet()) {
+        for(Entry<Object, Item> entry : mMap.entrySet()) {
             mRect.top = rect.top + n % rows * boxHeight + 1;
             mRect.left = rect.left + n / rows * boxWidth + 1;
             mRect.bottom = mRect.top + boxHeight - 1;
             mRect.right = mRect.left + boxWidth - 1;
             
-            mPaint.setColor(entry.getValue());
+            mPaint.setColor(entry.getValue().color);
             canvas.drawRect(mRect, mPaint);
             
-            canvas.drawText(entry.getKey().toString(), mRect.left + boxWidth / 20,
+            canvas.drawText(entry.getValue().name, mRect.left + boxWidth / 20,
                     mRect.bottom - boxHeight / 2 + mTextPaint.getTextSize() / 2, mTextPaint);
             
             n++;
+        }
+    }
+    
+    public static class Item {
+        public int color;
+        public String name;
+
+        /**
+         * Create an item for the legend.
+         * 
+         * @param color The hex value for the color
+         * @param name The display name of this item
+         */
+        public Item(int color, String name) {
+            this.color = color;
+            this.name = name;
         }
     }
 }

@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import com.ultramegatech.ey.R;
+import com.ultramegatech.widget.PeriodicTableLegend.Item;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -40,7 +41,7 @@ public class ElementUtils {
     private final Context mContext;
         
     /* Map of values to colors */
-    private HashMap<Object, Integer> mColorMap;
+    private HashMap<Object, Item> mLegendMap;
     
     /**
      * Constructor
@@ -58,39 +59,42 @@ public class ElementUtils {
      * @return Color hex value
      */
     public int getElementColor(String key) {
-        if(mColorMap == null) {
-            mColorMap = getColorMap(mContext);
+        if(mLegendMap == null) {
+            mLegendMap = getLegendMap(mContext);
         }
         
-        return mColorMap.get(key);
+        return mLegendMap.get(key).color;
     }
     
     /**
-     * Load the element color map from array resources.
+     * Load the element legend map from array resources.
      * 
      * @param context
      * @return 
      */
-    public static HashMap<Object, Integer> getColorMap(Context context) {
-        final HashMap<Object, Integer> colorMap = new LinkedHashMap<Object, Integer>();
+    public static HashMap<Object, Item> getLegendMap(Context context) {
+        final HashMap<Object, Item> colorMap = new LinkedHashMap<Object, Item>();
         
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final String colorKey = prefs.getString("elementColors", "category");
         
         final Resources res = context.getResources();
-        final String[] colorKeys;
+        final Object[] keys;
         final int[] colorValues;
+        final String[] nameValues;
         if(colorKey.equals("block")) {
-            colorKeys = res.getStringArray(R.array.ptBlocks);
+            keys = res.getStringArray(R.array.ptBlocks);
             colorValues = res.getIntArray(R.array.ptBlockColors);
+            nameValues = res.getStringArray(R.array.ptBlocks);
         } else {
-            colorKeys = new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            keys = new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             colorValues = res.getIntArray(R.array.ptCategoryColors);
+            nameValues = res.getStringArray(R.array.ptCategories);
         }
         
-        if(colorKeys != null && colorValues != null && colorValues.length >= colorKeys.length) {
-            for(int i = 0; i < colorKeys.length; i++) {
-                colorMap.put(colorKeys[i], colorValues[i]);
+        if(keys != null && colorValues != null && nameValues != null) {
+            for(int i = 0; i < keys.length; i++) {
+                colorMap.put(keys[i], new Item(colorValues[i], nameValues[i]));
             }
         }
         

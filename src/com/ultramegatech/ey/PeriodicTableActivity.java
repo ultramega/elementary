@@ -128,7 +128,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
-        mPeriodicTableView.getLegend().setColorMap(ElementUtils.getColorMap(this));
+        mPeriodicTableView.getLegend().setMap(ElementUtils.getLegendMap(this));
         
         final ArrayList<PeriodicTableBlock> periodicTableBlocks =
                 new ArrayList<PeriodicTableBlock>();

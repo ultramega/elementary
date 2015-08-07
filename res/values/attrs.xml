@@ -24,7 +24,5 @@
 <resources>
     <declare-styleable name="PeriodicTableView">
         <attr name="title" format="string" />
-        <attr name="legendColors" format="reference" />
-        <attr name="legendValues" format="reference" />
     </declare-styleable>
 </resources>
