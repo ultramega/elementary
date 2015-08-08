@@ -22,124 +22,122 @@
   THE SOFTWARE.
 -->
 <resources>
-    <string-array name="elements">
-        <item>Hydrogen</item>
-        <item>Helium</item>
-        <item>Lithium</item>
-        <item>Beryllium</item>
-        <item>Boron</item>
-        <item>Carbon</item>
-        <item>Nitrogen</item>
-        <item>Oxygen</item>
-        <item>Fluorine</item>
-        <item>Neon</item>
-        <item>Sodium</item>
-        <item>Magnesium</item>
-        <item>Aluminium</item>
-        <item>Silicon</item>
-        <item>Phosphorus</item>
-        <item>Sulphur</item>
-        <item>Chlorine</item>
-        <item>Argon</item>
-        <item>Potassium</item>
-        <item>Calcium</item>
-        <item>Scandium</item>
-        <item>Titanium</item>
-        <item>Vanadium</item>
-        <item>Chromium</item>
-        <item>Manganese</item>
-        <item>Iron</item>
-        <item>Cobalt</item>
-        <item>Nickel</item>
-        <item>Copper</item>
-        <item>Zinc</item>
-        <item>Gallium</item>
-        <item>Germanium</item>
-        <item>Arsenic</item>
-        <item>Selenium</item>
-        <item>Bromine</item>
-        <item>Krypton</item>
-        <item>Rubidium</item>
-        <item>Strontium</item>
-        <item>Yttrium</item>
-        <item>Zirconium</item>
-        <item>Niobium</item>
-        <item>Molybdenum</item>
-        <item>Technetium</item>
-        <item>Ruthenium</item>
-        <item>Rhodium</item>
-        <item>Palladium</item>
-        <item>Silver</item>
-        <item>Cadmium</item>
-        <item>Indium</item>
-        <item>Tin</item>
-        <item>Antimony</item>
-        <item>Tellurium</item>
-        <item>Iodine</item>
-        <item>Xenon</item>
-        <item>Caesium</item>
-        <item>Barium</item>
-        <item>Lanthanum</item>
-        <item>Cerium</item>
-        <item>Praseodymium</item>
-        <item>Neodymium</item>
-        <item>Promethium</item>
-        <item>Samarium</item>
-        <item>Europium</item>
-        <item>Gadolinium</item>
-        <item>Terbium</item>
-        <item>Dysprosium</item>
-        <item>Holmium</item>
-        <item>Erbium</item>
-        <item>Thulium</item>
-        <item>Ytterbium</item>
-        <item>Lutetium</item>
-        <item>Hafnium</item>
-        <item>Tantalum</item>
-        <item>Tungsten</item>
-        <item>Rhenium</item>
-        <item>Osmium</item>
-        <item>Iridium</item>
-        <item>Platinum</item>
-        <item>Gold</item>
-        <item>Mercury</item>
-        <item>Thallium</item>
-        <item>Lead</item>
-        <item>Bismuth</item>
-        <item>Polonium</item>
-        <item>Astatine</item>
-        <item>Radon</item>
-        <item>Francium</item>
-        <item>Radium</item>
-        <item>Actinium</item>
-        <item>Thorium</item>
-        <item>Protactinium</item>
-        <item>Uranium</item>
-        <item>Neptunium</item>
-        <item>Plutonium</item>
-        <item>Americium</item>
-        <item>Curium</item>
-        <item>Berkelium</item>
-        <item>Californium</item>
-        <item>Einsteinium</item>
-        <item>Fermium</item>
-        <item>Mendelevium</item>
-        <item>Nobelium</item>
-        <item>Lawrencium</item>
-        <item>Rutherfordium</item>
-        <item>Dubnium</item>
-        <item>Seaborgium</item>
-        <item>Bohrium</item>
-        <item>Hassium</item>
-        <item>Meitnerium</item>
-        <item>Darmstadtium</item>
-        <item>Roentgenium</item>
-        <item>Copernicium</item>
-        <item>Ununtrium</item>
-        <item>Flerovium</item>
-        <item>Ununpentium</item>
-        <item>Livermorium</item>
-        <item>Ununseptium</item>
-        <item>Ununoctium</item>
-    </string-array>
+    <string name="el001">Hydrogen</string>
+    <string name="el002">Helium</string>
+    <string name="el003">Lithium</string>
+    <string name="el004">Beryllium</string>
+    <string name="el005">Boron</string>
+    <string name="el006">Carbon</string>
+    <string name="el007">Nitrogen</string>
+    <string name="el008">Oxygen</string>
+    <string name="el009">Fluorine</string>
+    <string name="el010">Neon</string>
+    <string name="el011">Sodium</string>
+    <string name="el012">Magnesium</string>
+    <string name="el013">Aluminium</string>
+    <string name="el014">Silicon</string>
+    <string name="el015">Phosphorus</string>
+    <string name="el016">Sulphur</string>
+    <string name="el017">Chlorine</string>
+    <string name="el018">Argon</string>
+    <string name="el019">Potassium</string>
+    <string name="el020">Calcium</string>
+    <string name="el021">Scandium</string>
+    <string name="el022">Titanium</string>
+    <string name="el023">Vanadium</string>
+    <string name="el024">Chromium</string>
+    <string name="el025">Manganese</string>
+    <string name="el026">Iron</string>
+    <string name="el027">Cobalt</string>
+    <string name="el028">Nickel</string>
+    <string name="el029">Copper</string>
+    <string name="el030">Zinc</string>
+    <string name="el031">Gallium</string>
+    <string name="el032">Germanium</string>
+    <string name="el033">Arsenic</string>
+    <string name="el034">Selenium</string>
+    <string name="el035">Bromine</string>
+    <string name="el036">Krypton</string>
+    <string name="el037">Rubidium</string>
+    <string name="el038">Strontium</string>
+    <string name="el039">Yttrium</string>
+    <string name="el040">Zirconium</string>
+    <string name="el041">Niobium</string>
+    <string name="el042">Molybdenum</string>
+    <string name="el043">Technetium</string>
+    <string name="el044">Ruthenium</string>
+    <string name="el045">Rhodium</string>
+    <string name="el046">Palladium</string>
+    <string name="el047">Silver</string>
+    <string name="el048">Cadmium</string>
+    <string name="el049">Indium</string>
+    <string name="el050">Tin</string>
+    <string name="el051">Antimony</string>
+    <string name="el052">Tellurium</string>
+    <string name="el053">Iodine</string>
+    <string name="el054">Xenon</string>
+    <string name="el055">Caesium</string>
+    <string name="el056">Barium</string>
+    <string name="el057">Lanthanum</string>
+    <string name="el058">Cerium</string>
+    <string name="el059">Praseodymium</string>
+    <string name="el060">Neodymium</string>
+    <string name="el061">Promethium</string>
+    <string name="el062">Samarium</string>
+    <string name="el063">Europium</string>
+    <string name="el064">Gadolinium</string>
+    <string name="el065">Terbium</string>
+    <string name="el066">Dysprosium</string>
+    <string name="el067">Holmium</string>
+    <string name="el068">Erbium</string>
+    <string name="el069">Thulium</string>
+    <string name="el070">Ytterbium</string>
+    <string name="el071">Lutetium</string>
+    <string name="el072">Hafnium</string>
+    <string name="el073">Tantalum</string>
+    <string name="el074">Tungsten</string>
+    <string name="el075">Rhenium</string>
+    <string name="el076">Osmium</string>
+    <string name="el077">Iridium</string>
+    <string name="el078">Platinum</string>
+    <string name="el079">Gold</string>
+    <string name="el080">Mercury</string>
+    <string name="el081">Thallium</string>
+    <string name="el082">Lead</string>
+    <string name="el083">Bismuth</string>
+    <string name="el084">Polonium</string>
+    <string name="el085">Astatine</string>
+    <string name="el086">Radon</string>
+    <string name="el087">Francium</string>
+    <string name="el088">Radium</string>
+    <string name="el089">Actinium</string>
+    <string name="el090">Thorium</string>
+    <string name="el091">Protactinium</string>
+    <string name="el092">Uranium</string>
+    <string name="el093">Neptunium</string>
+    <string name="el094">Plutonium</string>
+    <string name="el095">Americium</string>
+    <string name="el096">Curium</string>
+    <string name="el097">Berkelium</string>
+    <string name="el098">Californium</string>
+    <string name="el099">Einsteinium</string>
+    <string name="el100">Fermium</string>
+    <string name="el101">Mendelevium</string>
+    <string name="el102">Nobelium</string>
+    <string name="el103">Lawrencium</string>
+    <string name="el104">Rutherfordium</string>
+    <string name="el105">Dubnium</string>
+    <string name="el106">Seaborgium</string>
+    <string name="el107">Bohrium</string>
+    <string name="el108">Hassium</string>
+    <string name="el109">Meitnerium</string>
+    <string name="el110">Darmstadtium</string>
+    <string name="el111">Roentgenium</string>
+    <string name="el112">Copernicium</string>
+    <string name="el113">Ununtrium</string>
+    <string name="el114">Flerovium</string>
+    <string name="el115">Ununpentium</string>
+    <string name="el116">Livermorium</string>
+    <string name="el117">Ununseptium</string>
+    <string name="el118">Ununoctium</string>
 </resources>

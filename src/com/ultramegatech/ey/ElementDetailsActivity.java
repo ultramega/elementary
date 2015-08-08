@@ -478,8 +478,8 @@ public class ElementDetailsActivity extends FragmentActivity implements
                 }
             }
 
-            final String[] names = getResources().getStringArray(R.array.elements);
-            mData.put(Elements.NAME, names[mData.getAsInteger(Elements.NUMBER) - 1]);
+            mData.put(Elements.NAME,
+                    getString(ElementUtils.getElementName(mData.getAsInteger(Elements.NUMBER))));
 
             populateViews();
 

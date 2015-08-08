@@ -223,14 +223,13 @@ public class ElementListActivity extends FragmentActivity implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         setProgressBarIndeterminateVisibility(false);
 
-        final String[] names = getResources().getStringArray(R.array.elements);
         final ElementUtils utils = new ElementUtils(this);
 
         final ArrayList<ElementHolder> data = new ArrayList<ElementHolder>();
         while(d.moveToNext()) {
             final String number = d.getString(1);
             final String symbol = d.getString(2);
-            final String name = names[d.getInt(1) - 1];
+            final String name = getString(ElementUtils.getElementName(d.getInt(1)));
             final int color = utils.getElementColor(d.getString(3));
 
             data.add(new ElementHolder(number, symbol, name, color));
