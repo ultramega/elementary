@@ -104,7 +104,7 @@ public class ElementListActivity extends FragmentActivity implements
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Intent intent =
                         new Intent(getApplicationContext(), ElementDetailsActivity.class);
-                intent.putExtra(ElementDetailsActivity.EXTRA_ELEMENT_ID, id);
+                intent.putExtra(ElementDetailsActivity.EXTRA_ATOMIC_NUMBER, (int)id);
                 startActivity(intent);
             }
         });

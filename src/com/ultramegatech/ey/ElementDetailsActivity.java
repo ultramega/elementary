@@ -62,7 +62,6 @@ import com.ultramegatech.util.UnitUtils;
 public class ElementDetailsActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Intent extras */
-    public static final String EXTRA_ELEMENT_ID = "element_id";
     public static final String EXTRA_ATOMIC_NUMBER = "atomic_number";
     
     /* Units of measurement */
@@ -448,15 +447,8 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * @return 
      */
     private Uri getUri() {
-        final Intent intent = getIntent();
-        
-        long id = intent.getLongExtra(EXTRA_ELEMENT_ID, 0);
-        if(id != 0) {
-            return ContentUris.withAppendedId(Elements.CONTENT_URI_ID, id);
-        } else {
-            id = intent.getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
-            return ContentUris.withAppendedId(Elements.CONTENT_URI_NUMBER, id);
-        }
+        final long id = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
+        return ContentUris.withAppendedId(Elements.CONTENT_URI_NUMBER, id);
     }
 
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {

@@ -68,12 +68,8 @@ public class Elements implements BaseColumns {
     private static final String SCHEME = "content://";
     public static final Uri CONTENT_URI =
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements");
-    public static final Uri CONTENT_URI_ID =
-            Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/");
     public static final Uri CONTENT_URI_NUMBER =
-            Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/n/");
-    public static final Uri CONTENT_URI_SYMBOL =
-            Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/s/");
+            Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/");
     
     /* Column types */
     public static enum Type {
