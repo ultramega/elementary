@@ -30,7 +30,7 @@
         android:entryValues="@array/tempUnits"
         android:defaultValue="K"
         android:dialogTitle="@string/prefTitleTemp"
-        />
+    />
     <ListPreference
         android:key="elementColors"
         android:title="@string/prefTitleColors"
@@ -39,5 +39,5 @@
         android:entryValues="@array/elementColors"
         android:defaultValue="category"
         android:dialogTitle="@string/prefTitleColors"
-        />
+    />
 </PreferenceScreen>

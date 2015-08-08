@@ -20,34 +20,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.util;
 
 /**
  * Utility to calculate the movement of an object. Implementers determine the rules of motion.
- * 
+ *
  * @author Steve Guidetti
  */
 public abstract class Dynamics {
     /* Maximum time difference between updates */
     private static final int MAX_TIMESTEP = 50;
-    
+
     /* Current position */
     protected double mPosition;
-    
+
     /* Current velocity */
     protected double mVelocity;
-    
+
     /* Position limits */
     protected double mMaxPosition = Double.MAX_VALUE;
     protected double mMinPosition = -Double.MAX_VALUE;
-    
+
     /* The time of the last update */
     protected long mLastTime = 0;
-    
+
     /**
      * Set the state of the dynamics object. Should be called before starting to call update.
-     * 
+     *
      * @param position The current position
      * @param velocity The current velocity in pixels per second
      * @param now The current time
@@ -57,31 +56,31 @@ public abstract class Dynamics {
         mPosition = position;
         mLastTime = now;
     }
-    
+
     /**
      * Get the current position.
-     * 
-     * @return 
+     *
+     * @return
      */
     public double getPosition() {
         return mPosition;
     }
-    
+
     /**
      * Get the current velocity in pixels per second.
-     * 
-     * @return 
+     *
+     * @return
      */
     public double getVelocity() {
         return mVelocity;
     }
-    
+
     /**
      * Test if the dynamic object is considered to be at rest.
-     * 
+     *
      * @param velocityTolerance Minimum velocity
      * @param positionTolerance Minimum distance from limits
-     * @return 
+     * @return
      */
     public boolean isAtRest(final double velocityTolerance, final double positionTolerance) {
         final boolean standingStill = Math.abs(mVelocity) < velocityTolerance;
@@ -89,28 +88,28 @@ public abstract class Dynamics {
                 && mPosition + positionTolerance > mMinPosition;
         return standingStill && withinLimits;
     }
-    
+
     /**
      * Set the maximum position.
-     * 
-     * @param maxPosition 
+     *
+     * @param maxPosition
      */
     public void setMaxPosition(final double maxPosition) {
         mMaxPosition = maxPosition;
     }
-    
+
     /**
      * Set the minimum position.
-     * 
-     * @param minPosition 
+     *
+     * @param minPosition
      */
     public void setMinPosition(final double minPosition) {
         mMinPosition = minPosition;
     }
-    
+
     /**
      * Update the position and velocity.
-     * 
+     *
      * @param now The current time
      */
     public void update(final long now) {
@@ -118,15 +117,15 @@ public abstract class Dynamics {
         if(dt > MAX_TIMESTEP) {
             dt = MAX_TIMESTEP;
         }
-        
+
         onUpdate(dt);
-        
+
         mLastTime = now;
     }
-    
+
     /**
      * Update the position and velocity.
-     * 
+     *
      * @param dt Time elapsed since the previous update
      */
     protected abstract void onUpdate(int dt);

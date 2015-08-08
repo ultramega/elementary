@@ -27,5 +27,5 @@
         android:icon="@android:drawable/ic_menu_sort_by_size"
         android:title="@string/menuList"
         android:showAsAction="ifRoom|withText"
-        />
+    />
 </menu>

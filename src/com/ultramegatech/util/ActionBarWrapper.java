@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.util;
 
 import android.annotation.TargetApi;
@@ -30,15 +29,15 @@ import android.os.Build;
 
 /**
  * Compatibility wrapper for accessing the Action Bar.
- * 
+ *
  * @author Steve Guidetti
  */
 public abstract class ActionBarWrapper {
     /**
      * Get a compatible implementation of ActionBarWrapper.
-     * 
+     *
      * @param activity
-     * @return 
+     * @return
      */
     public static ActionBarWrapper getInstance(Activity activity) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -47,29 +46,32 @@ public abstract class ActionBarWrapper {
             return new PreHoneycomb();
         }
     }
-    
+
     /**
      * Cause the options menu to be re-created.
      */
     public abstract void invalidateOptionsMenu();
-    
+
     /**
      * Enable or disable the display of the up arrow on the home button.
-     * 
-     * @param arg 
+     *
+     * @param arg
      */
     public abstract void setDisplayHomeAsUpEnabled(boolean arg);
-    
+
     private static class PreHoneycomb extends ActionBarWrapper {
-        public PreHoneycomb() { }
+        public PreHoneycomb() {
+        }
 
         @Override
-        public void invalidateOptionsMenu() { }
+        public void invalidateOptionsMenu() {
+        }
 
         @Override
-        public void setDisplayHomeAsUpEnabled(boolean arg) { }
+        public void setDisplayHomeAsUpEnabled(boolean arg) {
+        }
     }
-    
+
     @TargetApi(11)
     private static class Honeycomb extends ActionBarWrapper {
         private final Activity mActivity;

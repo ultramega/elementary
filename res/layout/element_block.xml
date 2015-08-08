@@ -27,7 +27,7 @@
     android:layout_width="wrap_content"
     android:layout_height="70dp"
     android:layout_weight="0"
-    >
+>
     <TextView
         android:id="@+id/elementSymbol"
         android:textSize="38sp"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        />
+    />
     <TextView
         android:id="@+id/elementNumber"
         android:textSize="14sp"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        />
+    />
     <TextView
         android:id="@+id/elementWeight"
         android:textSize="10sp"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        />
+    />
     <TextView
         android:id="@+id/elementElectrons"
         android:textSize="8sp"
@@ -66,5 +66,5 @@
         android:layout_marginLeft="6dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/elementSymbol"
-        />
+    />
 </RelativeLayout>

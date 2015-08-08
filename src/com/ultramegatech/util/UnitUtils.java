@@ -20,18 +20,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.util;
 
 /**
  * Utility to convert values between different units.
- * 
+ *
  * @author Steve Guidetti
  */
 public class UnitUtils {
     /**
      * Convert temperature value from Kelvin to degrees Celsius.
-     * 
+     *
      * @param k Value in Kelvin
      * @return Value in degrees Celsius
      */
@@ -41,7 +40,7 @@ public class UnitUtils {
 
     /**
      * Convert temperature value from Kelvin to degrees Farenheit.
-     * 
+     *
      * @param k Value in Kelvin
      * @return Value in degrees Farenheit
      */

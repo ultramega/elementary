@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.widget;
 
 import android.content.Context;
@@ -33,7 +32,7 @@ import android.view.ViewConfiguration;
 /**
  * Touch listener for PeriodicTableView. Drag or fling to pan, long press to zoom, and tap to click
  * on a block.
- * 
+ *
  * @author Steve Guidetti
  */
 public class PeriodicTableTouchListener implements View.OnTouchListener {
@@ -46,39 +45,39 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
     public enum Mode {
         UNDEFINED, PAN, ZOOM
     }
-    
+
     /* Time of tactile feedback vibration when entering zoom mode */
     private static final long VIBRATE_TIME = 50;
-    
+
     /* Zoom control to manipulate */
     private DynamicZoomControl mZoomControl;
-    
+
     /* Current listener mode */
     private Mode mMode = Mode.UNDEFINED;
-    
+
     /* Coordinates of previous touch event */
     private double mX;
     private double mY;
-    
+
     /* Coordinates of latest down event */
     private double mDownX;
     private double mDownY;
-    
+
     /* Velocity tracker for touch events */
     private VelocityTracker mVelocityTracker;
-    
+
     /* Distance a touch can travel to be considered dragging */
     private final int mScaledTouchSlop;
-    
+
     /* Duration of a long press */
     private final int mLongPressTimeout;
-    
+
     /* Vibrator for tactile feedback */
     private final Vibrator mVibrator;
-    
+
     /* Maximum velocity of a fling */
     private final int mScaledMaximumFlingVelocity;
-    
+
     /* Runnable to enter zoom mode */
     private final Runnable mLongPressRunnable = new Runnable() {
         public void run() {
@@ -86,11 +85,11 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
             mVibrator.vibrate(VIBRATE_TIME);
         }
     };
-    
+
     /**
      * Constructor
-     * 
-     * @param context 
+     *
+     * @param context
      */
     public PeriodicTableTouchListener(Context context) {
         mLongPressTimeout = ViewConfiguration.getLongPressTimeout();
@@ -99,11 +98,11 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
                 ViewConfiguration.get(context).getScaledMaximumFlingVelocity();
         mVibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
     }
-    
+
     /**
      * Set the ZoomControl.
-     * 
-     * @param control 
+     *
+     * @param control
      */
     public void setZoomControl(DynamicZoomControl control) {
         mZoomControl = control;
@@ -111,16 +110,16 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
 
     public boolean onTouch(View v, MotionEvent event) {
         final PeriodicTableView periodicTableView = (PeriodicTableView)v;
-        
+
         final int action = event.getAction();
         final float x = event.getX();
         final float y = event.getY();
-        
+
         if(mVelocityTracker == null) {
             mVelocityTracker = VelocityTracker.obtain();
         }
         mVelocityTracker.addMovement(event);
-        
+
         switch(action) {
             case MotionEvent.ACTION_DOWN:
                 periodicTableView.onDown(x, y);
@@ -134,7 +133,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
             case MotionEvent.ACTION_MOVE:
                 final double dx = (x - mX) / v.getWidth();
                 final double dy = (y - mY) / v.getHeight();
-                
+
                 if(mMode == Mode.ZOOM) {
                     periodicTableView.clearSelection();
                     mZoomControl.zoom(Math.pow(20, -dy),
@@ -145,15 +144,15 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
                 } else {
                     final double scrollX = mDownX - x;
                     final double scrollY = mDownY - y;
-                    
+
                     final double dist = Math.sqrt(scrollX * scrollX + scrollY * scrollY);
-                    
+
                     if(dist >= mScaledTouchSlop) {
                         v.removeCallbacks(mLongPressRunnable);
                         mMode = Mode.PAN;
                     }
                 }
-                
+
                 mX = x;
                 mY = y;
                 break;
@@ -174,7 +173,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
                 mMode = Mode.UNDEFINED;
                 break;
         }
-        
+
         return true;
     }
 }

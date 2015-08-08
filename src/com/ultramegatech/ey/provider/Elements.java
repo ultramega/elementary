@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey.provider;
 
 import android.content.ContentResolver;
@@ -30,13 +29,13 @@ import android.provider.BaseColumns;
 /**
  * Data contract for the elements table. Provides column names, column types, and ContentProvider
  * Uris.
- * 
+ *
  * @author Steve Guidetti
  */
 public class Elements implements BaseColumns {
     /* Database table name */
     public static final String TABLE_NAME = "elements";
-    
+
     /* Column names */
     public static final String NUMBER = "num";
     public static final String SYMBOL = "sym";
@@ -57,30 +56,30 @@ public class Elements implements BaseColumns {
     public static final String UNSTABLE = "uns";
     public static final String VIDEO = "vid";
     public static final String WIKIPEDIA = "wiki";
-    
+
     /* Data types */
     private static final String BASE_TYPE = "com.ultramegatech.ey.element";
     public static final String DATA_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + BASE_TYPE;
     public static final String DATA_TYPE_ITEM =
             ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + BASE_TYPE;
-    
+
     /* Content resolver uri bases */
     private static final String SCHEME = "content://";
     public static final Uri CONTENT_URI =
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements");
     public static final Uri CONTENT_URI_NUMBER =
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/");
-    
+
     /* Column types */
     public static enum Type {
         UNDEFINED, TEXT, INTEGER, REAL, BOOLEAN
     }
-    
+
     /**
      * Get the data type of the specified column.
-     * 
+     *
      * @param c The column name
-     * @return 
+     * @return
      */
     public static Type getColumnType(String c) {
         if(c.equals(SYMBOL) || c.equals(NAME) || c.equals(BLOCK) || c.equals(CONFIGURATION)
@@ -97,12 +96,13 @@ public class Elements implements BaseColumns {
         if(c.equals(UNSTABLE)) {
             return Type.BOOLEAN;
         }
-        
+
         return Type.UNDEFINED;
     }
-    
+
     /**
      * Constructor
      */
-    private Elements() { }
+    private Elements() {
+    }
 }

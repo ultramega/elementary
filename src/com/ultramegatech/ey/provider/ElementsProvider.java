@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey.provider;
 
 import android.content.ContentProvider;
@@ -34,27 +33,28 @@ import android.net.Uri;
 
 /**
  * ContentProvider for accessing the chemical element database.
- * 
+ *
  * @author Steve Guidetti
  */
 public class ElementsProvider extends ContentProvider {
     /* Provider authority */
     public static final String AUTHORITY = "com.ultramegatech.ey.provider";
-    
+
     /* Uri matcher ids */
     private static final int ELEMENTS = 1;
     private static final int ELEMENTS_NUMBER = 2;
-    
+
     /* Uri matcher */
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
     static {
         sUriMatcher.addURI(AUTHORITY, "elements", ELEMENTS);
         sUriMatcher.addURI(AUTHORITY, "elements/#", ELEMENTS_NUMBER);
     }
-    
+
     /* SQLiteOpenHelper */
     private DatabaseOpenHelper mDatabaseOpenHelper;
-    
+
     @Override
     public boolean onCreate() {
         mDatabaseOpenHelper = new DatabaseOpenHelper(getContext());
@@ -75,7 +75,7 @@ public class ElementsProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Invalid URI: " + uri.toString());
         }
-        
+
         final SQLiteDatabase db = mDatabaseOpenHelper.getReadableDatabase();
         final Cursor cursor = qb.query(db, projection, selection, selectionArgs, null, null,
                 sortOrder);

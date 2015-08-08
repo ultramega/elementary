@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey.provider;
 
 import android.content.Context;
@@ -32,16 +31,16 @@ import java.util.Scanner;
 
 /**
  * Implementation of SQLiteOpenHelper to manage the backing database.
- * 
+ *
  * @author Steve Guidetti
  */
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
     /* Database version */
     public static final int VERSION = 2;
-    
+
     /* Database file name */
     private static final String DB_NAME = "elements.db";
-    
+
     /* Schema for 'elements' table */
     private static final String SCHEMA_ELEMENTS = "CREATE TABLE "
             + Elements.TABLE_NAME + " ("
@@ -65,7 +64,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             + Elements.VIDEO + " TEXT, "
             + Elements.WIKIPEDIA + " TEXT"
             + ");";
-    
+
     private final Context mContext;
 
     public DatabaseOpenHelper(Context context) {
@@ -84,7 +83,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE " + Elements.TABLE_NAME + ";");
         onCreate(db);
     }
-    
+
     private void populateDatabase(SQLiteDatabase db) {
         final InputStream is = mContext.getResources().openRawResource(R.raw.elements);
         final Scanner scanner = new Scanner(is).useDelimiter("\\n");

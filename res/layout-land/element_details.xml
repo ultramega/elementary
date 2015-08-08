@@ -26,13 +26,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        >
+    >
         <include layout="@layout/element_block" />
         <TextView
             android:id="@+id/header"
@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            />
+        />
         <ImageButton
             android:id="@+id/wikiButton"
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_gravity="center"
             android:contentDescription="@string/buttonWiki"
             android:src="@drawable/ic_wikipedia"
-            />
+        />
         <ImageButton
             android:id="@+id/videoButton"
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_gravity="center"
             android:contentDescription="@string/buttonVideo"
             android:src="@drawable/ic_video"
-            />
+        />
     </LinearLayout>
     <include layout="@layout/element_details_table" />
 </LinearLayout>

@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey;
 
 import android.os.Bundle;
@@ -30,7 +29,7 @@ import com.ultramegatech.util.ActionBarWrapper;
 
 /**
  * Simple implementation of PreferenceActivity for setting general application settings.
- * 
+ *
  * @author Steve Guidetti
  */
 public class EyPreferenceActivity extends PreferenceActivity {

@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey;
 
 import android.content.Intent;
@@ -46,13 +45,13 @@ import java.util.ArrayList;
 /**
  * This activity displays the periodic table view. Clicking on an element block will launch an
  * ElementDetailsActivity for the selected element.
- * 
+ *
  * @author Steve Guidetti
  */
 public class PeriodicTableActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Fields to read from the database */
-    private final String[] mProjection = new String[] {
+    private final String[] mProjection = new String[]{
         Elements.NUMBER,
         Elements.SYMBOL,
         Elements.WEIGHT,
@@ -61,18 +60,18 @@ public class PeriodicTableActivity extends FragmentActivity implements
         Elements.CATEGORY,
         Elements.UNSTABLE
     };
-    
+
     /* The main view */
     private PeriodicTableView mPeriodicTableView;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.periodic_table);
-        
+
         mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
-        
+
         mPeriodicTableView.setOnItemClickListener(new PeriodicTableView.OnItemClickListener() {
             public void onItemClick(PeriodicTableBlock item) {
                 final Intent intent =
@@ -81,9 +80,9 @@ public class PeriodicTableActivity extends FragmentActivity implements
                 startActivity(intent);
             }
         });
-        
+
         loadPreferences();
-        
+
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
@@ -114,7 +113,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
-        
+
         final String colorKey = prefs.getString("elementColors", "category");
         if(colorKey.equals("block")) {
             mProjection[5] = Elements.BLOCK;
@@ -122,14 +121,14 @@ public class PeriodicTableActivity extends FragmentActivity implements
             mProjection[5] = Elements.CATEGORY;
         }
     }
-    
+
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this, Elements.CONTENT_URI, mProjection, null, null, null);
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         mPeriodicTableView.getLegend().setMap(ElementUtils.getLegendMap(this));
-        
+
         final ArrayList<PeriodicTableBlock> periodicTableBlocks =
                 new ArrayList<PeriodicTableBlock>();
         PeriodicTableBlock block;
@@ -142,18 +141,19 @@ public class PeriodicTableActivity extends FragmentActivity implements
             block.group = d.getInt(3);
             block.period = d.getInt(4);
             block.category = d.getString(5);
-            
+
             if(d.getInt(6) == 1) {
                 block.subtext = "[" + Integer.parseInt(block.subtext) + "]";
             }
 
             periodicTableBlocks.add(block);
         }
-        
+
         mPeriodicTableView.setBlocks(periodicTableBlocks);
     }
 
-    public void onLoaderReset(Loader<Cursor> loader) { }
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("elementColors")) {

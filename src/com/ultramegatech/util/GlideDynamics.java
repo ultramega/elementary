@@ -20,22 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.util;
 
 /**
  * Simulates gliding motion based on a specified amount of friction.
- * 
+ *
  * @author Steve Guidetti
  */
 public class GlideDynamics extends Dynamics {
     /* Current friction */
     private double mFriction;
-    
+
     /**
      * Set the friction value.
-     * 
-     * @param friction 
+     *
+     * @param friction
      */
     public void setFriction(double friction) {
         mFriction = friction;
@@ -46,7 +45,7 @@ public class GlideDynamics extends Dynamics {
         final double fdt = dt / 1000d;
         final double a = -mFriction * mVelocity;
         final double newPosition = mPosition + (mVelocity * fdt + 0.5 * a * fdt * fdt);
-        
+
         if(newPosition > mMaxPosition) {
             mPosition = mMaxPosition;
             mVelocity = 0d;

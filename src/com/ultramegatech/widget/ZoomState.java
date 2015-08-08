@@ -20,75 +20,74 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.widget;
 
 import java.util.Observable;
 
 /**
  * Maintains the state of a view's zoom level and pan position.
- * 
+ *
  * @author Steve Guidetti
  */
 public class ZoomState extends Observable {
     /* Zoom level, 1.0 being the level at which the content fits the view */
     private double mZoom;
-    
+
     /* Coordinates of the zoom window center relative to the content */
     private double mPanX;
     private double mPanY;
-    
+
     /**
      * Get the pan value in the X dimension.
-     * 
-     * @return 
+     *
+     * @return
      */
     public double getPanX() {
         return mPanX;
     }
-    
+
     /**
      * Get the pan value in the Y dimension.
-     * 
-     * @return 
+     *
+     * @return
      */
     public double getPanY() {
         return mPanY;
     }
-    
+
     /**
      * Get the zoom level.
-     * 
-     * @return 
+     *
+     * @return
      */
     public double getZoom() {
         return mZoom;
     }
-    
+
     /**
      * Calculate the zoom value in the X dimension.
-     * 
+     *
      * @param aspectQuotient Quotient of content and view aspect ratios
-     * @return 
+     * @return
      */
     public double getZoomX(double aspectQuotient) {
         return Math.min(mZoom, mZoom * aspectQuotient);
     }
-    
+
     /**
      * Calculate the zoom value in the Y dimension.
-     * 
+     *
      * @param aspectQuotient Quotient of content and view aspect ratios
-     * @return 
+     * @return
      */
     public double getZoomY(double aspectQuotient) {
         return Math.min(mZoom, mZoom / aspectQuotient);
     }
-    
+
     /**
      * Set the pan value in the X dimension.
-     * 
-     * @param panX 
+     *
+     * @param panX
      */
     public void setPanX(double panX) {
         if(panX != mPanX) {
@@ -96,11 +95,11 @@ public class ZoomState extends Observable {
             setChanged();
         }
     }
-    
+
     /**
      * Set the pan value in the Y dimension.
-     * 
-     * @param panY 
+     *
+     * @param panY
      */
     public void setPanY(double panY) {
         if(panY != mPanY) {
@@ -108,11 +107,11 @@ public class ZoomState extends Observable {
             setChanged();
         }
     }
-    
+
     /**
      * Set the zoom level.
-     * 
-     * @param zoom 
+     *
+     * @param zoom
      */
     public void setZoom(double zoom) {
         if(zoom != mZoom) {

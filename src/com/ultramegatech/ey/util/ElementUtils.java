@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey.util;
 
 import android.content.Context;
@@ -34,27 +33,27 @@ import java.util.LinkedHashMap;
 
 /**
  * Utility class for common methods relating to chemical elements.
- * 
+ *
  * @author Steve Guidetti
  */
 public class ElementUtils {
     private final Context mContext;
-        
+
     /* Map of values to colors */
     private HashMap<Object, Item> mLegendMap;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param context
      */
     public ElementUtils(Context context) {
         mContext = context;
     }
-    
+
     /**
      * Get the element color based on the category name.
-     * 
+     *
      * @param key The category name
      * @return Color hex value
      */
@@ -62,22 +61,22 @@ public class ElementUtils {
         if(mLegendMap == null) {
             mLegendMap = getLegendMap(mContext);
         }
-        
+
         return mLegendMap.get(key).color;
     }
-    
+
     /**
      * Load the element legend map from array resources.
-     * 
+     *
      * @param context
-     * @return 
+     * @return
      */
     public static HashMap<Object, Item> getLegendMap(Context context) {
         final HashMap<Object, Item> colorMap = new LinkedHashMap<Object, Item>();
-        
+
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final String colorKey = prefs.getString("elementColors", "category");
-        
+
         final Resources res = context.getResources();
         final Object[] keys;
         final int[] colorValues;
@@ -87,17 +86,17 @@ public class ElementUtils {
             colorValues = res.getIntArray(R.array.ptBlockColors);
             nameValues = res.getStringArray(R.array.ptBlocks);
         } else {
-            keys = new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            keys = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
             colorValues = res.getIntArray(R.array.ptCategoryColors);
             nameValues = res.getStringArray(R.array.ptCategories);
         }
-        
+
         if(keys != null && colorValues != null && nameValues != null) {
             for(int i = 0; i < keys.length; i++) {
                 colorMap.put(keys[i], new Item(colorValues[i], nameValues[i]));
             }
         }
-        
+
         return colorMap;
     }
 }

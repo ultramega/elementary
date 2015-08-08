@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.widget;
 
 import android.content.Context;
@@ -46,21 +45,21 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /* Sorting options */
     public static final int SORT_NUMBER = 0;
     public static final int SORT_NAME = 1;
-    
+
     private final Context mContext;
-    
+
     /* The original data set */
     private final ArrayList<ElementHolder> mListItems;
-    
+
     /* The filter for this list adapter */
     private final Filter mFilter;
-    
+
     /* The filtered and sorted data set */
     private final ArrayList<ElementHolder> mFiltered;
 
     /**
      * Constructor
-     * 
+     *
      * @param context
      * @param listItems List of elements
      * @param filter Initial filter text
@@ -69,19 +68,19 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     public ElementListAdapter(Context context, ArrayList<ElementHolder> listItems, String filter, int sortBy) {
         mContext = context;
         mListItems = listItems;
-        
+
         mFiltered = getFilteredList(filter);
         sortList(sortBy);
-        
+
         mFilter = new Filter() {
             @Override
             protected Filter.FilterResults performFiltering(CharSequence cs) {
                 final ArrayList<ElementHolder> filtered = getFilteredList(cs.toString());
-                
+
                 final FilterResults results = new FilterResults();
                 results.count = filtered.size();
                 results.values = filtered;
-                
+
                 return results;
             }
 
@@ -89,7 +88,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
             protected void publishResults(CharSequence cs, Filter.FilterResults fr) {
                 mFiltered.clear();
                 mFiltered.addAll((ArrayList<ElementHolder>)fr.values);
-                
+
                 notifyDataSetChanged();
             }
         };
@@ -111,42 +110,42 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         if(view == null) {
             view = View.inflate(mContext, R.layout.element_list_item, null);
         }
-        
+
         final ElementHolder holder = mFiltered.get(i);
-        
+
         ((TextView)view.findViewById(R.id.number)).setText(holder.number);
         ((TextView)view.findViewById(R.id.symbol)).setText(holder.symbol);
         ((TextView)view.findViewById(R.id.name)).setText(holder.name);
         view.findViewById(R.id.block).setBackgroundColor(holder.color);
-        
+
         return view;
     }
 
     public Filter getFilter() {
         return mFilter;
     }
-    
+
     /**
      * Set the field used to sort elements.
-     * 
+     *
      * @param sortBy One of the SORT_ constants
      */
     public void setSort(int sortBy) {
         sortList(sortBy);
         notifyDataSetChanged();
     }
-    
+
     /**
      * Get a filtered copy of the original data set
-     * 
+     *
      * @param filter Text used to filter the elements
-     * @return 
+     * @return
      */
     private ArrayList<ElementHolder> getFilteredList(String filter) {
         if(TextUtils.isEmpty(filter)) {
             return mListItems;
         }
-        
+
         final ArrayList<ElementHolder> filtered = new ArrayList<ElementHolder>();
 
         for(ElementHolder element : mListItems) {
@@ -155,19 +154,19 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
                 filtered.add(element);
             }
         }
-        
+
         return filtered;
     }
-    
+
     /**
      * Sort the filtered list.
-     * 
+     *
      * @param sortBy One of the SORT_ constants
      */
     private void sortList(int sortBy) {
         Collections.sort(mFiltered, new ElementComparator(sortBy));
     }
-    
+
     /**
      * Class to hold data for a single element
      */
@@ -185,19 +184,19 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
             this.name = name;
             this.color = color;
         }
-        
+
     }
-    
+
     /**
      * Comparator used for sorting elements
      */
     private static class ElementComparator implements Comparator<ElementHolder> {
-        
+
         private final int mSortField;
 
         /**
          * Constructor
-         * 
+         *
          * @param sortField One of the SORT_ constants
          */
         public ElementComparator(int sortField) {
@@ -208,9 +207,9 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
             if(mSortField == SORT_NUMBER) {
                 return Integer.valueOf(l.number) - Integer.valueOf(r.number);
             }
-            
+
             return l.name.compareTo(r.name);
         }
-        
+
     }
 }

@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey;
 
 import android.app.AlertDialog;
@@ -62,7 +61,7 @@ import java.util.ArrayList;
  * This activity displays a list of all the elements sorted by atomic number. Clicking on an item
  * will launch an ElementDetailsActivity for the selected element. The list can be filtered by name
  * or symbol.
- * 
+ *
  * @author Steve Guidetti
  */
 public class ElementListActivity extends FragmentActivity implements
@@ -70,34 +69,34 @@ public class ElementListActivity extends FragmentActivity implements
     /* Keys for saving instance state */
     private static final String KEY_SORT = "key_sort";
     private static final String KEY_FILTER = "key_filter";
-    
+
     /* Fields to read from the database */
-    private final String[] mListProjection = new String[] {
+    private final String[] mListProjection = new String[]{
         Elements._ID,
         Elements.NUMBER,
         Elements.SYMBOL,
         Elements.CATEGORY
     };
-    
+
     /* The list */
     private ListView mListView;
-    
+
     /* List adapter */
     private ElementListAdapter mAdapter;
-    
+
     /* Current value to filter results by */
     private String mFilter;
-    
+
     /* Current value for sorting elements */
     private int mSort = ElementListAdapter.SORT_NUMBER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
-        
+
         setContentView(R.layout.element_list);
         mListView = (ListView)findViewById(android.R.id.list);
         mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -108,17 +107,17 @@ public class ElementListActivity extends FragmentActivity implements
                 startActivity(intent);
             }
         });
-        
+
         loadPreferences();
-        
+
         if(savedInstanceState != null) {
             mSort = savedInstanceState.getInt(KEY_SORT);
             mFilter = savedInstanceState.getString(KEY_FILTER);
         }
-        
+
         setupFilter();
         setupSort();
-        
+
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
@@ -150,14 +149,14 @@ public class ElementListActivity extends FragmentActivity implements
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     /**
      * Load relevant shared preferences.
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
-        
+
         final String colorKey = prefs.getString("elementColors", "category");
         if(colorKey.equals("block")) {
             mListProjection[3] = Elements.BLOCK;
@@ -165,22 +164,26 @@ public class ElementListActivity extends FragmentActivity implements
             mListProjection[3] = Elements.CATEGORY;
         }
     }
-    
+
     /**
      * Setup the listener for the filtering TextView.
      */
     private void setupFilter() {
         final EditText filterEditText = (EditText)findViewById(R.id.filter);
         filterEditText.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
             public void afterTextChanged(Editable s) {
                 mFilter = s.toString();
                 mAdapter.getFilter().filter(mFilter);
             }
         });
     }
-    
+
     /**
      * Setup the listener for the sort button.
      */
@@ -192,7 +195,7 @@ public class ElementListActivity extends FragmentActivity implements
             }
         });
     }
-    
+
     /**
      * Display the sorting dialog.
      */
@@ -200,10 +203,10 @@ public class ElementListActivity extends FragmentActivity implements
         final DialogFragment fragment = new SortDialog();
         fragment.show(getSupportFragmentManager(), null);
     }
-    
+
     /**
      * Set the sorting parameters.
-     * 
+     *
      * @param field Field to sort by
      */
     public void setSort(int field) {
@@ -219,25 +222,26 @@ public class ElementListActivity extends FragmentActivity implements
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         setProgressBarIndeterminateVisibility(false);
-        
+
         final String[] names = getResources().getStringArray(R.array.elements);
         final ElementUtils utils = new ElementUtils(this);
-        
+
         final ArrayList<ElementHolder> data = new ArrayList<ElementHolder>();
         while(d.moveToNext()) {
             final String number = d.getString(1);
             final String symbol = d.getString(2);
             final String name = names[d.getInt(1) - 1];
             final int color = utils.getElementColor(d.getString(3));
-            
+
             data.add(new ElementHolder(number, symbol, name, color));
         }
-        
+
         mAdapter = new ElementListAdapter(this, data, mFilter, mSort);
         mListView.setAdapter(mAdapter);
     }
-        
-    public void onLoaderReset(Loader<Cursor> loader) { }
+
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("elementColors")) {
@@ -245,9 +249,9 @@ public class ElementListActivity extends FragmentActivity implements
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         }
     }
-    
+
     public static class SortDialog extends DialogFragment {
-        
+
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Dialog d = new AlertDialog.Builder(getActivity())
@@ -259,9 +263,9 @@ public class ElementListActivity extends FragmentActivity implements
                         }
                     })
                     .create();
-            
+
             return d;
         }
-        
+
     }
 }

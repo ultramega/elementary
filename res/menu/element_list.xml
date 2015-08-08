@@ -27,5 +27,5 @@
         android:icon="@android:drawable/ic_menu_today"
         android:title="@string/menuTable"
         android:showAsAction="ifRoom|withText"
-        />
+    />
 </menu>

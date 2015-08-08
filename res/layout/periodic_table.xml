@@ -25,12 +25,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+>
     <com.ultramegatech.widget.PeriodicTableView
         xmlns:app="http://schemas.android.com/apk/res/com.ultramegatech.ey"
         android:id="@+id/ptview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:title="@string/titlePeriodicTable"
-        />
+    />
 </FrameLayout>

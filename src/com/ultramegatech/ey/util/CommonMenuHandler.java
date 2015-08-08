@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey.util;
 
 import android.content.Context;
@@ -30,13 +29,13 @@ import com.ultramegatech.ey.R;
 
 /**
  * Handles menu items shared by all activities.
- * 
+ *
  * @author Steve Guidetti
  */
 public class CommonMenuHandler {
     /**
      * Select an action based on a menu selection.
-     * 
+     *
      * @param context
      * @param id Menu item id
      */
@@ -47,10 +46,11 @@ public class CommonMenuHandler {
                 break;
         }
     }
-    
+
     /**
      * Launch EyPreferenceActivity.
-     * @param context 
+     *
+     * @param context
      */
     public static void launchOptionsActivity(Context context) {
         context.startActivity(new Intent(context, EyPreferenceActivity.class));

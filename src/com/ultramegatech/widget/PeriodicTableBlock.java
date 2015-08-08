@@ -20,37 +20,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.widget;
 
 /**
  * Stores data for a single block on a PeriodicTableView.
- * 
+ *
  * @author Steve Guidetti
  */
 public class PeriodicTableBlock {
     /* Atomic number */
     public int number;
-    
+
     /* Element symbol*/
     public String symbol;
-    
+
     /* Text to display below the symbol */
     public String subtext;
-    
+
     /* Element group, 0 for lanthinoids and actinoids */
     public int group;
-    
+
     /* Element period */
     public int period;
-    
+
     /* Category used for coloring */
     public Object category;
-    
+
     /* Grid position */
     public int row;
     public int col;
-    
+
     /* Block background color */
     public int color = 0xFFCCCCCC;
 }

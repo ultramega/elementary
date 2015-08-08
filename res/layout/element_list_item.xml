@@ -27,12 +27,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="2dp"
-    >
+>
     <RelativeLayout
         android:id="@+id/block"
         android:layout_width="80dp"
         android:layout_height="match_parent"
-        >
+    >
         <TextView
             android:id="@+id/number"
             android:textSize="12sp"
@@ -41,14 +41,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:padding="2dp"
-            />
+        />
         <TextView
             android:id="@+id/symbol"
             android:textSize="36sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            />
+        />
     </RelativeLayout>
     <TextView
         android:id="@+id/name"
@@ -57,5 +57,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
-        />
+    />
 </LinearLayout>

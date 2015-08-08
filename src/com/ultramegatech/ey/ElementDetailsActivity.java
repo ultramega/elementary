@@ -20,7 +20,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ultramegatech.ey;
 
 import android.content.ContentUris;
@@ -56,38 +55,38 @@ import com.ultramegatech.util.UnitUtils;
 /**
  * This activity displays details about a single chemical element. It can be launched by an Intent
  * with an extra identifying the element by database id or atomic number.
- * 
+ *
  * @author Steve Guidetti
  */
 public class ElementDetailsActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Intent extras */
     public static final String EXTRA_ATOMIC_NUMBER = "atomic_number";
-    
+
     /* Units of measurement */
     private static enum Units {
         KELVIN, CELCIUS, FARENHEIT
     }
-    
+
     /* Values from the database row */
     private final ContentValues mData = new ContentValues();
-    
+
     /* Units to use for temperature values */
     private Units mTemperatureUnits;
-    
+
     /* Field used for coloring the element block */
     private String mColorKey;
-    
+
     /* Header text */
     private TextView mTxtHeader;
-    
+
     /* Element block views */
     private RelativeLayout mElementBlock;
     private TextView mTxtElementSymbol;
     private TextView mTxtElementNumber;
     private TextView mTxtElementWeight;
     private TextView mTxtElementElectrons;
-    
+
     /* Table views */
     private TextView mTxtNumber;
     private TextView mTxtSymbol;
@@ -103,28 +102,28 @@ public class ElementDetailsActivity extends FragmentActivity implements
     private TextView mTxtHeat;
     private TextView mTxtNagativity;
     private TextView mTxtAbundance;
-    
+
     /* Buttons */
     private ImageButton mBtnVideo;
     private ImageButton mBtnWiki;
-    
+
     /* Value to return for unknown values */
     private String mStringUnknown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
-        
+
         mStringUnknown = getString(R.string.unknown);
-        
+
         setContentView(R.layout.element_details);
         findViews();
-        
+
         loadPreferences();
-        
+
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
@@ -147,14 +146,14 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     /**
      * Load relevant shared preferences.
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
-        
+
         final String tempUnit = prefs.getString("tempUnit", "K");
         if("K".equals(tempUnit)) {
             mTemperatureUnits = Units.KELVIN;
@@ -163,7 +162,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         } else {
             mTemperatureUnits = Units.FARENHEIT;
         }
-        
+
         final String colorKey = prefs.getString("elementColors", "category");
         if(colorKey.equals("block")) {
             mColorKey = Elements.BLOCK;
@@ -171,19 +170,19 @@ public class ElementDetailsActivity extends FragmentActivity implements
             mColorKey = Elements.CATEGORY;
         }
     }
-    
+
     /**
      * Load references to all views.
      */
     private void findViews() {
         mTxtHeader = (TextView)findViewById(R.id.header);
-        
+
         mElementBlock = (RelativeLayout)findViewById(R.id.elementBlock);
         mTxtElementSymbol = (TextView)findViewById(R.id.elementSymbol);
         mTxtElementNumber = (TextView)findViewById(R.id.elementNumber);
         mTxtElementWeight = (TextView)findViewById(R.id.elementWeight);
         mTxtElementElectrons = (TextView)findViewById(R.id.elementElectrons);
-        
+
         mTxtNumber = (TextView)findViewById(R.id.number);
         mTxtSymbol = (TextView)findViewById(R.id.symbol);
         mTxtName = (TextView)findViewById(R.id.name);
@@ -198,14 +197,14 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mTxtHeat = (TextView)findViewById(R.id.heat);
         mTxtNagativity = (TextView)findViewById(R.id.negativity);
         mTxtAbundance = (TextView)findViewById(R.id.abundance);
-        
+
         mBtnVideo = (ImageButton)findViewById(R.id.videoButton);
         mBtnVideo.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 showVideo();
             }
         });
-        
+
         mBtnWiki = (ImageButton)findViewById(R.id.wikiButton);
         mBtnWiki.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -213,21 +212,21 @@ public class ElementDetailsActivity extends FragmentActivity implements
             }
         });
     }
-    
+
     /**
      * Fill views with data loaded from the database.
      */
     private void populateViews() {
         setTitle(getString(R.string.titleElementDetails, mData.getAsString(Elements.NAME)));
-        
+
         mTxtHeader.setText(mData.getAsString(Elements.NAME));
-        
+
         mTxtElementSymbol.setText(mData.getAsString(Elements.SYMBOL));
         mTxtElementNumber.setText(mData.getAsString(Elements.NUMBER));
         mTxtElementWeight.setText(getWeight());
         populateBlockElectrons();
         setBlockBackground();
-        
+
         mTxtNumber.setText(mData.getAsString(Elements.NUMBER));
         mTxtSymbol.setText(mData.getAsString(Elements.SYMBOL));
         mTxtName.setText(mData.getAsString(Elements.NAME));
@@ -243,17 +242,17 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mTxtNagativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
     }
-    
+
     /**
      * Get the category name
-     * 
+     *
      * @return The category name
      */
     private CharSequence getCategory() {
         final CharSequence[] cats = getResources().getTextArray(R.array.ptCategories);
         return cats[mData.getAsInteger(Elements.CATEGORY)];
     }
-    
+
     /**
      * Set the block color based on element properties.
      */
@@ -265,7 +264,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         final int background = new ElementUtils(this).getElementColor(key);
         mElementBlock.setBackgroundColor(background);
     }
-    
+
     /**
      * Fill the column of electrons in the block.
      */
@@ -275,10 +274,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
             mTxtElementElectrons.setText(electrons.replace(',', '\n'));
         }
     }
-    
+
     /**
      * Get a value as a temperature string.
-     * 
+     *
      * @param key The value to read
      * @return The converted temperature string
      */
@@ -294,14 +293,14 @@ public class ElementDetailsActivity extends FragmentActivity implements
                     return String.format("%.2f K", kelvin);
             }
         }
-        
+
         return mStringUnknown;
     }
-    
+
     /**
      * Get the atomic weight. For unstable elements, the value of the most stable isotope is
      * returned surrounded by brackets.
-     * 
+     *
      * @return The atomic weight
      */
     private String getWeight() {
@@ -315,10 +314,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return null;
     }
-    
+
     /**
      * Get the electron configuration.
-     * 
+     *
      * @return The formatted electron configuration
      */
     private Spanned getElectronConfiguration() {
@@ -329,10 +328,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return null;
     }
-    
+
     /**
      * Get the electrons per shell.
-     * 
+     *
      * @return List of electrons separated by commas
      */
     private String getElectrons() {
@@ -342,10 +341,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return null;
     }
-    
+
     /**
      * Get the group, period, and block.
-     * 
+     *
      * @return Group, period, block
      */
     private String getGPB() {
@@ -357,10 +356,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return group + ", " + period + ", " + block;
     }
-    
+
     /**
      * Get the density value with unit.
-     * 
+     *
      * @return The density
      */
     private String getDensity() {
@@ -370,10 +369,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return mStringUnknown;
     }
-    
+
     /**
      * Get the heat value with unit.
-     * 
+     *
      * @return The heat
      */
     private String getHeat() {
@@ -383,10 +382,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return mStringUnknown;
     }
-    
+
     /**
      * Get the electronegativity value with unit.
-     * 
+     *
      * @return The electronegativity
      */
     private String getNegativity() {
@@ -396,10 +395,10 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return mStringUnknown;
     }
-    
+
     /**
      * Get the abundance value with unit.
-     * 
+     *
      * @return The abundance
      */
     private String getAbundance() {
@@ -412,7 +411,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
         return mStringUnknown;
     }
-    
+
     /**
      * Launch YouTube video intent.
      */
@@ -425,7 +424,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
                 Uri.parse("http://www.youtube.com/watch?v=" + videoId));
         startActivity(intent);
     }
-    
+
     /**
      * Launch view intent for the Wikipedia page.
      */
@@ -441,10 +440,11 @@ public class ElementDetailsActivity extends FragmentActivity implements
         final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
-    
+
     /**
      * Get the content Uri based on an intent extra.
-     * @return 
+     *
+     * @return
      */
     private Uri getUri() {
         final long id = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
@@ -453,7 +453,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
 
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         setProgressBarIndeterminateVisibility(true);
-        
+
         return new CursorLoader(this, getUri(), null, null, null, null);
     }
 
@@ -464,7 +464,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
                 if(d.isNull(i)) {
                     continue;
                 }
-                
+
                 switch(Elements.getColumnType(columns[i])) {
                     case INTEGER:
                         mData.put(columns[i], d.getInt(i));
@@ -480,17 +480,18 @@ public class ElementDetailsActivity extends FragmentActivity implements
                         break;
                 }
             }
-            
+
             final String[] names = getResources().getStringArray(R.array.elements);
             mData.put(Elements.NAME, names[mData.getAsInteger(Elements.NUMBER) - 1]);
-            
+
             populateViews();
-            
+
             setProgressBarIndeterminateVisibility(false);
         }
     }
 
-    public void onLoaderReset(Loader<Cursor> loader) { }
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("tempUnit")) {
