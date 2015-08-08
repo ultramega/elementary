@@ -74,8 +74,6 @@ public class Elements implements BaseColumns {
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/n/");
     public static final Uri CONTENT_URI_SYMBOL =
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/s/");
-    public static final Uri CONTENT_URI_FILTER =
-            Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/filter/");
     
     /* Column types */
     public static enum Type {

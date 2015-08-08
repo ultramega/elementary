@@ -31,7 +31,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
@@ -39,9 +38,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,11 +50,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
+import com.ultramegatech.widget.ElementListAdapter;
+import com.ultramegatech.widget.ElementListAdapter.ElementHolder;
+import java.util.ArrayList;
 
 /**
  * This activity displays a list of all the elements sorted by atomic number. Clicking on an item
@@ -70,45 +69,27 @@ public class ElementListActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Keys for saving instance state */
     private static final String KEY_SORT = "key_sort";
+    private static final String KEY_FILTER = "key_filter";
     
     /* Fields to read from the database */
     private final String[] mListProjection = new String[] {
         Elements._ID,
         Elements.NUMBER,
         Elements.SYMBOL,
-        Elements.NAME,
         Elements.CATEGORY
     };
-    
-    /* Mapping of fields to views */
-    private final String[] mListFields = new String[] {
-        Elements.NUMBER,
-        Elements.SYMBOL,
-        Elements.NAME,
-        Elements.CATEGORY
-    };
-    private final int[] mListViews = new int[] {
-        R.id.number,
-        R.id.symbol,
-        R.id.name,
-        R.id.block
-    };
-    
-    /* Sort directions */
-    private static String SORT_ASC = "ASC";
-    private static String SORT_DESC = "DESC";
     
     /* The list */
     private ListView mListView;
     
     /* List adapter */
-    private SimpleCursorAdapter mAdapter;
+    private ElementListAdapter mAdapter;
     
     /* Current value to filter results by */
     private String mFilter;
     
     /* Current value for sorting elements */
-    private String mSort = Elements.NUMBER + " " + SORT_ASC;
+    private int mSort = ElementListAdapter.SORT_NUMBER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,10 +112,10 @@ public class ElementListActivity extends FragmentActivity implements
         loadPreferences();
         
         if(savedInstanceState != null) {
-            mSort = savedInstanceState.getString(KEY_SORT);
+            mSort = savedInstanceState.getInt(KEY_SORT);
+            mFilter = savedInstanceState.getString(KEY_FILTER);
         }
         
-        setupAdapter();
         setupFilter();
         setupSort();
         
@@ -144,7 +125,8 @@ public class ElementListActivity extends FragmentActivity implements
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(KEY_SORT, mSort);
+        outState.putInt(KEY_SORT, mSort);
+        outState.putString(KEY_FILTER, mFilter);
     }
 
     @Override
@@ -178,35 +160,10 @@ public class ElementListActivity extends FragmentActivity implements
         
         final String colorKey = prefs.getString("elementColors", "category");
         if(colorKey.equals("block")) {
-            mListProjection[4] = Elements.BLOCK;
-            mListFields[3] = Elements.BLOCK;
+            mListProjection[3] = Elements.BLOCK;
         } else {
-            mListProjection[4] = Elements.CATEGORY;
-            mListFields[3] = Elements.CATEGORY;
+            mListProjection[3] = Elements.CATEGORY;
         }
-    }
-    
-    /**
-     * Create and configure the list adapter.
-     */
-    private void setupAdapter() {
-        mAdapter = new SimpleCursorAdapter(this, R.layout.element_list_item,
-                null, mListFields, mListViews, 0);
-        
-        final ElementUtils elementUtils = new ElementUtils(this);
-        mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-            public boolean setViewValue(View view, Cursor cursor, int i) {
-                if(view instanceof RelativeLayout) {
-                    final int background = elementUtils.getElementColor(cursor.getString(i));
-                    view.setBackgroundColor(background);
-                    return true;
-                }
-                
-                return false;
-            }
-        });
-        
-        mListView.setAdapter(mAdapter);
     }
     
     /**
@@ -219,7 +176,7 @@ public class ElementListActivity extends FragmentActivity implements
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
             public void afterTextChanged(Editable s) {
                 mFilter = s.toString();
-                restartLoader();
+                mAdapter.getFilter().filter(mFilter);
             }
         });
     }
@@ -248,63 +205,48 @@ public class ElementListActivity extends FragmentActivity implements
      * Set the sorting parameters.
      * 
      * @param field Field to sort by
-     * @param direction Direction to sort, ASC or DESC
      */
-    public void setSort(String field, String direction) {
-        final String oldSort = mSort;
-        mSort = field + " " + direction;
-        if(!oldSort.equals(mSort)) {
-            restartLoader();
-        }
-    }
-    
-    /**
-     * Restart the Cursor Loader.
-     */
-    private void restartLoader() {
-        getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
+    public void setSort(int field) {
+        mSort = field;
+        mAdapter.setSort(mSort);
     }
 
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         setProgressBarIndeterminateVisibility(true);
-        
-        final Uri uri;
-        if(TextUtils.isEmpty(mFilter)) {
-            uri = Elements.CONTENT_URI;
-        } else {
-            uri = Uri.withAppendedPath(Elements.CONTENT_URI_FILTER, mFilter);
-        }
-        
-        return new CursorLoader(this, uri, mListProjection, null, null, mSort);
+        return new CursorLoader(this, Elements.CONTENT_URI, mListProjection, null, null,
+                Elements.NUMBER + " ASC");
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         setProgressBarIndeterminateVisibility(false);
         
-        mAdapter.swapCursor(d);
+        final String[] names = getResources().getStringArray(R.array.elements);
+        final ElementUtils utils = new ElementUtils(this);
+        
+        final ArrayList<ElementHolder> data = new ArrayList<ElementHolder>();
+        while(d.moveToNext()) {
+            final String number = d.getString(1);
+            final String symbol = d.getString(2);
+            final String name = names[d.getInt(1) - 1];
+            final int color = utils.getElementColor(d.getString(3));
+            
+            data.add(new ElementHolder(number, symbol, name, color));
+        }
+        
+        mAdapter = new ElementListAdapter(this, data, mFilter, mSort);
+        mListView.setAdapter(mAdapter);
     }
-
-    public void onLoaderReset(Loader<Cursor> loader) {
-        mAdapter.swapCursor(null);
-    }
+        
+    public void onLoaderReset(Loader<Cursor> loader) { }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("elementColors")) {
-            getSupportLoaderManager().destroyLoader(0);
             loadPreferences();
-            setupAdapter();
-            restartLoader();
+            getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         }
     }
     
     public static class SortDialog extends DialogFragment {
-        // these correspond to R.array.sortFieldNames
-        private final static String[] FIELDS = new String[] {
-            Elements.NUMBER,
-            Elements.NAME
-        };
-        
-        public static final String EXTRA_FIELD = "extra_field";
         
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -312,7 +254,7 @@ public class ElementListActivity extends FragmentActivity implements
                     .setTitle(R.string.titleSort)
                     .setItems(R.array.sortFieldNames, new OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
-                            ((ElementListActivity)getActivity()).setSort(FIELDS[item], SORT_ASC);
+                            ((ElementListActivity)getActivity()).setSort(item);
                             dialog.dismiss();
                         }
                     })

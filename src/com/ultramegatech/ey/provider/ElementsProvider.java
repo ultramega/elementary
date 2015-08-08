@@ -47,7 +47,6 @@ public class ElementsProvider extends ContentProvider {
     private static final int ELEMENTS_ID = 2;
     private static final int ELEMENTS_NUMBER = 3;
     private static final int ELEMENTS_SYMBOL = 4;
-    private static final int ELEMENTS_FILTER = 5;
     
     /* Uri matcher */
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -56,7 +55,6 @@ public class ElementsProvider extends ContentProvider {
         sUriMatcher.addURI(AUTHORITY, "elements/#", ELEMENTS_ID);
         sUriMatcher.addURI(AUTHORITY, "elements/n/#", ELEMENTS_NUMBER);
         sUriMatcher.addURI(AUTHORITY, "elements/s/*", ELEMENTS_SYMBOL);
-        sUriMatcher.addURI(AUTHORITY, "elements/filter/*", ELEMENTS_FILTER);
     }
     
     /* SQLiteOpenHelper */
@@ -89,13 +87,6 @@ public class ElementsProvider extends ContentProvider {
                 qb.appendWhere(Elements.SYMBOL + " = ");
                 qb.appendWhereEscapeString(uri.getLastPathSegment());
                 break;
-            case ELEMENTS_FILTER:
-                qb.setTables(Elements.TABLE_NAME);
-                qb.appendWhere(Elements.NAME + " LIKE ");
-                qb.appendWhereEscapeString(uri.getLastPathSegment() + "%");
-                qb.appendWhere(" OR " + Elements.SYMBOL + " LIKE ");
-                qb.appendWhereEscapeString(uri.getLastPathSegment() + "%");
-                break;
             default:
                 throw new IllegalArgumentException("Invalid URI: " + uri.toString());
         }
@@ -111,7 +102,6 @@ public class ElementsProvider extends ContentProvider {
     public String getType(Uri uri) {
         switch(sUriMatcher.match(uri)) {
             case ELEMENTS:
-            case ELEMENTS_FILTER:
                 return Elements.DATA_TYPE;
             case ELEMENTS_ID:
             case ELEMENTS_NUMBER:
