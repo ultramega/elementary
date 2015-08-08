@@ -429,11 +429,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * Launch view intent for the Wikipedia page.
      */
     private void showWikipedia() {
-        String pageId = mData.getAsString(Elements.NAME);
-        if(pageId == null) {
-            return;
-        }
-        final Uri uri = Uri.parse("https://en.m.wikipedia.org/wiki/" + pageId);
+        final int pageId = ElementUtils.getElementWiki(mData.getAsInteger(Elements.NUMBER));
+        final Uri uri = Uri.parse(String.format("https://%s.m.wikipedia.org/wiki/%s",
+                getString(R.string.wikiLang), getString(pageId)));
         final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }

@@ -65,6 +65,34 @@ public class ElementUtils {
         R.string.el116, R.string.el117, R.string.el118
     };
 
+    /* List of string resources for each element's Wikipedia page */
+    private static final int[] ELEMENT_WIKI = {
+        R.string.wiki001, R.string.wiki002, R.string.wiki003, R.string.wiki004, R.string.wiki005,
+        R.string.wiki006, R.string.wiki007, R.string.wiki008, R.string.wiki009, R.string.wiki010,
+        R.string.wiki011, R.string.wiki012, R.string.wiki013, R.string.wiki014, R.string.wiki015,
+        R.string.wiki016, R.string.wiki017, R.string.wiki018, R.string.wiki019, R.string.wiki020,
+        R.string.wiki021, R.string.wiki022, R.string.wiki023, R.string.wiki024, R.string.wiki025,
+        R.string.wiki026, R.string.wiki027, R.string.wiki028, R.string.wiki029, R.string.wiki030,
+        R.string.wiki031, R.string.wiki032, R.string.wiki033, R.string.wiki034, R.string.wiki035,
+        R.string.wiki036, R.string.wiki037, R.string.wiki038, R.string.wiki039, R.string.wiki040,
+        R.string.wiki041, R.string.wiki042, R.string.wiki043, R.string.wiki044, R.string.wiki045,
+        R.string.wiki046, R.string.wiki047, R.string.wiki048, R.string.wiki049, R.string.wiki050,
+        R.string.wiki051, R.string.wiki052, R.string.wiki053, R.string.wiki054, R.string.wiki055,
+        R.string.wiki056, R.string.wiki057, R.string.wiki058, R.string.wiki059, R.string.wiki060,
+        R.string.wiki061, R.string.wiki062, R.string.wiki063, R.string.wiki064, R.string.wiki065,
+        R.string.wiki066, R.string.wiki067, R.string.wiki068, R.string.wiki069, R.string.wiki070,
+        R.string.wiki071, R.string.wiki072, R.string.wiki073, R.string.wiki074, R.string.wiki075,
+        R.string.wiki076, R.string.wiki077, R.string.wiki078, R.string.wiki079, R.string.wiki080,
+        R.string.wiki081, R.string.wiki082, R.string.wiki083, R.string.wiki084, R.string.wiki085,
+        R.string.wiki086, R.string.wiki087, R.string.wiki088, R.string.wiki089, R.string.wiki090,
+        R.string.wiki091, R.string.wiki092, R.string.wiki093, R.string.wiki094, R.string.wiki095,
+        R.string.wiki096, R.string.wiki097, R.string.wiki098, R.string.wiki099, R.string.wiki100,
+        R.string.wiki101, R.string.wiki102, R.string.wiki103, R.string.wiki104, R.string.wiki105,
+        R.string.wiki106, R.string.wiki107, R.string.wiki108, R.string.wiki109, R.string.wiki110,
+        R.string.wiki111, R.string.wiki112, R.string.wiki113, R.string.wiki114, R.string.wiki115,
+        R.string.wiki116, R.string.wiki117, R.string.wiki118
+    };
+
     private final Context mContext;
 
     /* Map of values to colors */
@@ -140,5 +168,19 @@ public class ElementUtils {
         }
 
         return ELEMENT_NAMES[number - 1];
+    }
+
+    /**
+     * Get the wiki link of an element.
+     *
+     * @param number The atomic number
+     * @return
+     */
+    public static int getElementWiki(int number) {
+        if(number > ELEMENT_WIKI.length) {
+            return getElementName(number);
+        }
+
+        return ELEMENT_WIKI[number - 1];
     }
 }
