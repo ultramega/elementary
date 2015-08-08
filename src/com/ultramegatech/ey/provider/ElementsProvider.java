@@ -24,7 +24,6 @@
 package com.ultramegatech.ey.provider;
 
 import android.content.ContentProvider;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
@@ -114,92 +113,16 @@ public class ElementsProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        String table;
-        switch(sUriMatcher.match(uri)) {
-            case ELEMENTS:
-                table = Elements.TABLE_NAME;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid URI");
-        }
-        
-        final SQLiteDatabase db = mDatabaseOpenHelper.getWritableDatabase();
-        final long rowId = db.insert(table, null, values);
-        if(rowId > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
-            return ContentUris.withAppendedId(uri, rowId);
-        }
-        
-        throw new SQLException("Failed to insert row into " + uri.toString());
+        throw new SQLException("ElementsProvider is read-only!");
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        String table;
-        switch(sUriMatcher.match(uri)) {
-            case ELEMENTS:
-                table = Elements.TABLE_NAME;
-                break;
-            case ELEMENTS_ID:
-                table = Elements.TABLE_NAME;
-                final String id = uri.getLastPathSegment();
-                if(selection == null) {
-                    selection = Elements._ID + " = " + id;
-                } else {
-                    selection += " AND " + Elements._ID + " = " + id;
-                }
-                break;
-            case ELEMENTS_NUMBER:
-                table = Elements.TABLE_NAME;
-                final String number = uri.getLastPathSegment();
-                if(selection == null) {
-                    selection = Elements.NUMBER + " = " + number;
-                } else {
-                    selection += " AND " + Elements.NUMBER + " = " + number;
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid URI");
-        }
-        
-        final SQLiteDatabase db = mDatabaseOpenHelper.getWritableDatabase();
-        final int rowsAffected = db.delete(table, selection, selectionArgs);
-        getContext().getContentResolver().notifyChange(uri, null);
-        return rowsAffected;
+        throw new SQLException("ElementsProvider is read-only!");
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        String table;
-        switch(sUriMatcher.match(uri)) {
-            case ELEMENTS:
-                table = Elements.TABLE_NAME;
-                break;
-            case ELEMENTS_ID:
-                table = Elements.TABLE_NAME;
-                final String id = uri.getLastPathSegment();
-                if(selection == null) {
-                    selection = Elements._ID + " = " + id;
-                } else {
-                    selection += " AND " + Elements._ID + " = " + id;
-                }
-                break;
-            case ELEMENTS_NUMBER:
-                table = Elements.TABLE_NAME;
-                final String number = uri.getLastPathSegment();
-                if(selection == null) {
-                    selection = Elements.NUMBER + " = " + number;
-                } else {
-                    selection += " AND " + Elements.NUMBER + " = " + number;
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid URI");
-        }
-        
-        final SQLiteDatabase db = mDatabaseOpenHelper.getWritableDatabase();
-        final int rowsAffected = db.update(table, values, selection, selectionArgs);
-        getContext().getContentResolver().notifyChange(uri, null);
-        return rowsAffected;
+        throw new SQLException("ElementsProvider is read-only!");
     }
 }
