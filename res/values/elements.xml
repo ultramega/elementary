@@ -22,6 +22,9 @@
   THE SOFTWARE.
 -->
 <resources>
+    <!--
+        List of element names identified by their atomic number
+    -->
     <string name="el001">Hydrogen</string>
     <string name="el002">Helium</string>
     <string name="el003">Lithium</string>
@@ -141,8 +144,17 @@
     <string name="el117">Ununseptium</string>
     <string name="el118">Ununoctium</string>
 
+    <!--
+        The language code subdomain of Wikipedia
+    -->
     <string name="wikiLang">en</string>
 
+    <!--
+        List of Wikipedia pages for each element identified by their atomic number
+        
+        These are usually just the name of the element, but there may be exceptions in cases of
+        ambiguity.
+    -->
     <string name="wiki001">Hydrogen</string>
     <string name="wiki002">Helium</string>
     <string name="wiki003">Lithium</string>

@@ -22,6 +22,9 @@
   THE SOFTWARE.
 -->
 <resources>
+    <!--
+        The colors and corresponding names for the element categories
+    -->
     <array name="ptCategoryColors">
         <item>#FF2FF12F</item>
         <item>#FF79B5FF</item>
@@ -46,6 +49,10 @@
         <item>Lanthanide</item>
         <item>Actinide</item>
     </string-array>
+    
+    <!--
+        The colors and corresponding names for the element blocks
+    -->
     <array name="ptBlockColors">
         <item>#FF6699FF</item>
         <item>#FFFFCC00</item>
@@ -59,6 +66,9 @@
         <item>f</item>
     </string-array>
     
+    <!--
+        Options for the temperature units preference
+    -->
     <string-array name="tempUnits">
         <item>K</item>
         <item>C</item>
@@ -70,6 +80,9 @@
         <item>Fahrenheit (°F)</item>
     </string-array>
     
+    <!--
+        Options for the element colors preference
+    -->
     <string-array name="elementColors">
         <item>category</item>
         <item>block</item>
@@ -79,6 +92,9 @@
         <item>Block</item>
     </string-array>
     
+    <!--
+        Options for the list sorting dialog
+    -->
     <string-array name="sortFieldNames">
         <item>Atomic Number</item>
         <item>Element Name</item>
