@@ -25,7 +25,7 @@
     <!--
         The colors and corresponding names for the element categories
     -->
-    <array name="ptCategoryColors">
+    <array name="ptCategoryColors" translatable="false">
         <item>#FF2FF12F</item>
         <item>#FF79B5FF</item>
         <item>#FFFFAA00</item>
@@ -53,13 +53,13 @@
     <!--
         The colors and corresponding names for the element blocks
     -->
-    <array name="ptBlockColors">
+    <array name="ptBlockColors" translatable="false">
         <item>#FF6699FF</item>
         <item>#FFFFCC00</item>
         <item>#FFFF9999</item>
         <item>#FF00CC33</item>
     </array>
-    <string-array name="ptBlocks">
+    <string-array name="ptBlocks" translatable="false">
         <item>s</item>
         <item>p</item>
         <item>d</item>
@@ -69,12 +69,12 @@
     <!--
         Options for the temperature units preference
     -->
-    <string-array name="tempUnits">
+    <string-array name="tempUnits" translatable="false">
         <item>K</item>
         <item>C</item>
         <item>F</item>
     </string-array>
-    <string-array name="tempUnitNames">
+    <string-array name="tempUnitNames" translatable="false">
         <item>Kelvin (K)</item>
         <item>Celsius (°C)</item>
         <item>Fahrenheit (°F)</item>
@@ -83,7 +83,7 @@
     <!--
         Options for the element colors preference
     -->
-    <string-array name="elementColors">
+    <string-array name="elementColors" translatable="false">
         <item>category</item>
         <item>block</item>
     </string-array>
