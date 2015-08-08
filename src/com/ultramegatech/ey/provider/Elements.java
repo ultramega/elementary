@@ -55,7 +55,6 @@ public class Elements implements BaseColumns {
     public static final String ELECTRONS = "eps";
     public static final String UNSTABLE = "uns";
     public static final String VIDEO = "vid";
-    public static final String WIKIPEDIA = "wiki";
 
     /* Data types */
     private static final String BASE_TYPE = "com.ultramegatech.ey.element";
@@ -83,7 +82,7 @@ public class Elements implements BaseColumns {
      */
     public static Type getColumnType(String c) {
         if(c.equals(SYMBOL) || c.equals(NAME) || c.equals(BLOCK) || c.equals(CONFIGURATION)
-                || c.equals(ELECTRONS) || c.equals(VIDEO) || c.equals(WIKIPEDIA)) {
+                || c.equals(ELECTRONS) || c.equals(VIDEO)) {
             return Type.TEXT;
         }
         if(c.equals(WEIGHT) || c.equals(DENSITY) || c.equals(MELT) || c.equals(BOIL)
