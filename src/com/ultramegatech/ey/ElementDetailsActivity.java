@@ -421,7 +421,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
             return;
         }
         final Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://www.youtube.com/watch?v=" + videoId));
+                Uri.parse("https://m.youtube.com/watch?v=" + videoId));
         startActivity(intent);
     }
 
@@ -436,7 +436,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         if(pageId == null) {
             return;
         }
-        final Uri uri = Uri.parse("http://en.m.wikipedia.org/wiki/" + pageId);
+        final Uri uri = Uri.parse("https://en.m.wikipedia.org/wiki/" + pageId);
         final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
