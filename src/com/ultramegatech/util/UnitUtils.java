@@ -39,10 +39,10 @@ public class UnitUtils {
     }
 
     /**
-     * Convert temperature value from Kelvin to degrees Farenheit.
+     * Convert temperature value from Kelvin to degrees Fahrenheit.
      *
      * @param k Value in Kelvin
-     * @return Value in degrees Farenheit
+     * @return Value in degrees Fahrenheit
      */
     public static Double KtoF(Double k) {
         return k * 9.0 / 5 - 459.67;
