@@ -78,9 +78,6 @@ public class ElementListActivity extends FragmentActivity implements
         Elements.CATEGORY
     };
 
-    /* The list */
-    private ListView mListView;
-
     /* List adapter */
     private ElementListAdapter mAdapter;
 
@@ -98,8 +95,8 @@ public class ElementListActivity extends FragmentActivity implements
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.element_list);
-        mListView = (ListView)findViewById(android.R.id.list);
-        mListView.setOnItemClickListener(new OnItemClickListener() {
+        final ListView listView = (ListView)findViewById(android.R.id.list);
+        listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Intent intent =
                         new Intent(getApplicationContext(), ElementDetailsActivity.class);
@@ -115,6 +112,9 @@ public class ElementListActivity extends FragmentActivity implements
             mFilter = savedInstanceState.getString(KEY_FILTER);
         }
 
+        mAdapter = new ElementListAdapter(this, null);
+        listView.setAdapter(mAdapter);
+        
         setupFilter();
         setupSort();
 
@@ -235,8 +235,9 @@ public class ElementListActivity extends FragmentActivity implements
             data.add(new ElementHolder(number, symbol, name, color));
         }
 
-        mAdapter = new ElementListAdapter(this, data, mFilter, mSort);
-        mListView.setAdapter(mAdapter);
+        mAdapter.setItems(data);
+        mAdapter.getFilter().filter(mFilter);
+        mAdapter.setSort(mSort);
     }
 
     public void onLoaderReset(Loader<Cursor> loader) {

@@ -48,50 +48,41 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
 
     private final Context mContext;
 
-    /* The original data set */
-    private final ArrayList<ElementHolder> mListItems;
-
     /* The filter for this list adapter */
     private final Filter mFilter;
 
+    /* The original data set */
+    private final ArrayList<ElementHolder> mListItems = new ArrayList<ElementHolder>();
+
     /* The filtered and sorted data set */
-    private final ArrayList<ElementHolder> mFiltered;
+    private final ArrayList<ElementHolder> mFiltered = new ArrayList<ElementHolder>();
 
     /**
      * Constructor
      *
      * @param context
      * @param listItems List of elements
-     * @param filter Initial filter text
-     * @param sortBy Initial sorting field
      */
-    public ElementListAdapter(Context context, ArrayList<ElementHolder> listItems, String filter, int sortBy) {
+    public ElementListAdapter(Context context, ArrayList<ElementHolder> listItems) {
         mContext = context;
-        mListItems = listItems;
-
-        mFiltered = getFilteredList(filter);
-        sortList(sortBy);
 
         mFilter = new Filter() {
             @Override
             protected Filter.FilterResults performFiltering(CharSequence cs) {
-                final ArrayList<ElementHolder> filtered = getFilteredList(cs.toString());
-
-                final FilterResults results = new FilterResults();
-                results.count = filtered.size();
-                results.values = filtered;
-
-                return results;
+                filterList(cs.toString());
+                return null;
             }
 
             @Override
             protected void publishResults(CharSequence cs, Filter.FilterResults fr) {
-                mFiltered.clear();
-                mFiltered.addAll((ArrayList<ElementHolder>)fr.values);
-
                 notifyDataSetChanged();
             }
         };
+        
+        if(listItems != null) {
+            mListItems.addAll(listItems);
+            mFiltered.addAll(listItems);
+        }
     }
 
     public int getCount() {
@@ -124,6 +115,23 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     public Filter getFilter() {
         return mFilter;
     }
+    
+    /**
+     * Set the list of elements
+     *
+     * @param listItems
+     */
+    public void setItems(ArrayList<ElementHolder> listItems) {
+        mListItems.clear();
+        mFiltered.clear();
+        
+        if(listItems != null) {
+            mListItems.addAll(listItems);
+            mFiltered.addAll(listItems);
+        }
+        
+        notifyDataSetChanged();
+    }
 
     /**
      * Set the field used to sort elements.
@@ -131,40 +139,52 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      * @param sortBy One of the SORT_ constants
      */
     public void setSort(int sortBy) {
-        sortList(sortBy);
+        setSort(sortBy, false);
+    }
+
+    /**
+     * Set the field used to sort elements.
+     *
+     * @param sortBy One of the SORT_ constants
+     * @param reverse Sort items in reverse order
+     */
+    public void setSort(int sortBy, boolean reverse) {
+        sortList(sortBy, reverse);
         notifyDataSetChanged();
     }
 
     /**
-     * Get a filtered copy of the original data set
+     * Filter the original data set
      *
      * @param filter Text used to filter the elements
-     * @return
      */
-    private ArrayList<ElementHolder> getFilteredList(String filter) {
+    private void filterList(String filter) {
+        mFiltered.clear();
+        
         if(TextUtils.isEmpty(filter)) {
-            return mListItems;
+            mFiltered.addAll(mListItems);
+            return;
         }
-
-        final ArrayList<ElementHolder> filtered = new ArrayList<ElementHolder>();
 
         for(ElementHolder element : mListItems) {
             if(element.symbol.toLowerCase().startsWith(filter.toLowerCase())
                     || element.name.toLowerCase().startsWith(filter.toLowerCase())) {
-                filtered.add(element);
+                mFiltered.add(element);
             }
         }
-
-        return filtered;
     }
 
     /**
      * Sort the filtered list.
      *
      * @param sortBy One of the SORT_ constants
+     * @param reverse Sort items in reverse order
      */
-    private void sortList(int sortBy) {
+    private void sortList(int sortBy, boolean reverse) {
         Collections.sort(mFiltered, new ElementComparator(sortBy));
+        if(reverse) {
+            Collections.reverse(mFiltered);
+        }
     }
 
     /**
