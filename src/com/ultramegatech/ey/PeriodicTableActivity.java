@@ -40,6 +40,8 @@ import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.widget.PeriodicTableBlock;
 import com.ultramegatech.widget.PeriodicTableView;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -133,17 +135,21 @@ public class PeriodicTableActivity extends FragmentActivity implements
                 new ArrayList<PeriodicTableBlock>();
         PeriodicTableBlock block;
 
+        final DecimalFormat df = new DecimalFormat("0.####");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+
         while(d.moveToNext()) {
             block = new PeriodicTableBlock();
             block.number = d.getInt(0);
             block.symbol = d.getString(1);
-            block.subtext = d.getString(2);
             block.group = d.getInt(3);
             block.period = d.getInt(4);
             block.category = d.getString(5);
 
             if(d.getInt(6) == 1) {
-                block.subtext = "[" + Integer.parseInt(block.subtext) + "]";
+                block.subtext = "[" + d.getInt(2) + "]";
+            } else {
+                block.subtext = df.format(d.getDouble(2));
             }
 
             periodicTableBlocks.add(block);

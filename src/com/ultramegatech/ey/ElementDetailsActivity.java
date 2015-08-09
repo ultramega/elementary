@@ -51,6 +51,8 @@ import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.util.UnitUtils;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 /**
  * This activity displays details about a single chemical element. It can be launched by an Intent
@@ -110,6 +112,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
     /* Value to return for unknown values */
     private String mStringUnknown;
 
+    /* Format for decimal values */
+    private DecimalFormat mDecimalFormat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +123,8 @@ public class ElementDetailsActivity extends FragmentActivity implements
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
         mStringUnknown = getString(R.string.unknown);
+        mDecimalFormat = new DecimalFormat("0.########");
+        mDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
 
         setContentView(R.layout.element_details);
         findViews();
@@ -311,9 +318,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
         if(value != null) {
             final Boolean unstable = mData.getAsBoolean(Elements.UNSTABLE);
             if(unstable != null && unstable) {
-                return "[" + value.intValue() + "]";
+                return String.format("[%.0f]", value);
             }
-            return value.toString();
+            return mDecimalFormat.format(value);
         }
         return null;
     }
@@ -366,9 +373,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * @return The density
      */
     private String getDensity() {
-        final String value = mData.getAsString(Elements.DENSITY);
+        final Double value = mData.getAsDouble(Elements.DENSITY);
         if(value != null) {
-            return value + " g/cm³";
+            return mDecimalFormat.format(value) + " g/cm³";
         }
         return mStringUnknown;
     }
@@ -379,9 +386,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * @return The heat
      */
     private String getHeat() {
-        final String value = mData.getAsString(Elements.HEAT);
+        final Double value = mData.getAsDouble(Elements.HEAT);
         if(value != null) {
-            return value + " J/g·K";
+            return mDecimalFormat.format(value) + " J/g·K";
         }
         return mStringUnknown;
     }
@@ -392,9 +399,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * @return The electronegativity
      */
     private String getNegativity() {
-        final String value = mData.getAsString(Elements.NEGATIVITY);
+        final Double value = mData.getAsDouble(Elements.NEGATIVITY);
         if(value != null) {
-            return value + " V";
+            return mDecimalFormat.format(value) + " V";
         }
         return mStringUnknown;
     }
@@ -405,12 +412,12 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * @return The abundance
      */
     private String getAbundance() {
-        String value = mData.getAsString(Elements.ABUNDANCE);
+        final Double value = mData.getAsDouble(Elements.ABUNDANCE);
         if(value != null) {
-            if(value.equals("0")) {
-                value = "<0.001";
+            if(value < 0.001) {
+                return "<0.001 mg/kg";
             }
-            return value + " mg/kg";
+            return mDecimalFormat.format(value) + " mg/kg";
         }
         return mStringUnknown;
     }
