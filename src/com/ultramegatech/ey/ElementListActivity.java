@@ -68,6 +68,7 @@ public class ElementListActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Keys for saving instance state */
     private static final String KEY_SORT = "key_sort";
+    private static final String KEY_SORT_REVERSE = "key_sort_reverse";
     private static final String KEY_FILTER = "key_filter";
 
     /* Fields to read from the database */
@@ -86,6 +87,9 @@ public class ElementListActivity extends FragmentActivity implements
 
     /* Current value for sorting elements */
     private int mSort = ElementListAdapter.SORT_NUMBER;
+
+    /* Current sorting direction */
+    private boolean mSortReverse = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,13 +112,14 @@ public class ElementListActivity extends FragmentActivity implements
         loadPreferences();
 
         if(savedInstanceState != null) {
-            mSort = savedInstanceState.getInt(KEY_SORT);
+            mSort = savedInstanceState.getInt(KEY_SORT, mSort);
+            mSortReverse = savedInstanceState.getBoolean(KEY_SORT_REVERSE, mSortReverse);
             mFilter = savedInstanceState.getString(KEY_FILTER);
         }
 
         mAdapter = new ElementListAdapter(this, null);
         listView.setAdapter(mAdapter);
-        
+
         setupFilter();
         setupSort();
 
@@ -125,6 +130,7 @@ public class ElementListActivity extends FragmentActivity implements
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_SORT, mSort);
+        outState.putBoolean(KEY_SORT_REVERSE, mSortReverse);
         outState.putString(KEY_FILTER, mFilter);
     }
 
@@ -210,8 +216,9 @@ public class ElementListActivity extends FragmentActivity implements
      * @param field Field to sort by
      */
     public void setSort(int field) {
+        mSortReverse = (field == mSort) ? !mSortReverse : false;
         mSort = field;
-        mAdapter.setSort(mSort);
+        mAdapter.setSort(mSort, mSortReverse);
     }
 
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
@@ -237,7 +244,7 @@ public class ElementListActivity extends FragmentActivity implements
 
         mAdapter.setItems(data);
         mAdapter.getFilter().filter(mFilter);
-        mAdapter.setSort(mSort);
+        mAdapter.setSort(mSort, mSortReverse);
     }
 
     public void onLoaderReset(Loader<Cursor> loader) {

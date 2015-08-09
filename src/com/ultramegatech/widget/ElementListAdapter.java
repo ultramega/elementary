@@ -57,6 +57,12 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /* The filtered and sorted data set */
     private final ArrayList<ElementHolder> mFiltered = new ArrayList<ElementHolder>();
 
+    /* The current field used for sorting */
+    private int mSort = SORT_NUMBER;
+
+    /* The current sorting direction */
+    private boolean mSortReverse = false;
+
     /**
      * Constructor
      *
@@ -70,6 +76,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
             @Override
             protected Filter.FilterResults performFiltering(CharSequence cs) {
                 filterList(cs.toString());
+                sortList(mSort, mSortReverse);
                 return null;
             }
 
@@ -78,7 +85,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
                 notifyDataSetChanged();
             }
         };
-        
+
         if(listItems != null) {
             mListItems.addAll(listItems);
             mFiltered.addAll(listItems);
@@ -115,7 +122,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     public Filter getFilter() {
         return mFilter;
     }
-    
+
     /**
      * Set the list of elements
      *
@@ -124,12 +131,12 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     public void setItems(ArrayList<ElementHolder> listItems) {
         mListItems.clear();
         mFiltered.clear();
-        
+
         if(listItems != null) {
             mListItems.addAll(listItems);
             mFiltered.addAll(listItems);
         }
-        
+
         notifyDataSetChanged();
     }
 
@@ -160,7 +167,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      */
     private void filterList(String filter) {
         mFiltered.clear();
-        
+
         if(TextUtils.isEmpty(filter)) {
             mFiltered.addAll(mListItems);
             return;
@@ -181,6 +188,9 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      * @param reverse Sort items in reverse order
      */
     private void sortList(int sortBy, boolean reverse) {
+        mSort = sortBy;
+        mSortReverse = reverse;
+
         Collections.sort(mFiltered, new ElementComparator(sortBy));
         if(reverse) {
             Collections.reverse(mFiltered);
