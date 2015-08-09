@@ -217,9 +217,12 @@ public class ElementDetailsActivity extends FragmentActivity implements
      * Fill views with data loaded from the database.
      */
     private void populateViews() {
-        setTitle(getString(R.string.titleElementDetails, mData.getAsString(Elements.NAME)));
+        final String name =
+                getString(ElementUtils.getElementName(mData.getAsInteger(Elements.NUMBER)));
 
-        mTxtHeader.setText(mData.getAsString(Elements.NAME));
+        setTitle(getString(R.string.titleElementDetails, name));
+
+        mTxtHeader.setText(name);
 
         mTxtElementSymbol.setText(mData.getAsString(Elements.SYMBOL));
         mTxtElementNumber.setText(mData.getAsString(Elements.NUMBER));
@@ -229,7 +232,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
 
         mTxtNumber.setText(mData.getAsString(Elements.NUMBER));
         mTxtSymbol.setText(mData.getAsString(Elements.SYMBOL));
-        mTxtName.setText(mData.getAsString(Elements.NAME));
+        mTxtName.setText(name);
         mTxtWeight.setText(getWeight());
         mTxtConfiguration.setText(getElectronConfiguration());
         mTxtElectrons.setText(getElectrons());
@@ -475,9 +478,6 @@ public class ElementDetailsActivity extends FragmentActivity implements
                         break;
                 }
             }
-
-            mData.put(Elements.NAME,
-                    getString(ElementUtils.getElementName(mData.getAsInteger(Elements.NUMBER))));
 
             populateViews();
 

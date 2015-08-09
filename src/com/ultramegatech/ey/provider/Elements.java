@@ -39,7 +39,6 @@ public class Elements implements BaseColumns {
     /* Column names */
     public static final String NUMBER = "num";
     public static final String SYMBOL = "sym";
-    public static final String NAME = "name";
     public static final String GROUP = "g";
     public static final String PERIOD = "p";
     public static final String BLOCK = "b";
@@ -81,8 +80,8 @@ public class Elements implements BaseColumns {
      * @return
      */
     public static Type getColumnType(String c) {
-        if(c.equals(SYMBOL) || c.equals(NAME) || c.equals(BLOCK) || c.equals(CONFIGURATION)
-                || c.equals(ELECTRONS) || c.equals(VIDEO)) {
+        if(c.equals(SYMBOL) || c.equals(BLOCK) || c.equals(CONFIGURATION) || c.equals(ELECTRONS)
+                || c.equals(VIDEO)) {
             return Type.TEXT;
         }
         if(c.equals(WEIGHT) || c.equals(DENSITY) || c.equals(MELT) || c.equals(BOIL)
