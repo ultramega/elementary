@@ -40,7 +40,6 @@ import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.widget.PeriodicTableBlock;
 import com.ultramegatech.widget.PeriodicTableView;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -137,7 +136,6 @@ public class PeriodicTableActivity extends FragmentActivity implements
 
         final DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(4);
-        df.setRoundingMode(RoundingMode.HALF_UP);
 
         while(d.moveToNext()) {
             block = new PeriodicTableBlock();

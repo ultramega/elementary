@@ -51,7 +51,6 @@ import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.util.UnitUtils;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
@@ -125,7 +124,6 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mStringUnknown = getString(R.string.unknown);
         mDecimalFormat = new DecimalFormat();
         mDecimalFormat.setMaximumFractionDigits(8);
-        mDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
 
         setContentView(R.layout.element_details);
         findViews();
