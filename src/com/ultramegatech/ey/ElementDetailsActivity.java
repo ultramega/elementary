@@ -123,7 +123,8 @@ public class ElementDetailsActivity extends FragmentActivity implements
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
         mStringUnknown = getString(R.string.unknown);
-        mDecimalFormat = new DecimalFormat("0.########");
+        mDecimalFormat = new DecimalFormat();
+        mDecimalFormat.setMaximumFractionDigits(8);
         mDecimalFormat.setRoundingMode(RoundingMode.HALF_UP);
 
         setContentView(R.layout.element_details);

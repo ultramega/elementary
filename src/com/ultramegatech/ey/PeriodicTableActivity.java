@@ -135,7 +135,8 @@ public class PeriodicTableActivity extends FragmentActivity implements
                 new ArrayList<PeriodicTableBlock>();
         PeriodicTableBlock block;
 
-        final DecimalFormat df = new DecimalFormat("0.####");
+        final DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(4);
         df.setRoundingMode(RoundingMode.HALF_UP);
 
         while(d.moveToNext()) {
