@@ -39,9 +39,9 @@
     <string name="menuTable">Table View</string>
     
     <string name="prefTitleTemp">Temperature Units</string>
-    <string name="prefSummaryTemp">Units to use to display temperature values</string>
+    <string name="prefSummaryTemp">Units used to display temperature values</string>
     <string name="prefTitleColors">Element Colors</string>
-    <string name="prefSummaryColors">Property to use to determine element block colors</string>
+    <string name="prefSummaryColors">Property used to color the elements</string>
     
     <string name="labelNumber">Atomic Number:</string>
     <string name="labelSymbol">Symbol:</string>
