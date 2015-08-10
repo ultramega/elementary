@@ -1,4 +1,9 @@
-﻿- v.0.2.0 (7/24/15):
+﻿- v.0.3.0 (8/10/15):
+   * Added the ability to sort elements in reverse in the list view
+   * Localized number values
+   * Added Spanish translation
+   * Removed automatic database updates
+- v.0.2.0 (7/24/15):
    * Changed update URL
 - v.0.1.7 (6/8/15):
    * Updated element data
