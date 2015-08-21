@@ -1,4 +1,6 @@
-﻿- v.0.3.0 (8/10/15):
+﻿- v.0.3.1 (8/21/15):
+   * Updated video for Holmium
+- v.0.3.0 (8/10/15):
    * Added the ability to sort elements in reverse in the list view
    * Localized number values
    * Added Spanish translation
