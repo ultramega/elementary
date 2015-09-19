@@ -1,4 +1,8 @@
-﻿- v.0.3.1 (8/21/15):
+﻿- v.0.3.2 (9/19/15):
+   * Added Italian translation ([rapgenic](https://github.com/rapgenic))
+   * Fixed alignment issues with the element block
+   * Unhid the ActionBar for devices that support it
+- v.0.3.1 (8/21/15):
    * Updated video for Holmium
 - v.0.3.0 (8/10/15):
    * Added the ability to sort elements in reverse in the list view
