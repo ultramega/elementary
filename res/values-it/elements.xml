@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2015 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <!--
+        List of element names identified by their atomic number
+    -->
+    <string name="el001">Idrogeno</string>
+    <string name="el002">Elio</string>
+    <string name="el003">Litio</string>
+    <string name="el004">Berillio</string>
+    <string name="el005">Boro</string>
+    <string name="el006">Carbonio</string>
+    <string name="el007">Azoto</string>
+    <string name="el008">Ossigeno</string>
+    <string name="el009">Fluoro</string>
+    <string name="el010">Neon</string>
+    <string name="el011">Sodio</string>
+    <string name="el012">Magnesio</string>
+    <string name="el013">Alluminio</string>
+    <string name="el014">Silicio</string>
+    <string name="el015">Fosforo</string>
+    <string name="el016">Zolfo</string>
+    <string name="el017">Cloro</string>
+    <string name="el018">Argon</string>
+    <string name="el019">Potassio</string>
+    <string name="el020">Calcio</string>
+    <string name="el021">Scandio</string>
+    <string name="el022">Titanio</string>
+    <string name="el023">Vanadio</string>
+    <string name="el024">Cromo</string>
+    <string name="el025">Manganese</string>
+    <string name="el026">Ferro</string>
+    <string name="el027">Cobalto</string>
+    <string name="el028">Nichel</string>
+    <string name="el029">Rame</string>
+    <string name="el030">Zinco</string>
+    <string name="el031">Gallio</string>
+    <string name="el032">Germanio</string>
+    <string name="el033">Arsenico</string>
+    <string name="el034">Selenio</string>
+    <string name="el035">Bromo</string>
+    <string name="el036">Cripton</string>
+    <string name="el037">Rubidio</string>
+    <string name="el038">Stronzio</string>
+    <string name="el039">Ittrio</string>
+    <string name="el040">Zirconio</string>
+    <string name="el041">Niobio</string>
+    <string name="el042">Molibdeno</string>
+    <string name="el043">Tecnezio</string>
+    <string name="el044">Rutenio</string>
+    <string name="el045">Rodio</string>
+    <string name="el046">Palladio</string>
+    <string name="el047">Argento</string>
+    <string name="el048">Cadmio</string>
+    <string name="el049">Indio</string>
+    <string name="el050">Stagno</string>
+    <string name="el051">Antimonio</string>
+    <string name="el052">Tellurio</string>
+    <string name="el053">Iodio</string>
+    <string name="el054">Xeno</string>
+    <string name="el055">Cesio</string>
+    <string name="el056">Bario</string>
+    <string name="el057">Lantanio</string>
+    <string name="el058">Cerio</string>
+    <string name="el059">Praseodimio</string>
+    <string name="el060">Neodimio</string>
+    <string name="el061">Promezio</string>
+    <string name="el062">Samario</string>
+    <string name="el063">Europio</string>
+    <string name="el064">Gadolinio</string>
+    <string name="el065">Terbio</string>
+    <string name="el066">Disprosio</string>
+    <string name="el067">Olmio</string>
+    <string name="el068">Erbio</string>
+    <string name="el069">Tulio</string>
+    <string name="el070">Itterbio</string>
+    <string name="el071">Lutezio</string>
+    <string name="el072">Afnio</string>
+    <string name="el073">Tantalio</string>
+    <string name="el074">Tungsteno</string>
+    <string name="el075">Renio</string>
+    <string name="el076">Osmio</string>
+    <string name="el077">Iridio</string>
+    <string name="el078">Platino</string>
+    <string name="el079">Oro</string>
+    <string name="el080">Mercurio</string>
+    <string name="el081">Tallio</string>
+    <string name="el082">Piombo</string>
+    <string name="el083">Bismuto</string>
+    <string name="el084">Polonio</string>
+    <string name="el085">Astato</string>
+    <string name="el086">Radon</string>
+    <string name="el087">Francio</string>
+    <string name="el088">Radio</string>
+    <string name="el089">Attinio</string>
+    <string name="el090">Torio</string>
+    <string name="el091">Protoattinio</string>
+    <string name="el092">Uranio</string>
+    <string name="el093">Nettunio</string>
+    <string name="el094">Plutonio</string>
+    <string name="el095">Americio</string>
+    <string name="el096">Curio</string>
+    <string name="el097">Berkelio</string>
+    <string name="el098">Californio</string>
+    <string name="el099">Einsteinio</string>
+    <string name="el100">Fermio</string>
+    <string name="el101">Mendelevio</string>
+    <string name="el102">Nobelio</string>
+    <string name="el103">Laurenzio</string>
+    <string name="el104">Rutherfordio</string>
+    <string name="el105">Dubnio</string>
+    <string name="el106">Seaborgio</string>
+    <string name="el107">Bohrio</string>
+    <string name="el108">Hassio</string>
+    <string name="el109">Meitnerio</string>
+    <string name="el110">Darmstadtio</string>
+    <string name="el111">Roentgenio</string>
+    <string name="el112">Copernicio</string>
+    <string name="el113">Ununtrio</string>
+    <string name="el114">Flerovio</string>
+    <string name="el115">Ununpentio</string>
+    <string name="el116">Livermorio</string>
+    <string name="el117">Ununseptio</string>
+    <string name="el118">Ununoctio</string>
+
+    <!--
+        The language code subdomain of Wikipedia
+    -->
+    <string name="wikiLang">it</string>
+
+    <!--
+        List of Wikipedia pages for each element identified by their atomic number
+        
+        These are usually just the name of the element, but there may be exceptions in cases of
+        ambiguity.
+    -->
+    <string name="wiki001">Idrogeno</string>
+    <string name="wiki002">Elio</string>
+    <string name="wiki003">Litio</string>
+    <string name="wiki004">Berillio</string>
+    <string name="wiki005">Boro</string>
+    <string name="wiki006">Carbonio</string>
+    <string name="wiki007">Azoto</string>
+    <string name="wiki008">Ossigeno</string>
+    <string name="wiki009">Fluoro</string>
+    <string name="wiki010">Neon</string>
+    <string name="wiki011">Sodio</string>
+    <string name="wiki012">Magnesio</string>
+    <string name="wiki013">Alluminio</string>
+    <string name="wiki014">Silicio</string>
+    <string name="wiki015">Fosforo</string>
+    <string name="wiki016">Zolfo</string>
+    <string name="wiki017">Cloro</string>
+    <string name="wiki018">Argon</string>
+    <string name="wiki019">Potassio</string>
+    <string name="wiki020">Calcio_(elemento_chimico)</string>
+    <string name="wiki021">Scandio</string>
+    <string name="wiki022">Titanio</string>
+    <string name="wiki023">Vanadio</string>
+    <string name="wiki024">Cromo</string>
+    <string name="wiki025">Manganese</string>
+    <string name="wiki026">Ferro</string>
+    <string name="wiki027">Cobalto</string>
+    <string name="wiki028">Nichel</string>
+    <string name="wiki029">Rame</string>
+    <string name="wiki030">Zinco</string>
+    <string name="wiki031">Gallio_(elemento_chimico)</string>
+    <string name="wiki032">Germanio</string>
+    <string name="wiki033">Arsenico</string>
+    <string name="wiki034">Selenio</string>
+    <string name="wiki035">Bromo</string>
+    <string name="wiki036">Cripton</string>
+    <string name="wiki037">Rubidio</string>
+    <string name="wiki038">Stronzio</string>
+    <string name="wiki039">Ittrio</string>
+    <string name="wiki040">Zirconio</string>
+    <string name="wiki041">Niobio</string>
+    <string name="wiki042">Molibdeno</string>
+    <string name="wiki043">Tecnezio</string>
+    <string name="wiki044">Rutenio</string>
+    <string name="wiki045">Rodio</string>
+    <string name="wiki046">Palladio_(elemento_chimico)</string>
+    <string name="wiki047">Argento</string>
+    <string name="wiki048">Cadmio</string>
+    <string name="wiki049">Indio</string>
+    <string name="wiki050">Stagno_(elemento_chimico)</string>
+    <string name="wiki051">Antimonio</string>
+    <string name="wiki052">Tellurio</string>
+    <string name="wiki053">Iodio</string>
+    <string name="wiki054">Xeno</string>
+    <string name="wiki055">Cesio_(elemento_chimico)</string>
+    <string name="wiki056">Bario</string>
+    <string name="wiki057">Lantanio</string>
+    <string name="wiki058">Cerio</string>
+    <string name="wiki059">Praseodimio</string>
+    <string name="wiki060">Neodimio</string>
+    <string name="wiki061">Promezio</string>
+    <string name="wiki062">Samario</string>
+    <string name="wiki063">Europio</string>
+    <string name="wiki064">Gadolinio</string>
+    <string name="wiki065">Terbio</string>
+    <string name="wiki066">Disprosio</string>
+    <string name="wiki067">Olmio</string>
+    <string name="wiki068">Erbio</string>
+    <string name="wiki069">Tulio</string>
+    <string name="wiki070">Itterbio</string>
+    <string name="wiki071">Lutezio</string>
+    <string name="wiki072">Afnio</string>
+    <string name="wiki073">Tantalio</string>
+    <string name="wiki074">Tungsteno</string>
+    <string name="wiki075">Renio</string>
+    <string name="wiki076">Osmio</string>
+    <string name="wiki077">Iridio</string>
+    <string name="wiki078">Platino</string>
+    <string name="wiki079">Oro</string>
+    <string name="wiki080">Mercurio_(elemento_chimico)</string>
+    <string name="wiki081">Tallio</string>
+    <string name="wiki082">Piombo</string>
+    <string name="wiki083">Bismuto</string>
+    <string name="wiki084">Polonio</string>
+    <string name="wiki085">Astato</string>
+    <string name="wiki086">Radon</string>
+    <string name="wiki087">Francio</string>
+    <string name="wiki088">Radio_(elemento_chimico)</string>
+    <string name="wiki089">Attinio</string>
+    <string name="wiki090">Torio</string>
+    <string name="wiki091">Protoattinio</string>
+    <string name="wiki092">Uranio</string>
+    <string name="wiki093">Nettunio</string>
+    <string name="wiki094">Plutonio</string>
+    <string name="wiki095">Americio</string>
+    <string name="wiki096">Curio</string>
+    <string name="wiki097">Berkelio</string>
+    <string name="wiki098">Californio</string>
+    <string name="wiki099">Einsteinio</string>
+    <string name="wiki100">Fermio</string>
+    <string name="wiki101">Mendelevio</string>
+    <string name="wiki102">Nobelio</string>
+    <string name="wiki103">Laurenzio</string>
+    <string name="wiki104">Rutherfordio</string>
+    <string name="wiki105">Dubnio</string>
+    <string name="wiki106">Seaborgio</string>
+    <string name="wiki107">Bohrio</string>
+    <string name="wiki108">Hassio</string>
+    <string name="wiki109">Meitnerio</string>
+    <string name="wiki110">Darmstadtio</string>
+    <string name="wiki111">Roentgenio</string>
+    <string name="wiki112">Copernicio</string>
+    <string name="wiki113">Ununtrio</string>
+    <string name="wiki114">Flerovio</string>
+    <string name="wiki115">Ununpentio</string>
+    <string name="wiki116">Livermorio</string>
+    <string name="wiki117">Ununseptio</string>
+    <string name="wiki118">Ununoctio</string>
+</resources>
