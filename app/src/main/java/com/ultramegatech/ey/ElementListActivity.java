@@ -32,6 +32,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -49,12 +50,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.widget.ElementListAdapter;
 import com.ultramegatech.widget.ElementListAdapter.ElementHolder;
+
 import java.util.ArrayList;
 
 /**
@@ -72,11 +75,11 @@ public class ElementListActivity extends FragmentActivity implements
     private static final String KEY_FILTER = "key_filter";
 
     /* Fields to read from the database */
-    private final String[] mListProjection = new String[]{
-        Elements._ID,
-        Elements.NUMBER,
-        Elements.SYMBOL,
-        Elements.CATEGORY
+    private final String[] mListProjection = new String[] {
+            Elements._ID,
+            Elements.NUMBER,
+            Elements.SYMBOL,
+            Elements.CATEGORY
     };
 
     /* List adapter */
@@ -117,7 +120,7 @@ public class ElementListActivity extends FragmentActivity implements
             mFilter = savedInstanceState.getString(KEY_FILTER);
         }
 
-        mAdapter = new ElementListAdapter(this, null);
+        mAdapter = new ElementListAdapter(this);
         listView.setAdapter(mAdapter);
 
         setupFilter();
@@ -216,7 +219,7 @@ public class ElementListActivity extends FragmentActivity implements
      * @param field Field to sort by
      */
     public void setSort(int field) {
-        mSortReverse = (field == mSort) ? !mSortReverse : false;
+        mSortReverse = field == mSort && !mSortReverse;
         mSort = field;
         mAdapter.setSort(mSort, mSortReverse);
     }
@@ -232,7 +235,7 @@ public class ElementListActivity extends FragmentActivity implements
 
         final ElementUtils utils = new ElementUtils(this);
 
-        final ArrayList<ElementHolder> data = new ArrayList<ElementHolder>();
+        final ArrayList<ElementHolder> data = new ArrayList<>();
         while(d.moveToNext()) {
             final String number = d.getString(1);
             final String symbol = d.getString(2);
@@ -259,9 +262,10 @@ public class ElementListActivity extends FragmentActivity implements
 
     public static class SortDialog extends DialogFragment {
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Dialog d = new AlertDialog.Builder(getActivity())
+            return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.titleSort)
                     .setItems(R.array.sortFieldNames, new OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
@@ -270,8 +274,6 @@ public class ElementListActivity extends FragmentActivity implements
                         }
                     })
                     .create();
-
-            return d;
         }
 
     }

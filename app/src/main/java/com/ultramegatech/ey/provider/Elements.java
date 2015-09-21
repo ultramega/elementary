@@ -69,7 +69,7 @@ public class Elements implements BaseColumns {
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/");
 
     /* Column types */
-    public static enum Type {
+    public enum Type {
         UNDEFINED, TEXT, INTEGER, REAL, BOOLEAN
     }
 
@@ -77,7 +77,7 @@ public class Elements implements BaseColumns {
      * Get the data type of the specified column.
      *
      * @param c The column name
-     * @return
+     * @return The column type
      */
     public static Type getColumnType(String c) {
         if(c.equals(SYMBOL) || c.equals(BLOCK) || c.equals(CONFIGURATION) || c.equals(ELECTRONS)

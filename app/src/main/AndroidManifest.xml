@@ -22,27 +22,25 @@
   THE SOFTWARE.
 -->
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ultramegatech.ey"
->
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
-        android:label="@string/app_name"
-        android:icon="@drawable/icon"
-        android:theme="@style/LightTheme"
         android:allowBackup="true"
-    >
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/LightTheme">
         <provider
             android:name="com.ultramegatech.ey.provider.ElementsProvider"
             android:authorities="com.ultramegatech.ey.provider"
-            android:exported="false"
-        />
+            android:exported="false" />
+
         <activity
             android:name="PeriodicTableActivity"
             android:label="@string/app_name"
-            android:theme="@style/LightTheme.NoTitleBar"
             android:screenOrientation="landscape"
-        >
+            android:theme="@style/LightTheme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -50,15 +48,12 @@
         </activity>
         <activity
             android:name="ElementListActivity"
-            android:label="@string/titleElementList"
-        />
+            android:label="@string/titleElementList" />
         <activity
             android:name="ElementDetailsActivity"
-            android:label="@string/app_name"
-        />
+            android:label="@string/app_name" />
         <activity
             android:name="EyPreferenceActivity"
-            android:label="@string/titlePreferences"
-        />
+            android:label="@string/titlePreferences" />
     </application>
 </manifest>

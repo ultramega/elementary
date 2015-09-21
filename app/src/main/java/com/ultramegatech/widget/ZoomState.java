@@ -40,7 +40,7 @@ public class ZoomState extends Observable {
     /**
      * Get the pan value in the X dimension.
      *
-     * @return
+     * @return The X position
      */
     public double getPanX() {
         return mPanX;
@@ -49,7 +49,7 @@ public class ZoomState extends Observable {
     /**
      * Get the pan value in the Y dimension.
      *
-     * @return
+     * @return The Y position
      */
     public double getPanY() {
         return mPanY;
@@ -58,7 +58,7 @@ public class ZoomState extends Observable {
     /**
      * Get the zoom level.
      *
-     * @return
+     * @return The zoom level
      */
     public double getZoom() {
         return mZoom;
@@ -68,7 +68,7 @@ public class ZoomState extends Observable {
      * Calculate the zoom value in the X dimension.
      *
      * @param aspectQuotient Quotient of content and view aspect ratios
-     * @return
+     * @return The X zoom value
      */
     public double getZoomX(double aspectQuotient) {
         return Math.min(mZoom, mZoom * aspectQuotient);
@@ -78,7 +78,7 @@ public class ZoomState extends Observable {
      * Calculate the zoom value in the Y dimension.
      *
      * @param aspectQuotient Quotient of content and view aspect ratios
-     * @return
+     * @return The Y zoom value
      */
     public double getZoomY(double aspectQuotient) {
         return Math.min(mZoom, mZoom / aspectQuotient);
@@ -87,7 +87,7 @@ public class ZoomState extends Observable {
     /**
      * Set the pan value in the X dimension.
      *
-     * @param panX
+     * @param panX The X position
      */
     public void setPanX(double panX) {
         if(panX != mPanX) {
@@ -99,7 +99,7 @@ public class ZoomState extends Observable {
     /**
      * Set the pan value in the Y dimension.
      *
-     * @param panY
+     * @param panY The Y position
      */
     public void setPanY(double panY) {
         if(panY != mPanY) {
@@ -111,7 +111,7 @@ public class ZoomState extends Observable {
     /**
      * Set the zoom level.
      *
-     * @param zoom
+     * @param zoom The zoom level
      */
     public void setZoom(double zoom) {
         if(zoom != mZoom) {

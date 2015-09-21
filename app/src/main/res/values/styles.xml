@@ -21,26 +21,32 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="LightTheme" parent="android:Theme.Light" />
+
     <style name="LightTheme.NoTitleBar">
         <item name="android:windowNoTitle">true</item>
     </style>
-    
+
     <style name="ElementDetails">
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">4dp</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="ElementDetails.Label">
         <item name="android:textStyle">bold</item>
         <item name="android:paddingRight">12dp</item>
     </style>
+
     <style name="ElementDetails.Value">
-        <item name="android:textIsSelectable">true</item>
+        <item name="android:textIsSelectable" tools:ignore="NewApi">true</item>
     </style>
+
     <style name="TableRow">
     </style>
+
     <style name="TableRow.Odd">
         <item name="android:background">#FFEEEEEE</item>
     </style>

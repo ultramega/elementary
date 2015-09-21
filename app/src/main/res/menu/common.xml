@@ -21,11 +21,13 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 -->
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedAttribute">
     <item
         android:id="@+id/menu_options"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:title="@string/menuOptions"
         android:showAsAction="ifRoom"
-    />
+        android:title="@string/menuOptions" />
 </menu>

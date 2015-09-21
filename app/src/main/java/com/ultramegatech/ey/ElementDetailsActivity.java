@@ -43,14 +43,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.util.UnitUtils;
+
 import java.text.DecimalFormat;
 
 /**
@@ -65,8 +66,8 @@ public class ElementDetailsActivity extends FragmentActivity implements
     public static final String EXTRA_ATOMIC_NUMBER = "atomic_number";
 
     /* Units of measurement */
-    private static enum Units {
-        KELVIN, CELCIUS, FARENHEIT
+    private enum Units {
+        KELVIN, CELSIUS, FAHRENHEIT
     }
 
     /* Values from the database row */
@@ -101,12 +102,8 @@ public class ElementDetailsActivity extends FragmentActivity implements
     private TextView mTxtMelt;
     private TextView mTxtBoil;
     private TextView mTxtHeat;
-    private TextView mTxtNagativity;
+    private TextView mTxtNegativity;
     private TextView mTxtAbundance;
-
-    /* Buttons */
-    private ImageButton mBtnVideo;
-    private ImageButton mBtnWiki;
 
     /* Value to return for unknown values */
     private String mStringUnknown;
@@ -164,9 +161,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
         if("K".equals(tempUnit)) {
             mTemperatureUnits = Units.KELVIN;
         } else if("C".equals(tempUnit)) {
-            mTemperatureUnits = Units.CELCIUS;
+            mTemperatureUnits = Units.CELSIUS;
         } else {
-            mTemperatureUnits = Units.FARENHEIT;
+            mTemperatureUnits = Units.FAHRENHEIT;
         }
 
         final String colorKey = prefs.getString("elementColors", "category");
@@ -201,18 +198,16 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mTxtMelt = (TextView)findViewById(R.id.melt);
         mTxtBoil = (TextView)findViewById(R.id.boil);
         mTxtHeat = (TextView)findViewById(R.id.heat);
-        mTxtNagativity = (TextView)findViewById(R.id.negativity);
+        mTxtNegativity = (TextView)findViewById(R.id.negativity);
         mTxtAbundance = (TextView)findViewById(R.id.abundance);
 
-        mBtnVideo = (ImageButton)findViewById(R.id.videoButton);
-        mBtnVideo.setOnClickListener(new OnClickListener() {
+        findViewById(R.id.videoButton).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 showVideo();
             }
         });
 
-        mBtnWiki = (ImageButton)findViewById(R.id.wikiButton);
-        mBtnWiki.setOnClickListener(new OnClickListener() {
+        findViewById(R.id.wikiButton).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 showWikipedia();
             }
@@ -248,7 +243,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         mTxtMelt.setText(getTemperature(Elements.MELT));
         mTxtBoil.setText(getTemperature(Elements.BOIL));
         mTxtHeat.setText(getHeat());
-        mTxtNagativity.setText(getNegativity());
+        mTxtNegativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
     }
 
@@ -294,9 +289,9 @@ public class ElementDetailsActivity extends FragmentActivity implements
         final Double kelvin = mData.getAsDouble(key);
         if(kelvin != null) {
             switch(mTemperatureUnits) {
-                case CELCIUS:
+                case CELSIUS:
                     return String.format("%.2f °C", UnitUtils.KtoC(kelvin));
-                case FARENHEIT:
+                case FAHRENHEIT:
                     return String.format("%.2f °F", UnitUtils.KtoF(kelvin));
                 default:
                     return String.format("%.2f K", kelvin);
@@ -448,7 +443,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     /**
      * Get the content Uri based on an intent extra.
      *
-     * @return
+     * @return The content uri
      */
     private Uri getUri() {
         final long id = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);

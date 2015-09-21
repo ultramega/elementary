@@ -23,44 +23,45 @@
 -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    android:orientation="vertical">
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-    >
+        android:orientation="horizontal">
+
         <include layout="@layout/element_block" />
+
         <TextView
             android:id="@+id/header"
-            android:textSize="30sp"
-            android:textIsSelectable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-        />
+            android:textIsSelectable="true"
+            android:textSize="30sp" />
+
         <ImageButton
             android:id="@+id/wikiButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:layout_gravity="center"
+            android:layout_weight="0"
             android:contentDescription="@string/buttonWiki"
-            android:src="@drawable/ic_wikipedia"
-        />
+            android:src="@drawable/ic_wikipedia" />
+
         <ImageButton
             android:id="@+id/videoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:layout_gravity="center"
+            android:layout_weight="0"
             android:contentDescription="@string/buttonVideo"
-            android:src="@drawable/ic_video"
-        />
+            android:src="@drawable/ic_video" />
     </LinearLayout>
+
     <include layout="@layout/element_details_table" />
 </LinearLayout>

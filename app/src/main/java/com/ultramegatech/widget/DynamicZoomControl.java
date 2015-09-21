@@ -24,7 +24,9 @@ package com.ultramegatech.widget;
 
 import android.os.Handler;
 import android.os.SystemClock;
+
 import com.ultramegatech.util.GlideDynamics;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -33,7 +35,7 @@ import java.util.Observer;
  *
  * @author Steve Guidetti
  */
-public class DynamicZoomControl implements Observer {
+class DynamicZoomControl implements Observer {
     /* Zoom level limits */
     private static final int MIN_ZOOM = 1;
     private static final int MAX_ZOOM = 8;
@@ -65,7 +67,7 @@ public class DynamicZoomControl implements Observer {
     private double mPanMinY;
     private double mPanMaxY;
 
-    /* Handler for posting runnables */
+    /* Handler for posting the animations */
     private final Handler mHandler = new Handler();
 
     /* Runnable to animate flings */
@@ -76,7 +78,8 @@ public class DynamicZoomControl implements Observer {
             mPanDynamicsY.update(startTime);
             final boolean isAtRest =
                     mPanDynamicsX.isAtRest(REST_VELOCITY_TOLERANCE, REST_POSITION_TOLERANCE)
-                    && mPanDynamicsY.isAtRest(REST_VELOCITY_TOLERANCE, REST_POSITION_TOLERANCE);
+                            && mPanDynamicsY.isAtRest(REST_VELOCITY_TOLERANCE,
+                            REST_POSITION_TOLERANCE);
             mState.setPanX(mPanDynamicsX.getPosition());
             mState.setPanY(mPanDynamicsY.getPosition());
 
@@ -97,7 +100,7 @@ public class DynamicZoomControl implements Observer {
     /**
      * Get the ZoomState.
      *
-     * @return
+     * @return The ZoomState
      */
     public ZoomState getZoomState() {
         return mState;
@@ -106,7 +109,7 @@ public class DynamicZoomControl implements Observer {
     /**
      * Set the AspectQuotient.
      *
-     * @param aspectQuotient
+     * @param aspectQuotient The AspectQuotient
      */
     public void setAspectQuotient(AspectQuotient aspectQuotient) {
         if(mAspectQuotient != null) {

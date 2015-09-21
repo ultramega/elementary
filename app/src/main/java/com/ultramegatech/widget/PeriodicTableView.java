@@ -29,7 +29,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
+
 import com.ultramegatech.ey.R;
+
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -51,7 +53,7 @@ public class PeriodicTableView extends View implements Observer {
          *
          * @param item The selected block
          */
-        public void onItemClick(PeriodicTableBlock item);
+        void onItemClick(PeriodicTableBlock item);
     }
 
     /* The list of blocks to render */
@@ -113,32 +115,14 @@ public class PeriodicTableView extends View implements Observer {
     /* The currently selected block */
     private PeriodicTableBlock mBlockSelected;
 
-    /**
-     * Constructor
-     *
-     * @param context
-     */
     public PeriodicTableView(Context context) {
         this(context, null, 0);
     }
 
-    /**
-     * Constructor
-     *
-     * @param context
-     * @param attrs
-     */
     public PeriodicTableView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    /**
-     * Constructor
-     *
-     * @param context
-     * @param attrs
-     * @param defStyle
-     */
     public PeriodicTableView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
@@ -197,10 +181,10 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
-     * Set the list of blocks to be rendered. This method also determines the row and column of each
-     * block and sets the colors using the legend.
+     * Set the list of blocks to be rendered. This method also determines the row and column of
+     * each block and sets the colors using the legend.
      *
-     * @param blocks
+     * @param blocks The list of blocks
      */
     public void setBlocks(List<PeriodicTableBlock> blocks) {
         if(blocks.isEmpty()) {
@@ -245,7 +229,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Get the color legend.
      *
-     * @return
+     * @return The PeriodicTableLegend
      */
     public PeriodicTableLegend getLegend() {
         return mLegend;
@@ -254,7 +238,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Set the item click listener.
      *
-     * @param listener
+     * @param listener The listener
      */
     public void setOnItemClickListener(OnItemClickListener listener) {
         mItemClickListener = listener;
@@ -263,7 +247,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Get the item click listener.
      *
-     * @return
+     * @return The listener
      */
     public OnItemClickListener getOnItemClickListener() {
         return mItemClickListener;
@@ -272,16 +256,16 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Set the title from a string resource.
      *
-     * @param resid Resource id
+     * @param resId Resource id
      */
-    public void setTitle(int resid) {
-        setTitle(getResources().getText(resid));
+    public void setTitle(int resId) {
+        setTitle(getResources().getText(resId));
     }
 
     /**
      * Set the title.
      *
-     * @param title
+     * @param title The title
      */
     public void setTitle(CharSequence title) {
         mTitle = title;
@@ -291,7 +275,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Get the title.
      *
-     * @return
+     * @return The title
      */
     public CharSequence getTitle() {
         return mTitle;
@@ -370,7 +354,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Calculate the position of the specified block and store it in the shared rectangle.
      *
-     * @param block
+     * @param block The block
      */
     private void findBlockPosition(PeriodicTableBlock block) {
         mRect.right = (block.col * mBlockSize - mOffsetX + mPadding) - 1;
@@ -388,7 +372,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Draw the headers and placeholders on the supplied canvas.
      *
-     * @param canvas
+     * @param canvas The canvas
      */
     private void writeHeaders(Canvas canvas) {
         mHeaderPaint.setTextSize(mBlockSize / 4);
@@ -412,7 +396,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Draw the title on the supplied canvas.
      *
-     * @param canvas
+     * @param canvas The canvas
      */
     private void writeTitle(Canvas canvas) {
         if(mTitle != null) {

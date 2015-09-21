@@ -22,47 +22,50 @@
   THE SOFTWARE.
 -->
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/elementBlock"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="70dp"
     android:layout_height="match_parent"
     android:minHeight="70dp"
->
+    tools:ignore="RtlHardcoded,SmallSp">
+
     <TextView
         android:id="@+id/elementSymbol"
-        android:textSize="38sp"
-        android:padding="6dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-    />
+        android:padding="6dp"
+        android:textSize="38sp" />
+
     <TextView
         android:id="@+id/elementNumber"
-        android:textSize="14sp"
-        android:paddingLeft="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-    />
+        android:layout_alignParentTop="true"
+        android:paddingLeft="4dp"
+        android:textSize="14sp"
+        tools:ignore="RtlSymmetry" />
+
     <TextView
         android:id="@+id/elementWeight"
-        android:textSize="10sp"
-        android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-    />
+        android:padding="2dp"
+        android:textSize="10sp" />
+
     <TextView
         android:id="@+id/elementElectrons"
-        android:textSize="8sp"
-        android:gravity="right"
-        android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-    />
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="6dp"
+        android:gravity="right"
+        android:padding="2dp"
+        android:textSize="8sp"
+        tools:ignore="RelativeOverlap" />
 </RelativeLayout>

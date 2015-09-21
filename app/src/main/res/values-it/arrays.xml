@@ -22,9 +22,6 @@
   THE SOFTWARE.
 -->
 <resources>
-    <!--
-        The colors and corresponding names for the element categories
-    -->
     <string-array name="ptCategories">
         <item>Non metalli</item>
         <item>Gas nobili</item>
@@ -37,18 +34,10 @@
         <item>Lantanidi</item>
         <item>Attinidi</item>
     </string-array>
-        
-    <!--
-        Options for the element colors preference
-    -->
     <string-array name="elementColorNames">
         <item>Serie chimica</item>
         <item>Blocco</item>
     </string-array>
-    
-    <!--
-        Options for the list sorting dialog
-    -->
     <string-array name="sortFieldNames">
         <item>Numero atomico</item>
         <item>Nome dell\'elemento</item>

@@ -29,29 +29,29 @@ package com.ultramegatech.util;
  */
 public abstract class Dynamics {
     /* Maximum time difference between updates */
-    private static final int MAX_TIMESTEP = 50;
+    private static final int MAX_TIME_STEP = 50;
 
     /* Current position */
-    protected double mPosition;
+    double mPosition;
 
     /* Current velocity */
-    protected double mVelocity;
+    double mVelocity;
 
     /* Position limits */
-    protected double mMaxPosition = Double.MAX_VALUE;
-    protected double mMinPosition = -Double.MAX_VALUE;
+    double mMaxPosition = Double.MAX_VALUE;
+    double mMinPosition = -Double.MAX_VALUE;
 
     /* The time of the last update */
-    protected long mLastTime = 0;
+    private long mLastTime = 0;
 
     /**
      * Set the state of the dynamics object. Should be called before starting to call update.
      *
      * @param position The current position
      * @param velocity The current velocity in pixels per second
-     * @param now The current time
+     * @param now      The current time
      */
-    public void setState(final double position, final double velocity, final long now) {
+    public void setState(double position, double velocity, long now) {
         mVelocity = velocity;
         mPosition = position;
         mLastTime = now;
@@ -60,7 +60,7 @@ public abstract class Dynamics {
     /**
      * Get the current position.
      *
-     * @return
+     * @return The current position
      */
     public double getPosition() {
         return mPosition;
@@ -69,7 +69,7 @@ public abstract class Dynamics {
     /**
      * Get the current velocity in pixels per second.
      *
-     * @return
+     * @return The current velocity
      */
     public double getVelocity() {
         return mVelocity;
@@ -80,9 +80,9 @@ public abstract class Dynamics {
      *
      * @param velocityTolerance Minimum velocity
      * @param positionTolerance Minimum distance from limits
-     * @return
+     * @return Whether the object is at rest
      */
-    public boolean isAtRest(final double velocityTolerance, final double positionTolerance) {
+    public boolean isAtRest(double velocityTolerance, double positionTolerance) {
         final boolean standingStill = Math.abs(mVelocity) < velocityTolerance;
         final boolean withinLimits = mPosition - positionTolerance < mMaxPosition
                 && mPosition + positionTolerance > mMinPosition;
@@ -92,18 +92,18 @@ public abstract class Dynamics {
     /**
      * Set the maximum position.
      *
-     * @param maxPosition
+     * @param maxPosition The maximum position
      */
-    public void setMaxPosition(final double maxPosition) {
+    public void setMaxPosition(double maxPosition) {
         mMaxPosition = maxPosition;
     }
 
     /**
      * Set the minimum position.
      *
-     * @param minPosition
+     * @param minPosition The minimum position
      */
-    public void setMinPosition(final double minPosition) {
+    public void setMinPosition(double minPosition) {
         mMinPosition = minPosition;
     }
 
@@ -112,10 +112,10 @@ public abstract class Dynamics {
      *
      * @param now The current time
      */
-    public void update(final long now) {
+    public void update(long now) {
         int dt = (int)(now - mLastTime);
-        if(dt > MAX_TIMESTEP) {
-            dt = MAX_TIMESTEP;
+        if(dt > MAX_TIME_STEP) {
+            dt = MAX_TIME_STEP;
         }
 
         onUpdate(dt);

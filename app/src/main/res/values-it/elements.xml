@@ -22,9 +22,6 @@
   THE SOFTWARE.
 -->
 <resources>
-    <!--
-        List of element names identified by their atomic number
-    -->
     <string name="el001">Idrogeno</string>
     <string name="el002">Elio</string>
     <string name="el003">Litio</string>
@@ -144,17 +141,8 @@
     <string name="el117">Ununseptio</string>
     <string name="el118">Ununoctio</string>
 
-    <!--
-        The language code subdomain of Wikipedia
-    -->
     <string name="wikiLang">it</string>
 
-    <!--
-        List of Wikipedia pages for each element identified by their atomic number
-        
-        These are usually just the name of the element, but there may be exceptions in cases of
-        ambiguity.
-    -->
     <string name="wiki001">Idrogeno</string>
     <string name="wiki002">Elio</string>
     <string name="wiki003">Litio</string>

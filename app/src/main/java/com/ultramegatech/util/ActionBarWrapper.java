@@ -36,8 +36,8 @@ public abstract class ActionBarWrapper {
     /**
      * Get a compatible implementation of ActionBarWrapper.
      *
-     * @param activity
-     * @return
+     * @param activity The activity
+     * @return An instance of ActionBarWrapper
      */
     public static ActionBarWrapper getInstance(Activity activity) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -55,7 +55,7 @@ public abstract class ActionBarWrapper {
     /**
      * Enable or disable the display of the up arrow on the home button.
      *
-     * @param arg
+     * @param arg Whether to display the up arrow on the home button
      */
     public abstract void setDisplayHomeAsUpEnabled(boolean arg);
 
@@ -72,7 +72,7 @@ public abstract class ActionBarWrapper {
         }
     }
 
-    @TargetApi(11)
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private static class Honeycomb extends ActionBarWrapper {
         private final Activity mActivity;
 

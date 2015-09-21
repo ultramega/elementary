@@ -24,6 +24,7 @@ package com.ultramegatech.ey.util;
 
 import android.content.Context;
 import android.content.Intent;
+
 import com.ultramegatech.ey.EyPreferenceActivity;
 import com.ultramegatech.ey.R;
 
@@ -36,8 +37,8 @@ public class CommonMenuHandler {
     /**
      * Select an action based on a menu selection.
      *
-     * @param context
-     * @param id Menu item id
+     * @param context The context
+     * @param id      Menu item id
      */
     public static void handleSelect(Context context, int id) {
         switch(id) {
@@ -50,9 +51,9 @@ public class CommonMenuHandler {
     /**
      * Launch EyPreferenceActivity.
      *
-     * @param context
+     * @param context The context
      */
-    public static void launchOptionsActivity(Context context) {
+    private static void launchOptionsActivity(Context context) {
         context.startActivity(new Intent(context, EyPreferenceActivity.class));
     }
 }

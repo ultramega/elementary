@@ -39,7 +39,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
     /**
      * Listener modes. Before the view is touched the listener is in the UNDEFINED mode. Once touch
      * starts it can enter either one of the other two modes: If the user scrolls over the view the
-     * listener will enter PAN mode, if the user lets his finger rest and makes a longpress the
+     * listener will enter PAN mode, if the user lets his finger rest and makes a long press the
      * listener will enter ZOOM mode.
      */
     public enum Mode {
@@ -89,7 +89,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
     /**
      * Constructor
      *
-     * @param context
+     * @param context The context
      */
     public PeriodicTableTouchListener(Context context) {
         mLongPressTimeout = ViewConfiguration.getLongPressTimeout();
@@ -102,7 +102,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
     /**
      * Set the ZoomControl.
      *
-     * @param control
+     * @param control The DynamicZoomControl
      */
     public void setZoomControl(DynamicZoomControl control) {
         mZoomControl = control;

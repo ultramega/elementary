@@ -29,14 +29,14 @@ import java.util.Observable;
  *
  * @author Steve Guidetti
  */
-public class AspectQuotient extends Observable {
+class AspectQuotient extends Observable {
     /* Current aspect quotient */
     private double mAspectQuotient;
 
     /**
      * Get the aspect quotient.
      *
-     * @return
+     * @return The aspect quotient
      */
     public double get() {
         return mAspectQuotient;
@@ -45,13 +45,13 @@ public class AspectQuotient extends Observable {
     /**
      * Calculate aspect quotient based on supplied view and content dimensions.
      *
-     * @param viewWidth Width of container
-     * @param viewHeight Height of container
-     * @param contentWidth Width of content
+     * @param viewWidth     Width of container
+     * @param viewHeight    Height of container
+     * @param contentWidth  Width of content
      * @param contentHeight Height of content
      */
     public void updateAspectQuotient(double viewWidth, double viewHeight, double contentWidth,
-            double contentHeight) {
+                                     double contentHeight) {
         final double aspectQuotient = (contentWidth / contentHeight) / (viewWidth / viewHeight);
         if(aspectQuotient != mAspectQuotient) {
             mAspectQuotient = aspectQuotient;

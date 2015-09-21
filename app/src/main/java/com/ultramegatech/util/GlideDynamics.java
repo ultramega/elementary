@@ -34,7 +34,7 @@ public class GlideDynamics extends Dynamics {
     /**
      * Set the friction value.
      *
-     * @param friction
+     * @param friction The friction value
      */
     public void setFriction(double friction) {
         mFriction = friction;

@@ -45,12 +45,12 @@ public class ElementsProvider extends ContentProvider {
     private static final int ELEMENTS_NUMBER = 2;
 
     /* Uri matcher */
-    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-
-    static {
-        sUriMatcher.addURI(AUTHORITY, "elements", ELEMENTS);
-        sUriMatcher.addURI(AUTHORITY, "elements/#", ELEMENTS_NUMBER);
-    }
+    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH) {
+        {
+            addURI(AUTHORITY, "elements", ELEMENTS);
+            addURI(AUTHORITY, "elements/#", ELEMENTS_NUMBER);
+        }
+    };
 
     /* SQLiteOpenHelper */
     private DatabaseOpenHelper mDatabaseOpenHelper;
@@ -63,7 +63,7 @@ public class ElementsProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
-            String sortOrder) {
+                        String sortOrder) {
         final SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(Elements.TABLE_NAME);
         switch(sUriMatcher.match(uri)) {

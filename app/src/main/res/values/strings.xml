@@ -23,26 +23,26 @@
 -->
 <resources>
     <string name="app_name" translatable="false">Elementary</string>
-    
+
     <string name="titleElementDetails">Element Details - %s</string>
     <string name="titlePeriodicTable">Periodic Table of the Elements</string>
     <string name="titleElementList">List of Elements</string>
     <string name="titlePreferences">Elementary Options</string>
     <string name="titleSort">Sort by:</string>
-    
+
     <string name="buttonVideo">Watch Video</string>
     <string name="buttonWiki" translatable="false">Wikipedia</string>
     <string name="buttonSort">Sort</string>
-    
+
     <string name="menuOptions">Options</string>
     <string name="menuList">List View</string>
     <string name="menuTable">Table View</string>
-    
+
     <string name="prefTitleTemp">Temperature Units</string>
     <string name="prefSummaryTemp">Units used to display temperature values</string>
     <string name="prefTitleColors">Element Colors</string>
     <string name="prefSummaryColors">Property used to color the elements</string>
-    
+
     <string name="labelNumber">Atomic Number:</string>
     <string name="labelSymbol">Symbol:</string>
     <string name="labelName">Name:</string>
@@ -57,8 +57,8 @@
     <string name="labelHeat">Heat:</string>
     <string name="labelNegativity">Electronegativity:</string>
     <string name="labelAbundance">Abundance:</string>
-    
+
     <string name="hintFilter">Filter by Name or Symbol</string>
-    
+
     <string name="unknown">unknown</string>
 </resources>

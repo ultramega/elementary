@@ -25,6 +25,7 @@ package com.ultramegatech.ey;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
+
 import com.ultramegatech.util.ActionBarWrapper;
 
 /**
@@ -37,6 +38,7 @@ public class EyPreferenceActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
+        //noinspection deprecation
         addPreferencesFromResource(R.xml.preferences);
     }
 

@@ -27,19 +27,19 @@
     <string name="titleElementList">Lista degli elementi</string>
     <string name="titlePreferences">Impostazioni di Elementary</string>
     <string name="titleSort">Ordina per:</string>
-    
+
     <string name="buttonVideo">Guarda il video</string>
     <string name="buttonSort">Ordina</string>
-    
+
     <string name="menuOptions">Impostazioni</string>
     <string name="menuList">Visuale lista</string>
     <string name="menuTable">Visuale tabella</string>
-    
+
     <string name="prefTitleTemp">Unità di temperatura</string>
     <string name="prefSummaryTemp">Unità usata nel campo di temperatura</string>
     <string name="prefTitleColors">Colore degli elementi</string>
     <string name="prefSummaryColors">Proprietà usata per colorare gli elementi</string>
-    
+
     <string name="labelNumber">Numero atomico:</string>
     <string name="labelSymbol">Simbolo:</string>
     <string name="labelName">Nome:</string>
@@ -54,8 +54,8 @@
     <string name="labelHeat">Calore specifico:</string>
     <string name="labelNegativity">Elettronegatività:</string>
     <string name="labelAbundance">Abondanza:</string>
-    
+
     <string name="hintFilter">Filtra per nome o per simbolo</string>
-    
+
     <string name="unknown">sconosciuto</string>
 </resources>

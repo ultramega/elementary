@@ -25,7 +25,9 @@ package com.ultramegatech.ey.provider;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import com.ultramegatech.ey.R;
+
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -34,9 +36,9 @@ import java.util.Scanner;
  *
  * @author Steve Guidetti
  */
-public class DatabaseOpenHelper extends SQLiteOpenHelper {
+class DatabaseOpenHelper extends SQLiteOpenHelper {
     /* Database version */
-    public static final int VERSION = 4;
+    private static final int VERSION = 4;
 
     /* Database file name */
     private static final String DB_NAME = "elements.db";

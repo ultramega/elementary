@@ -49,7 +49,7 @@
         <item>Lanthanide</item>
         <item>Actinide</item>
     </string-array>
-    
+
     <!--
         The colors and corresponding names for the element blocks
     -->
@@ -65,7 +65,7 @@
         <item>d</item>
         <item>f</item>
     </string-array>
-    
+
     <!--
         Options for the temperature units preference
     -->
@@ -79,7 +79,7 @@
         <item>Celsius (°C)</item>
         <item>Fahrenheit (°F)</item>
     </string-array>
-    
+
     <!--
         Options for the element colors preference
     -->
@@ -91,7 +91,7 @@
         <item>Category</item>
         <item>Block</item>
     </string-array>
-    
+
     <!--
         Options for the list sorting dialog
     -->

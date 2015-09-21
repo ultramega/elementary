@@ -31,7 +31,9 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
 import com.ultramegatech.ey.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -52,10 +54,10 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     private final Filter mFilter;
 
     /* The original data set */
-    private final ArrayList<ElementHolder> mListItems = new ArrayList<ElementHolder>();
+    private final ArrayList<ElementHolder> mListItems = new ArrayList<>();
 
     /* The filtered and sorted data set */
-    private final ArrayList<ElementHolder> mFiltered = new ArrayList<ElementHolder>();
+    private final ArrayList<ElementHolder> mFiltered = new ArrayList<>();
 
     /* The current field used for sorting */
     private int mSort = SORT_NUMBER;
@@ -66,10 +68,9 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * Constructor
      *
-     * @param context
-     * @param listItems List of elements
+     * @param context The context
      */
-    public ElementListAdapter(Context context, ArrayList<ElementHolder> listItems) {
+    public ElementListAdapter(Context context) {
         mContext = context;
 
         mFilter = new Filter() {
@@ -85,11 +86,6 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
                 notifyDataSetChanged();
             }
         };
-
-        if(listItems != null) {
-            mListItems.addAll(listItems);
-            mFiltered.addAll(listItems);
-        }
     }
 
     public int getCount() {
@@ -126,7 +122,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * Set the list of elements
      *
-     * @param listItems
+     * @param listItems The list of elements
      */
     public void setItems(ArrayList<ElementHolder> listItems) {
         mListItems.clear();
@@ -143,16 +139,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * Set the field used to sort elements.
      *
-     * @param sortBy One of the SORT_ constants
-     */
-    public void setSort(int sortBy) {
-        setSort(sortBy, false);
-    }
-
-    /**
-     * Set the field used to sort elements.
-     *
-     * @param sortBy One of the SORT_ constants
+     * @param sortBy  One of the SORT_ constants
      * @param reverse Sort items in reverse order
      */
     public void setSort(int sortBy, boolean reverse) {
@@ -184,7 +171,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * Sort the filtered list.
      *
-     * @param sortBy One of the SORT_ constants
+     * @param sortBy  One of the SORT_ constants
      * @param reverse Sort items in reverse order
      */
     private void sortList(int sortBy, boolean reverse) {

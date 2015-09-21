@@ -23,14 +23,15 @@
 -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    tools:ignore="MergeRootFrame">
+
     <com.ultramegatech.widget.PeriodicTableView
-        xmlns:app="http://schemas.android.com/apk/res/com.ultramegatech.ey"
         android:id="@+id/ptview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:title="@string/titlePeriodicTable"
-    />
+        app:title="@string/titlePeriodicTable" />
 </FrameLayout>

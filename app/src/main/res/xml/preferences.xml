@@ -21,23 +21,21 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:key="tempUnit"
-        android:title="@string/prefTitleTemp"
-        android:summary="@string/prefSummaryTemp"
-        android:entries="@array/tempUnitNames"
-        android:entryValues="@array/tempUnits"
         android:defaultValue="K"
         android:dialogTitle="@string/prefTitleTemp"
-    />
+        android:entries="@array/tempUnitNames"
+        android:entryValues="@array/tempUnits"
+        android:key="tempUnit"
+        android:summary="@string/prefSummaryTemp"
+        android:title="@string/prefTitleTemp" />
     <ListPreference
-        android:key="elementColors"
-        android:title="@string/prefTitleColors"
-        android:summary="@string/prefSummaryColors"
-        android:entries="@array/elementColorNames"
-        android:entryValues="@array/elementColors"
         android:defaultValue="category"
         android:dialogTitle="@string/prefTitleColors"
-    />
+        android:entries="@array/elementColorNames"
+        android:entryValues="@array/elementColors"
+        android:key="elementColors"
+        android:summary="@string/prefSummaryColors"
+        android:title="@string/prefTitleColors" />
 </PreferenceScreen>

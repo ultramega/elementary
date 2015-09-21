@@ -35,11 +35,13 @@ import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.widget.PeriodicTableBlock;
 import com.ultramegatech.widget.PeriodicTableView;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -52,14 +54,14 @@ import java.util.ArrayList;
 public class PeriodicTableActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /* Fields to read from the database */
-    private final String[] mProjection = new String[]{
-        Elements.NUMBER,
-        Elements.SYMBOL,
-        Elements.WEIGHT,
-        Elements.GROUP,
-        Elements.PERIOD,
-        Elements.CATEGORY,
-        Elements.UNSTABLE
+    private final String[] mProjection = new String[] {
+            Elements.NUMBER,
+            Elements.SYMBOL,
+            Elements.WEIGHT,
+            Elements.GROUP,
+            Elements.PERIOD,
+            Elements.CATEGORY,
+            Elements.UNSTABLE
     };
 
     /* The main view */
@@ -130,8 +132,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         mPeriodicTableView.getLegend().setMap(ElementUtils.getLegendMap(this));
 
-        final ArrayList<PeriodicTableBlock> periodicTableBlocks =
-                new ArrayList<PeriodicTableBlock>();
+        final ArrayList<PeriodicTableBlock> periodicTableBlocks = new ArrayList<>();
         PeriodicTableBlock block;
 
         final DecimalFormat df = new DecimalFormat();

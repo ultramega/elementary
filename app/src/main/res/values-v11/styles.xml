@@ -22,6 +22,8 @@
   THE SOFTWARE.
 -->
 <resources>
+
     <style name="LightTheme" parent="android:Theme.Holo.Light" />
+
     <style name="LightTheme.NoTitleBar" />
 </resources>

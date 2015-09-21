@@ -25,6 +25,7 @@ package com.ultramegatech.widget;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -71,7 +72,7 @@ public class PeriodicTableLegend extends Observable {
     /**
      * Color a list of blocks.
      *
-     * @param blocks
+     * @param blocks The list of blocks
      */
     public void colorBlocks(List<PeriodicTableBlock> blocks) {
         if(mMap == null) {
@@ -86,7 +87,7 @@ public class PeriodicTableLegend extends Observable {
     /**
      * Set the color value of a block.
      *
-     * @param block
+     * @param block The block
      */
     public void colorBlock(PeriodicTableBlock block) {
         if(mMap == null) {
@@ -102,7 +103,7 @@ public class PeriodicTableLegend extends Observable {
      * contains text declaring the value represented by the rectangle's color.
      *
      * @param canvas Canvas on which to draw
-     * @param rect Boundaries within which to draw
+     * @param rect   Boundaries within which to draw
      */
     public void drawLegend(Canvas canvas, Rect rect) {
         if(mMap == null) {
@@ -134,14 +135,14 @@ public class PeriodicTableLegend extends Observable {
     }
 
     public static class Item {
-        public int color;
-        public String name;
+        public final int color;
+        public final String name;
 
         /**
          * Create an item for the legend.
          *
          * @param color The hex value for the color
-         * @param name The display name of this item
+         * @param name  The display name of this item
          */
         public Item(int color, String name) {
             this.color = color;
