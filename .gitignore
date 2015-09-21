@@ -1,7 +1,7 @@
-default.properties
-build.properties
-local.properties
-bin/
-gen/
-nbandroid/
-private/
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
