@@ -55,41 +55,57 @@ import com.ultramegatech.util.UnitUtils;
 import java.text.DecimalFormat;
 
 /**
- * This activity displays details about a single chemical element. It can be launched by an Intent
- * with an extra identifying the element by database id or atomic number.
+ * This Activity displays details about a single chemical element. It can be launched by an Intent
+ * with an extra identifying the element by database ID or atomic number.
  *
  * @author Steve Guidetti
  */
 public class ElementDetailsActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
-    /* Intent extras */
+    /**
+     * Intent extras
+     */
     public static final String EXTRA_ATOMIC_NUMBER = "atomic_number";
 
-    /* Units of measurement */
+    /**
+     * Units of measurement
+     */
     private enum Units {
         KELVIN, CELSIUS, FAHRENHEIT
     }
 
-    /* Values from the database row */
+    /**
+     * Values from the database row
+     */
     private final ContentValues mData = new ContentValues();
 
-    /* Units to use for temperature values */
+    /**
+     * Units to use for temperature values
+     */
     private Units mTemperatureUnits;
 
-    /* Field used for coloring the element block */
+    /**
+     * Field used for coloring the element block
+     */
     private String mColorKey;
 
-    /* Header text */
+    /**
+     * Header text
+     */
     private TextView mTxtHeader;
 
-    /* Element block views */
+    /**
+     * Element block Views
+     */
     private RelativeLayout mElementBlock;
     private TextView mTxtElementSymbol;
     private TextView mTxtElementNumber;
     private TextView mTxtElementWeight;
     private TextView mTxtElementElectrons;
 
-    /* Table views */
+    /**
+     * Table Views
+     */
     private TextView mTxtNumber;
     private TextView mTxtSymbol;
     private TextView mTxtName;
@@ -105,10 +121,14 @@ public class ElementDetailsActivity extends FragmentActivity implements
     private TextView mTxtNegativity;
     private TextView mTxtAbundance;
 
-    /* Value to return for unknown values */
+    /**
+     * Value to return for unknown values
+     */
     private String mStringUnknown;
 
-    /* Format for decimal values */
+    /**
+     * Format for decimal values
+     */
     private DecimalFormat mDecimalFormat;
 
     @Override
@@ -151,7 +171,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Load relevant shared preferences.
+     * Load relevant preferences.
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -175,7 +195,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Load references to all views.
+     * Load references to all Views.
      */
     private void findViews() {
         mTxtHeader = (TextView)findViewById(R.id.header);
@@ -215,7 +235,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Fill views with data loaded from the database.
+     * Fill Views with data loaded from the database.
      */
     private void populateViews() {
         final String name =
@@ -248,7 +268,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Get the category name
+     * Get the category name.
      *
      * @return The category name
      */
@@ -417,7 +437,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Launch YouTube video intent.
+     * Launch YouTube video Intent.
      */
     private void showVideo() {
         final String videoId = mData.getAsString(Elements.VIDEO);
@@ -430,7 +450,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Launch view intent for the Wikipedia page.
+     * Launch view Intent for the Wikipedia page.
      */
     private void showWikipedia() {
         final int pageId = ElementUtils.getElementWiki(mData.getAsInteger(Elements.NUMBER));
@@ -441,21 +461,23 @@ public class ElementDetailsActivity extends FragmentActivity implements
     }
 
     /**
-     * Get the content Uri based on an intent extra.
+     * Get the content Uri based on an Intent extra.
      *
-     * @return The content uri
+     * @return The content Uri
      */
     private Uri getUri() {
         final long id = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
         return ContentUris.withAppendedId(Elements.CONTENT_URI_NUMBER, id);
     }
 
+    @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         setProgressBarIndeterminateVisibility(true);
 
         return new CursorLoader(this, getUri(), null, null, null, null);
     }
 
+    @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         if(d.moveToFirst()) {
             final String[] columns = d.getColumnNames();
@@ -486,9 +508,11 @@ public class ElementDetailsActivity extends FragmentActivity implements
         }
     }
 
+    @Override
     public void onLoaderReset(Loader<Cursor> loader) {
     }
 
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("tempUnit")) {
             loadPreferences();

@@ -46,14 +46,16 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * This activity displays the periodic table view. Clicking on an element block will launch an
+ * This Activity displays the PeriodicTableView. Clicking on an element block will launch an
  * ElementDetailsActivity for the selected element.
  *
  * @author Steve Guidetti
  */
 public class PeriodicTableActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
-    /* Fields to read from the database */
+    /**
+     * Fields to read from the database
+     */
     private final String[] mProjection = new String[] {
             Elements.NUMBER,
             Elements.SYMBOL,
@@ -64,7 +66,9 @@ public class PeriodicTableActivity extends FragmentActivity implements
             Elements.UNSTABLE
     };
 
-    /* The main view */
+    /**
+     * The main View
+     */
     private PeriodicTableView mPeriodicTableView;
 
     @Override
@@ -111,7 +115,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
     }
 
     /**
-     * Load relevant shared preferences.
+     * Load relevant preferences.
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -125,10 +129,12 @@ public class PeriodicTableActivity extends FragmentActivity implements
         }
     }
 
+    @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this, Elements.CONTENT_URI, mProjection, null, null, null);
     }
 
+    @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         mPeriodicTableView.getLegend().setMap(ElementUtils.getLegendMap(this));
 
@@ -158,9 +164,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
         mPeriodicTableView.setBlocks(periodicTableBlocks);
     }
 
+    @Override
     public void onLoaderReset(Loader<Cursor> loader) {
     }
 
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("elementColors")) {
             loadPreferences();

@@ -28,20 +28,30 @@ package com.ultramegatech.util;
  * @author Steve Guidetti
  */
 public abstract class Dynamics {
-    /* Maximum time difference between updates */
+    /**
+     * Maximum time difference between updates in milliseconds
+     */
     private static final int MAX_TIME_STEP = 50;
 
-    /* Current position */
+    /**
+     * Current position
+     */
     double mPosition;
 
-    /* Current velocity */
+    /**
+     * Current velocity
+     */
     double mVelocity;
 
-    /* Position limits */
+    /**
+     * Position limits
+     */
     double mMaxPosition = Double.MAX_VALUE;
     double mMinPosition = -Double.MAX_VALUE;
 
-    /* The time of the last update */
+    /**
+     * The time of the last update
+     */
     private long mLastTime = 0;
 
     /**

@@ -28,28 +28,44 @@ package com.ultramegatech.widget;
  * @author Steve Guidetti
  */
 public class PeriodicTableBlock {
-    /* Atomic number */
+    /**
+     * Atomic number
+     */
     public int number;
 
-    /* Element symbol*/
+    /**
+     * Element symbol
+     */
     public String symbol;
 
-    /* Text to display below the symbol */
+    /**
+     * Text to display below the symbol
+     */
     public String subtext;
 
-    /* Element group, 0 for lanthinoids and actinoids */
+    /**
+     * Element group, 0 for lanthinoids and actinoids
+     */
     public int group;
 
-    /* Element period */
+    /**
+     * Element period
+     */
     public int period;
 
-    /* Category used for coloring */
+    /**
+     * Category used for coloring
+     */
     public Object category;
 
-    /* Grid position */
+    /**
+     * Grid position
+     */
     public int row;
     public int col;
 
-    /* Block background color */
+    /**
+     * Block background color
+     */
     public int color = 0xFFCCCCCC;
 }

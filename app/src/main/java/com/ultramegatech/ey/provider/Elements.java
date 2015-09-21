@@ -27,16 +27,20 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * Data contract for the elements table. Provides column names, column types, and ContentProvider
+ * Data contract for the 'elements' table. Provides column names, column types, and ContentProvider
  * Uris.
  *
  * @author Steve Guidetti
  */
 public class Elements implements BaseColumns {
-    /* Database table name */
+    /**
+     * Database table name
+     */
     public static final String TABLE_NAME = "elements";
 
-    /* Column names */
+    /**
+     * Column names
+     */
     public static final String NUMBER = "num";
     public static final String SYMBOL = "sym";
     public static final String GROUP = "g";
@@ -55,20 +59,26 @@ public class Elements implements BaseColumns {
     public static final String UNSTABLE = "uns";
     public static final String VIDEO = "vid";
 
-    /* Data types */
+    /**
+     * Data types
+     */
     private static final String BASE_TYPE = "com.ultramegatech.ey.element";
     public static final String DATA_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + BASE_TYPE;
     public static final String DATA_TYPE_ITEM =
             ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + BASE_TYPE;
 
-    /* Content resolver uri bases */
+    /**
+     * ContentResolver Uri bases
+     */
     private static final String SCHEME = "content://";
     public static final Uri CONTENT_URI =
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements");
     public static final Uri CONTENT_URI_NUMBER =
             Uri.parse(SCHEME + ElementsProvider.AUTHORITY + "/elements/");
 
-    /* Column types */
+    /**
+     * Column types
+     */
     public enum Type {
         UNDEFINED, TEXT, INTEGER, REAL, BOOLEAN
     }
@@ -98,9 +108,6 @@ public class Elements implements BaseColumns {
         return Type.UNDEFINED;
     }
 
-    /**
-     * Constructor
-     */
     private Elements() {
     }
 }

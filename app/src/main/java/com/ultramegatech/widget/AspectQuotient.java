@@ -25,25 +25,27 @@ package com.ultramegatech.widget;
 import java.util.Observable;
 
 /**
- * Stores the quotient between the aspect ratios of the container and a view.
+ * Stores the quotient between the aspect ratios of the container and a View.
  *
  * @author Steve Guidetti
  */
 class AspectQuotient extends Observable {
-    /* Current aspect quotient */
+    /**
+     * Current AspectQuotient
+     */
     private double mAspectQuotient;
 
     /**
-     * Get the aspect quotient.
+     * Get the AspectQuotient.
      *
-     * @return The aspect quotient
+     * @return The AspectQuotient
      */
     public double get() {
         return mAspectQuotient;
     }
 
     /**
-     * Calculate aspect quotient based on supplied view and content dimensions.
+     * Calculate aspect quotient based on supplied View and content dimensions.
      *
      * @param viewWidth     Width of container
      * @param viewHeight    Height of container

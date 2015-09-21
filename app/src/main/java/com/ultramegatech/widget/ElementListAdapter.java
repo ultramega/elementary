@@ -44,31 +44,44 @@ import java.util.Comparator;
  * @author Steve Guidetti
  */
 public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filterable {
-    /* Sorting options */
+    /**
+     * Sorting options
+     */
     public static final int SORT_NUMBER = 0;
     public static final int SORT_NAME = 1;
 
+    /**
+     * The Context
+     */
     private final Context mContext;
 
-    /* The filter for this list adapter */
+    /**
+     * The filter for this ListAdapter
+     */
     private final Filter mFilter;
 
-    /* The original data set */
+    /**
+     * The original data set
+     */
     private final ArrayList<ElementHolder> mListItems = new ArrayList<>();
 
-    /* The filtered and sorted data set */
+    /**
+     * The filtered and sorted data set
+     */
     private final ArrayList<ElementHolder> mFiltered = new ArrayList<>();
 
-    /* The current field used for sorting */
+    /**
+     * The current field used for sorting
+     */
     private int mSort = SORT_NUMBER;
 
-    /* The current sorting direction */
+    /**
+     * The current sorting direction
+     */
     private boolean mSortReverse = false;
 
     /**
-     * Constructor
-     *
-     * @param context The context
+     * @param context The Context
      */
     public ElementListAdapter(Context context) {
         mContext = context;
@@ -88,18 +101,22 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         };
     }
 
+    @Override
     public int getCount() {
         return mFiltered.size();
     }
 
+    @Override
     public Object getItem(int i) {
         return mFiltered.get(i);
     }
 
+    @Override
     public long getItemId(int i) {
         return mFiltered.get(i).id;
     }
 
+    @Override
     public View getView(int i, View view, ViewGroup vg) {
         if(view == null) {
             view = View.inflate(mContext, R.layout.element_list_item, null);
@@ -115,6 +132,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         return view;
     }
 
+    @Override
     public Filter getFilter() {
         return mFilter;
     }
@@ -140,7 +158,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      * Set the field used to sort elements.
      *
      * @param sortBy  One of the SORT_ constants
-     * @param reverse Sort items in reverse order
+     * @param reverse Whether to sort items in reverse order
      */
     public void setSort(int sortBy, boolean reverse) {
         sortList(sortBy, reverse);
@@ -148,7 +166,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     /**
-     * Filter the original data set
+     * Filter the original data set.
      *
      * @param filter Text used to filter the elements
      */
@@ -172,7 +190,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      * Sort the filtered list.
      *
      * @param sortBy  One of the SORT_ constants
-     * @param reverse Sort items in reverse order
+     * @param reverse Whether to sort items in reverse order
      */
     private void sortList(int sortBy, boolean reverse) {
         mSort = sortBy;
@@ -185,15 +203,40 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     /**
-     * Class to hold data for a single element
+     * Class to hold data for a single element.
      */
     public static class ElementHolder {
+        /**
+         * The database ID
+         */
         public final long id;
+
+        /**
+         * The atomic number
+         */
         public final String number;
+
+        /**
+         * The element symbol
+         */
         public final String symbol;
+
+        /**
+         * The element name
+         */
         public final String name;
+
+        /**
+         * The block color
+         */
         public final int color;
 
+        /**
+         * @param number The atomic number
+         * @param symbol The element symbol
+         * @param name   The element name
+         * @param color  The block color
+         */
         public ElementHolder(String number, String symbol, String name, int color) {
             this.id = Long.valueOf(number);
             this.number = number;
@@ -205,21 +248,22 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     /**
-     * Comparator used for sorting elements
+     * Comparator used for sorting elements.
      */
     private static class ElementComparator implements Comparator<ElementHolder> {
-
+        /**
+         * The field to sort by
+         */
         private final int mSortField;
 
         /**
-         * Constructor
-         *
          * @param sortField One of the SORT_ constants
          */
         public ElementComparator(int sortField) {
             mSortField = sortField;
         }
 
+        @Override
         public int compare(ElementHolder l, ElementHolder r) {
             if(mSortField == SORT_NUMBER) {
                 return Integer.valueOf(l.number) - Integer.valueOf(r.number);

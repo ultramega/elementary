@@ -38,16 +38,24 @@ import java.util.Observable;
  * @author Steve Guidetti
  */
 public class PeriodicTableLegend extends Observable {
-    /* Map of values to legend items */
+    /**
+     * Map of values to legend items
+     */
     private HashMap<Object, Item> mMap;
 
-    /* Paint used to draw backgrounds */
+    /**
+     * Paint used to draw backgrounds
+     */
     private final Paint mPaint = new Paint();
 
-    /* Paint used to draw text */
+    /**
+     * Paint used to draw text
+     */
     private final Paint mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    /* Rectangle used to draw backgrounds */
+    /**
+     * Rectangle used to draw backgrounds
+     */
     private final Rect mRect = new Rect();
 
     /**
@@ -98,7 +106,7 @@ public class PeriodicTableLegend extends Observable {
     }
 
     /**
-     * Render the legend within the specified rectangle on the specified canvas. The legend appears
+     * Render the legend within the specified rectangle on the specified Canvas. The legend appears
      * as a grid of colored rectangles in 4 rows and a variable number of columns. Each rectangle
      * contains text declaring the value represented by the rectangle's color.
      *
@@ -134,13 +142,21 @@ public class PeriodicTableLegend extends Observable {
         }
     }
 
+    /**
+     * Represents an item on the legend.
+     */
     public static class Item {
+        /**
+         * The hex value for the color
+         */
         public final int color;
+
+        /**
+         * The display name of this item
+         */
         public final String name;
 
         /**
-         * Create an item for the legend.
-         *
          * @param color The hex value for the color
          * @param name  The display name of this item
          */

@@ -28,7 +28,9 @@ package com.ultramegatech.util;
  * @author Steve Guidetti
  */
 public class GlideDynamics extends Dynamics {
-    /* Current friction */
+    /**
+     * Current friction
+     */
     private double mFriction;
 
     /**

@@ -28,7 +28,7 @@ import android.app.Activity;
 import android.os.Build;
 
 /**
- * Compatibility wrapper for accessing the Action Bar.
+ * Compatibility wrapper for accessing the ActionBar.
  *
  * @author Steve Guidetti
  */
@@ -36,7 +36,7 @@ public abstract class ActionBarWrapper {
     /**
      * Get a compatible implementation of ActionBarWrapper.
      *
-     * @param activity The activity
+     * @param activity The Activity
      * @return An instance of ActionBarWrapper
      */
     public static ActionBarWrapper getInstance(Activity activity) {
@@ -59,6 +59,9 @@ public abstract class ActionBarWrapper {
      */
     public abstract void setDisplayHomeAsUpEnabled(boolean arg);
 
+    /**
+     * Wrapper for pre-Honeycomb devices that does nothing.
+     */
     private static class PreHoneycomb extends ActionBarWrapper {
         public PreHoneycomb() {
         }
@@ -72,10 +75,19 @@ public abstract class ActionBarWrapper {
         }
     }
 
+    /**
+     * Wrapper for the ActionBar for devices that support it.
+     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private static class Honeycomb extends ActionBarWrapper {
+        /**
+         * The Activity
+         */
         private final Activity mActivity;
 
+        /**
+         * @param activity The Activity
+         */
         public Honeycomb(Activity activity) {
             mActivity = activity;
         }

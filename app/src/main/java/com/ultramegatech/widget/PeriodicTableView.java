@@ -38,14 +38,14 @@ import java.util.Observer;
 
 /**
  * Zoomable, color coded View of the Periodic Table of the Elements. Renders a list of
- * PeriodicTableBlock objects in the standard periodic table layout. Also implements a custom
+ * PeriodicTableBlock objects in the standard Periodic Table layout. Also implements a custom
  * OnItemClickListener that passes the selected PeriodicTableBlock object.
  *
  * @author Steve Guidetti
  */
 public class PeriodicTableView extends View implements Observer {
     /**
-     * Callback interface for click listeners
+     * Callback interface for click listeners.
      */
     public interface OnItemClickListener {
         /**
@@ -56,63 +56,101 @@ public class PeriodicTableView extends View implements Observer {
         void onItemClick(PeriodicTableBlock item);
     }
 
-    /* The list of blocks to render */
+    /**
+     * The list of blocks to render
+     */
     private List<PeriodicTableBlock> mPeriodicTableBlocks;
 
-    /* Callback for item clicks */
+    /**
+     * Callback for item clicks
+     */
     private OnItemClickListener mItemClickListener;
 
-    /* Color legend */
+    /**
+     * Color legend
+     */
     private final PeriodicTableLegend mLegend = new PeriodicTableLegend();
 
-    /* Title string */
+    /**
+     * Title string
+     */
     private CharSequence mTitle;
 
-    /* Block size in pixels in the zoomed out state */
+    /**
+     * Block size in pixels in the zoomed out state
+     */
     private int mBaseBlockSize = 20;
 
-    /* Actual current block size */
+    /**
+     * Actual current block size
+     */
     private int mBlockSize;
 
-    /* Amount of space around the table */
+    /**
+     * Amount of space around the table
+     */
     private int mPadding;
 
-    /* Number of rows and columns in the table */
+    /**
+     * Number of rows and columns in the table
+     */
     private int mNumRows;
     private int mNumCols;
 
-    /* Paint for block backgrounds */
+    /**
+     * Paint for block backgrounds
+     */
     private Paint mBlockPaint;
 
-    /* Paint for row and column headers */
+    /**
+     * Paint for row and column headers
+     */
     private Paint mHeaderPaint;
 
-    /* Paint for symbols */
+    /**
+     * Paint for symbols
+     */
     private Paint mSymbolPaint;
 
-    /* Paint for atomic numbers */
+    /**
+     * Paint for atomic numbers
+     */
     private Paint mNumberPaint;
 
-    /* Paint for the text below the symbol */
+    /**
+     * Paint for the text below the symbol
+     */
     private Paint mSmallTextPaint;
 
-    /* Paint for the selection indicator */
+    /**
+     * Paint for the selection indicator
+     */
     private Paint mSelectedPaint;
 
-    /* This view's aspect quotient */
+    /**
+     * This View's AspectQuotient
+     */
     private final AspectQuotient mAspectQuotient = new AspectQuotient();
 
-    /* This view's zoom state */
+    /**
+     * This View's ZoomState
+     */
     private ZoomState mState;
 
-    /* Offsets for drawing on the canvas based on zoom state */
+    /**
+     * Offsets for drawing on the Canvas based on ZoomState
+     */
     private int mOffsetX;
     private int mOffsetY;
 
-    /* Rectangle for many purposes */
+    /**
+     * Rectangle for many purposes
+     */
     private final Rect mRect = new Rect();
 
-    /* The currently selected block */
+    /**
+     * The currently selected block
+     */
     private PeriodicTableBlock mBlockSelected;
 
     public PeriodicTableView(Context context) {
@@ -256,7 +294,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Set the title from a string resource.
      *
-     * @param resId Resource id
+     * @param resId Resource ID
      */
     public void setTitle(int resId) {
         setTitle(getResources().getText(resId));
@@ -370,9 +408,9 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
-     * Draw the headers and placeholders on the supplied canvas.
+     * Draw the headers and placeholders on the supplied Canvas.
      *
-     * @param canvas The canvas
+     * @param canvas The Canvas
      */
     private void writeHeaders(Canvas canvas) {
         mHeaderPaint.setTextSize(mBlockSize / 4);
@@ -394,9 +432,9 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
-     * Draw the title on the supplied canvas.
+     * Draw the title on the supplied Canvas.
      *
-     * @param canvas The canvas
+     * @param canvas The Canvas
      */
     private void writeTitle(Canvas canvas) {
         if(mTitle != null) {
@@ -465,6 +503,7 @@ public class PeriodicTableView extends View implements Observer {
         }
     }
 
+    @Override
     public void update(Observable observable, Object data) {
         if(observable instanceof PeriodicTableLegend) {
             mLegend.colorBlocks(mPeriodicTableBlocks);

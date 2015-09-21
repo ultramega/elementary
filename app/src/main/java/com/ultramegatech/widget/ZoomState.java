@@ -25,15 +25,19 @@ package com.ultramegatech.widget;
 import java.util.Observable;
 
 /**
- * Maintains the state of a view's zoom level and pan position.
+ * Maintains the state of a View's zoom level and pan position.
  *
  * @author Steve Guidetti
  */
 public class ZoomState extends Observable {
-    /* Zoom level, 1.0 being the level at which the content fits the view */
+    /**
+     * Zoom level, 1.0 being the level at which the content fits the View
+     */
     private double mZoom;
 
-    /* Coordinates of the zoom window center relative to the content */
+    /**
+     * Coordinates of the zoom window center relative to the content
+     */
     private double mPanX;
     private double mPanY;
 
@@ -77,7 +81,7 @@ public class ZoomState extends Observable {
     /**
      * Calculate the zoom value in the Y dimension.
      *
-     * @param aspectQuotient Quotient of content and view aspect ratios
+     * @param aspectQuotient Quotient of content and View aspect ratios
      * @return The Y zoom value
      */
     public double getZoomY(double aspectQuotient) {

@@ -61,7 +61,7 @@ import com.ultramegatech.widget.ElementListAdapter.ElementHolder;
 import java.util.ArrayList;
 
 /**
- * This activity displays a list of all the elements sorted by atomic number. Clicking on an item
+ * This Activity displays a list of all the elements sorted by atomic number. Clicking on an item
  * will launch an ElementDetailsActivity for the selected element. The list can be filtered by name
  * or symbol.
  *
@@ -69,12 +69,16 @@ import java.util.ArrayList;
  */
 public class ElementListActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
-    /* Keys for saving instance state */
+    /**
+     * Keys for saving instance state
+     */
     private static final String KEY_SORT = "key_sort";
     private static final String KEY_SORT_REVERSE = "key_sort_reverse";
     private static final String KEY_FILTER = "key_filter";
 
-    /* Fields to read from the database */
+    /**
+     * Fields to read from the database
+     */
     private final String[] mListProjection = new String[] {
             Elements._ID,
             Elements.NUMBER,
@@ -82,16 +86,24 @@ public class ElementListActivity extends FragmentActivity implements
             Elements.CATEGORY
     };
 
-    /* List adapter */
+    /**
+     * The Adapter backing the list
+     */
     private ElementListAdapter mAdapter;
 
-    /* Current value to filter results by */
+    /**
+     * Current value to filter results by
+     */
     private String mFilter;
 
-    /* Current value for sorting elements */
+    /**
+     * Current value for sorting elements
+     */
     private int mSort = ElementListAdapter.SORT_NUMBER;
 
-    /* Current sorting direction */
+    /**
+     * Current sorting direction
+     */
     private boolean mSortReverse = false;
 
     @Override
@@ -160,7 +172,7 @@ public class ElementListActivity extends FragmentActivity implements
     }
 
     /**
-     * Load relevant shared preferences.
+     * Load relevant preferences.
      */
     private void loadPreferences() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -224,12 +236,14 @@ public class ElementListActivity extends FragmentActivity implements
         mAdapter.setSort(mSort, mSortReverse);
     }
 
+    @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         setProgressBarIndeterminateVisibility(true);
         return new CursorLoader(this, Elements.CONTENT_URI, mListProjection, null, null,
                 Elements.NUMBER + " ASC");
     }
 
+    @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
         setProgressBarIndeterminateVisibility(false);
 
@@ -250,9 +264,11 @@ public class ElementListActivity extends FragmentActivity implements
         mAdapter.setSort(mSort, mSortReverse);
     }
 
+    @Override
     public void onLoaderReset(Loader<Cursor> loader) {
     }
 
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals("elementColors")) {
             loadPreferences();
@@ -260,8 +276,10 @@ public class ElementListActivity extends FragmentActivity implements
         }
     }
 
+    /**
+     * Dialog for setting the sort parameter for the list.
+     */
     public static class SortDialog extends DialogFragment {
-
         @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

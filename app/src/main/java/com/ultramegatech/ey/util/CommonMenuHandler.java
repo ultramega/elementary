@@ -29,7 +29,7 @@ import com.ultramegatech.ey.EyPreferenceActivity;
 import com.ultramegatech.ey.R;
 
 /**
- * Handles menu items shared by all activities.
+ * Handles menu items shared by all Activities.
  *
  * @author Steve Guidetti
  */
@@ -37,8 +37,8 @@ public class CommonMenuHandler {
     /**
      * Select an action based on a menu selection.
      *
-     * @param context The context
-     * @param id      Menu item id
+     * @param context The Context
+     * @param id      Menu item ID
      */
     public static void handleSelect(Context context, int id) {
         switch(id) {
@@ -49,9 +49,9 @@ public class CommonMenuHandler {
     }
 
     /**
-     * Launch EyPreferenceActivity.
+     * Launch the EyPreferenceActivity.
      *
-     * @param context The context
+     * @param context The Context
      */
     private static void launchOptionsActivity(Context context) {
         context.startActivity(new Intent(context, EyPreferenceActivity.class));

@@ -37,14 +37,20 @@ import android.net.Uri;
  * @author Steve Guidetti
  */
 public class ElementsProvider extends ContentProvider {
-    /* Provider authority */
+    /**
+     * Provider authority
+     */
     public static final String AUTHORITY = "com.ultramegatech.ey.provider";
 
-    /* Uri matcher ids */
+    /**
+     * Uri matcher IDs
+     */
     private static final int ELEMENTS = 1;
     private static final int ELEMENTS_NUMBER = 2;
 
-    /* Uri matcher */
+    /**
+     * Uri matcher
+     */
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH) {
         {
             addURI(AUTHORITY, "elements", ELEMENTS);
@@ -52,7 +58,9 @@ public class ElementsProvider extends ContentProvider {
         }
     };
 
-    /* SQLiteOpenHelper */
+    /**
+     * The SQLiteOpenHelper for accessing the database
+     */
     private DatabaseOpenHelper mDatabaseOpenHelper;
 
     @Override

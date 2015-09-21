@@ -30,55 +30,77 @@ import android.view.View;
 import android.view.ViewConfiguration;
 
 /**
- * Touch listener for PeriodicTableView. Drag or fling to pan, long press to zoom, and tap to click
- * on a block.
+ * Custom OnTouchListener for PeriodicTableView. Drag or fling to pan, long press to zoom, and tap
+ * to click on a block.
  *
  * @author Steve Guidetti
  */
 public class PeriodicTableTouchListener implements View.OnTouchListener {
     /**
-     * Listener modes. Before the view is touched the listener is in the UNDEFINED mode. Once touch
-     * starts it can enter either one of the other two modes: If the user scrolls over the view the
-     * listener will enter PAN mode, if the user lets his finger rest and makes a long press the
+     * Listener modes. Before the View is touched the listener is in the UNDEFINED mode. Once touch
+     * starts it can enter either one of the other two modes: If the user scrolls over the View the
+     * listener will enter PAN mode, if the user lets their finger rest and makes a long press the
      * listener will enter ZOOM mode.
      */
     public enum Mode {
         UNDEFINED, PAN, ZOOM
     }
 
-    /* Time of tactile feedback vibration when entering zoom mode */
+    /**
+     * Time of tactile feedback vibration when entering zoom mode
+     */
     private static final long VIBRATE_TIME = 50;
 
-    /* Zoom control to manipulate */
+    /**
+     * DynamicZoomControl to manipulate
+     */
     private DynamicZoomControl mZoomControl;
 
-    /* Current listener mode */
+    /**
+     * Current listener mode
+     */
     private Mode mMode = Mode.UNDEFINED;
 
-    /* Coordinates of previous touch event */
+    /**
+     * Coordinates of previous touch event
+     */
     private double mX;
     private double mY;
 
-    /* Coordinates of latest down event */
+    /**
+     * Coordinates of latest down event
+     */
     private double mDownX;
     private double mDownY;
 
-    /* Velocity tracker for touch events */
+    /**
+     * Velocity tracker for touch events
+     */
     private VelocityTracker mVelocityTracker;
 
-    /* Distance a touch can travel to be considered dragging */
+    /**
+     * Distance a touch can travel to be considered dragging
+     */
     private final int mScaledTouchSlop;
 
-    /* Duration of a long press */
+    /**
+     * Duration of a long press
+     */
     private final int mLongPressTimeout;
 
-    /* Vibrator for tactile feedback */
+    /**
+     * Vibrator for tactile feedback
+     */
     private final Vibrator mVibrator;
 
-    /* Maximum velocity of a fling */
+    /**
+     * Maximum velocity of a fling
+     */
     private final int mScaledMaximumFlingVelocity;
 
-    /* Runnable to enter zoom mode */
+    /**
+     * Runnable to enter zoom mode
+     */
     private final Runnable mLongPressRunnable = new Runnable() {
         public void run() {
             mMode = Mode.ZOOM;
@@ -87,9 +109,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
     };
 
     /**
-     * Constructor
-     *
-     * @param context The context
+     * @param context The Context
      */
     public PeriodicTableTouchListener(Context context) {
         mLongPressTimeout = ViewConfiguration.getLongPressTimeout();
@@ -100,7 +120,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
     }
 
     /**
-     * Set the ZoomControl.
+     * Set the DynamicZoomControl.
      *
      * @param control The DynamicZoomControl
      */
@@ -108,6 +128,7 @@ public class PeriodicTableTouchListener implements View.OnTouchListener {
         mZoomControl = control;
     }
 
+    @Override
     public boolean onTouch(View v, MotionEvent event) {
         final PeriodicTableView periodicTableView = (PeriodicTableView)v;
 

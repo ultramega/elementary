@@ -39,7 +39,9 @@ import java.util.LinkedHashMap;
  * @author Steve Guidetti
  */
 public class ElementUtils {
-    /* List of string resources for each element name */
+    /**
+     * List of string resources for each element name
+     */
     private static final int[] ELEMENT_NAMES = {
             R.string.el001, R.string.el002, R.string.el003, R.string.el004, R.string.el005,
             R.string.el006, R.string.el007, R.string.el008, R.string.el009, R.string.el010,
@@ -67,7 +69,9 @@ public class ElementUtils {
             R.string.el116, R.string.el117, R.string.el118
     };
 
-    /* List of string resources for each element's Wikipedia page */
+    /**
+     * List of string resources for each element's Wikipedia page
+     */
     private static final int[] ELEMENT_WIKI = {
             R.string.wiki001, R.string.wiki002, R.string.wiki003, R.string.wiki004, R.string.wiki005,
             R.string.wiki006, R.string.wiki007, R.string.wiki008, R.string.wiki009, R.string.wiki010,
@@ -95,15 +99,18 @@ public class ElementUtils {
             R.string.wiki116, R.string.wiki117, R.string.wiki118
     };
 
+    /**
+     * The Context
+     */
     private final Context mContext;
 
-    /* Map of values to colors */
+    /**
+     * Map of values to colors
+     */
     private HashMap<Object, Item> mLegendMap;
 
     /**
-     * Constructor
-     *
-     * @param context The context
+     * @param context The Context
      */
     public ElementUtils(Context context) {
         mContext = context;
@@ -126,7 +133,7 @@ public class ElementUtils {
     /**
      * Load the element legend map from array resources.
      *
-     * @param context The context
+     * @param context The Context
      * @return Map of legend items
      */
     public static HashMap<Object, Item> getLegendMap(Context context) {
@@ -162,7 +169,7 @@ public class ElementUtils {
      * Get the name of an element.
      *
      * @param number The atomic number
-     * @return The string resource id for the element name
+     * @return The string resource ID for the element name
      */
     public static int getElementName(int number) {
         if(number > ELEMENT_NAMES.length) {
@@ -176,7 +183,7 @@ public class ElementUtils {
      * Get the wiki link of an element.
      *
      * @param number The atomic number
-     * @return The string resource id for the wiki link
+     * @return The string resource ID for the wiki link
      */
     public static int getElementWiki(int number) {
         if(number > ELEMENT_WIKI.length) {

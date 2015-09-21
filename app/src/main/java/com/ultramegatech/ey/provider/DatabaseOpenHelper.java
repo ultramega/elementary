@@ -37,13 +37,19 @@ import java.util.Scanner;
  * @author Steve Guidetti
  */
 class DatabaseOpenHelper extends SQLiteOpenHelper {
-    /* Database version */
+    /**
+     * Database version
+     */
     private static final int VERSION = 4;
 
-    /* Database file name */
+    /**
+     * Database file name
+     */
     private static final String DB_NAME = "elements.db";
 
-    /* Schema for 'elements' table */
+    /**
+     * Schema for the 'elements' table
+     */
     private static final String SCHEMA_ELEMENTS = "CREATE TABLE "
             + Elements.TABLE_NAME + " ("
             + Elements._ID + " INTEGER PRIMARY KEY, "
@@ -66,6 +72,9 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
             + Elements.VIDEO + " TEXT"
             + ");";
 
+    /**
+     * The Context
+     */
     private final Context mContext;
 
     public DatabaseOpenHelper(Context context) {
@@ -85,6 +94,11 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * Fill the database with element data.
+     *
+     * @param db The database
+     */
     private void populateDatabase(SQLiteDatabase db) {
         final InputStream is = mContext.getResources().openRawResource(R.raw.elements);
         final Scanner scanner = new Scanner(is).useDelimiter("\\n");

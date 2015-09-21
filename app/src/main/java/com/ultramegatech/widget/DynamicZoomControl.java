@@ -36,41 +36,63 @@ import java.util.Observer;
  * @author Steve Guidetti
  */
 class DynamicZoomControl implements Observer {
-    /* Zoom level limits */
+    /**
+     * Zoom level limits
+     */
     private static final int MIN_ZOOM = 1;
     private static final int MAX_ZOOM = 8;
 
-    /* Tolerances for determining if objects are at rest */
+    /**
+     * Tolerances for determining if objects are at rest
+     */
     private static final double REST_VELOCITY_TOLERANCE = 0.004;
     private static final double REST_POSITION_TOLERANCE = 0.01;
 
-    /* Target FPS for animations */
+    /**
+     * Target FPS for animations
+     */
     private static final int FPS = 50;
 
-    /* The aspect quotient of the object being controlled */
+    /**
+     * The AspectQuotient of the object being controlled
+     */
     private AspectQuotient mAspectQuotient;
 
-    /* ZoomState being controlled */
+    /**
+     * ZoomState being controlled
+     */
     private final ZoomState mState = new ZoomState();
 
-    /* Dynamic object for panning in the X dimension */
+    /**
+     * Dynamic object for panning in the X dimension
+     */
     private final GlideDynamics mPanDynamicsX = new GlideDynamics();
 
-    /* Dynamic object for panning in the Y dimension */
+    /**
+     * Dynamic object for panning in the Y dimension
+     */
     private final GlideDynamics mPanDynamicsY = new GlideDynamics();
 
-    /* Pan limits in the X dimension */
+    /**
+     * Pan limits in the X dimension
+     */
     private double mPanMinX;
     private double mPanMaxX;
 
-    /* Pan limits in the Y dimension */
+    /**
+     * Pan limits in the Y dimension
+     */
     private double mPanMinY;
     private double mPanMaxY;
 
-    /* Handler for posting the animations */
+    /**
+     * Handler for posting the animations
+     */
     private final Handler mHandler = new Handler();
 
-    /* Runnable to animate flings */
+    /**
+     * Runnable to animate flings
+     */
     private final Runnable mUpdateRunnable = new Runnable() {
         public void run() {
             final long startTime = SystemClock.uptimeMillis();
@@ -246,6 +268,7 @@ class DynamicZoomControl implements Observer {
         mPanMaxY = 0.5 + getMaxPanDelta(zoomY);
     }
 
+    @Override
     public void update(Observable observable, Object data) {
         limitZoom();
         updatePanLimits();
