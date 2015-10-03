@@ -230,7 +230,7 @@ public class ElementListActivity extends FragmentActivity implements
      *
      * @param field Field to sort by
      */
-    public void setSort(int field) {
+    private void setSort(int field) {
         mSortReverse = field == mSort && !mSortReverse;
         mSort = field;
         mAdapter.setSort(mSort, mSortReverse);
