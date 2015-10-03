@@ -30,6 +30,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 /**
  * ContentProvider for accessing the chemical element database.
@@ -70,8 +71,8 @@ public class ElementsProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
-                        String sortOrder) {
+    public Cursor query(@NonNull Uri uri, String[] projection, String selection,
+                        String[] selectionArgs, String sortOrder) {
         final SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(Elements.TABLE_NAME);
         switch(sUriMatcher.match(uri)) {
@@ -92,7 +93,7 @@ public class ElementsProvider extends ContentProvider {
     }
 
     @Override
-    public String getType(Uri uri) {
+    public String getType(@NonNull Uri uri) {
         switch(sUriMatcher.match(uri)) {
             case ELEMENTS:
                 return Elements.DATA_TYPE;
@@ -104,17 +105,18 @@ public class ElementsProvider extends ContentProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         throw new SQLException("ElementsProvider is read-only!");
     }
 
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
         throw new SQLException("ElementsProvider is read-only!");
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String selection,
+                      String[] selectionArgs) {
         throw new SQLException("ElementsProvider is read-only!");
     }
 }
