@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <!--
+ The colors and corresponding names for the element categories
+ -->
+ <array name="ptCategoryColors" translatable="false">
+ <item>#FF2FF12F</item>
+ <item>#FF79B5FF</item>
+ <item>#FFFFAA00</item>
+ <item>#FFF3F300</item>
+ <item>#FF55CC88</item>
+ <item>#FF00DDBB</item>
+ <item>#FF99BBAA</item>
+ <item>#FFDD9999</item>
+ <item>#FFFFB79B</item>
+ <item>#FFDDAACC</item>
+ </array>
+ <string-array name="ptCategories">
+ <item>Nichtmetalle</item>
+ <item>Edelgase</item>
+ <item>Alkalimetalle</item>
+ <item>Erdalkalimetalle</item>
+ <item>Halbmetalle</item>
+ <item>Halogene</item>
+ <item>Metalle</item>
+ <item>Übergangsmetalle</item>
+ <item>Lanthanoide</item>
+ <item>Actinoide</item>
+ </string-array>
+ <!--
+ The colors and corresponding names for the element blocks
+ -->
+ <array name="ptBlockColors" translatable="false">
+ <item>#FF6699FF</item>
+ <item>#FFFFCC00</item>
+ <item>#FFFF9999</item>
+ <item>#FF00CC33</item>
+ </array>
+ <string-array name="ptBlocks" translatable="false">
+ <item>s</item>
+ <item>p</item>
+ <item>d</item>
+ <item>f</item>
+ </string-array>
+ <!--
+ Options for the temperature units preference
+ -->
+ <string-array name="tempUnits" translatable="false">
+ <item>K</item>
+ <item>C</item>
+ <item>F</item>
+ </string-array>
+ <string-array name="tempUnitNames" translatable="false">
+ <item>Kelvin (K)</item>
+ <item>Celsius (°C)</item>
+ <item>Fahrenheit (°F)</item>
+ </string-array>
+ <!--
+ Options for the element colors preference
+ -->
+ <string-array name="elementColors" translatable="false">
+ <item>category</item>
+ <item>block</item>
+ </string-array>
+ <string-array name="elementColorNames">
+ <item>Serie</item>
+ <item>Block</item>
+ </string-array>
+ <!--
+ Options for the list sorting dialog
+ -->
+ <string-array name="sortFieldNames">
+ <item>Ordnungszahl</item>
+ <item>Name</item>
+ </string-array>
+</resources>

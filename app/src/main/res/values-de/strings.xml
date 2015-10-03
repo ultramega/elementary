@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <string name="app_name" translatable="false">Elementary</string>
+ <string name="titleElementDetails">Element Details - %s</string>
+ <string name="titlePeriodicTable">Periodensystem der Elemente</string>
+ <string name="titleElementList">Liste aller Elemente</string>
+ <string name="titlePreferences">Elementary Optionen</string>
+ <string name="titleSort">Sortieren nach:</string>
+ <string name="buttonVideo">Video</string>
+ <string name="buttonWiki" translatable="false">Wikipedia</string>
+ <string name="buttonSort">Sortieren</string>
+ <string name="menuOptions">Optionen</string>
+ <string name="menuList">Listen-Ansicht</string>
+ <string name="menuTable">Tabellen-Ansicht</string>
+ <string name="prefTitleTemp">Maßeinheit</string>
+ <string name="prefSummaryTemp">Bevorzugtes Einheitensystem</string>
+ <string name="prefTitleColors">Elementfarben</string>
+ <string name="prefSummaryColors">Bevorzugtes Farbschema</string>
+ <string name="labelNumber">Ordnungszahl:</string>
+ <string name="labelSymbol">Symbol:</string>
+ <string name="labelName">Name:</string>
+ <string name="labelWeight">Atommasse:</string>
+ <string name="labelCategory">Serie:</string>
+ <string name="labelGPB">Gruppe, Periode, Block:</string>
+ <string name="labelConfiguration">Elektronenkonfiguration:</string>
+ <string name="labelElectrons">Elektronen pro Schale:</string>
+ <string name="labelDensity">Dichte:</string>
+ <string name="labelMelt">Schmelzpunkt:</string>
+ <string name="labelBoil">Siedepunkt:</string>
+ <string name="labelHeat">Spezifische Wärmekapazität:</string>
+ <string name="labelNegativity">Elektronegativität:</string>
+ <string name="labelAbundance">Vorkommen:</string>
+ <string name="hintFilter">Nach Name oder Symbol sortieren</string>
+ <string name="unknown">Unbekannt</string>
+</resources>
