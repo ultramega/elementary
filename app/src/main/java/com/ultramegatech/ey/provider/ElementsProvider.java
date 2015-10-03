@@ -88,6 +88,7 @@ public class ElementsProvider extends ContentProvider {
         final SQLiteDatabase db = mDatabaseOpenHelper.getReadableDatabase();
         final Cursor cursor = qb.query(db, projection, selection, selectionArgs, null, null,
                 sortOrder);
+        //noinspection ConstantConditions
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
