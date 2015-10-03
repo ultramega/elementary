@@ -178,7 +178,7 @@ public class ElementListActivity extends FragmentActivity implements
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String colorKey = prefs.getString("elementColors", "category");
+        final String colorKey = prefs.getString(getString(R.string.prefKeyColors), "category");
         if(colorKey.equals("block")) {
             mListProjection[3] = Elements.BLOCK;
         } else {
@@ -270,7 +270,7 @@ public class ElementListActivity extends FragmentActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals("elementColors")) {
+        if(key.equals(getString(R.string.prefKeyColors))) {
             loadPreferences();
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         }

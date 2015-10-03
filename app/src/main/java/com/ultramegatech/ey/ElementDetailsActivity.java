@@ -177,7 +177,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String tempUnit = prefs.getString("tempUnit", "K");
+        final String tempUnit = prefs.getString(getString(R.string.prefKeyTemp), "K");
         if("K".equals(tempUnit)) {
             mTemperatureUnits = Units.KELVIN;
         } else if("C".equals(tempUnit)) {
@@ -186,7 +186,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
             mTemperatureUnits = Units.FAHRENHEIT;
         }
 
-        final String colorKey = prefs.getString("elementColors", "category");
+        final String colorKey = prefs.getString(getString(R.string.prefKeyColors), "category");
         if(colorKey.equals("block")) {
             mColorKey = Elements.BLOCK;
         } else {
@@ -514,11 +514,11 @@ public class ElementDetailsActivity extends FragmentActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals("tempUnit")) {
+        if(key.equals(getString(R.string.prefKeyTemp))) {
             loadPreferences();
             mTxtMelt.setText(getTemperature(Elements.MELT));
             mTxtBoil.setText(getTemperature(Elements.BOIL));
-        } else if(key.equals("elementColors")) {
+        } else if(key.equals(getString(R.string.prefKeyColors))) {
             loadPreferences();
             setBlockBackground();
         }

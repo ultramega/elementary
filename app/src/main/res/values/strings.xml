@@ -38,8 +38,10 @@
     <string name="menuList">List View</string>
     <string name="menuTable">Table View</string>
 
+    <string name="prefKeyTemp" translatable="false">tempUnit</string>
     <string name="prefTitleTemp">Temperature Units</string>
     <string name="prefSummaryTemp">Units used to display temperature values</string>
+    <string name="prefKeyColors" translatable="false">elementColors</string>
     <string name="prefTitleColors">Element Colors</string>
     <string name="prefSummaryColors">Property used to color the elements</string>
 
