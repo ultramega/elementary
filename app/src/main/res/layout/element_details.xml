@@ -55,7 +55,7 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:contentDescription="@string/buttonWiki"
-            android:src="@drawable/ic_wikipedia" />
+            android:src="?iconWikipedia" />
 
         <ImageButton
             android:id="@+id/videoButton"
@@ -64,7 +64,7 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:contentDescription="@string/buttonVideo"
-            android:src="@drawable/ic_video" />
+            android:src="?iconVideo" />
     </LinearLayout>
 
     <include layout="@layout/element_details_table" />

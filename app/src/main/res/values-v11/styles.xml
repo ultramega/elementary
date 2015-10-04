@@ -23,13 +23,18 @@
 -->
 <resources>
 
-    <style name="LightTheme" parent="android:Theme.Holo.Light" />
+    <style name="LightTheme" parent="android:Theme.Holo.Light">
+        <item name="iconWikipedia">@drawable/ic_wikipedia_black</item>
+        <item name="iconVideo">@drawable/ic_video_black</item>
+    </style>
 
     <style name="LightTheme.TableView" />
 
     <style name="DarkTheme" parent="android:Theme.Holo">
         <item name="fgColor">@android:color/primary_text_dark</item>
         <item name="bgColor">#ff202020</item>
+        <item name="iconWikipedia">@drawable/ic_wikipedia_white</item>
+        <item name="iconVideo">@drawable/ic_video_white</item>
     </style>
 
     <style name="DarkTheme.TableView" />
