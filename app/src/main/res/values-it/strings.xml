@@ -35,6 +35,8 @@
     <string name="menuList">Visuale lista</string>
     <string name="menuTable">Visuale tabella</string>
 
+    <string name="prefTitleDarkTheme">Tema Scuro</string>
+    <string name="prefSummaryDarkTheme">Utilizzare il tema scuro</string>
     <string name="prefTitleTemp">Unità di temperatura</string>
     <string name="prefSummaryTemp">Unità usata nel campo di temperatura</string>
     <string name="prefTitleColors">Colore degli elementi</string>

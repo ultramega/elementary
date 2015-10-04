@@ -35,6 +35,8 @@
     <string name="menuList">Listen-Ansicht</string>
     <string name="menuTable">Tabellen-Ansicht</string>
 
+    <string name="prefTitleDarkTheme">Dunkles Theme</string>
+    <string name="prefSummaryDarkTheme">Verwenden Sie die dunkle Thema</string>
     <string name="prefTitleTemp">Maßeinheit</string>
     <string name="prefSummaryTemp">Bevorzugtes Einheitensystem</string>
     <string name="prefTitleColors">Elementfarben</string>
