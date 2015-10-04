@@ -25,7 +25,16 @@
 
     <style name="LightTheme" parent="android:Theme.Light" />
 
-    <style name="LightTheme.NoTitleBar">
+    <style name="LightTheme.TableView">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="DarkTheme" parent="android:Theme.Black">
+        <item name="fgColor">@android:color/primary_text_dark</item>
+        <item name="bgColor">#ff202020</item>
+    </style>
+
+    <style name="DarkTheme.TableView">
         <item name="android:windowNoTitle">true</item>
     </style>
 
@@ -44,10 +53,9 @@
         <item name="android:textIsSelectable" tools:ignore="NewApi">true</item>
     </style>
 
-    <style name="TableRow">
-    </style>
+    <style name="TableRow" />
 
     <style name="TableRow.Odd">
-        <item name="android:background">#FFEEEEEE</item>
+        <item name="android:background">#44888888</item>
     </style>
 </resources>

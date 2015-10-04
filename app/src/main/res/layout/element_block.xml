@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:padding="6dp"
+        android:textColor="@android:color/primary_text_light"
         android:textSize="38sp" />
 
     <TextView
@@ -45,6 +46,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:paddingLeft="4dp"
+        android:textColor="@android:color/primary_text_light"
         android:textSize="14sp"
         tools:ignore="RtlSymmetry" />
 
@@ -55,6 +57,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:padding="2dp"
+        android:textColor="@android:color/primary_text_light"
         android:textSize="10sp" />
 
     <TextView
@@ -66,6 +69,7 @@
         android:layout_marginLeft="6dp"
         android:gravity="right"
         android:padding="2dp"
+        android:textColor="@android:color/primary_text_light"
         android:textSize="8sp"
         tools:ignore="RelativeOverlap" />
 </RelativeLayout>
