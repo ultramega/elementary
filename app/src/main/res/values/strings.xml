@@ -38,6 +38,9 @@
     <string name="menuList">List View</string>
     <string name="menuTable">Table View</string>
 
+    <string name="prefKeyDarkTheme" translatable="false">theme</string>
+    <string name="prefTitleDarkTheme">Dark Theme</string>
+    <string name="prefSummaryDarkTheme">Use the dark theme</string>
     <string name="prefKeyTemp" translatable="false">tempUnit</string>
     <string name="prefTitleTemp">Temperature Units</string>
     <string name="prefSummaryTemp">Units used to display temperature values</string>

@@ -54,6 +54,7 @@ import android.widget.ListView;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
+import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.widget.ElementListAdapter;
 import com.ultramegatech.widget.ElementListAdapter.ElementHolder;
@@ -108,6 +109,7 @@ public class ElementListActivity extends FragmentActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadPreferences();
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -123,8 +125,6 @@ public class ElementListActivity extends FragmentActivity implements
                 startActivity(intent);
             }
         });
-
-        loadPreferences();
 
         if(savedInstanceState != null) {
             mSort = savedInstanceState.getInt(KEY_SORT, mSort);
@@ -178,8 +178,11 @@ public class ElementListActivity extends FragmentActivity implements
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String colorKey = prefs.getString(getString(R.string.prefKeyColors), "category");
-        if(colorKey.equals("block")) {
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
+        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
+
+        final String colorKey = PreferenceUtils.getPrefElementColors(this, prefs);
+        if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
             mListProjection[3] = Elements.BLOCK;
         } else {
             mListProjection[3] = Elements.CATEGORY;
@@ -270,7 +273,7 @@ public class ElementListActivity extends FragmentActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(getString(R.string.prefKeyColors))) {
+        if(key.equals(PreferenceUtils.getKeyElementColors(this))) {
             loadPreferences();
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         }

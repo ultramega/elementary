@@ -49,6 +49,7 @@ import android.widget.TextView;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
+import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.util.ActionBarWrapper;
 import com.ultramegatech.util.UnitUtils;
 
@@ -133,6 +134,7 @@ public class ElementDetailsActivity extends FragmentActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadPreferences();
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -144,8 +146,6 @@ public class ElementDetailsActivity extends FragmentActivity implements
 
         setContentView(R.layout.element_details);
         findViews();
-
-        loadPreferences();
 
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
@@ -177,17 +177,20 @@ public class ElementDetailsActivity extends FragmentActivity implements
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String tempUnit = prefs.getString(getString(R.string.prefKeyTemp), "K");
-        if("K".equals(tempUnit)) {
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
+        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
+
+        final String tempUnit = PreferenceUtils.getPrefTempUnit(this, prefs);
+        if(PreferenceUtils.TEMP_K.equals(tempUnit)) {
             mTemperatureUnits = Units.KELVIN;
-        } else if("C".equals(tempUnit)) {
+        } else if(PreferenceUtils.TEMP_C.equals(tempUnit)) {
             mTemperatureUnits = Units.CELSIUS;
         } else {
             mTemperatureUnits = Units.FAHRENHEIT;
         }
 
-        final String colorKey = prefs.getString(getString(R.string.prefKeyColors), "category");
-        if(colorKey.equals("block")) {
+        final String colorKey = PreferenceUtils.getPrefElementColors(this, prefs);
+        if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
             mColorKey = Elements.BLOCK;
         } else {
             mColorKey = Elements.CATEGORY;
@@ -514,11 +517,11 @@ public class ElementDetailsActivity extends FragmentActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(getString(R.string.prefKeyTemp))) {
+        if(key.equals(PreferenceUtils.getKeyTempUnit(this))) {
             loadPreferences();
             mTxtMelt.setText(getTemperature(Elements.MELT));
             mTxtBoil.setText(getTemperature(Elements.BOIL));
-        } else if(key.equals(getString(R.string.prefKeyColors))) {
+        } else if(key.equals(PreferenceUtils.getKeyElementColors(this))) {
             loadPreferences();
             setBlockBackground();
         }

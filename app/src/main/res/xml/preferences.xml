@@ -22,6 +22,11 @@
   THE SOFTWARE.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/prefKeyDarkTheme"
+        android:summary="@string/prefSummaryDarkTheme"
+        android:title="@string/prefTitleDarkTheme" />
     <ListPreference
         android:defaultValue="K"
         android:dialogTitle="@string/prefTitleTemp"
