@@ -89,7 +89,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         mFilter = new Filter() {
             @Override
             protected Filter.FilterResults performFiltering(CharSequence cs) {
-                filterList(cs.toString());
+                filterList(cs);
                 sortList(mSort, mSortReverse);
                 return null;
             }
@@ -170,7 +170,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      *
      * @param filter Text used to filter the elements
      */
-    private void filterList(String filter) {
+    private void filterList(CharSequence filter) {
         mFiltered.clear();
 
         if(TextUtils.isEmpty(filter)) {
@@ -179,8 +179,8 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         }
 
         for(ElementHolder element : mListItems) {
-            if(element.symbol.toLowerCase().startsWith(filter.toLowerCase())
-                    || element.name.toLowerCase().startsWith(filter.toLowerCase())) {
+            if(element.symbol.toLowerCase().startsWith(filter.toString().toLowerCase())
+                    || element.name.toLowerCase().startsWith(filter.toString().toLowerCase())) {
                 mFiltered.add(element);
             }
         }
