@@ -45,6 +45,22 @@ import java.util.Observer;
  */
 public class PeriodicTableView extends View implements Observer {
     /**
+     * Color value for the selected block indicator
+     */
+    private static final int COLOR_SELECTED = 0x9900d4ff;
+
+    /**
+     * Color value for the text within the blocks
+     */
+    private static final int COLOR_BLOCK_FOREGROUND = 0xff000000;
+
+    /**
+     * Default color values
+     */
+    private static final int COLOR_DEFAULT_FOREGROUND = 0xff000000;
+    private static final int COLOR_DEFAULT_BACKGROUND = 0xffffffff;
+
+    /**
      * Callback interface for click listeners.
      */
     public interface OnItemClickListener {
@@ -98,14 +114,24 @@ public class PeriodicTableView extends View implements Observer {
     private int mNumCols;
 
     /**
+     * Paint for the table background
+     */
+    private Paint mBgPaint = new Paint();
+
+    /**
      * Paint for block backgrounds
      */
-    private Paint mBlockPaint;
+    private Paint mBlockPaint = new Paint();
 
     /**
      * Paint for row and column headers
      */
     private Paint mHeaderPaint;
+
+    /**
+     * Paint for the table title
+     */
+    private Paint mTitlePaint;
 
     /**
      * Paint for symbols
@@ -163,15 +189,17 @@ public class PeriodicTableView extends View implements Observer {
 
     public PeriodicTableView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init();
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PeriodicTableView,
                 defStyle, 0);
 
         mTitle = a.getText(R.styleable.PeriodicTableView_title);
+        setFgColor(a.getColor(R.styleable.PeriodicTableView_fgColor, COLOR_DEFAULT_FOREGROUND));
+        setBgColor(a.getColor(R.styleable.PeriodicTableView_bgColor, COLOR_DEFAULT_BACKGROUND));
 
         a.recycle();
 
-        init();
     }
 
     /**
@@ -198,24 +226,66 @@ public class PeriodicTableView extends View implements Observer {
      * Initialize and configure all Paint objects.
      */
     private void setupPaints() {
-        mBlockPaint = new Paint();
-
-        mSelectedPaint = new Paint(mBlockPaint);
+        mSelectedPaint = new Paint();
         mSelectedPaint.setAntiAlias(true);
         mSelectedPaint.setStyle(Paint.Style.STROKE);
         mSelectedPaint.setStrokeJoin(Paint.Join.ROUND);
-        mSelectedPaint.setColor(0x9900D4FF);
+        mSelectedPaint.setColor(COLOR_SELECTED);
 
         mNumberPaint = new Paint();
         mNumberPaint.setAntiAlias(true);
-        mNumberPaint.setSubpixelText(true);
-        mNumberPaint.setColor(0xFF000000);
+        mNumberPaint.setColor(COLOR_BLOCK_FOREGROUND);
 
         mSymbolPaint = new Paint(mNumberPaint);
         mSymbolPaint.setTextAlign(Paint.Align.CENTER);
 
+        mTitlePaint = new Paint(mSymbolPaint);
         mHeaderPaint = new Paint(mSymbolPaint);
         mSmallTextPaint = new Paint(mSymbolPaint);
+
+        mNumberPaint.setSubpixelText(true);
+        mSmallTextPaint.setSubpixelText(true);
+    }
+
+    /**
+     * Set the foreground color. This is the color of all text outside of the blocks and legend.
+     *
+     * @param color The color value
+     */
+    public void setFgColor(int color) {
+        mTitlePaint.setColor(color);
+        mHeaderPaint.setColor(color);
+        invalidate();
+    }
+
+    /**
+     * Get the current foreground color. This is the color of all text outside of the blocks and
+     * legend.
+     *
+     * @return The color value
+     */
+    public int getFgColor() {
+        return mTitlePaint.getColor();
+    }
+
+    /**
+     * Set the background color.
+     *
+     * @param color The color value
+     */
+    public void setBgColor(int color) {
+        mBgPaint.setColor(color);
+        invalidate();
+    }
+
+
+    /**
+     * Get the current background color.
+     *
+     * @return The color value
+     */
+    public int getBgColor() {
+        return mBgPaint.getColor();
     }
 
     /**
@@ -439,12 +509,13 @@ public class PeriodicTableView extends View implements Observer {
     private void writeTitle(Canvas canvas) {
         if(mTitle != null) {
             canvas.drawText(mTitle, 0, mTitle.length(), mBlockSize * mNumCols / 2 - mOffsetX,
-                    mBlockSize - mOffsetY, mSymbolPaint);
+                    mBlockSize - mOffsetY, mTitlePaint);
         }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.drawRect(0, 0, getRight(), getBottom(), mBgPaint);
         if(mPeriodicTableBlocks != null && mState != null) {
             final double aspectQuotient = mAspectQuotient.get();
             mBlockSize = (int)(mState.getZoom() * mBaseBlockSize);
@@ -461,6 +532,7 @@ public class PeriodicTableView extends View implements Observer {
             mOffsetX = (int)(mState.getPanX() * bitmapWidth - viewWidth / (zoomX * 2));
             mOffsetY = (int)(mState.getPanY() * bitmapHeight - viewHeight / (zoomY * 2));
 
+            mTitlePaint.setTextSize(mBlockSize / 2);
             mSymbolPaint.setTextSize(mBlockSize / 2);
             mNumberPaint.setTextSize(mBlockSize / 4);
             mSmallTextPaint.setTextSize(mBlockSize / 5);
