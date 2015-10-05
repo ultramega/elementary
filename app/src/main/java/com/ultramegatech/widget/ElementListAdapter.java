@@ -30,6 +30,7 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ultramegatech.ey.R;
@@ -107,7 +108,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     @Override
-    public Object getItem(int i) {
+    public ElementHolder getItem(int i) {
         return mFiltered.get(i);
     }
 
@@ -122,7 +123,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
             view = View.inflate(mContext, R.layout.element_list_item, null);
         }
 
-        final ElementHolder holder = mFiltered.get(i);
+        final ElementHolder holder = getItem(i);
 
         ((TextView)view.findViewById(R.id.number)).setText(holder.number);
         ((TextView)view.findViewById(R.id.symbol)).setText(holder.symbol);
@@ -135,6 +136,21 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     @Override
     public Filter getFilter() {
         return mFilter;
+    }
+
+    /**
+     * Get the position of the element with the specified ID.
+     *
+     * @param id The ID of the element
+     * @return The position of the element in the list
+     */
+    public int getItemPosition(long id) {
+        for(int i = 0; i < mFiltered.size(); i++) {
+            if(getItem(i).id == id) {
+                return i;
+            }
+        }
+        return ListView.INVALID_POSITION;
     }
 
     /**

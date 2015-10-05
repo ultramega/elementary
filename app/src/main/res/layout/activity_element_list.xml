@@ -24,9 +24,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="2dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <include layout="@layout/element_list_item_content" />
+    <include layout="@layout/element_list_head" />
+
+    <fragment
+        android:id="@+id/elementList"
+        android:name="com.ultramegatech.ey.ElementListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

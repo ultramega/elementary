@@ -22,131 +22,62 @@
  */
 package com.ultramegatech.ey;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 
-import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
-import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.util.ActionBarWrapper;
-import com.ultramegatech.widget.ElementListAdapter;
-import com.ultramegatech.widget.ElementListAdapter.ElementHolder;
-
-import java.util.ArrayList;
 
 /**
- * This Activity displays a list of all the elements sorted by atomic number. Clicking on an item
- * will launch an ElementDetailsActivity for the selected element. The list can be filtered by name
- * or symbol.
+ * This Activity displays the list of elements. On large screens, this also shows the details for
+ * the selected element in a second pane.
  *
  * @author Steve Guidetti
  */
-public class ElementListActivity extends FragmentActivity implements
-        LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
+public class ElementListActivity extends FragmentActivity {
     /**
-     * Keys for saving instance state
+     * Whether the Activity has a two-pane layout
      */
-    private static final String KEY_SORT = "key_sort";
-    private static final String KEY_SORT_REVERSE = "key_sort_reverse";
-    private static final String KEY_FILTER = "key_filter";
-
-    /**
-     * Fields to read from the database
-     */
-    private final String[] mListProjection = new String[] {
-            Elements._ID,
-            Elements.NUMBER,
-            Elements.SYMBOL,
-            Elements.CATEGORY
-    };
-
-    /**
-     * The Adapter backing the list
-     */
-    private ElementListAdapter mAdapter;
-
-    /**
-     * Current value to filter results by
-     */
-    private String mFilter;
-
-    /**
-     * Current value for sorting elements
-     */
-    private int mSort = ElementListAdapter.SORT_NUMBER;
-
-    /**
-     * Current sorting direction
-     */
-    private boolean mSortReverse = false;
+    private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        loadPreferences();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
+        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
-        setContentView(R.layout.element_list);
-        final ListView listView = (ListView)findViewById(android.R.id.list);
-        listView.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final Intent intent =
-                        new Intent(getApplicationContext(), ElementDetailsActivity.class);
-                intent.putExtra(ElementDetailsActivity.EXTRA_ATOMIC_NUMBER, (int)id);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_element_list);
 
-        if(savedInstanceState != null) {
-            mSort = savedInstanceState.getInt(KEY_SORT, mSort);
-            mSortReverse = savedInstanceState.getBoolean(KEY_SORT_REVERSE, mSortReverse);
-            mFilter = savedInstanceState.getString(KEY_FILTER);
+        if(findViewById(R.id.elementDetails) != null) {
+            mTwoPane = true;
+            ((ElementListFragment)getSupportFragmentManager().findFragmentById(R.id.elementList))
+                    .setActivateOnItemClick(true);
         }
-
-        mAdapter = new ElementListAdapter(this);
-        listView.setAdapter(mAdapter);
-
-        setupFilter();
-        setupSort();
-
-        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(KEY_SORT, mSort);
-        outState.putBoolean(KEY_SORT_REVERSE, mSortReverse);
-        outState.putString(KEY_FILTER, mFilter);
+    public void onItemSelected(int id) {
+        if(mTwoPane) {
+            final Fragment fragment = ElementDetailsFragment.getInstance(id);
+            getSupportFragmentManager().beginTransaction().replace(R.id.elementDetails, fragment)
+                    .commit();
+        } else {
+            final Intent intent = new Intent(this, ElementDetailsActivity.class);
+            intent.putExtra(ElementDetailsActivity.EXTRA_ATOMIC_NUMBER, id);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -169,133 +100,5 @@ public class ElementListActivity extends FragmentActivity implements
                 CommonMenuHandler.handleSelect(this, id);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Load relevant preferences.
-     */
-    private void loadPreferences() {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefs.registerOnSharedPreferenceChangeListener(this);
-
-        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
-        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
-
-        final String colorKey = PreferenceUtils.getPrefElementColors(this, prefs);
-        if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
-            mListProjection[3] = Elements.BLOCK;
-        } else {
-            mListProjection[3] = Elements.CATEGORY;
-        }
-    }
-
-    /**
-     * Setup the listener for the filtering TextView.
-     */
-    private void setupFilter() {
-        final EditText filterEditText = (EditText)findViewById(R.id.filter);
-        filterEditText.addTextChangedListener(new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            public void afterTextChanged(Editable s) {
-                mFilter = s.toString();
-                mAdapter.getFilter().filter(mFilter);
-            }
-        });
-    }
-
-    /**
-     * Setup the listener for the sort button.
-     */
-    private void setupSort() {
-        final Button sortButton = (Button)findViewById(R.id.sort);
-        sortButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                openSortDialog();
-            }
-        });
-    }
-
-    /**
-     * Display the sorting dialog.
-     */
-    private void openSortDialog() {
-        final DialogFragment fragment = new SortDialog();
-        fragment.show(getSupportFragmentManager(), null);
-    }
-
-    /**
-     * Set the sorting parameters.
-     *
-     * @param field Field to sort by
-     */
-    private void setSort(int field) {
-        mSortReverse = field == mSort && !mSortReverse;
-        mSort = field;
-        mAdapter.setSort(mSort, mSortReverse);
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        setProgressBarIndeterminateVisibility(true);
-        return new CursorLoader(this, Elements.CONTENT_URI, mListProjection, null, null,
-                Elements.NUMBER + " ASC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
-        setProgressBarIndeterminateVisibility(false);
-
-        final ElementUtils utils = new ElementUtils(this);
-
-        final ArrayList<ElementHolder> data = new ArrayList<>();
-        while(d.moveToNext()) {
-            final String number = d.getString(1);
-            final String symbol = d.getString(2);
-            final String name = getString(ElementUtils.getElementName(d.getInt(1)));
-            final int color = utils.getElementColor(d.getString(3));
-
-            data.add(new ElementHolder(number, symbol, name, color));
-        }
-
-        mAdapter.setItems(data);
-        mAdapter.getFilter().filter(mFilter);
-        mAdapter.setSort(mSort, mSortReverse);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(PreferenceUtils.getKeyElementColors(this))) {
-            loadPreferences();
-            getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
-        }
-    }
-
-    /**
-     * Dialog for setting the sort parameter for the list.
-     */
-    public static class SortDialog extends DialogFragment {
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.titleSort)
-                    .setItems(R.array.sortFieldNames, new OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            ((ElementListActivity)getActivity()).setSort(item);
-                            dialog.dismiss();
-                        }
-                    })
-                    .create();
-        }
-
     }
 }

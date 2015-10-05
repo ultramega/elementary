@@ -76,7 +76,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
     public void onCreate(Bundle savedInstanceState) {
         loadPreferences();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.periodic_table);
+        setContentView(R.layout.activity_periodic_table);
 
         mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
 
