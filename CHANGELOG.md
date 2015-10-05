@@ -1,4 +1,12 @@
-﻿- v.0.3.2 (9/19/15):
+﻿- v.0.4.0 (10/5/15):
+   * Added dark theme option
+   * Added support for larger screens
+   * Added German translation ([C4R2T3N](https://github.com/C4R2T3N))
+   * Improved readability of the element details
+   * Element details now show in a dialog when opened from the table view
+   * The menu now always opens in landscape mode in the table view
+   * Updated icons
+- v.0.3.2 (9/19/15):
    * Added Italian translation ([rapgenic](https://github.com/rapgenic))
    * Fixed alignment issues with the element block
    * Unhid the ActionBar for devices that support it
