@@ -198,6 +198,13 @@ public class ElementDetailsFragment extends Fragment
         return root;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
     /**
      * Load relevant preferences.
      */

@@ -54,6 +54,13 @@ public class EyPreferenceActivity extends PreferenceActivity
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals(PreferenceUtils.getKeyDarkTheme(this))) {
             sharedPreferences.edit().commit();

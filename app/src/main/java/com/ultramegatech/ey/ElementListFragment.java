@@ -119,6 +119,13 @@ public class ElementListFragment extends ListFragment
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         mActivatedItem = id;
         ((ElementListActivity)getActivity()).onItemSelected((int)id);

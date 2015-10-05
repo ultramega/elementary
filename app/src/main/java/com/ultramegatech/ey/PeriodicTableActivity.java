@@ -94,6 +94,13 @@ public class PeriodicTableActivity extends FragmentActivity implements
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         final MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.periodic_table, menu);
