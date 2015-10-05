@@ -259,7 +259,9 @@ public class ElementDetailsFragment extends DialogFragment
         final String name =
                 getString(ElementUtils.getElementName(mData.getAsInteger(Elements.NUMBER)));
 
-        getActivity().setTitle(getString(R.string.titleElementDetails, name));
+        if(!getShowsDialog()) {
+            getActivity().setTitle(getString(R.string.titleElementDetails, name));
+        }
 
         mTxtHeader.setText(name);
 
