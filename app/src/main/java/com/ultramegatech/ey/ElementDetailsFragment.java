@@ -31,7 +31,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -51,13 +52,19 @@ import com.ultramegatech.util.UnitUtils;
 import java.text.DecimalFormat;
 
 /**
- * This Fragment displays details about a single chemical element.
+ * This Fragment displays details about a single chemical element. It can be embedded or shown as a
+ * dialog.
  *
  * @author Steve Guidetti
  */
-public class ElementDetailsFragment extends Fragment
+public class ElementDetailsFragment extends DialogFragment
         implements LoaderManager.LoaderCallbacks<Cursor>,
         SharedPreferences.OnSharedPreferenceChangeListener {
+    /**
+     * The tag to identify the Fragment
+     */
+    private static final String TAG = "ElementDetailsFragment";
+
     /**
      * Fragment arguments
      */
@@ -133,14 +140,30 @@ public class ElementDetailsFragment extends Fragment
      * @param atomicNumber The atomic number of the element to display
      * @return An instance of this Fragment
      */
-    public static Fragment getInstance(int atomicNumber) {
-        final Fragment fragment = new ElementDetailsFragment();
+    public static DialogFragment getInstance(int atomicNumber) {
+        final DialogFragment fragment = new ElementDetailsFragment();
 
         final Bundle args = new Bundle();
         args.putInt(ARG_ATOMIC_NUMBER, atomicNumber);
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    /**
+     * Show this Fragment as a dialog.
+     *
+     * @param fm           The FragmentManager to use
+     * @param atomicNumber The atomic number of the element to display
+     */
+    public static void showDialog(FragmentManager fm, int atomicNumber) {
+        getInstance(atomicNumber).show(fm, TAG);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_TITLE, 0);
     }
 
     @Override

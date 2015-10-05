@@ -82,10 +82,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
 
         mPeriodicTableView.setOnItemClickListener(new PeriodicTableView.OnItemClickListener() {
             public void onItemClick(PeriodicTableBlock item) {
-                final Intent intent =
-                        new Intent(getApplicationContext(), ElementDetailsActivity.class);
-                intent.putExtra(ElementDetailsActivity.EXTRA_ATOMIC_NUMBER, item.number);
-                startActivity(intent);
+                ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.number);
             }
         });
 
