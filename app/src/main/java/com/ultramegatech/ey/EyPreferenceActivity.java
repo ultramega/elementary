@@ -47,6 +47,7 @@ public class EyPreferenceActivity extends PreferenceActivity
 
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
         setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
+
         super.onCreate(savedInstanceState);
 
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);

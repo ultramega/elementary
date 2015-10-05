@@ -31,7 +31,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
@@ -54,9 +53,9 @@ public class ElementListActivity extends FragmentActivity {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
         setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
+
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.activity_element_list);

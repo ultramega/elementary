@@ -75,17 +75,17 @@ public class PeriodicTableActivity extends FragmentActivity implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         loadPreferences();
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_periodic_table);
 
         mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
-
         mPeriodicTableView.setOnItemClickListener(new PeriodicTableView.OnItemClickListener() {
             public void onItemClick(PeriodicTableBlock item) {
                 ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.number);
             }
         });
-
 
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }

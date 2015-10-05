@@ -492,7 +492,6 @@ public class ElementDetailsFragment extends DialogFragment
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        getActivity().setProgressBarIndeterminateVisibility(true);
         return new CursorLoader(getContext(), getUri(), null, null, null, null);
     }
 
@@ -522,8 +521,6 @@ public class ElementDetailsFragment extends DialogFragment
             }
 
             populateViews();
-
-            getActivity().setProgressBarIndeterminateVisibility(false);
         }
     }
 

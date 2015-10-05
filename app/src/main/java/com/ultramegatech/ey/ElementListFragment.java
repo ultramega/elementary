@@ -222,7 +222,6 @@ public class ElementListFragment extends ListFragment
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        getActivity().setProgressBarIndeterminateVisibility(true);
         return new CursorLoader(getContext(), Elements.CONTENT_URI, mListProjection, null, null,
                 Elements.NUMBER + " ASC");
     }
@@ -245,7 +244,6 @@ public class ElementListFragment extends ListFragment
         mAdapter.getFilter().filter(mFilter);
         mAdapter.setSort(mSort, mSortReverse);
 
-        getActivity().setProgressBarIndeterminateVisibility(false);
         setListShown(true);
     }
 
