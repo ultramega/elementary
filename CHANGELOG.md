@@ -1,4 +1,9 @@
-﻿- v.0.4.0 (10/5/15):
+﻿- v.0.4.1 (10/28/15):
+   * Changed the table view to sensor-based landscape mode where supported
+   * Fixed German translation ([C4R2T3N](https://github.com/C4R2T3N))
+   * Fixed German Wikipedia links ([C4R2T3N](https://github.com/C4R2T3N))
+   * Updated Support Library
+- v.0.4.0 (10/5/15):
    * Added dark theme option
    * Added support for larger screens
    * Added German translation ([C4R2T3N](https://github.com/C4R2T3N))
