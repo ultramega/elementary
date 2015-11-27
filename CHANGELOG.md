@@ -1,4 +1,8 @@
-﻿- v.0.4.1 (10/28/15):
+﻿- v.0.4.2 (11/27/15):
+   * Changed the dark theme background to black
+   * The table view orientation now always follows the sensor where supported
+   * Updated Support Library
+- v.0.4.1 (10/28/15):
    * Changed the table view to sensor-based landscape mode where supported
    * Fixed German translation ([C4R2T3N](https://github.com/C4R2T3N))
    * Fixed German Wikipedia links ([C4R2T3N](https://github.com/C4R2T3N))
