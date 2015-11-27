@@ -76,9 +76,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE);
-        } else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
