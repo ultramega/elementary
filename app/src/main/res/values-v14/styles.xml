@@ -31,8 +31,9 @@
     <style name="LightTheme.TableView" />
 
     <style name="DarkTheme" parent="android:Theme.DeviceDefault">
+        <item name="android:colorBackground">@android:color/black</item>
         <item name="fgColor">@android:color/primary_text_dark</item>
-        <item name="bgColor">#ff202020</item>
+        <item name="bgColor">@android:color/black</item>
         <item name="iconWikipedia">@drawable/ic_wikipedia_white</item>
         <item name="iconVideo">@drawable/ic_video_white</item>
     </style>
