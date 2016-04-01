@@ -31,7 +31,7 @@
     <string name="titleSort">Sort by:</string>
 
     <string name="buttonVideo">Watch Video</string>
-    <string name="buttonWiki" translatable="false">Wikipedia</string>
+    <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Sort</string>
 
     <string name="menuOptions">Options</string>
