@@ -143,7 +143,6 @@
 
     <string name="wikiLang">de</string>
 
-
     <string name="wiki001">Wasserstoff</string>
     <string name="wiki002">Hwikiium</string>
     <string name="wiki003">Lithium</string>
@@ -255,4 +254,11 @@
     <string name="wiki109">Meitnerium</string>
     <string name="wiki110">Darmstadtium</string>
     <string name="wiki111">Roentgenium</string>
+    <string name="wiki112">Copernicium</string>
+    <string name="wiki113">Ununtrium</string>
+    <string name="wiki114">Flerovium</string>
+    <string name="wiki115">Ununpentium</string>
+    <string name="wiki116">Livermorium</string>
+    <string name="wiki117">Ununseptium</string>
+    <string name="wiki118">Ununoctium</string>
 </resources>
