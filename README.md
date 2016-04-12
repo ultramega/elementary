@@ -1,6 +1,7 @@
 # Elementary (Periodic Table)
 
-Elementary is a simple Periodic Table and element reference application.
+Elementary is a simple Periodic Table and element reference application for Android.
+[Also available for Windows 10](https://github.com/ultramega/elementary)
 
 [![Google Play](https://raw.githubusercontent.com/ultramega/elementary/master/art/en-play-badge.png)](https://play.google.com/store/apps/details?id=com.ultramegatech.ey) [![Amazon Appstore](https://raw.githubusercontent.com/ultramega/elementary/master/art/en-amazon-badge.png)](http://www.amazon.com/gp/mas/dl/android?p=com.ultramegatech.ey)
 
