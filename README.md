@@ -2,7 +2,7 @@
 
 Elementary is a simple Periodic Table and element reference application.
 
-[![Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.ultramegatech.ey) [![Amazon Appstore](https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-underground-app-us-black.png)](http://www.amazon.com/gp/mas/dl/android?p=com.ultramegatech.ey)
+[![Google Play](https://raw.githubusercontent.com/ultramega/elementary/master/art/en-play-badge.png)](https://play.google.com/store/apps/details?id=com.ultramegatech.ey) [![Amazon Appstore](https://raw.githubusercontent.com/ultramega/elementary/master/art/en-amazon-badge.png)](http://www.amazon.com/gp/mas/dl/android?p=com.ultramegatech.ey)
 
 ## Features
 
