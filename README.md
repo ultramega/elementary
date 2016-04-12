@@ -15,6 +15,11 @@ Elementary is a simple Periodic Table and element reference application.
 
 Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
 
+## Credits
+
+- German translation: [C4R2T3N](https://github.com/C4R2T3N)
+- Italian translation: [rapgenic](https://github.com/rapgenic)
+
 ## License
 
 The source code for Elementary is released under the terms of the [MIT License](http://sguidetti.mit-license.org/).
