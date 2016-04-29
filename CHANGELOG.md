@@ -1,4 +1,9 @@
-﻿- v.0.4.2 (11/27/15):
+﻿- v.0.4.3 (4/29/16):
+   * Updated video for Thorium
+   * Updated the app logo
+   * Added missing German Wikipedia links
+   * Updated Support Library
+- v.0.4.2 (11/27/15):
    * Changed the dark theme background to black
    * The table view orientation now always follows the sensor where supported
    * Updated Support Library
