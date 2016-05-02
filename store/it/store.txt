@@ -1,0 +1,23 @@
+[title]
+Elementary (Tavola periodica)
+
+[short-description]
+Open-source Tavola Periodica degli Elementi e app elemento di riferimento.
+
+[description]
+Elementare è una semplice applicazione di riferimento Tabella ed elementi periodica.
+
+Caratteristiche:
+- Zoomable Tavola periodica degli elementi (premere a lungo per ingrandire, trascinare per pan)
+- Toccare un elemento per visualizzare alcuni dettagli di base
+- Facile accesso a Wikipedia e un video di YouTube sull'elemento
+- Free con assolutamente nessun annuncio!
+
+Video forniti da Periodic Table of Video (http://www.periodicvideos.com/)
+
+Rilasciato sotto la licenza MIT
+Fonte disponibile all'indirizzo: https://github.com/ultramega/elementary
+
+Twitter: https://twitter.com/ultramegasoft
+Facebook: https://www.facebook.com/ultramegasoft
+Google+: https://plus.google.com/+UltraMegaSoftware

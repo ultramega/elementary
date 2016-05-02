@@ -1,0 +1,23 @@
+[title]
+Elementary (Tabla Periódica)
+
+[short-description]
+De código abierto Tabla Periódica de los Elementos y referencia del elemento.
+
+[description]
+Primaria es una aplicación de referencia Tabla Periódica y un elemento simple.
+
+caracteristicas:
+- Ampliable Tabla Periódica de los Elementos (pulsación larga para hacer un zoom, arrastre para pan)
+- Toque en un elemento para ver algunos detalles básicos
+- Fácil acceso a Wikipedia y un vídeo de YouTube en el elemento
+- Libre sin ningún tipo de anuncios!
+
+Videos proporcionados por la Tabla Periódica de los vídeos (http://www.periodicvideos.com/)
+
+Licenciado bajo la licencia MIT
+Fuente disponible en: https://github.com/ultramega/elementary
+
+Twitter: https://twitter.com/ultramegasoft
+Facebook: https://www.facebook.com/ultramegasoft
+Google+: https://plus.google.com/+UltraMegaSoftware
