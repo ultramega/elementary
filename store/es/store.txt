@@ -13,7 +13,7 @@ caracteristicas:
 - Fácil acceso a Wikipedia y un vídeo de YouTube en el elemento
 - Libre sin ningún tipo de anuncios!
 
-Videos proporcionados por la Tabla Periódica de los vídeos (http://www.periodicvideos.com/)
+Videos proporcionados por la Periodic Videos (http://www.periodicvideos.com/)
 
 Licenciado bajo la licencia MIT
 Fuente disponible en: https://github.com/ultramega/elementary

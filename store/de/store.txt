@@ -5,7 +5,7 @@ Elementary (Periodensystem)
 Open-Source-Periodensystem der Elemente und Elementverweis App.
 
 [description]
-Elementar ist ein einfaches Periodensystem und Element-Referenzanwendung .
+Elementar ist ein einfaches Periodensystem und Element-Referenzanwendung.
 
 Eigenschaften:
 - Zoomable Periodensystems der Elemente (langer Tastendruck zu vergrößern, ziehen Sie, um pan)
@@ -13,7 +13,7 @@ Eigenschaften:
 - Einfacher Zugriff auf Wikipedia und ein YouTube-Video auf dem Element
 - Free mit absolut keine Werbung!
 
-Videos von Periodic Table of Videos zur Verfügung gestellt (http://www.periodicvideos.com/)
+Videos von Periodic Videos zur Verfügung gestellt (http://www.periodicvideos.com/)
 
 Unter der MIT-Lizenz
 Quelle verfügbar unter: https://github.com/ultramega/elementary

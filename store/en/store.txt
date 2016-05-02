@@ -13,7 +13,7 @@ Features:
 - Easy access to Wikipedia and a YouTube video on the element
 - Free with absolutely no ads!
 
-Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
+Videos provided by Periodic Videos (http://www.periodicvideos.com/)
 
 Licensed under The MIT License
 Source available at: https://github.com/ultramega/elementary

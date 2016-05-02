@@ -13,7 +13,7 @@ Caratteristiche:
 - Facile accesso a Wikipedia e un video di YouTube sull'elemento
 - Free con assolutamente nessun annuncio!
 
-Video forniti da Periodic Table of Video (http://www.periodicvideos.com/)
+Video forniti da Periodic Videos (http://www.periodicvideos.com/)
 
 Rilasciato sotto la licenza MIT
 Fonte disponibile all'indirizzo: https://github.com/ultramega/elementary
