@@ -1,6 +1,12 @@
 [title]
 Elementary (Tabla Periódica)
 
+[keywords]
+Ciencia
+Química
+Elementos
+Tabla periódica
+
 [short-description]
 De código abierto Tabla Periódica de los Elementos y referencia del elemento.
 

@@ -1,6 +1,12 @@
 [title]
 Elementary (Tavola periodica)
 
+[keywords]
+Scienza
+Chimica
+Elementi
+Tavola periodica
+
 [short-description]
 Open-source Tavola Periodica degli Elementi e app elemento di riferimento.
 
