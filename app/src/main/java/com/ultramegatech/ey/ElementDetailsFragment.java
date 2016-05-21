@@ -460,12 +460,12 @@ public class ElementDetailsFragment extends DialogFragment
      * Launch YouTube video Intent.
      */
     private void showVideo() {
-        final String videoId = mData.getAsString(Elements.VIDEO);
-        if(videoId == null) {
+        final Integer num = mData.getAsInteger(Elements.NUMBER);
+        if(num == null) {
             return;
         }
         final Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://m.youtube.com/watch?v=" + videoId));
+                Uri.parse("http://dev.ultramegasoft.com/el/video?num=" + num));
         startActivity(intent);
     }
 

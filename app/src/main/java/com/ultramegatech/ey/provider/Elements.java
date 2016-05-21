@@ -57,7 +57,6 @@ public class Elements implements BaseColumns {
     public static final String CONFIGURATION = "ec";
     public static final String ELECTRONS = "eps";
     public static final String UNSTABLE = "uns";
-    public static final String VIDEO = "vid";
 
     /**
      * Data types
@@ -90,8 +89,7 @@ public class Elements implements BaseColumns {
      * @return The column type
      */
     public static Type getColumnType(String c) {
-        if(c.equals(SYMBOL) || c.equals(BLOCK) || c.equals(CONFIGURATION) || c.equals(ELECTRONS)
-                || c.equals(VIDEO)) {
+        if(c.equals(SYMBOL) || c.equals(BLOCK) || c.equals(CONFIGURATION) || c.equals(ELECTRONS)) {
             return Type.TEXT;
         }
         if(c.equals(WEIGHT) || c.equals(DENSITY) || c.equals(MELT) || c.equals(BOIL)
