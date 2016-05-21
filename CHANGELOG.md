@@ -1,4 +1,7 @@
-﻿- v.0.4.3 (4/29/16):
+﻿- v.0.4.4 (5/21/16):
+   * Use redirect based on element number instead of direct YouTube links
+   * Updated Support Library
+- v.0.4.3 (4/29/16):
    * Updated video for Thorium
    * Updated the app logo
    * Added missing German Wikipedia links
