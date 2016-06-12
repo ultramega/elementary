@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="titleElementDetails">Détails de l'Élément - %s</string>
+    <string name="titleElementDetails">Détails de l\'Élément - %s</string>
     <string name="titlePeriodicTable">Tableau Périodique des Éléments</string>
     <string name="titleElementList">Liste des Éléments</string>
     <string name="titlePreferences">Options de Elementary</string>
@@ -25,13 +25,13 @@
     <string name="labelSymbol">Symbole :</string>
     <string name="labelName">Nom :</string>
     <string name="labelWeight">Masse Atomique :</string>
-    <string name="labelCategory"</string>Famille :</string>
+    <string name="labelCategory">Famille :</string>
     <string name="labelGPB">Groupe, Période, Bloc :</string>
     <string name="labelConfiguration">Config. Électronique :</string>
-    <string name="labelElectrons">Electrons par Couche :</string>
+    <string name="labelElectrons">Électrons par Couche :</string>
     <string name="labelDensity">Densité :</string>
     <string name="labelMelt">Point De Fusion :</string>
-    <string name="labelBoil">Point d'Ébullition :</string>
+    <string name="labelBoil">Point d\'Ébullition :</string>
     <string name="labelHeat">Chaleur :</string>
     <string name="labelNegativity">Électronégativité :</string>
     <string name="labelAbundance">Abondance :</string>
