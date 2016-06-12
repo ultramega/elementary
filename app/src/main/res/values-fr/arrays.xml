@@ -4,24 +4,24 @@
         The names for the element categories
     -->
     <string-array name="ptCategories">
-        <item>Non-metal</item>
-        <item>Noble gas</item>
-        <item>Alkali metal</item>
-        <item>Alkaline earth metal</item>
-        <item>Metalloid</item>
-        <item>Halogen</item>
-        <item>Metal</item>
-        <item>Transition metal</item>
-        <item>Lanthanide</item>
-        <item>Actinide</item>
+        <item>Non-métaux</item>
+        <item>Gaz nobles</item>
+        <item>Métaux alcalins</item>
+        <item>Métaux alcalino-terreux</item>
+        <item>Métalloïdes</item>
+        <item>Halogènes</item>
+        <item>Métaux</item>
+        <item>Métaux de transition</item>
+        <item>Lanthanides</item>
+        <item>Actinides</item>
     </string-array>
 
     <!--
         Options for the element colors preference
     -->
     <string-array name="elementColorNames">
-        <item>Category</item>
-        <item>Block</item>
+        <item>Famille</item>
+        <item>Bloc</item>
     </string-array>
 
     <!--
