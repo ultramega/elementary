@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        The names for the element categories
+    -->
+    <string-array name="ptCategories">
+        <item>Non-métaux</item>
+        <item>Gaz nobles</item>
+        <item>Métaux alcalins</item>
+        <item>Métaux alcalino-terreux</item>
+        <item>Métalloïdes</item>
+        <item>Halogènes</item>
+        <item>Métaux</item>
+        <item>Métaux de transition</item>
+        <item>Lanthanides</item>
+        <item>Actinides</item>
+    </string-array>
+
+    <!--
+        Options for the element colors preference
+    -->
+    <string-array name="elementColorNames">
+        <item>Famille</item>
+        <item>Bloc</item>
+    </string-array>
+
+    <!--
+        Options for the list sorting dialog
+    -->
+    <string-array name="sortFieldNames">
+        <item>Numéro Atomique</item>
+        <item>Nom de l\'élément</item>
+    </string-array>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="titleElementDetails">Détails de l\'Élément - %s</string>
+    <string name="titlePeriodicTable">Tableau Périodique des Éléments</string>
+    <string name="titleElementList">Liste des Éléments</string>
+    <string name="titlePreferences">Options de Elementary</string>
+    <string name="titleSort">Trier par :</string>
+
+    <string name="buttonVideo">Regarder la Vidéo</string>
+    <string name="buttonWiki">Wikipédia</string>
+    <string name="buttonSort">Trier</string>
+
+    <string name="menuOptions">Options</string>
+    <string name="menuList">Liste</string>
+    <string name="menuTable">Tableau</string>
+
+    <string name="prefTitleDarkTheme">Thème Sombre</string>
+    <string name="prefSummaryDarkTheme">Utiliser le thème sombre</string>
+    <string name="prefTitleTemp">Unité de Température</string>
+    <string name="prefSummaryTemp">Unité utilisée pour afficher les températures</string>
+    <string name="prefTitleColors">Couleur des Éléments</string>
+    <string name="prefSummaryColors">Propriété utilisée pour colorer les éléments</string>
+
+    <string name="labelNumber">Numéro Atomique :</string>
+    <string name="labelSymbol">Symbole :</string>
+    <string name="labelName">Nom :</string>
+    <string name="labelWeight">Masse Atomique :</string>
+    <string name="labelCategory">Famille :</string>
+    <string name="labelGPB">Groupe, Période, Bloc :</string>
+    <string name="labelConfiguration">Config. Électronique :</string>
+    <string name="labelElectrons">Électrons par Couche :</string>
+    <string name="labelDensity">Densité :</string>
+    <string name="labelMelt">Point De Fusion :</string>
+    <string name="labelBoil">Point d\'Ébullition :</string>
+    <string name="labelHeat">Chaleur :</string>
+    <string name="labelNegativity">Électronégativité :</string>
+    <string name="labelAbundance">Abondance :</string>
+
+    <string name="hintFilter">Filtrer par Nom ou Symbole</string>
+
+    <string name="unknown">inconnu</string>
+</resources>
