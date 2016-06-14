@@ -1,5 +1,5 @@
 ﻿- v.0.4.5 (6/14/16):
-   * Added French translation ([Poussinou]https://github.com/Poussinou)
+   * Added French translation ([Poussinou](https://github.com/Poussinou))
    * Reverted the app logo to the original
 - v.0.4.4 (5/21/16):
    * Use redirect based on element number instead of direct YouTube links
