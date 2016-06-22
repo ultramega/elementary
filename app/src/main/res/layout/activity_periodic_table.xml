@@ -34,4 +34,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:title="@string/titlePeriodicTable" />
+
+    <RelativeLayout
+        android:id="@+id/touchFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:clickable="true" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true" />
+    </RelativeLayout>
 </FrameLayout>

@@ -179,6 +179,8 @@ public class PeriodicTableActivity extends FragmentActivity implements
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE
             );
+
+            findViewById(R.id.touchFrame).setVisibility(View.VISIBLE);
         }
     }
 
