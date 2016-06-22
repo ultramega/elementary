@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -386,7 +387,12 @@ public class ElementDetailsFragment extends DialogFragment
         String value = mData.getAsString(Elements.CONFIGURATION);
         if(value != null) {
             value = value.replaceAll("([spdf])([0-9]+)", "$1<sup><small>$2</small></sup>");
-            return Html.fromHtml(value);
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                return Html.fromHtml(value, 0);
+            } else {
+                //noinspection deprecation
+                return Html.fromHtml(value);
+            }
         }
         return null;
     }
