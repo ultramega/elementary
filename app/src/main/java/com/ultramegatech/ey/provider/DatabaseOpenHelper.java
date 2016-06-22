@@ -40,7 +40,7 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
     /**
      * Database version
      */
-    private static final int VERSION = 6;
+    private static final int VERSION = 7;
 
     /**
      * Database file name

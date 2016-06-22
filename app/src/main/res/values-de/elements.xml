@@ -134,12 +134,12 @@
     <string name="el110">Darmstadtium</string>
     <string name="el111">Roentgenium</string>
     <string name="el112">Copernicium</string>
-    <string name="el113">Ununtrium</string>
+    <string name="el113">Nihonium</string>
     <string name="el114">Flerovium</string>
-    <string name="el115">Ununpentium</string>
+    <string name="el115">Moscovium</string>
     <string name="el116">Livermorium</string>
-    <string name="el117">Ununseptium</string>
-    <string name="el118">Ununoctium</string>
+    <string name="el117">Tennessine</string>
+    <string name="el118">Oganesson</string>
 
     <string name="wikiLang">de</string>
 
@@ -255,10 +255,10 @@
     <string name="wiki110">Darmstadtium</string>
     <string name="wiki111">Roentgenium</string>
     <string name="wiki112">Copernicium</string>
-    <string name="wiki113">Ununtrium</string>
+    <string name="wiki113">Nihonium</string>
     <string name="wiki114">Flerovium</string>
-    <string name="wiki115">Ununpentium</string>
+    <string name="wiki115">Moscovium</string>
     <string name="wiki116">Livermorium</string>
-    <string name="wiki117">Ununseptium</string>
-    <string name="wiki118">Ununoctium</string>
+    <string name="wiki117">Tennessine</string>
+    <string name="wiki118">Oganesson</string>
 </resources>
