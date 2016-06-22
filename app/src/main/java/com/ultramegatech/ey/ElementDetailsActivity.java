@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,6 +44,11 @@ import com.ultramegatech.util.ActionBarWrapper;
  * @author Steve Guidetti
  */
 public class ElementDetailsActivity extends FragmentActivity {
+    /**
+     * The tag to identify the Activity
+     */
+    private static final String TAG = "ElementDetailsActivity";
+
     /**
      * Intent extras
      */
@@ -63,7 +69,11 @@ public class ElementDetailsActivity extends FragmentActivity {
             if(atomicNumber == 0 && getIntent().getData() != null) {
                 final Uri uri = getIntent().getData();
                 if(uri.getHost().equals("element")) {
-                    atomicNumber = Integer.valueOf(uri.getPathSegments().get(0));
+                    try {
+                        atomicNumber = Integer.parseInt(uri.getPathSegments().get(0));
+                    } catch(NumberFormatException e) {
+                        Log.w(TAG, "Invalid atomic number");
+                    }
                 }
             }
             final Fragment fragment = ElementDetailsFragment.getInstance(atomicNumber);
