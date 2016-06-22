@@ -116,12 +116,12 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Paint for the table background
      */
-    private Paint mBgPaint = new Paint();
+    private final Paint mBgPaint = new Paint();
 
     /**
      * Paint for block backgrounds
      */
-    private Paint mBlockPaint = new Paint();
+    private final Paint mBlockPaint = new Paint();
 
     /**
      * Paint for row and column headers
