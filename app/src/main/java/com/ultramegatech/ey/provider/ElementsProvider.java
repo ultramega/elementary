@@ -48,6 +48,7 @@ public class ElementsProvider extends ContentProvider {
      */
     private static final int ELEMENTS = 1;
     private static final int ELEMENTS_NUMBER = 2;
+    private static final int ELEMENTS_SYMBOL = 3;
 
     /**
      * Uri matcher
@@ -56,6 +57,7 @@ public class ElementsProvider extends ContentProvider {
         {
             addURI(AUTHORITY, "elements", ELEMENTS);
             addURI(AUTHORITY, "elements/#", ELEMENTS_NUMBER);
+            addURI(AUTHORITY, "elements/*", ELEMENTS_SYMBOL);
         }
     };
 
@@ -81,6 +83,10 @@ public class ElementsProvider extends ContentProvider {
             case ELEMENTS_NUMBER:
                 qb.appendWhere(Elements.NUMBER + " = " + uri.getLastPathSegment());
                 break;
+            case ELEMENTS_SYMBOL:
+                qb.appendWhere(Elements.SYMBOL + " = ");
+                qb.appendWhereEscapeString(uri.getLastPathSegment());
+                break;
             default:
                 throw new IllegalArgumentException("Invalid URI: " + uri.toString());
         }
@@ -99,6 +105,7 @@ public class ElementsProvider extends ContentProvider {
             case ELEMENTS:
                 return Elements.DATA_TYPE;
             case ELEMENTS_NUMBER:
+            case ELEMENTS_SYMBOL:
                 return Elements.DATA_TYPE_ITEM;
             default:
                 return null;

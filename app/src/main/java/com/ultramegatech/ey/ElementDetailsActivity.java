@@ -22,12 +22,14 @@
  */
 package com.ultramegatech.ey;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -65,20 +67,31 @@ public class ElementDetailsActivity extends FragmentActivity {
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
         if(savedInstanceState == null) {
-            int atomicNumber = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
-            if(atomicNumber == 0 && getIntent().getData() != null) {
+            final Intent intent = getIntent();
+            Fragment fragment = null;
+            if(intent.hasExtra(EXTRA_ATOMIC_NUMBER)) {
+                fragment = ElementDetailsFragment
+                        .getInstance(intent.getIntExtra(EXTRA_ATOMIC_NUMBER, 0));
+            } else if(getIntent().getData() != null) {
                 final Uri uri = getIntent().getData();
                 if(uri.getHost().equals("element")) {
-                    try {
-                        atomicNumber = Integer.parseInt(uri.getPathSegments().get(0));
-                    } catch(NumberFormatException e) {
-                        Log.w(TAG, "Invalid atomic number");
+                    final String path = uri.getPathSegments().get(0);
+                    if(TextUtils.isDigitsOnly(path)) {
+                        try {
+                            fragment = ElementDetailsFragment
+                                    .getInstance(Integer.parseInt(uri.getPathSegments().get(0)));
+                        } catch(NumberFormatException e) {
+                            Log.w(TAG, "Invalid atomic number");
+                        }
+                    } else {
+                        fragment = ElementDetailsFragment.getInstance(path);
                     }
                 }
             }
-            final Fragment fragment = ElementDetailsFragment.getInstance(atomicNumber);
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragment)
-                    .commit();
+            if(fragment != null) {
+                getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragment)
+                        .commit();
+            }
         }
     }
 

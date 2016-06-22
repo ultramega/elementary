@@ -69,6 +69,7 @@ public class ElementDetailsFragment extends DialogFragment
      * Fragment arguments
      */
     private static final String ARG_ATOMIC_NUMBER = "atomic_number";
+    private static final String ARG_ATOMIC_SYMBOL = "atomic_symbol";
 
     /**
      * Units of measurement
@@ -145,6 +146,22 @@ public class ElementDetailsFragment extends DialogFragment
 
         final Bundle args = new Bundle();
         args.putInt(ARG_ATOMIC_NUMBER, atomicNumber);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    /**
+     * Create a new instance of this Fragment.
+     *
+     * @param atomicSymbol The atomic symbol of the element to display
+     * @return An instance of this Fragment
+     */
+    public static DialogFragment getInstance(String atomicSymbol) {
+        final DialogFragment fragment = new ElementDetailsFragment();
+
+        final Bundle args = new Bundle();
+        args.putString(ARG_ATOMIC_SYMBOL, atomicSymbol);
         fragment.setArguments(args);
 
         return fragment;
@@ -486,8 +503,17 @@ public class ElementDetailsFragment extends DialogFragment
      * @return The content Uri
      */
     private Uri getUri() {
-        final long id = getArguments().getInt(ARG_ATOMIC_NUMBER);
-        return ContentUris.withAppendedId(Elements.CONTENT_URI_NUMBER, id);
+        final Bundle args = getArguments();
+        if(args != null) {
+            if(args.containsKey(ARG_ATOMIC_NUMBER)) {
+                return ContentUris.withAppendedId(Elements.CONTENT_URI_ITEM,
+                        args.getInt(ARG_ATOMIC_NUMBER));
+            } else if(args.containsKey(ARG_ATOMIC_SYMBOL)) {
+                return Uri.withAppendedPath(Elements.CONTENT_URI_ITEM,
+                        args.getString(ARG_ATOMIC_SYMBOL));
+            }
+        }
+        return ContentUris.withAppendedId(Elements.CONTENT_URI_ITEM, 0);
     }
 
     @Override
