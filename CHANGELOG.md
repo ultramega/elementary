@@ -1,4 +1,8 @@
-﻿- v.0.4.5 (6/14/16):
+﻿- v.0.4.6 (6/22/16):
+   * Enabled immersive full screen mode for the table view on supported devices
+   * Updated names and symbols for elements 113, 115, 117, and 118
+   * Added deep links for elements (ex. elementary://element/6)
+- v.0.4.5 (6/14/16):
    * Added French translation ([Poussinou](https://github.com/Poussinou))
    * Reverted the app logo to the original
 - v.0.4.4 (5/21/16):
