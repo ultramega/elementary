@@ -29,6 +29,7 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -37,6 +38,8 @@ import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
@@ -56,6 +59,21 @@ import java.util.ArrayList;
  */
 public class PeriodicTableActivity extends FragmentActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
+    /**
+     * Delay in milliseconds before entering or re-entering immersive full screen mode
+     */
+    private static final long IMMERSIVE_MODE_DELAY = 3000;
+
+    /**
+     * Handler for posting delayed callbacks
+     */
+    private Handler mHandler;
+
+    /**
+     * Callback to enter immersive full screen mode
+     */
+    private Runnable mImmersiveModeCallback;
+
     /**
      * Fields to read from the database
      */
@@ -84,7 +102,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         loadPreferences();
 
         super.onCreate(savedInstanceState);
-
+        setupImmersiveMode();
         setContentView(R.layout.activity_periodic_table);
 
         mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
@@ -102,6 +120,66 @@ public class PeriodicTableActivity extends FragmentActivity implements
         super.onDestroy();
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if(hasFocus && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mHandler.removeCallbacks(mImmersiveModeCallback);
+            mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
+        }
+    }
+
+    /**
+     * Set up immersive full screen mode for supported devices.
+     */
+    private void setupImmersiveMode() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mHandler = new Handler();
+            mImmersiveModeCallback = new Runnable() {
+                @Override
+                public void run() {
+                    hideSystemUi();
+                }
+            };
+
+            getWindow().addFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+                            | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            );
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            );
+            getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(
+                    new View.OnSystemUiVisibilityChangeListener() {
+                        @Override
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            mHandler.removeCallbacks(mImmersiveModeCallback);
+                            if((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
+                                mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
+                            }
+                        }
+                    });
+        }
+    }
+
+    /**
+     * Enable immersive full screen mode.
+     */
+    private void hideSystemUi() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE
+            );
+        }
     }
 
     @Override
