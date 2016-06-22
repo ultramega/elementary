@@ -23,6 +23,7 @@
 package com.ultramegatech.ey;
 
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -58,7 +59,13 @@ public class ElementDetailsActivity extends FragmentActivity {
         ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
 
         if(savedInstanceState == null) {
-            final int atomicNumber = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
+            int atomicNumber = getIntent().getIntExtra(EXTRA_ATOMIC_NUMBER, 0);
+            if(atomicNumber == 0 && getIntent().getData() != null) {
+                final Uri uri = getIntent().getData();
+                if(uri.getHost().equals("element")) {
+                    atomicNumber = Integer.valueOf(uri.getPathSegments().get(0));
+                }
+            }
             final Fragment fragment = ElementDetailsFragment.getInstance(atomicNumber);
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragment)
                     .commit();
