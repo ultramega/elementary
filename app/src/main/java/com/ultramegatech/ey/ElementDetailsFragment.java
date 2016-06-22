@@ -50,6 +50,7 @@ import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.util.UnitUtils;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 /**
  * This Fragment displays details about a single chemical element. It can be embedded or shown as a
@@ -347,11 +348,11 @@ public class ElementDetailsFragment extends DialogFragment
         if(kelvin != null) {
             switch(mTemperatureUnits) {
                 case CELSIUS:
-                    return String.format("%.2f °C", UnitUtils.KtoC(kelvin));
+                    return String.format(Locale.getDefault(), "%.2f °C", UnitUtils.KtoC(kelvin));
                 case FAHRENHEIT:
-                    return String.format("%.2f °F", UnitUtils.KtoF(kelvin));
+                    return String.format(Locale.getDefault(), "%.2f °F", UnitUtils.KtoF(kelvin));
                 default:
-                    return String.format("%.2f K", kelvin);
+                    return String.format(Locale.getDefault(), "%.2f K", kelvin);
             }
         }
 
@@ -369,7 +370,7 @@ public class ElementDetailsFragment extends DialogFragment
         if(value != null) {
             final Boolean unstable = mData.getAsBoolean(Elements.UNSTABLE);
             if(unstable != null && unstable) {
-                return String.format("[%.0f]", value);
+                return String.format(Locale.getDefault(), "[%.0f]", value);
             }
             return mDecimalFormat.format(value);
         }
