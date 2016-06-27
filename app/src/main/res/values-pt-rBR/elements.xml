@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2016 Steve Guidetti, André Marcelo Alvarenga
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <string name="el001">Hidrogênio</string>
+    <string name="el002">Hélio</string>
+    <string name="el003">Lítio</string>
+    <string name="el004">Berílio</string>
+    <string name="el005">Boro</string>
+    <string name="el006">Carbono</string>
+    <string name="el007">Nitrogênio</string>
+    <string name="el008">Oxigênio</string>
+    <string name="el009">Flúor</string>
+    <string name="el010">Neônio</string>
+    <string name="el011">Sódio</string>
+    <string name="el012">Magnésio</string>
+    <string name="el013">Alumínio</string>
+    <string name="el014">Silício</string>
+    <string name="el015">Fósforo</string>
+    <string name="el016">Enxofre</string>
+    <string name="el017">Cloro</string>
+    <string name="el018">Argônio</string>
+    <string name="el019">Potássio</string>
+    <string name="el020">Cálcio</string>
+    <string name="el021">Escândio</string>
+    <string name="el022">Titânio</string>
+    <string name="el023">Vanádio</string>
+    <string name="el024">Crômio</string>
+    <string name="el025">Manganês</string>
+    <string name="el026">Ferro</string>
+    <string name="el027">Cobalto</string>
+    <string name="el028">Níquel</string>
+    <string name="el029">Cobre</string>
+    <string name="el030">Zinco</string>
+    <string name="el031">Gálio</string>
+    <string name="el032">Germânio</string>
+    <string name="el033">Arsênio</string>
+    <string name="el034">Selênio</string>
+    <string name="el035">Bromo</string>
+    <string name="el036">Criptônio</string>
+    <string name="el037">Rubídio</string>
+    <string name="el038">Estrôncio</string>
+    <string name="el039">Ítrio</string>
+    <string name="el040">Zircônio</string>
+    <string name="el041">Nióbio</string>
+    <string name="el042">Molibdênio</string>
+    <string name="el043">Tecnécio</string>
+    <string name="el044">Rutênio</string>
+    <string name="el045">Ródio</string>
+    <string name="el046">Paládio</string>
+    <string name="el047">Prata</string>
+    <string name="el048">Cádmio</string>
+    <string name="el049">Índio</string>
+    <string name="el050">Estanho</string>
+    <string name="el051">Antimônio</string>
+    <string name="el052">Telúrio</string>
+    <string name="el053">Iodo</string>
+    <string name="el054">Xenônio</string>
+    <string name="el055">Césio</string>
+    <string name="el056">Bário</string>
+    <string name="el057">Lantânio</string>
+    <string name="el058">Cério</string>
+    <string name="el059">Praseodímio</string>
+    <string name="el060">Neodímio</string>
+    <string name="el061">Promécio</string>
+    <string name="el062">Samário</string>
+    <string name="el063">Európio</string>
+    <string name="el064">Gadolínio</string>
+    <string name="el065">Térbio</string>
+    <string name="el066">Disprósio</string>
+    <string name="el067">Hôlmio</string>
+    <string name="el068">Érbio</string>
+    <string name="el069">Túlio</string>
+    <string name="el070">Itérbio</string>
+    <string name="el071">Lutécio</string>
+    <string name="el072">Háfnio</string>
+    <string name="el073">Tântalo</string>
+    <string name="el074">Tungstênio</string>
+    <string name="el075">Rênio</string>
+    <string name="el076">Ósmio</string>
+    <string name="el077">Irídio</string>
+    <string name="el078">Platina</string>
+    <string name="el079">Ouro</string>
+    <string name="el080">Mercúrio</string>
+    <string name="el081">Tálio</string>
+    <string name="el082">Chumbo</string>
+    <string name="el083">Bismuto</string>
+    <string name="el084">Polônio</string>
+    <string name="el085">Astato</string>
+    <string name="el086">Radônio</string>
+    <string name="el087">Frâncio</string>
+    <string name="el088">Rádio</string>
+    <string name="el089">Actínio</string>
+    <string name="el090">Tório</string>
+    <string name="el091">Protactínio</string>
+    <string name="el092">Urânio</string>
+    <string name="el093">Netúnio</string>
+    <string name="el094">Plutônio</string>
+    <string name="el095">Amerício</string>
+    <string name="el096">Cúrio</string>
+    <string name="el097">Berquélio</string>
+    <string name="el098">Califórnio</string>
+    <string name="el099">Einstênio</string>
+    <string name="el100">Férmio</string>
+    <string name="el101">Mendelévio</string>
+    <string name="el102">Nobélio</string>
+    <string name="el103">Laurêncio</string>
+    <string name="el104">Rutherfórdio</string>
+    <string name="el105">Dúbnio</string>
+    <string name="el106">Seabórgio</string>
+    <string name="el107">Bóhrio</string>
+    <string name="el108">Hássio</string>
+    <string name="el109">Meitnério</string>
+    <string name="el110">Darmstádio</string>
+    <string name="el111">Roentgênio</string>
+    <string name="el112">Copernício</string>
+    <string name="el113">Unúntrio</string>
+    <string name="el114">Fleróvio</string>
+    <string name="el115">Ununpêntio</string>
+    <string name="el116">Livermório</string>
+    <string name="el117">Ununséptio</string>
+    <string name="el118">Ununóctio</string>
+
+    <string name="wikiLang">pt</string>
+
+    <string name="wiki001">Hidrogénio</string>
+    <string name="wiki002">Hélio</string>
+    <string name="wiki003">Lítio</string>
+    <string name="wiki004">Berílio</string>
+    <string name="wiki005">Boro</string>
+    <string name="wiki006">Carbono</string>
+    <string name="wiki007">Azoto</string>
+    <string name="wiki008">Oxigénio</string>
+    <string name="wiki009">Flúor</string>
+    <string name="wiki010">Néon</string>
+    <string name="wiki011">Sódio</string>
+    <string name="wiki012">Magnésio</string>
+    <string name="wiki013">Alumínio</string>
+    <string name="wiki014">Silício</string>
+    <string name="wiki015">Fósforo</string>
+    <string name="wiki016">Enxofre</string>
+    <string name="wiki017">Cloro</string>
+    <string name="wiki018">Árgon</string>
+    <string name="wiki019">Potássio</string>
+    <string name="wiki020">Cálcio</string>
+    <string name="wiki021">Escândio</string>
+    <string name="wiki022">Titânio</string>
+    <string name="wiki023">Vanádio</string>
+    <string name="wiki024">Crômio</string>
+    <string name="wiki025">Manganês</string>
+    <string name="wiki026">Ferro</string>
+    <string name="wiki027">Cobalto</string>
+    <string name="wiki028">Níquel</string>
+    <string name="wiki029">Cobre</string>
+    <string name="wiki030">Zinco</string>
+    <string name="wiki031">Gálio</string>
+    <string name="wiki032">Germânio</string>
+    <string name="wiki033">Arsênio</string>
+    <string name="wiki034">Selênio</string>
+    <string name="wiki035">Bromo</string>
+    <string name="wiki036">Crípton</string>
+    <string name="wiki037">Rubídio</string>
+    <string name="wiki038">Estrôncio</string>
+    <string name="wiki039">Ítrio</string>
+    <string name="wiki040">Zircônio</string>
+    <string name="wiki041">Nióbio</string>
+    <string name="wiki042">Molibdênio</string>
+    <string name="wiki043">Tecnécio</string>
+    <string name="wiki044">Rutênio</string>
+    <string name="wiki045">Ródio</string>
+    <string name="wiki046">Paládio</string>
+    <string name="wiki047">Prata</string>
+    <string name="wiki048">Cádmio</string>
+    <string name="wiki049">Índio_(elemento_químico)</string>
+    <string name="wiki050">Estanho</string>
+    <string name="wiki051">Antimônio</string>
+    <string name="wiki052">Telúrio</string>
+    <string name="wiki053">Iodo</string>
+    <string name="wiki054">Xenônio</string>
+    <string name="wiki055">Césio</string>
+    <string name="wiki056">Bário</string>
+    <string name="wiki057">Lantânio</string>
+    <string name="wiki058">Cério</string>
+    <string name="wiki059">Praseodímio</string>
+    <string name="wiki060">Neodímio</string>
+    <string name="wiki061">Promécio</string>
+    <string name="wiki062">Samário</string>
+    <string name="wiki063">Európio</string>
+    <string name="wiki064">Gadolínio</string>
+    <string name="wiki065">Térbio</string>
+    <string name="wiki066">Disprósio</string>
+    <string name="wiki067">Hólmio</string>
+    <string name="wiki068">Érbio</string>
+    <string name="wiki069">Túlio</string>
+    <string name="wiki070">Itérbio</string>
+    <string name="wiki071">Lutécio</string>
+    <string name="wiki072">Háfnio</string>
+    <string name="wiki073">Tântalo_(elemento_químico)</string>
+    <string name="wiki074">Tungstênio</string>
+    <string name="wiki075">Rênio</string>
+    <string name="wiki076">Ósmio</string>
+    <string name="wiki077">Irídio</string>
+    <string name="wiki078">Platina</string>
+    <string name="wiki079">Ouro</string>
+    <string name="wiki080">Mercúrio_(elemento_químico)</string>
+    <string name="wiki081">Tálio</string>
+    <string name="wiki082">Chumbo</string>
+    <string name="wiki083">Bismuto</string>
+    <string name="wiki084">Polônio</string>
+    <string name="wiki085">Ástato</string>
+    <string name="wiki086">Rádon</string>
+    <string name="wiki087">Frâncio</string>
+    <string name="wiki088">Rádio_(elemento_químico)</string>
+    <string name="wiki089">Actínio</string>
+    <string name="wiki090">Tório</string>
+    <string name="wiki091">Protactínio</string>
+    <string name="wiki092">Urânio</string>
+    <string name="wiki093">Neptúnio</string>
+    <string name="wiki094">Plutónio</string>
+    <string name="wiki095">Amerício</string>
+    <string name="wiki096">Cúrio</string>
+    <string name="wiki097">Berquélio</string>
+    <string name="wiki098">Califórnio</string>
+    <string name="wiki099">Einstênio</string>
+    <string name="wiki100">Férmio</string>
+    <string name="wiki101">Mendelévio</string>
+    <string name="wiki102">Nobélio</string>
+    <string name="wiki103">Laurêncio</string>
+    <string name="wiki104">Rutherfórdio</string>
+    <string name="wiki105">Dúbnio</string>
+    <string name="wiki106">Seabórgio</string>
+    <string name="wiki107">Bóhrio</string>
+    <string name="wiki108">Hássio</string>
+    <string name="wiki109">Meitnério</string>
+    <string name="wiki110">Darmstácio</string>
+    <string name="wiki111">Roentgênio</string>
+    <string name="wiki112">Copernício</string>
+    <string name="wiki113">Unúntrio</string>
+    <string name="wiki114">Fleróvio</string>
+    <string name="wiki115">Ununpêntio</string>
+    <string name="wiki116">Livermório</string>
+    <string name="wiki117">Ununséptio</string>
+    <string name="wiki118">Ununóctio</string>
+</resources>
