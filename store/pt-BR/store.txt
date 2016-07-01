@@ -1,0 +1,29 @@
+[title]
+Elementary: Tabela Periódica
+
+[keywords]
+Ciência
+Química
+Elementos
+Tabela Periódica
+
+[short-description]
+Um aplicativo de código aberto que apresenta a Tabela Periódica dos Elementos.
+
+[description]
+Elementary é um aplicativo de Tabela Periódica que apresenta informações básicas sobre os elementos.
+
+Funcionalidades:
+- Tabela Periódica com ajustes de zoom (Mantenha o dedo pressionado e arraste para as extremidades)
+- Toque um elemento para ver algumas informações básicas
+- Acesso fácil à Wikipédia e vídeo do YouTube sobre o elemento
+- Grátis e sem nenhuma propaganda!
+
+Vídeos fornecidos por Periodic Videos (http://www.periodicvideos.com/)
+
+Licenciado pela MIT License
+Código-fonte disponível em: https://github.com/ultramega/elementary
+
+Twitter: https://twitter.com/ultramegasoft
+Facebook: https://www.facebook.com/ultramegasoft
+Google+: https://plus.google.com/+UltraMegaSoftware
