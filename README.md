@@ -22,6 +22,7 @@ Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
 - German translation: [C4R2T3N](https://github.com/C4R2T3N)
 - Italian translation: [rapgenic](https://github.com/rapgenic)
 - French translation: [Poussinou](https://github.com/Poussinou)
+- Brazilian Portuguese translation: [amalvarenga](https://github.com/amalvarenga)
 
 ## License
 
