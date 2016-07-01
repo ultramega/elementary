@@ -16,7 +16,7 @@ Elementary é um aplicativo de Tabela Periódica que apresenta informações bá
 Funcionalidades:
 - Tabela Periódica com ajustes de zoom (Mantenha o dedo pressionado e arraste para as extremidades)
 - Toque um elemento para ver algumas informações básicas
-- Acesso fácil à Wikipédia e video do YouTube sobre o elemento
+- Acesso fácil à Wikipédia e vídeo do YouTube sobre o elemento
 - Grátis e sem nenhuma propaganda!
 
 Vídeos fornecidos por Periodic Videos (http://www.periodicvideos.com/)
