@@ -1,4 +1,6 @@
-﻿- v.0.4.6 (6/22/16):
+﻿- v.0.4.7 (7/1/16):
+   * Added Brazilian Portuguese translation ([amalvarenga](https://github.com/amalvarenga))
+- v.0.4.6 (6/22/16):
    * Enabled immersive full screen mode for the table view on supported devices
    * Updated names and symbols for elements 113, 115, 117, and 118
    * Added deep links for elements (ex. elementary://element/6)
