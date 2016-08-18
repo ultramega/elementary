@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -61,6 +62,7 @@ public class EyPreferenceActivity extends PreferenceActivity
         prefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals(PreferenceUtils.getKeyDarkTheme(this))) {
