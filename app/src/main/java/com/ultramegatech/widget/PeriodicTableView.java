@@ -26,9 +26,15 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.graphics.Rect;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.OverScroller;
 
 import com.ultramegatech.ey.R;
 
@@ -93,12 +99,7 @@ public class PeriodicTableView extends View implements Observer {
     private CharSequence mTitle;
 
     /**
-     * Block size in pixels in the zoomed out state
-     */
-    private int mBaseBlockSize = 20;
-
-    /**
-     * Actual current block size
+     * The current block size
      */
     private int mBlockSize;
 
@@ -154,22 +155,6 @@ public class PeriodicTableView extends View implements Observer {
     private Paint mSelectedPaint;
 
     /**
-     * This View's AspectQuotient
-     */
-    private final AspectQuotient mAspectQuotient = new AspectQuotient();
-
-    /**
-     * This View's ZoomState
-     */
-    private ZoomState mState;
-
-    /**
-     * Offsets for drawing on the Canvas based on ZoomState
-     */
-    private int mOffsetX;
-    private int mOffsetY;
-
-    /**
      * Rectangle for many purposes
      */
     private final Rect mRect = new Rect();
@@ -178,6 +163,37 @@ public class PeriodicTableView extends View implements Observer {
      * The currently selected block
      */
     private PeriodicTableBlock mBlockSelected;
+
+    /**
+     * The area for drawing the content
+     */
+    private Rect mContentRect = new Rect();
+
+    /**
+     * The initial area for relative scale operations
+     */
+    private Rect mScaleRect = new Rect();
+
+    /**
+     * The focal point of the current scale operation
+     */
+    private PointF mScaleFocalPoint = new PointF();
+
+    /**
+     * Touch gesture detectors
+     */
+    private ScaleGestureDetector mScaleGestureDetector;
+    private GestureDetector mGestureDetector;
+
+    /**
+     * Handler for animating programmatic scaling
+     */
+    private Zoomer mZoomer;
+
+    /**
+     * Handler for programmatic scrolling and flings
+     */
+    private OverScroller mScroller;
 
     public PeriodicTableView(Context context) {
         this(context, null, 0);
@@ -189,7 +205,8 @@ public class PeriodicTableView extends View implements Observer {
 
     public PeriodicTableView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+
+        setupPaints();
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PeriodicTableView,
                 defStyle, 0);
@@ -200,26 +217,13 @@ public class PeriodicTableView extends View implements Observer {
 
         a.recycle();
 
-    }
-
-    /**
-     * Setup helpers and listeners.
-     */
-    private void init() {
-        final DynamicZoomControl zoomControl = new DynamicZoomControl();
-        zoomControl.setAspectQuotient(mAspectQuotient);
-
-        final PeriodicTableTouchListener touchListener =
-                new PeriodicTableTouchListener(getContext());
-        touchListener.setZoomControl(zoomControl);
-        setOnTouchListener(touchListener);
-
-        mState = zoomControl.getZoomState();
-        mState.addObserver(this);
-
         mLegend.addObserver(this);
 
-        setupPaints();
+        mScaleGestureDetector = new ScaleGestureDetector(context, getOnScaleGestureListener());
+        mGestureDetector = new GestureDetector(context, getOnGestureListener());
+
+        mZoomer = new Zoomer(context);
+        mScroller = new OverScroller(context);
     }
 
     /**
@@ -248,6 +252,139 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
+     * Create the listener for the ScaleGestureDetector.
+     *
+     * @return The OnScaleGestureListener
+     */
+    private ScaleGestureDetector.OnScaleGestureListener getOnScaleGestureListener() {
+        return new ScaleGestureDetector.SimpleOnScaleGestureListener() {
+            /**
+             * The initial span of the scale gesture
+             */
+            private float mStartSpan;
+
+            @Override
+            public boolean onScaleBegin(ScaleGestureDetector detector) {
+                clearSelection();
+                mStartSpan = detector.getCurrentSpan();
+
+                return true;
+            }
+
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                final float ratio = detector.getCurrentSpan() / mStartSpan;
+                final int deltaWidth = (int)(ratio * mScaleRect.width()) - mScaleRect.width();
+                final int deltaHeight = (int)(ratio * mScaleRect.height()) - mScaleRect.height();
+                final float focusX = detector.getFocusX() / getWidth();
+                final float focusY = detector.getFocusY() / getHeight();
+                mContentRect.set(
+                        mScaleRect.left - (int)(deltaWidth * focusX),
+                        mScaleRect.top - (int)(deltaHeight * focusY),
+                        mScaleRect.right + (int)(deltaWidth * (1 - focusX)),
+                        mScaleRect.bottom + (int)(deltaHeight * (1 - focusY))
+                );
+                fillViewport();
+                measureCanvas();
+                ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
+
+                return true;
+            }
+        };
+    }
+
+    /**
+     * Create the listener for the GestureDetector.
+     *
+     * @return The OnGestureListener
+     */
+    private GestureDetector.OnGestureListener getOnGestureListener() {
+        return new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent e) {
+                mScaleFocalPoint.set(e.getX(), e.getY());
+                mScaleRect.set(mContentRect);
+                mScroller.forceFinished(true);
+                ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
+                return true;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+                mBlockSelected = null;
+                for(PeriodicTableBlock block : mPeriodicTableBlocks) {
+                    findBlockPosition(block);
+                    if(mRect.contains((int)e.getX(), (int)e.getY())) {
+                        mBlockSelected = block;
+                        ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                if(mItemClickListener != null && mBlockSelected != null) {
+                    mItemClickListener.onItemClick(mBlockSelected);
+                }
+                clearSelection();
+                return true;
+            }
+
+            @Override
+            public boolean onDoubleTapEvent(MotionEvent e) {
+                clearSelection();
+                return true;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                mZoomer.forceFinished();
+                mZoomer.startZoom(0.5f);
+                ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
+                return true;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                clearSelection();
+                int offsetX = (int)-distanceX;
+                int offsetY = (int)-distanceY;
+                if(offsetX > 0) {
+                    offsetX = Math.min(offsetX, -mContentRect.left);
+                } else if(offsetX < 0) {
+                    offsetX = Math.max(offsetX, -Math.max(0, mContentRect.right - getWidth()));
+                }
+                if(offsetY > 0) {
+                    offsetY = Math.min(offsetY, -mContentRect.top);
+                } else if(offsetY < 0) {
+                    offsetY = Math.max(offsetY, -Math.max(0, mContentRect.bottom - getHeight()));
+                }
+                mContentRect.offset(offsetX, offsetY);
+                return true;
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                clearSelection();
+                mScroller.forceFinished(true);
+                mScroller.fling(
+                        mContentRect.left, mContentRect.top,
+                        (int)-velocityX, (int)-velocityY,
+                        mContentRect.left - (mContentRect.right - getWidth()), 0,
+                        mContentRect.top - (mContentRect.bottom - getHeight()), 0
+                );
+                return true;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                clearSelection();
+            }
+        };
+    }
+
+    /**
      * Set the foreground color. This is the color of all text outside of the blocks and legend.
      *
      * @param color The color value
@@ -255,7 +392,7 @@ public class PeriodicTableView extends View implements Observer {
     public void setFgColor(int color) {
         mTitlePaint.setColor(color);
         mHeaderPaint.setColor(color);
-        invalidate();
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     /**
@@ -275,7 +412,7 @@ public class PeriodicTableView extends View implements Observer {
      */
     public void setBgColor(int color) {
         mBgPaint.setColor(color);
-        invalidate();
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
 
@@ -330,8 +467,8 @@ public class PeriodicTableView extends View implements Observer {
         mNumCols = numCols;
         mPeriodicTableBlocks = blocks;
 
-        requestLayout();
-        invalidate();
+        measureCanvas();
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     /**
@@ -377,7 +514,7 @@ public class PeriodicTableView extends View implements Observer {
      */
     public void setTitle(CharSequence title) {
         mTitle = title;
-        invalidate();
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     /**
@@ -390,61 +527,11 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
-     * Called by the touch listener on a down event. Determines which block, if any, this click
-     * occurred in and selects it.
-     *
-     * @param x X coordinate
-     * @param y Y coordinate
-     */
-    public void onDown(float x, float y) {
-        if(mPeriodicTableBlocks == null) {
-            return;
-        }
-
-        mBlockSelected = null;
-        for(PeriodicTableBlock block : mPeriodicTableBlocks) {
-            findBlockPosition(block);
-            if(x > mRect.left && x < mRect.right && y > mRect.top && y < mRect.bottom) {
-                mBlockSelected = block;
-                break;
-            }
-        }
-
-        invalidate();
-    }
-
-    /**
      * Clear the selected block.
      */
     public void clearSelection() {
         mBlockSelected = null;
-        invalidate();
-    }
-
-    /**
-     * Called by the touch listener on a click event. If an item has been selected, this method
-     * calls the item click listener if one is set.
-     */
-    public void onClick() {
-        if(mItemClickListener != null && mBlockSelected != null) {
-            mItemClickListener.onItemClick(mBlockSelected);
-        }
-        clearSelection();
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-
-        final int width = right - left;
-        final int height = bottom - top;
-
-        if(mNumCols > 0 && mNumRows > 0) {
-            mAspectQuotient.updateAspectQuotient(width, height, mNumCols, mNumRows);
-            mAspectQuotient.notifyObservers();
-
-            mBaseBlockSize = Math.min(width / mNumCols, height / mNumRows);
-        }
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     /**
@@ -455,8 +542,7 @@ public class PeriodicTableView extends View implements Observer {
      * @return True if the block is visible
      */
     private boolean isBlockVisible(Rect rect) {
-        return (rect.right > getLeft() && rect.bottom > getTop()
-                && rect.left < getRight() && rect.top < getBottom());
+        return rect.intersects(0, 0, getWidth(), getHeight());
     }
 
     /**
@@ -465,8 +551,8 @@ public class PeriodicTableView extends View implements Observer {
      * @param block The block
      */
     private void findBlockPosition(PeriodicTableBlock block) {
-        mRect.right = (block.col * mBlockSize - mOffsetX + mPadding) - 1;
-        mRect.bottom = (block.row * mBlockSize - mOffsetY + mPadding) - 1;
+        mRect.right = (block.col * mBlockSize + mContentRect.left + mPadding) - 1;
+        mRect.bottom = (block.row * mBlockSize + mContentRect.top + mPadding) - 1;
         mRect.left = mRect.right - mBlockSize + 1;
         mRect.top = mRect.bottom - mBlockSize + 1;
 
@@ -486,19 +572,19 @@ public class PeriodicTableView extends View implements Observer {
         mHeaderPaint.setTextSize(mBlockSize / 4);
 
         for(int i = 1; i <= mNumCols; i++) {
-            canvas.drawText(String.valueOf(i), mBlockSize * i - mOffsetX, mPadding / 2 - mOffsetY,
-                    mHeaderPaint);
+            canvas.drawText(String.valueOf(i), mBlockSize * i + mContentRect.left,
+                    mPadding / 2 + mContentRect.top, mHeaderPaint);
         }
         for(int i = 1; i <= mNumRows - 2; i++) {
-            canvas.drawText(String.valueOf(i), mPadding / 2 - mOffsetX, mBlockSize * i - mOffsetY,
-                    mHeaderPaint);
+            canvas.drawText(String.valueOf(i), mPadding / 2 + mContentRect.left,
+                    mBlockSize * i + mContentRect.top, mHeaderPaint);
         }
 
-        canvas.drawText("57-71", mBlockSize * 3 - mOffsetX,
-                mBlockSize * 6 - mOffsetY + mHeaderPaint.getTextSize() / 2, mHeaderPaint);
+        canvas.drawText("57-71", mBlockSize * 3 + mContentRect.left,
+                mBlockSize * 6 + mContentRect.top + mHeaderPaint.getTextSize() / 2, mHeaderPaint);
 
-        canvas.drawText("89-103", mBlockSize * 3 - mOffsetX,
-                mBlockSize * 7 - mOffsetY + mHeaderPaint.getTextSize() / 2, mHeaderPaint);
+        canvas.drawText("89-103", mBlockSize * 3 + mContentRect.left,
+                mBlockSize * 7 + mContentRect.top + mHeaderPaint.getTextSize() / 2, mHeaderPaint);
     }
 
     /**
@@ -508,37 +594,110 @@ public class PeriodicTableView extends View implements Observer {
      */
     private void writeTitle(Canvas canvas) {
         if(mTitle != null) {
-            canvas.drawText(mTitle, 0, mTitle.length(), mBlockSize * mNumCols / 2 - mOffsetX,
-                    mBlockSize - mOffsetY, mTitlePaint);
+            canvas.drawText(mTitle, 0, mTitle.length(),
+                    mBlockSize * mNumCols / 2 + mContentRect.left,
+                    mBlockSize + mContentRect.top, mTitlePaint);
+        }
+    }
+
+    /**
+     * Ensure that the content area fills the viewport.
+     */
+    private void fillViewport() {
+        if(mContentRect.width() < getWidth()) {
+            mContentRect.left = 0;
+            mContentRect.right = getWidth();
+        } else if(mContentRect.left > 0) {
+            mContentRect.right -= mContentRect.left;
+            mContentRect.left = 0;
+        } else if(mContentRect.right < getWidth()) {
+            mContentRect.left += getWidth() - mContentRect.right;
+            mContentRect.right = getWidth();
+        }
+        if(mContentRect.height() < getHeight()) {
+            mContentRect.top = 0;
+            mContentRect.bottom = getHeight();
+        } else if(mContentRect.top > 0) {
+            mContentRect.bottom -= mContentRect.top;
+            mContentRect.top = 0;
+        } else if(mContentRect.bottom < getHeight()) {
+            mContentRect.top += getHeight() - mContentRect.bottom;
+            mContentRect.bottom = getHeight();
+        }
+    }
+
+    /**
+     * Measure the content area and determine the block size, padding, and text size.
+     */
+    private void measureCanvas() {
+        final int blockWidth = (int)(mContentRect.width() / (mNumCols + 0.5));
+        final int blockHeight = mContentRect.height() / (mNumRows + 1);
+        mBlockSize = Math.min(blockWidth, blockHeight);
+        mPadding = mBlockSize / 2;
+
+        mTitlePaint.setTextSize(mBlockSize / 2);
+        mSymbolPaint.setTextSize(mBlockSize / 2);
+        mNumberPaint.setTextSize(mBlockSize / 4);
+        mSmallTextPaint.setTextSize(mBlockSize / 5);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean ret = mScaleGestureDetector.onTouchEvent(event);
+        ret = mGestureDetector.onTouchEvent(event) || ret;
+        return ret || super.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if(mContentRect.isEmpty()) {
+            mContentRect.set(0, 0, w, h);
+        } else {
+            fillViewport();
+        }
+        measureCanvas();
+        ViewCompat.postInvalidateOnAnimation(this);
+    }
+
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+
+        boolean invalidate = false;
+
+        if(mScroller.computeScrollOffset()) {
+            mContentRect.offsetTo(mScroller.getCurrX(), mScroller.getCurrY());
+            invalidate = true;
+        }
+
+        if(mZoomer.computeZoom()) {
+            final int deltaWidth = (int)(mZoomer.getCurrZoom() * mScaleRect.width());
+            final int deltaHeight = (int)(mZoomer.getCurrZoom() * mScaleRect.height());
+            final float focalX = mScaleFocalPoint.x / getWidth();
+            final float focalY = mScaleFocalPoint.y / getHeight();
+            mContentRect.set(
+                    mScaleRect.left - (int)(deltaWidth * focalX),
+                    mScaleRect.top - (int)(deltaHeight * focalY),
+                    mScaleRect.right + (int)(deltaWidth * (1 - focalX)),
+                    mScaleRect.bottom + (int)(deltaHeight * (1 - focalY))
+            );
+            fillViewport();
+            invalidate = true;
+        }
+
+        if(invalidate) {
+            measureCanvas();
+            ViewCompat.postInvalidateOnAnimation(this);
         }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawRect(0, 0, getRight(), getBottom(), mBgPaint);
-        if(mPeriodicTableBlocks != null && mState != null) {
-            final double aspectQuotient = mAspectQuotient.get();
-            mBlockSize = (int)(mState.getZoom() * mBaseBlockSize);
-            mPadding = mBlockSize / 2;
-            mBlockSize -= mBlockSize / Math.min(mNumCols, mNumRows);
-
-            final int viewWidth = getWidth();
-            final int viewHeight = getHeight();
-            final int bitmapWidth = mBlockSize * mNumCols + mPadding * 2;
-            final int bitmapHeight = mBlockSize * mNumRows + mPadding * 2;
-
-            final double zoomX = mState.getZoomX(aspectQuotient) * viewWidth / bitmapWidth;
-            final double zoomY = mState.getZoomY(aspectQuotient) * viewHeight / bitmapHeight;
-            mOffsetX = (int)(mState.getPanX() * bitmapWidth - viewWidth / (zoomX * 2));
-            mOffsetY = (int)(mState.getPanY() * bitmapHeight - viewHeight / (zoomY * 2));
-
-            mTitlePaint.setTextSize(mBlockSize / 2);
-            mSymbolPaint.setTextSize(mBlockSize / 2);
-            mNumberPaint.setTextSize(mBlockSize / 4);
-            mSmallTextPaint.setTextSize(mBlockSize / 5);
-
-            mRect.top = (int)(mBlockSize * 1.3) - mOffsetY;
-            mRect.left = mBlockSize * 4 - mOffsetX;
+        if(mPeriodicTableBlocks != null) {
+            mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top;
+            mRect.left = mBlockSize * 4 + mContentRect.left;
             mRect.bottom = mRect.top + mBlockSize * 2;
             mRect.right = mRect.left + mBlockSize * 8;
             mLegend.drawLegend(canvas, mRect);
@@ -580,6 +739,6 @@ public class PeriodicTableView extends View implements Observer {
         if(observable instanceof PeriodicTableLegend) {
             mLegend.colorBlocks(mPeriodicTableBlocks);
         }
-        invalidate();
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 }
