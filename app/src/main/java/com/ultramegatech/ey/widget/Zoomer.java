@@ -28,7 +28,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
 /**
- * Handles interpolating zoom operations from 1x to arbitrary zoom levels.
+ * Handles interpolating between arbitrary zoom levels.
  *
  * @author Steve Guidetti
  */
@@ -49,19 +49,24 @@ public class Zoomer {
     private boolean mZoomInProgress;
 
     /**
-     * The current zoom level
-     */
-    private float mCurrentZoom = 1f;
-
-    /**
      * The start time of the current operation
      */
     private long mStartTime;
 
     /**
+     * The starting zoom level
+     */
+    private float mStartZoom;
+
+    /**
      * The target zoom level
      */
     private float mTargetZoom;
+
+    /**
+     * The current zoom level
+     */
+    private float mCurrentZoom;
 
     /**
      * @param context The Context
@@ -82,14 +87,15 @@ public class Zoomer {
     /**
      * Start a zoom operation.
      *
-     * @param targetZoom The target zoom level
+     * @param currentZoom The current zoom level
+     * @param deltaZoom   The change in zoom level
      */
-    public void startZoom(float targetZoom) {
+    public void startZoom(float currentZoom, float deltaZoom) {
         mStartTime = SystemClock.elapsedRealtime();
-        mTargetZoom = targetZoom;
+        mStartZoom = mCurrentZoom = currentZoom;
+        mTargetZoom = currentZoom + deltaZoom;
 
         mZoomInProgress = true;
-        mCurrentZoom = 1f;
     }
 
     /**
@@ -110,7 +116,8 @@ public class Zoomer {
         }
 
         final float progress = timeElapsed * 1f / mAnimationDuration;
-        mCurrentZoom = mTargetZoom * mInterpolator.getInterpolation(progress);
+        mCurrentZoom =
+                mStartZoom + (mTargetZoom - mStartZoom) * mInterpolator.getInterpolation(progress);
         return true;
     }
 
