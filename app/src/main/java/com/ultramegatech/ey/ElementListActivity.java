@@ -34,7 +34,7 @@ import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.util.ActionBarWrapper;
+import com.ultramegatech.ey.util.ActionBarWrapper;
 
 /**
  * This Activity displays the list of elements. On large screens, this also shows the details for

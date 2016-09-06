@@ -48,7 +48,7 @@ import android.widget.TextView;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.util.UnitUtils;
+import com.ultramegatech.ey.util.UnitUtils;
 
 import java.text.DecimalFormat;
 import java.util.Locale;

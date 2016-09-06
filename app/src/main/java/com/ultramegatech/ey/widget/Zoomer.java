@@ -1,4 +1,4 @@
-package com.ultramegatech.widget;
+package com.ultramegatech.ey.widget;
 
 import android.content.Context;
 import android.os.SystemClock;

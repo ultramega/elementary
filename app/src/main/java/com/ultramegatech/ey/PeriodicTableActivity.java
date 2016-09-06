@@ -45,8 +45,8 @@ import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.widget.PeriodicTableBlock;
-import com.ultramegatech.widget.PeriodicTableView;
+import com.ultramegatech.ey.widget.PeriodicTableBlock;
+import com.ultramegatech.ey.widget.PeriodicTableView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

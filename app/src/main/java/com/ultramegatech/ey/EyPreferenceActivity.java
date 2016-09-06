@@ -31,7 +31,7 @@ import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.util.ActionBarWrapper;
+import com.ultramegatech.ey.util.ActionBarWrapper;
 
 /**
  * Simple implementation of PreferenceActivity for setting general application settings.

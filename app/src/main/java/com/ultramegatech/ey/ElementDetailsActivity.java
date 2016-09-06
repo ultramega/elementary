@@ -37,7 +37,7 @@ import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.util.ActionBarWrapper;
+import com.ultramegatech.ey.util.ActionBarWrapper;
 
 /**
  * This Activity holds the ElementDetailsFragment. It can be launched by an Intent with an extra

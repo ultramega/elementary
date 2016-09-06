@@ -24,7 +24,7 @@ import android.widget.ListView;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.widget.ElementListAdapter;
+import com.ultramegatech.ey.widget.ElementListAdapter;
 
 import java.util.ArrayList;
 

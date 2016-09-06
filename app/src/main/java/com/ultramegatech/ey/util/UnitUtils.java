@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ultramegatech.util;
+package com.ultramegatech.ey.util;
 
 /**
  * Utility to convert values between different units.

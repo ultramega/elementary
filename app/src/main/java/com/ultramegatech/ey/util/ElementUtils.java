@@ -28,7 +28,7 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
 import com.ultramegatech.ey.R;
-import com.ultramegatech.widget.PeriodicTableLegend.Item;
+import com.ultramegatech.ey.widget.PeriodicTableLegend.Item;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

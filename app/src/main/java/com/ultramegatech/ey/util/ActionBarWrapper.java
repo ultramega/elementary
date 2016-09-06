@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ultramegatech.util;
+package com.ultramegatech.ey.util;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;

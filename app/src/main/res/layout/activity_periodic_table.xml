@@ -29,7 +29,7 @@
     android:layout_height="match_parent"
     tools:ignore="MergeRootFrame">
 
-    <com.ultramegatech.widget.PeriodicTableView
+    <com.ultramegatech.ey.widget.PeriodicTableView
         android:id="@+id/ptview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

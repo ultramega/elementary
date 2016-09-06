@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ultramegatech.widget;
+package com.ultramegatech.ey.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

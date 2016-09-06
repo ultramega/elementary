@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ultramegatech.widget;
+package com.ultramegatech.ey.widget;
 
 /**
  * Stores data for a single block on a PeriodicTableView.
