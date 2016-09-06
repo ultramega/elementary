@@ -31,10 +31,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -57,7 +57,7 @@ import java.util.ArrayList;
  *
  * @author Steve Guidetti
  */
-public class PeriodicTableActivity extends FragmentActivity implements
+public class PeriodicTableActivity extends AppCompatActivity implements
         LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
     /**
      * Delay in milliseconds before entering or re-entering immersive full screen mode
@@ -213,7 +213,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         prefs.registerOnSharedPreferenceChangeListener(this);
 
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
-        setTheme(darkTheme ? R.style.DarkTheme_TableView : R.style.LightTheme_TableView);
+        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
 
         final String colorKey = PreferenceUtils.getPrefElementColors(this, prefs);
         if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {

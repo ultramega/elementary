@@ -28,7 +28,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -37,7 +38,6 @@ import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.ey.util.ActionBarWrapper;
 
 /**
  * This Activity holds the ElementDetailsFragment. It can be launched by an Intent with an extra
@@ -45,7 +45,7 @@ import com.ultramegatech.ey.util.ActionBarWrapper;
  *
  * @author Steve Guidetti
  */
-public class ElementDetailsActivity extends FragmentActivity {
+public class ElementDetailsActivity extends AppCompatActivity {
     /**
      * The tag to identify the Activity
      */
@@ -64,7 +64,10 @@ public class ElementDetailsActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
+        final ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         if(savedInstanceState == null) {
             final Intent intent = getIntent();

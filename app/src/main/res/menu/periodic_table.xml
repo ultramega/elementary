@@ -23,11 +23,10 @@
 -->
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="UnusedAttribute">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_list"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/menuList" />
+        android:title="@string/menuList"
+        app:showAsAction="ifRoom|withText" />
 </menu>

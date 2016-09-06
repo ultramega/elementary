@@ -27,14 +27,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.ey.util.ActionBarWrapper;
 
 /**
  * This Activity displays the list of elements. On large screens, this also shows the details for
@@ -42,7 +42,7 @@ import com.ultramegatech.ey.util.ActionBarWrapper;
  *
  * @author Steve Guidetti
  */
-public class ElementListActivity extends FragmentActivity {
+public class ElementListActivity extends AppCompatActivity {
     /**
      * Whether the Activity has a two-pane layout
      */
@@ -56,7 +56,10 @@ public class ElementListActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
+        final ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         setContentView(R.layout.activity_element_list);
 
