@@ -311,22 +311,9 @@ public class PeriodicTableView extends View implements Observer {
 
             @Override
             public boolean onScale(ScaleGestureDetector detector) {
-                if(setZoom(mCurrentZoom + (detector.getCurrentSpan() - detector.getPreviousSpan())
-                        / mStartSpan)) {
-                    final int deltaWidth = (int)(mCurrentZoom * getWidth()) - mScaleRect.width();
-                    final int deltaHeight = (int)(mCurrentZoom * getHeight()) - mScaleRect.height();
-                    final float focusX = detector.getFocusX() / getWidth();
-                    final float focusY = detector.getFocusY() / getHeight();
-                    mContentRect.set(
-                            mScaleRect.left - (int)(deltaWidth * focusX),
-                            mScaleRect.top - (int)(deltaHeight * focusY),
-                            mScaleRect.right + (int)(deltaWidth * (1 - focusX)),
-                            mScaleRect.bottom + (int)(deltaHeight * (1 - focusY))
-                    );
-                    fillViewport();
-                    measureCanvas();
-                    ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
-                }
+                mScaleFocalPoint.set(detector.getFocusX(), detector.getFocusY());
+                setZoom(mCurrentZoom + (detector.getCurrentSpan() - detector.getPreviousSpan())
+                        / mStartSpan);
 
                 return true;
             }
@@ -381,7 +368,7 @@ public class PeriodicTableView extends View implements Observer {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
                 mZoomer.forceFinished();
-                mZoomer.startZoom(mCurrentZoom, ZOOM_STEP);
+                mZoomer.startZoom(mCurrentZoom, mCurrentZoom * ZOOM_STEP);
                 ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
                 return true;
             }
@@ -763,15 +750,27 @@ public class PeriodicTableView extends View implements Observer {
      * Set the current zoom level.
      *
      * @param zoomLevel The target zoom level
-     * @return Whether the zoom level has changed
      */
-    private boolean setZoom(float zoomLevel) {
+    private void setZoom(float zoomLevel) {
         zoomLevel = Math.max(1f, Math.min(MAX_ZOOM, zoomLevel));
         if(zoomLevel != mCurrentZoom) {
+            final int deltaWidth = (int)(zoomLevel * getWidth()) - mScaleRect.width();
+            final int deltaHeight = (int)(zoomLevel * getHeight()) - mScaleRect.height();
+            final float focalX = mScaleFocalPoint.x / getWidth();
+            final float focalY = mScaleFocalPoint.y / getHeight();
+            mContentRect.set(
+                    mScaleRect.left - (int)(deltaWidth * focalX),
+                    mScaleRect.top - (int)(deltaHeight * focalY),
+                    mScaleRect.right + (int)(deltaWidth * (1 - focalX)),
+                    mScaleRect.bottom + (int)(deltaHeight * (1 - focalY))
+            );
+
+            fillViewport();
+            measureCanvas();
+            ViewCompat.postInvalidateOnAnimation(this);
             mCurrentZoom = zoomLevel;
-            return true;
+            Log.i(getClass().getSimpleName(), String.valueOf(mCurrentZoom));
         }
-        return false;
     }
 
     @Override
@@ -802,9 +801,6 @@ public class PeriodicTableView extends View implements Observer {
     @Override
     public void computeScroll() {
         super.computeScroll();
-
-        boolean invalidate = false;
-
         if(mScroller.computeScrollOffset()) {
             final int vx = mScroller.getCurrX();
             final int vy = mScroller.getCurrY();
@@ -833,28 +829,11 @@ public class PeriodicTableView extends View implements Observer {
                 }
             }
 
-            invalidate = true;
-        }
-
-        if(mZoomer.computeZoom() && setZoom(mZoomer.getCurrZoom())) {
-            Log.i(getClass().getSimpleName(), mZoomer.getCurrZoom() + "");
-            final int deltaWidth = (int)(mCurrentZoom * getWidth()) - mScaleRect.width();
-            final int deltaHeight = (int)(mCurrentZoom * getHeight()) - mScaleRect.height();
-            final float focalX = mScaleFocalPoint.x / getWidth();
-            final float focalY = mScaleFocalPoint.y / getHeight();
-            mContentRect.set(
-                    mScaleRect.left - (int)(deltaWidth * focalX),
-                    mScaleRect.top - (int)(deltaHeight * focalY),
-                    mScaleRect.right + (int)(deltaWidth * (1 - focalX)),
-                    mScaleRect.bottom + (int)(deltaHeight * (1 - focalY))
-            );
-            fillViewport();
-            invalidate = true;
-        }
-
-        if(invalidate) {
-            measureCanvas();
             ViewCompat.postInvalidateOnAnimation(this);
+        }
+
+        if(mZoomer.computeZoom()) {
+            setZoom(mZoomer.getCurrZoom());
         }
     }
 
