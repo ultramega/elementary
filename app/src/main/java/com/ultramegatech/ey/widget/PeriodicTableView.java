@@ -31,7 +31,6 @@ import android.graphics.Rect;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -769,7 +768,6 @@ public class PeriodicTableView extends View implements Observer {
             measureCanvas();
             ViewCompat.postInvalidateOnAnimation(this);
             mCurrentZoom = zoomLevel;
-            Log.i(getClass().getSimpleName(), String.valueOf(mCurrentZoom));
         }
     }
 
