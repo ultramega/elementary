@@ -329,7 +329,6 @@ public class PeriodicTableView extends View implements Observer {
             @Override
             public boolean onDown(MotionEvent e) {
                 clearEdgeEffects();
-                mScaleFocalPoint.set(e.getX(), e.getY());
                 mScaleRect.set(mContentRect);
                 mScroller.forceFinished(true);
                 ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
@@ -367,6 +366,7 @@ public class PeriodicTableView extends View implements Observer {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
                 mZoomer.forceFinished();
+                mScaleFocalPoint.set(e.getX(), e.getY());
                 mZoomer.startZoom(mCurrentZoom, mCurrentZoom * ZOOM_STEP);
                 ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
                 return true;
