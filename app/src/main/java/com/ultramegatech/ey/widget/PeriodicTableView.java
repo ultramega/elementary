@@ -429,7 +429,8 @@ public class PeriodicTableView extends View implements Observer {
                         mContentRect.left, mContentRect.top,
                         (int)-velocityX, (int)-velocityY,
                         mContentRect.left - (mContentRect.right - getWidth()), 0,
-                        mContentRect.top - (mContentRect.bottom - getHeight()), 0
+                        mContentRect.top - (mContentRect.bottom - getHeight()), 0,
+                        mBlockSize, mBlockSize
                 );
                 return true;
             }
@@ -845,7 +846,7 @@ public class PeriodicTableView extends View implements Observer {
             final int vy = mScroller.getCurrY();
             mContentRect.offsetTo(vx, vy);
 
-            if(mContentRect.height() > getHeight()) {
+            if(mScroller.isOverScrolled()) {
                 if(mContentRect.top >= 0 && mEdgeEffectTop.isFinished() && !mEdgeEffectTopActive) {
                     mEdgeEffectTop.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
                     mEdgeEffectTopActive = true;
@@ -854,9 +855,7 @@ public class PeriodicTableView extends View implements Observer {
                     mEdgeEffectBottom.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
                     mEdgeEffectBottomActive = true;
                 }
-            }
 
-            if(mContentRect.width() > getWidth()) {
                 if(mContentRect.left >= 0 && mEdgeEffectLeft.isFinished()
                         && !mEdgeEffectLeftActive) {
                     mEdgeEffectLeft.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
