@@ -25,7 +25,6 @@
     package="com.ultramegatech.ey"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="false"
         android:icon="@drawable/icon"
