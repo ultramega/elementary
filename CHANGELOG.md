@@ -1,4 +1,8 @@
-﻿- v.0.4.7 (7/1/16):
+﻿- v.0.5.0 (9/8/16):
+   * Updated Periodic Table view to use modern touch gestures (pinch zoom)
+   * Centered the Periodic Table within the screen
+   * Updated French translation ([Poussinou](https://github.com/Poussinou))
+- v.0.4.7 (7/1/16):
    * Added Brazilian Portuguese translation ([amalvarenga](https://github.com/amalvarenga))
 - v.0.4.6 (6/22/16):
    * Enabled immersive full screen mode for the table view on supported devices
