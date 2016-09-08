@@ -311,8 +311,8 @@ public class PeriodicTableView extends View implements Observer {
             @Override
             public boolean onScale(ScaleGestureDetector detector) {
                 mScaleFocalPoint.set(detector.getFocusX(), detector.getFocusY());
-                setZoom(mCurrentZoom + (detector.getCurrentSpan() - detector.getPreviousSpan())
-                        / mStartSpan);
+                setZoom(mCurrentZoom + mCurrentZoom
+                        * (detector.getCurrentSpan() - detector.getPreviousSpan()) / mStartSpan);
 
                 return true;
             }
