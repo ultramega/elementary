@@ -14,7 +14,7 @@ De código abierto Tabla Periódica de los Elementos y referencia del elemento.
 Primaria es una aplicación de referencia Tabla Periódica y un elemento simple.
 
 caracteristicas:
-- Ampliable Tabla Periódica de los Elementos (pulsación larga para hacer un zoom, arrastre para pan)
+- Ampliable Tabla Periódica de los Elementos
 - Toque en un elemento para ver algunos detalles básicos
 - Fácil acceso a Wikipedia y un vídeo de YouTube en el elemento
 - Libre sin ningún tipo de anuncios!

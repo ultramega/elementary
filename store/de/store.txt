@@ -14,7 +14,7 @@ Open-Source-Periodensystem der Elemente und Elementverweis App.
 Elementar ist ein einfaches Periodensystem und Element-Referenzanwendung.
 
 Eigenschaften:
-- Zoomable Periodensystems der Elemente (langer Tastendruck zu vergrößern, ziehen Sie, um pan)
+- Zoomable Periodensystems der Elemente
 - Tippen Sie auf ein Element, einige grundlegende Details zu sehen
 - Einfacher Zugriff auf Wikipedia und ein YouTube-Video auf dem Element
 - Free mit absolut keine Werbung!

@@ -14,7 +14,7 @@ Tableau périodique des éléments et référence des éléments.
 Elementary est un tableau périodique simple, et un outil référançant les élements ainsi que leurs principales caractéristiques.
 
 Fonctionnalités :
-- Tableau périodique des éléments zoomable (clic long pour zoomer)
+- Tableau périodique des éléments zoomable
 - Cliquez sur un élément pour visualiser les détails basiques de l'élement (ex : température de fusion, densité...)
 - Pour chaque élément, un bouton permettant d'accéder à la page Wikipédia française dédiée à l'élément, et un autre bouton permettant de visualiser une vidéo à propos de l'élément
 - Gratuit, libre, open-source et sans aucune publicité!
