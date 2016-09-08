@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.support.v4.view.ViewCompat;
@@ -179,6 +180,11 @@ public class PeriodicTableView extends View implements Observer {
      * The area for drawing the content
      */
     private Rect mContentRect = new Rect();
+
+    /**
+     * The offset of the content within the content area
+     */
+    private Point mContentOffset = new Point();
 
     /**
      * The initial area for relative scale operations
@@ -602,8 +608,10 @@ public class PeriodicTableView extends View implements Observer {
      * @param block The block
      */
     private void findBlockPosition(PeriodicTableBlock block) {
-        mRect.right = (block.col * mBlockSize + mContentRect.left + mPadding) - 1;
-        mRect.bottom = (block.row * mBlockSize + mContentRect.top + mPadding) - 1;
+        mRect.right =
+                (block.col * mBlockSize + mContentRect.left + mContentOffset.x + mPadding) - 1;
+        mRect.bottom =
+                (block.row * mBlockSize + mContentRect.top + mContentOffset.y + mPadding) - 1;
         mRect.left = mRect.right - mBlockSize + 1;
         mRect.top = mRect.bottom - mBlockSize + 1;
 
@@ -623,19 +631,29 @@ public class PeriodicTableView extends View implements Observer {
         mHeaderPaint.setTextSize(mBlockSize / 4);
 
         for(int i = 1; i <= mNumCols; i++) {
-            canvas.drawText(String.valueOf(i), mBlockSize * i + mContentRect.left,
-                    mPadding / 2 + mContentRect.top, mHeaderPaint);
+            canvas.drawText(String.valueOf(i),
+                    mBlockSize * i + mContentRect.left + mContentOffset.x,
+                    mPadding / 2 + mContentRect.top + mContentOffset.y,
+                    mHeaderPaint);
         }
         for(int i = 1; i <= mNumRows - 2; i++) {
-            canvas.drawText(String.valueOf(i), mPadding / 2 + mContentRect.left,
-                    mBlockSize * i + mContentRect.top, mHeaderPaint);
+            canvas.drawText(String.valueOf(i),
+                    mPadding / 2 + mContentRect.left + mContentOffset.x,
+                    mBlockSize * i + mContentRect.top + mContentOffset.y,
+                    mHeaderPaint);
         }
 
-        canvas.drawText("57-71", mBlockSize * 3 + mContentRect.left,
-                mBlockSize * 6 + mContentRect.top + mHeaderPaint.getTextSize() / 2, mHeaderPaint);
+        canvas.drawText("57-71",
+                mBlockSize * 3 + mContentRect.left + mContentOffset.x,
+                mBlockSize * 6 + mContentRect.top + mContentOffset.y + mHeaderPaint.getTextSize()
+                        / 2,
+                mHeaderPaint);
 
-        canvas.drawText("89-103", mBlockSize * 3 + mContentRect.left,
-                mBlockSize * 7 + mContentRect.top + mHeaderPaint.getTextSize() / 2, mHeaderPaint);
+        canvas.drawText("89-103",
+                mBlockSize * 3 + mContentRect.left + mContentOffset.x,
+                mBlockSize * 7 + mContentRect.top + mContentOffset.y + mHeaderPaint.getTextSize()
+                        / 2,
+                mHeaderPaint);
     }
 
     /**
@@ -646,8 +664,9 @@ public class PeriodicTableView extends View implements Observer {
     private void writeTitle(Canvas canvas) {
         if(mTitle != null) {
             canvas.drawText(mTitle, 0, mTitle.length(),
-                    mBlockSize * mNumCols / 2 + mContentRect.left,
-                    mBlockSize + mContentRect.top, mTitlePaint);
+                    mBlockSize * mNumCols / 2 + mContentRect.left + mContentOffset.x,
+                    mBlockSize + mContentRect.top + mContentOffset.y,
+                    mTitlePaint);
         }
     }
 
@@ -708,26 +727,45 @@ public class PeriodicTableView extends View implements Observer {
      * Ensure that the content area fills the viewport.
      */
     private void fillViewport() {
-        if(mContentRect.width() < getWidth()) {
-            mContentRect.left = 0;
-            mContentRect.right = getWidth();
-        } else if(mContentRect.left > 0) {
-            mContentRect.right -= mContentRect.left;
-            mContentRect.left = 0;
-        } else if(mContentRect.right < getWidth()) {
-            mContentRect.left += getWidth() - mContentRect.right;
-            mContentRect.right = getWidth();
+        if(mContentRect.width() > getWidth()) {
+            if(mContentRect.left > 0) {
+                mContentRect.right -= mContentRect.left;
+                mContentRect.left = 0;
+            } else if(mContentRect.right < getWidth()) {
+                mContentRect.left += getWidth() - mContentRect.right;
+                mContentRect.right = getWidth();
+            }
         }
-        if(mContentRect.height() < getHeight()) {
-            mContentRect.top = 0;
-            mContentRect.bottom = getHeight();
-        } else if(mContentRect.top > 0) {
-            mContentRect.bottom -= mContentRect.top;
-            mContentRect.top = 0;
-        } else if(mContentRect.bottom < getHeight()) {
-            mContentRect.top += getHeight() - mContentRect.bottom;
-            mContentRect.bottom = getHeight();
+        if(mContentRect.height() > getHeight()) {
+            if(mContentRect.top > 0) {
+                mContentRect.bottom -= mContentRect.top;
+                mContentRect.top = 0;
+            } else if(mContentRect.bottom < getHeight()) {
+                mContentRect.top += getHeight() - mContentRect.bottom;
+                mContentRect.bottom = getHeight();
+            }
         }
+    }
+
+    /**
+     * Trim the content area to the specified size.
+     *
+     * @param width  The actual width of the content
+     * @param height The actual height of the content
+     */
+    private void trimCanvas(int width, int height) {
+        if(mContentRect.width() <= width && mContentRect.height() <= height) {
+            return;
+        }
+        final int deltaWidth = Math.max(0,
+                Math.min(mContentRect.width() - getWidth(), mContentRect.width() - width));
+        final int deltaHeight = Math.max(0,
+                Math.min(mContentRect.height() - getHeight(), mContentRect.height() - height));
+        mContentRect.left += deltaWidth * 0.25;
+        mContentRect.right -= deltaWidth * 0.75;
+        mContentRect.top += deltaHeight * 0.25;
+        mContentRect.bottom -= deltaHeight * 0.75;
+        fillViewport();
     }
 
     /**
@@ -738,6 +776,12 @@ public class PeriodicTableView extends View implements Observer {
         final int blockHeight = mContentRect.height() / (mNumRows + 1);
         mBlockSize = Math.min(blockWidth, blockHeight);
         mPadding = mBlockSize / 2;
+
+        final int realWidth = mBlockSize * mNumCols + mBlockSize;
+        final int realHeight = mBlockSize * mNumRows + mBlockSize;
+        trimCanvas(realWidth, realHeight);
+        mContentOffset.set(Math.max(0, (mContentRect.width() - realWidth) / 2),
+                Math.max(0, (mContentRect.height() - realHeight) / 2));
 
         mTitlePaint.setTextSize(mBlockSize / 2);
         mSymbolPaint.setTextSize(mBlockSize / 2);
@@ -764,7 +808,6 @@ public class PeriodicTableView extends View implements Observer {
                     mScaleRect.bottom + (int)(deltaHeight * (1 - focalY))
             );
 
-            fillViewport();
             measureCanvas();
             ViewCompat.postInvalidateOnAnimation(this);
             mCurrentZoom = zoomLevel;
@@ -783,8 +826,6 @@ public class PeriodicTableView extends View implements Observer {
         super.onSizeChanged(w, h, oldw, oldh);
         if(mContentRect.isEmpty()) {
             mContentRect.set(0, 0, w, h);
-        } else {
-            fillViewport();
         }
 
         mEdgeEffectTop.setSize(w, h);
@@ -839,8 +880,8 @@ public class PeriodicTableView extends View implements Observer {
     protected void onDraw(Canvas canvas) {
         canvas.drawRect(0, 0, getRight(), getBottom(), mBgPaint);
         if(mPeriodicTableBlocks != null) {
-            mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top;
-            mRect.left = mBlockSize * 4 + mContentRect.left;
+            mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top + mContentOffset.y;
+            mRect.left = mBlockSize * 4 + mContentRect.left + mContentOffset.x;
             mRect.bottom = mRect.top + mBlockSize * 2;
             mRect.right = mRect.left + mBlockSize * 8;
             mLegend.drawLegend(canvas, mRect);
