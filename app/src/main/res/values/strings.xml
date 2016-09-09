@@ -59,7 +59,7 @@
     <string name="labelDensity">Density:</string>
     <string name="labelMelt">Melting Point:</string>
     <string name="labelBoil">Boiling Point:</string>
-    <string name="labelHeat">Heat:</string>
+    <string name="labelHeat">Specific Heat:</string>
     <string name="labelNegativity">Electronegativity:</string>
     <string name="labelAbundance">Abundance:</string>
 
