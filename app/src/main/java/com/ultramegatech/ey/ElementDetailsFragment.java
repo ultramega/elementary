@@ -459,7 +459,7 @@ public class ElementDetailsFragment extends DialogFragment
     private String getNegativity() {
         final Double value = mData.getAsDouble(Elements.NEGATIVITY);
         if(value != null) {
-            return mDecimalFormat.format(value) + " V";
+            return mDecimalFormat.format(value);
         }
         return mStringUnknown;
     }
