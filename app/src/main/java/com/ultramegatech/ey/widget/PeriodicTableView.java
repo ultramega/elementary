@@ -326,21 +326,18 @@ public class PeriodicTableView extends View implements Observer {
                 clearEdgeEffects();
                 mScaleRect.set(mContentRect);
                 mScroller.forceFinished(true);
-                ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
-                return true;
-            }
 
-            @Override
-            public void onShowPress(MotionEvent e) {
                 mBlockSelected = null;
                 for(PeriodicTableBlock block : mPeriodicTableBlocks) {
                     findBlockPosition(block);
                     if(mRect.contains((int)e.getX(), (int)e.getY())) {
                         mBlockSelected = block;
-                        ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
                         break;
                     }
                 }
+
+                ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
+                return true;
             }
 
             @Override
