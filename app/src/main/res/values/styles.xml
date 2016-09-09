@@ -51,7 +51,7 @@
 
     <style name="ElementDetails.Label">
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingRight">12dp</item>
+        <item name="android:gravity">right|end</item>
     </style>
 
     <style name="ElementDetails.Value">
