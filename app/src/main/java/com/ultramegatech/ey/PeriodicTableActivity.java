@@ -40,6 +40,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ZoomControls;
 
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
@@ -92,6 +93,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
      */
     private PeriodicTableView mPeriodicTableView;
 
+    /**
+     * The zoom controls
+     */
+    private ZoomControls mZoomControls;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
@@ -106,9 +112,33 @@ public class PeriodicTableActivity extends FragmentActivity implements
         setContentView(R.layout.activity_periodic_table);
 
         mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
-        mPeriodicTableView.setOnItemClickListener(new PeriodicTableView.OnItemClickListener() {
+        mPeriodicTableView.setPeriodicTableListener(new PeriodicTableView.PeriodicTableListener() {
+            @Override
             public void onItemClick(PeriodicTableBlock item) {
                 ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.number);
+            }
+
+            @Override
+            public void onZoomEnd(PeriodicTableView periodicTableView) {
+                mZoomControls.setIsZoomInEnabled(periodicTableView.canZoomIn());
+                mZoomControls.setIsZoomOutEnabled(periodicTableView.canZoomOut());
+            }
+        });
+
+        mZoomControls = (ZoomControls)findViewById(R.id.zoom);
+        mZoomControls.setIsZoomOutEnabled(false);
+        mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPeriodicTableView.zoomIn();
+                mZoomControls.setIsZoomOutEnabled(true);
+            }
+        });
+        mZoomControls.setOnZoomOutClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPeriodicTableView.zoomOut();
+                mZoomControls.setIsZoomInEnabled(true);
             }
         });
 

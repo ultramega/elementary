@@ -47,11 +47,16 @@ import java.util.Observer;
 /**
  * Zoomable, color coded View of the Periodic Table of the Elements. Renders a list of
  * PeriodicTableBlock objects in the standard Periodic Table layout. Also implements a custom
- * OnItemClickListener that passes the selected PeriodicTableBlock object.
+ * PeriodicTableListener that passes the selected PeriodicTableBlock object.
  *
  * @author Steve Guidetti
  */
 public class PeriodicTableView extends View implements Observer {
+    /**
+     * The amount to zoom in or out for programmatic zooms
+     */
+    private static final float ZOOM_STEP = 0.5f;
+
     /**
      * The maximum zoom level
      */
@@ -74,15 +79,22 @@ public class PeriodicTableView extends View implements Observer {
     private static final int COLOR_DEFAULT_BACKGROUND = 0xffffffff;
 
     /**
-     * Callback interface for click listeners.
+     * Callback interface for events.
      */
-    public interface OnItemClickListener {
+    public interface PeriodicTableListener {
         /**
          * Called when a block is clicked.
          *
          * @param item The selected block
          */
         void onItemClick(PeriodicTableBlock item);
+
+        /**
+         * Called when a zoom operation has completed.
+         *
+         * @param periodicTableView The PeriodicTableView
+         */
+        void onZoomEnd(PeriodicTableView periodicTableView);
     }
 
     /**
@@ -93,7 +105,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Callback for item clicks
      */
-    private OnItemClickListener mItemClickListener;
+    private PeriodicTableListener mPeriodicTableListener;
 
     /**
      * Color legend
@@ -198,6 +210,11 @@ public class PeriodicTableView extends View implements Observer {
     private GestureDetector mGestureDetector;
 
     /**
+     * Handler for animating programmatic scaling
+     */
+    private Zoomer mZoomer;
+
+    /**
      * The current zoom level
      */
     private float mCurrentZoom = 1f;
@@ -242,6 +259,7 @@ public class PeriodicTableView extends View implements Observer {
         mScaleGestureDetector = new ScaleGestureDetector(context, getOnScaleGestureListener());
         mGestureDetector = new GestureDetector(context, getOnGestureListener());
 
+        mZoomer = new Zoomer(context);
         mScroller = new Scroller(context);
 
         mEdgeEffectLeft = new EdgeEffectCompat(context);
@@ -290,6 +308,7 @@ public class PeriodicTableView extends View implements Observer {
             @Override
             public boolean onScaleBegin(ScaleGestureDetector detector) {
                 clearSelection();
+                mScaleRect.set(mContentRect);
                 mStartSpan = detector.getCurrentSpan();
 
                 return true;
@@ -297,11 +316,19 @@ public class PeriodicTableView extends View implements Observer {
 
             @Override
             public boolean onScale(ScaleGestureDetector detector) {
-                mScaleFocalPoint.set(detector.getFocusX(), detector.getFocusY());
+                mScaleFocalPoint.set(detector.getFocusX() / getWidth(),
+                        detector.getFocusY() / getHeight());
                 setZoom(mCurrentZoom + mCurrentZoom
                         * (detector.getCurrentSpan() - detector.getPreviousSpan()) / mStartSpan);
 
                 return true;
+            }
+
+            @Override
+            public void onScaleEnd(ScaleGestureDetector detector) {
+                if(mPeriodicTableListener != null) {
+                    mPeriodicTableListener.onZoomEnd(PeriodicTableView.this);
+                }
             }
         };
     }
@@ -316,7 +343,6 @@ public class PeriodicTableView extends View implements Observer {
             @Override
             public boolean onDown(MotionEvent e) {
                 clearEdgeEffects();
-                mScaleRect.set(mContentRect);
                 mScroller.forceFinished(true);
 
                 mBlockSelected = null;
@@ -334,8 +360,8 @@ public class PeriodicTableView extends View implements Observer {
 
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
-                if(mItemClickListener != null && mBlockSelected != null) {
-                    mItemClickListener.onItemClick(mBlockSelected);
+                if(mPeriodicTableListener != null && mBlockSelected != null) {
+                    mPeriodicTableListener.onItemClick(mBlockSelected);
                 }
                 clearSelection();
                 return true;
@@ -497,21 +523,21 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
-     * Set the item click listener.
+     * Set the PeriodicTableListener.
      *
-     * @param listener The listener
+     * @param listener The PeriodicTableListener
      */
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mItemClickListener = listener;
+    public void setPeriodicTableListener(PeriodicTableListener listener) {
+        mPeriodicTableListener = listener;
     }
 
     /**
-     * Get the item click listener.
+     * Get the PeriodicTableListener.
      *
-     * @return The listener
+     * @return The PeriodicTableListener
      */
-    public OnItemClickListener getOnItemClickListener() {
-        return mItemClickListener;
+    public PeriodicTableListener getPeriodicTableListener() {
+        return mPeriodicTableListener;
     }
 
     /**
@@ -548,6 +574,51 @@ public class PeriodicTableView extends View implements Observer {
     public void clearSelection() {
         mBlockSelected = null;
         ViewCompat.postInvalidateOnAnimation(this);
+    }
+
+    /**
+     * Check whether the table can be zoomed in.
+     *
+     * @return Whether the table can be zoomed in
+     */
+    public boolean canZoomIn() {
+        return mCurrentZoom < MAX_ZOOM;
+    }
+
+    /**
+     * Check whether the table can be zoomed out.
+     *
+     * @return Whether the table can be zoomed out
+     */
+    public boolean canZoomOut() {
+        return mCurrentZoom > 1f;
+    }
+
+    /**
+     * Zoom to a specified zoom level.
+     *
+     * @param zoomLevel The target zoom level
+     */
+    public void zoomTo(float zoomLevel) {
+        mZoomer.forceFinished();
+        mScaleRect.set(mContentRect);
+        mScaleFocalPoint.set(0.5f, 0.5f);
+        mZoomer.startZoom(mCurrentZoom, zoomLevel);
+        ViewCompat.postInvalidateOnAnimation(this);
+    }
+
+    /**
+     * Zoom in one step.
+     */
+    public void zoomIn() {
+        zoomTo(mCurrentZoom + mCurrentZoom * ZOOM_STEP);
+    }
+
+    /**
+     * Zoom out one step.
+     */
+    public void zoomOut() {
+        zoomTo(mCurrentZoom - mCurrentZoom * ZOOM_STEP);
     }
 
     /**
@@ -684,23 +755,19 @@ public class PeriodicTableView extends View implements Observer {
      * Ensure that the content area fills the viewport.
      */
     private void fillViewport() {
-        if(mContentRect.width() > getWidth()) {
-            if(mContentRect.left > 0) {
-                mContentRect.right -= mContentRect.left;
-                mContentRect.left = 0;
-            } else if(mContentRect.right < getWidth()) {
-                mContentRect.left += getWidth() - mContentRect.right;
-                mContentRect.right = getWidth();
-            }
+        if(mContentRect.left > 0) {
+            mContentRect.right -= mContentRect.left;
+            mContentRect.left = 0;
+        } else if(mContentRect.right < getWidth()) {
+            mContentRect.left += getWidth() - mContentRect.right;
+            mContentRect.right = getWidth();
         }
-        if(mContentRect.height() > getHeight()) {
-            if(mContentRect.top > 0) {
-                mContentRect.bottom -= mContentRect.top;
-                mContentRect.top = 0;
-            } else if(mContentRect.bottom < getHeight()) {
-                mContentRect.top += getHeight() - mContentRect.bottom;
-                mContentRect.bottom = getHeight();
-            }
+        if(mContentRect.top > 0) {
+            mContentRect.bottom -= mContentRect.top;
+            mContentRect.top = 0;
+        } else if(mContentRect.bottom < getHeight()) {
+            mContentRect.top += getHeight() - mContentRect.bottom;
+            mContentRect.bottom = getHeight();
         }
     }
 
@@ -711,18 +778,13 @@ public class PeriodicTableView extends View implements Observer {
      * @param height The actual height of the content
      */
     private void trimCanvas(int width, int height) {
-        if(mContentRect.width() <= width && mContentRect.height() <= height) {
-            return;
+        if(mContentRect.width() > width || mContentRect.height() > height) {
+            final int deltaWidth = Math.max(0,
+                    Math.min(mContentRect.width() - getWidth(), mContentRect.width() - width));
+            final int deltaHeight = Math.max(0,
+                    Math.min(mContentRect.height() - getHeight(), mContentRect.height() - height));
+            mContentRect.inset(deltaWidth / 2, deltaHeight / 2);
         }
-        final int deltaWidth = Math.max(0,
-                Math.min(mContentRect.width() - getWidth(), mContentRect.width() - width));
-        final int deltaHeight = Math.max(0,
-                Math.min(mContentRect.height() - getHeight(), mContentRect.height() - height));
-        mContentRect.left += deltaWidth * 0.25;
-        mContentRect.right -= deltaWidth * 0.75;
-        mContentRect.top += deltaHeight * 0.25;
-        mContentRect.bottom -= deltaHeight * 0.75;
-        fillViewport();
     }
 
     /**
@@ -739,6 +801,7 @@ public class PeriodicTableView extends View implements Observer {
         trimCanvas(realWidth, realHeight);
         mContentOffset.set(Math.max(0, (mContentRect.width() - realWidth) / 2),
                 Math.max(0, (mContentRect.height() - realHeight) / 2));
+        fillViewport();
 
         mTitlePaint.setTextSize(mBlockSize / 2);
         mSymbolPaint.setTextSize(mBlockSize / 2);
@@ -756,18 +819,16 @@ public class PeriodicTableView extends View implements Observer {
         if(zoomLevel != mCurrentZoom) {
             final int deltaWidth = (int)(zoomLevel * getWidth()) - mScaleRect.width();
             final int deltaHeight = (int)(zoomLevel * getHeight()) - mScaleRect.height();
-            final float focalX = mScaleFocalPoint.x / getWidth();
-            final float focalY = mScaleFocalPoint.y / getHeight();
             mContentRect.set(
-                    mScaleRect.left - (int)(deltaWidth * focalX),
-                    mScaleRect.top - (int)(deltaHeight * focalY),
-                    mScaleRect.right + (int)(deltaWidth * (1 - focalX)),
-                    mScaleRect.bottom + (int)(deltaHeight * (1 - focalY))
+                    mScaleRect.left - (int)(deltaWidth * mScaleFocalPoint.x),
+                    mScaleRect.top - (int)(deltaHeight * mScaleFocalPoint.y),
+                    mScaleRect.right + (int)(deltaWidth * (1f - mScaleFocalPoint.x)),
+                    mScaleRect.bottom + (int)(deltaHeight * (1f - mScaleFocalPoint.y))
             );
 
+            mCurrentZoom = zoomLevel;
             measureCanvas();
             ViewCompat.postInvalidateOnAnimation(this);
-            mCurrentZoom = zoomLevel;
         }
     }
 
@@ -799,6 +860,14 @@ public class PeriodicTableView extends View implements Observer {
         super.computeScroll();
         if(mScroller.computeScrollOffset()) {
             mContentRect.offsetTo(mScroller.getCurrX(), mScroller.getCurrY());
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+
+        if(mZoomer.computeZoom()) {
+            setZoom(mZoomer.getCurrZoom());
+            if(mPeriodicTableListener != null && mZoomer.isFinished()) {
+                mPeriodicTableListener.onZoomEnd(this);
+            }
             ViewCompat.postInvalidateOnAnimation(this);
         }
     }
