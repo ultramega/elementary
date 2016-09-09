@@ -36,7 +36,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import android.widget.OverScroller;
+import android.widget.Scroller;
 
 import com.ultramegatech.ey.R;
 
@@ -205,7 +205,7 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Handler for programmatic scrolling and flings
      */
-    private OverScroller mScroller;
+    private Scroller mScroller;
 
     /**
      * Edge effects to provide visual indicators that an edge has been reached
@@ -214,14 +214,6 @@ public class PeriodicTableView extends View implements Observer {
     private EdgeEffectCompat mEdgeEffectBottom;
     private EdgeEffectCompat mEdgeEffectLeft;
     private EdgeEffectCompat mEdgeEffectRight;
-
-    /**
-     * The active status of the edge effects
-     */
-    private boolean mEdgeEffectTopActive;
-    private boolean mEdgeEffectBottomActive;
-    private boolean mEdgeEffectLeftActive;
-    private boolean mEdgeEffectRightActive;
 
     public PeriodicTableView(Context context) {
         this(context, null, 0);
@@ -250,7 +242,7 @@ public class PeriodicTableView extends View implements Observer {
         mScaleGestureDetector = new ScaleGestureDetector(context, getOnScaleGestureListener());
         mGestureDetector = new GestureDetector(context, getOnGestureListener());
 
-        mScroller = new OverScroller(context);
+        mScroller = new Scroller(context);
 
         mEdgeEffectLeft = new EdgeEffectCompat(context);
         mEdgeEffectTop = new EdgeEffectCompat(context);
@@ -369,11 +361,9 @@ public class PeriodicTableView extends View implements Observer {
                 if(mContentRect.height() > getHeight()) {
                     if(distanceY < 0 && mContentRect.top == 0) {
                         mEdgeEffectTop.onPull(-distanceY / getHeight(), e2.getX() / getWidth());
-                        mEdgeEffectTopActive = true;
                     } else if(distanceY > 0 && mContentRect.bottom == getHeight()) {
                         mEdgeEffectBottom.onPull(-distanceY / getHeight(),
                                 1f - (e2.getX() / getWidth()));
-                        mEdgeEffectBottomActive = true;
                     }
                 }
 
@@ -381,10 +371,8 @@ public class PeriodicTableView extends View implements Observer {
                     if(distanceX < 0 && mContentRect.left == 0) {
                         mEdgeEffectLeft.onPull(-distanceX / getWidth(),
                                 1f - (e2.getY() / getHeight()));
-                        mEdgeEffectLeftActive = true;
                     } else if(distanceX > 0 && mContentRect.right == getWidth()) {
                         mEdgeEffectRight.onPull(-distanceX / getWidth(), e2.getY() / getHeight());
-                        mEdgeEffectRightActive = true;
                     }
                 }
 
@@ -398,10 +386,9 @@ public class PeriodicTableView extends View implements Observer {
                 mScroller.forceFinished(true);
                 mScroller.fling(
                         mContentRect.left, mContentRect.top,
-                        (int)-velocityX, (int)-velocityY,
+                        (int)velocityX, (int)velocityY,
                         mContentRect.left - (mContentRect.right - getWidth()), 0,
-                        mContentRect.top - (mContentRect.bottom - getHeight()), 0,
-                        mBlockSize, mBlockSize
+                        mContentRect.top - (mContentRect.bottom - getHeight()), 0
                 );
                 return true;
             }
@@ -687,8 +674,6 @@ public class PeriodicTableView extends View implements Observer {
      * Deactivate and release the edge effects.
      */
     private void clearEdgeEffects() {
-        mEdgeEffectTopActive = mEdgeEffectBottomActive = mEdgeEffectLeftActive =
-                mEdgeEffectRightActive = false;
         mEdgeEffectTop.onRelease();
         mEdgeEffectBottom.onRelease();
         mEdgeEffectLeft.onRelease();
@@ -813,31 +798,7 @@ public class PeriodicTableView extends View implements Observer {
     public void computeScroll() {
         super.computeScroll();
         if(mScroller.computeScrollOffset()) {
-            final int vx = mScroller.getCurrX();
-            final int vy = mScroller.getCurrY();
-            mContentRect.offsetTo(vx, vy);
-
-            if(mScroller.isOverScrolled()) {
-                if(mContentRect.top >= 0 && mEdgeEffectTop.isFinished() && !mEdgeEffectTopActive) {
-                    mEdgeEffectTop.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
-                    mEdgeEffectTopActive = true;
-                } else if(mContentRect.bottom <= getHeight() && mEdgeEffectBottom.isFinished()
-                        && !mEdgeEffectBottomActive) {
-                    mEdgeEffectBottom.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
-                    mEdgeEffectBottomActive = true;
-                }
-
-                if(mContentRect.left >= 0 && mEdgeEffectLeft.isFinished()
-                        && !mEdgeEffectLeftActive) {
-                    mEdgeEffectLeft.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
-                    mEdgeEffectLeftActive = true;
-                } else if(mContentRect.right <= getWidth() && mEdgeEffectRight.isFinished()
-                        && !mEdgeEffectRightActive) {
-                    mEdgeEffectRight.onAbsorb((int)OverScrollerCompat.getCurrVelocity(mScroller));
-                    mEdgeEffectRightActive = true;
-                }
-            }
-
+            mContentRect.offsetTo(mScroller.getCurrX(), mScroller.getCurrY());
             ViewCompat.postInvalidateOnAnimation(this);
         }
     }
