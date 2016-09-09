@@ -53,11 +53,6 @@ import java.util.Observer;
  */
 public class PeriodicTableView extends View implements Observer {
     /**
-     * The amount to zoom in on double taps
-     */
-    private static final float ZOOM_STEP = 0.5f;
-
-    /**
      * The maximum zoom level
      */
     private static final float MAX_ZOOM = 8f;
@@ -203,11 +198,6 @@ public class PeriodicTableView extends View implements Observer {
     private GestureDetector mGestureDetector;
 
     /**
-     * Handler for animating programmatic scaling
-     */
-    private Zoomer mZoomer;
-
-    /**
      * The current zoom level
      */
     private float mCurrentZoom = 1f;
@@ -260,7 +250,6 @@ public class PeriodicTableView extends View implements Observer {
         mScaleGestureDetector = new ScaleGestureDetector(context, getOnScaleGestureListener());
         mGestureDetector = new GestureDetector(context, getOnGestureListener());
 
-        mZoomer = new Zoomer(context);
         mScroller = new OverScroller(context);
 
         mEdgeEffectLeft = new EdgeEffectCompat(context);
@@ -355,26 +344,11 @@ public class PeriodicTableView extends View implements Observer {
             }
 
             @Override
-            public boolean onSingleTapConfirmed(MotionEvent e) {
+            public boolean onSingleTapUp(MotionEvent e) {
                 if(mItemClickListener != null && mBlockSelected != null) {
                     mItemClickListener.onItemClick(mBlockSelected);
                 }
                 clearSelection();
-                return true;
-            }
-
-            @Override
-            public boolean onDoubleTapEvent(MotionEvent e) {
-                clearSelection();
-                return true;
-            }
-
-            @Override
-            public boolean onDoubleTap(MotionEvent e) {
-                mZoomer.forceFinished();
-                mScaleFocalPoint.set(e.getX(), e.getY());
-                mZoomer.startZoom(mCurrentZoom, mCurrentZoom * ZOOM_STEP);
-                ViewCompat.postInvalidateOnAnimation(PeriodicTableView.this);
                 return true;
             }
 
@@ -868,10 +842,6 @@ public class PeriodicTableView extends View implements Observer {
             }
 
             ViewCompat.postInvalidateOnAnimation(this);
-        }
-
-        if(mZoomer.computeZoom()) {
-            setZoom(mZoomer.getCurrZoom());
         }
     }
 
