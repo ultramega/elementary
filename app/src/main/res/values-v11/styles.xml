@@ -21,46 +21,22 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <style name="LightTheme" parent="android:Theme.Light">
+    <style name="LightTheme" parent="android:Theme.Holo.Light">
         <item name="iconWikipedia">@drawable/ic_wikipedia_black</item>
         <item name="iconVideo">@drawable/ic_video_black</item>
     </style>
 
-    <style name="LightTheme.TableView">
-        <item name="android:windowNoTitle">true</item>
-    </style>
+    <style name="LightTheme.TableView" />
 
-    <style name="DarkTheme" parent="android:Theme.Black">
+    <style name="DarkTheme" parent="android:Theme.Holo">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="fgColor">@android:color/primary_text_dark</item>
         <item name="bgColor">@android:color/black</item>
-        <item name="iconWikipedia">@drawable/ic_wikipedia_black</item>
-        <item name="iconVideo">@drawable/ic_video_black</item>
+        <item name="iconWikipedia">@drawable/ic_wikipedia_white</item>
+        <item name="iconVideo">@drawable/ic_video_white</item>
     </style>
 
-    <style name="DarkTheme.TableView">
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="ElementDetails" parent="android:TextAppearance.Medium">
-        <item name="android:paddingLeft">4dp</item>
-        <item name="android:paddingRight">4dp</item>
-    </style>
-
-    <style name="ElementDetails.Label">
-        <item name="android:textStyle">bold</item>
-        <item name="android:paddingRight">12dp</item>
-    </style>
-
-    <style name="ElementDetails.Value">
-        <item name="android:textIsSelectable" tools:ignore="NewApi">true</item>
-    </style>
-
-    <style name="TableRow" />
-
-    <style name="TableRow.Odd">
-        <item name="android:background">#44888888</item>
-    </style>
+    <style name="DarkTheme.TableView" />
 </resources>
