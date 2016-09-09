@@ -30,7 +30,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
-import com.ultramegatech.ey.util.ActionBarWrapper;
+import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.PreferenceUtils;
 
 /**
@@ -51,7 +51,7 @@ public class EyPreferenceActivity extends PreferenceActivity
 
         super.onCreate(savedInstanceState);
 
-        ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
+        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
         addPreferencesFromResource(R.xml.preferences);
     }
 

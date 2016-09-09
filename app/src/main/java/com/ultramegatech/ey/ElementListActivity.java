@@ -32,7 +32,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.ultramegatech.ey.util.ActionBarWrapper;
+import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
 
@@ -56,7 +56,7 @@ public class ElementListActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        ActionBarWrapper.getInstance(this).setDisplayHomeAsUpEnabled(true);
+        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
 
         setContentView(R.layout.activity_element_list);
 
