@@ -1,4 +1,7 @@
-﻿- v.0.5.0 (9/8/16):
+﻿- v.0.5.1 (9/8/16):
+   * Reduced application file size
+   * Increased responsiveness of tapping an element
+- v.0.5.0 (9/8/16):
    * Updated Periodic Table view to use modern touch gestures (pinch zoom)
    * Centered the Periodic Table within the screen
    * Updated French translation ([Poussinou](https://github.com/Poussinou))
