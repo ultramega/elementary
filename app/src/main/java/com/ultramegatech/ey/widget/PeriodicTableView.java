@@ -783,7 +783,12 @@ public class PeriodicTableView extends View implements Observer {
                     Math.min(mContentRect.width() - getWidth(), mContentRect.width() - width));
             final int deltaHeight = Math.max(0,
                     Math.min(mContentRect.height() - getHeight(), mContentRect.height() - height));
-            mContentRect.inset(deltaWidth / 2, deltaHeight / 2);
+            final float focusX = (getWidth() / 2f - mContentRect.width()) / mContentRect.width();
+            final float focusY = (getHeight() / 2f - mContentRect.top) / mContentRect.height();
+            mContentRect.top += deltaHeight * focusY;
+            mContentRect.bottom -= deltaHeight * (1f - focusY);
+            mContentRect.left += deltaWidth * focusX;
+            mContentRect.right -= deltaWidth * (1f - focusX);
         }
     }
 
@@ -819,11 +824,15 @@ public class PeriodicTableView extends View implements Observer {
         if(zoomLevel != mCurrentZoom) {
             final int deltaWidth = (int)(zoomLevel * getWidth()) - mScaleRect.width();
             final int deltaHeight = (int)(zoomLevel * getHeight()) - mScaleRect.height();
+            final float focusX =
+                    (mScaleFocalPoint.x * getWidth() - mScaleRect.left) / mScaleRect.width();
+            final float focusY =
+                    (mScaleFocalPoint.y * getHeight() - mScaleRect.top) / mScaleRect.height();
             mContentRect.set(
-                    mScaleRect.left - (int)(deltaWidth * mScaleFocalPoint.x),
-                    mScaleRect.top - (int)(deltaHeight * mScaleFocalPoint.y),
-                    mScaleRect.right + (int)(deltaWidth * (1f - mScaleFocalPoint.x)),
-                    mScaleRect.bottom + (int)(deltaHeight * (1f - mScaleFocalPoint.y))
+                    mScaleRect.left - (int)(deltaWidth * focusX),
+                    mScaleRect.top - (int)(deltaHeight * focusY),
+                    mScaleRect.right + (int)(deltaWidth * (1f - focusX)),
+                    mScaleRect.bottom + (int)(deltaHeight * (1f - focusY))
             );
 
             mCurrentZoom = zoomLevel;
