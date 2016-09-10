@@ -29,11 +29,25 @@
     android:layout_height="match_parent"
     tools:ignore="MergeRootFrame">
 
-    <com.ultramegatech.ey.widget.PeriodicTableView
-        android:id="@+id/ptview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:title="@string/titlePeriodicTable" />
+        android:orientation="vertical">
+
+        <com.ultramegatech.ey.widget.PeriodicTableView
+            android:id="@+id/ptview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:title="@string/titlePeriodicTable" />
+
+        <ZoomControls
+            android:id="@+id/zoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/touchFrame"
@@ -64,10 +78,4 @@
             android:layout_alignParentRight="true"
             android:clickable="true" />
     </RelativeLayout>
-
-    <ZoomControls
-        android:id="@+id/zoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>
