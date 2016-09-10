@@ -76,8 +76,8 @@
     </string-array>
     <string-array name="tempUnitNames" translatable="false">
         <item>Kelvin (K)</item>
-        <item>Celsius (°C)</item>
-        <item>Fahrenheit (°F)</item>
+        <item>Celsius (℃)</item>
+        <item>Fahrenheit (℉)</item>
     </string-array>
 
     <!--

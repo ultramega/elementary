@@ -349,9 +349,9 @@ public class ElementDetailsFragment extends DialogFragment
         if(kelvin != null) {
             switch(mTemperatureUnits) {
                 case CELSIUS:
-                    return String.format(Locale.getDefault(), "%.2f °C", UnitUtils.KtoC(kelvin));
+                    return String.format(Locale.getDefault(), "%.2f ℃", UnitUtils.KtoC(kelvin));
                 case FAHRENHEIT:
-                    return String.format(Locale.getDefault(), "%.2f °F", UnitUtils.KtoF(kelvin));
+                    return String.format(Locale.getDefault(), "%.2f ℉", UnitUtils.KtoF(kelvin));
                 default:
                     return String.format(Locale.getDefault(), "%.2f K", kelvin);
             }
