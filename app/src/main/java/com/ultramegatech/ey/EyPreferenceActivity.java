@@ -47,7 +47,7 @@ public class EyPreferenceActivity extends PreferenceActivity
         prefs.registerOnSharedPreferenceChangeListener(this);
 
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
-        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
+        setTheme(darkTheme ? R.style.DarkTheme_Preferences : R.style.LightTheme_Preferences);
 
         super.onCreate(savedInstanceState);
 

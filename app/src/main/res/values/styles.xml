@@ -32,6 +32,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="LightTheme.Preferences" parent="android:Theme.Light" />
+
     <style name="DarkTheme" parent="android:Theme.Black">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="fgColor">@android:color/primary_text_dark</item>
@@ -43,6 +45,8 @@
     <style name="DarkTheme.TableView">
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="DarkTheme.Preferences" parent="android:Theme.Black" />
 
     <style name="ElementDetails" parent="android:TextAppearance.Medium">
         <item name="android:paddingLeft">4dp</item>
