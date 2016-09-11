@@ -38,6 +38,15 @@
         <item>Categoria</item>
         <item>Bloco</item>
     </string-array>
+    <string-array name="subtextValueNames">
+        <item>Massa atômica relativa</item>
+        <item>Densidade (g/cm³)</item>
+        <item>Ponto de fusão (K)</item>
+        <item>Ponto de ebulição (K)</item>
+        <item>Calor específico (J/g·K)</item>
+        <item>Eletronegatividade (Pauling)</item>
+        <item>Abundância (mg/kg)</item>
+    </string-array>
     <string-array name="sortFieldNames">
         <item>Número atômico</item>
         <item>Nome do elemento</item>

@@ -38,6 +38,15 @@
         <item>Serie Química</item>
         <item>Bloque</item>
     </string-array>
+    <string-array name="subtextValueNames">
+        <item>Masa Atómica</item>
+        <item>Densidad (g/cm³)</item>
+        <item>Punto de Fusión (K)</item>
+        <item>Punto de Ebullición (K)</item>
+        <item>Calor Especifico (J/g·K)</item>
+        <item>Electronegatividad (Pauling)</item>
+        <item>Abundancia (mg/kg)</item>
+    </string-array>
     <string-array name="sortFieldNames">
         <item>Número Atómico</item>
         <item>Nombre de Elemento</item>

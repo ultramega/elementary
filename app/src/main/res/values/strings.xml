@@ -63,7 +63,7 @@
     <string name="labelNegativity">Electronegativity:</string>
     <string name="labelAbundance">Abundance:</string>
 
-    <string name="labelSubtextValue">Show:</string>
+    <string name="labelSubtextValue">Display:</string>
     <string name="labelBlockColors">Color by:</string>
 
     <string name="hintFilter">Filter by Name or Symbol</string>

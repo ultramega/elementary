@@ -38,6 +38,15 @@
         <item>Serie</item>
         <item>Block</item>
     </string-array>
+    <string-array name="subtextValueNames">
+        <item>Atommasse</item>
+        <item>Dichte (g/cm³)</item>
+        <item>Schmelzpunkt (K)</item>
+        <item>Siedepunkt (K)</item>
+        <item>Spezifisch Hitze (J/g·K)</item>
+        <item>Elektronegativität (Pauling)</item>
+        <item>Vorkommen (mg/kg)</item>
+    </string-array>
     <string-array name="sortFieldNames">
         <item>Ordnungszahl</item>
         <item>Name</item>

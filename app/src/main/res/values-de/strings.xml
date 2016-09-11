@@ -54,9 +54,12 @@
     <string name="labelDensity">Dichte:</string>
     <string name="labelMelt">Schmelzpunkt:</string>
     <string name="labelBoil">Siedepunkt:</string>
-    <string name="labelHeat">Spezifische Wärmekapazität:</string>
+    <string name="labelHeat">Spezifisch Hitze:</string>
     <string name="labelNegativity">Elektronegativität:</string>
     <string name="labelAbundance">Vorkommen:</string>
+
+    <string name="labelSubtextValue">Anzeigen:</string>
+    <string name="labelBlockColors">Färben nach:</string>
 
     <string name="hintFilter">Nach Name oder Symbol sortieren</string>
 

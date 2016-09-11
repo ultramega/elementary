@@ -58,6 +58,9 @@
     <string name="labelNegativity">Eletronegatividade:</string>
     <string name="labelAbundance">Abundância:</string>
 
+    <string name="labelSubtextValue">Mostrar:</string>
+    <string name="labelBlockColors">Colorir por:</string>
+
     <string name="hintFilter">Filtrar por Nome ou Símbolo</string>
 
     <string name="unknown">desconhecido</string>

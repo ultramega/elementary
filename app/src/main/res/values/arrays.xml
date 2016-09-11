@@ -93,14 +93,6 @@
     </string-array>
 
     <!--
-        Options for the list sorting dialog
-    -->
-    <string-array name="sortFieldNames">
-        <item>Atomic Number</item>
-        <item>Element Name</item>
-    </string-array>
-
-    <!--
         Options for the block subtext value
     -->
     <string-array name="subtextValues" translatable="false">
@@ -120,5 +112,13 @@
         <item>Specific Heat (J/g·K)</item>
         <item>Electronegativity (Pauling)</item>
         <item>Abundance (mg/kg)</item>
+    </string-array>
+
+    <!--
+        Options for the list sorting dialog
+    -->
+    <string-array name="sortFieldNames">
+        <item>Atomic Number</item>
+        <item>Element Name</item>
     </string-array>
 </resources>

@@ -54,9 +54,12 @@
     <string name="labelDensity">Densidad:</string>
     <string name="labelMelt">Punto de Fusión:</string>
     <string name="labelBoil">Punto de Ebullición:</string>
-    <string name="labelHeat">Calor:</string>
+    <string name="labelHeat">Calor Especifico:</string>
     <string name="labelNegativity">Electronegatividad:</string>
     <string name="labelAbundance">Abundancia:</string>
+
+    <string name="labelSubtextValue">Mostrar:</string>
+    <string name="labelBlockColors">Colorear por:</string>
 
     <string name="hintFilter">Filtrar por nombre o símbolo</string>
 

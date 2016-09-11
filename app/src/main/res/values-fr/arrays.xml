@@ -38,6 +38,15 @@
         <item>Famille</item>
         <item>Bloc</item>
     </string-array>
+    <string-array name="subtextValueNames">
+        <item>Masse Atomique</item>
+        <item>Densité (g/cm³)</item>
+        <item>Point De Fusion (K)</item>
+        <item>Point d\'Ébullition (K)</item>
+        <item>Chaleur Spécifique (J/g·K)</item>
+        <item>Électronégativité (Pauling)</item>
+        <item>Abondance (mg/kg)</item>
+    </string-array>
     <string-array name="sortFieldNames">
         <item>Numéro Atomique</item>
         <item>Nom de l\'élément</item>
