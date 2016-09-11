@@ -77,7 +77,7 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
      */
     private void updateTempUnit(SharedPreferences prefs) {
         final String unit;
-        switch(PreferenceUtils.getPrefTempUnit(mContext, prefs)) {
+        switch(PreferenceUtils.getPrefTempUnit(prefs)) {
             case PreferenceUtils.TEMP_C:
                 unit = "℃";
                 break;
@@ -154,7 +154,7 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(PreferenceUtils.getKeyTempUnit(mContext))) {
+        if(PreferenceUtils.KEY_TEMP_UNITS.equals(key)) {
             updateTempUnit(sharedPreferences);
             notifyDataSetChanged();
         }

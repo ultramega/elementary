@@ -46,7 +46,7 @@ public class EyPreferenceActivity extends PreferenceActivity
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(prefs);
         setTheme(darkTheme ? R.style.DarkTheme_Preferences : R.style.LightTheme_Preferences);
 
         super.onCreate(savedInstanceState);
@@ -65,7 +65,7 @@ public class EyPreferenceActivity extends PreferenceActivity
     @SuppressLint("CommitPrefEdits")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(PreferenceUtils.getKeyDarkTheme(this))) {
+        if(PreferenceUtils.KEY_DARK_THEME.equals(key)) {
             sharedPreferences.edit().commit();
 
             final Intent intent = new Intent(this, EyPreferenceActivity.class);

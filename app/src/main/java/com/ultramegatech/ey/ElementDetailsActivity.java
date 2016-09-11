@@ -59,7 +59,7 @@ public class ElementDetailsActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, prefs);
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(prefs);
         setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
 
         super.onCreate(savedInstanceState);

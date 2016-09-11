@@ -138,7 +138,7 @@ public class ElementListFragment extends ListFragment
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String colorKey = PreferenceUtils.getPrefElementColors(getContext(), prefs);
+        final String colorKey = PreferenceUtils.getPrefElementColors(prefs);
         if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
             mListProjection[3] = Elements.BLOCK;
         } else {
@@ -253,7 +253,7 @@ public class ElementListFragment extends ListFragment
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(PreferenceUtils.getKeyElementColors(getContext()))) {
+        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
             loadPreferences();
             getLoaderManager().restartLoader(0, null, this).forceLoad();
         }

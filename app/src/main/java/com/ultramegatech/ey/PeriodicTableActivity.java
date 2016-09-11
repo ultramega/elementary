@@ -193,15 +193,13 @@ public class PeriodicTableActivity extends FragmentActivity implements
      */
     private void setupBlockColorSpinner() {
         mSpinnerBlockColors = (Spinner)findViewById(R.id.blockColors);
-        final String pref = PreferenceUtils.getPrefElementColors(this, mPreferences);
+        final String pref = PreferenceUtils.getPrefElementColors(mPreferences);
         mSpinnerBlockColors.setSelection(pref.equals(PreferenceUtils.COLOR_CAT) ? 0 : 1);
         mSpinnerBlockColors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mPreferences.edit()
-                        .putString(PreferenceUtils.getKeyElementColors(PeriodicTableActivity.this),
-                                i == 0 ? PreferenceUtils.COLOR_CAT : PreferenceUtils.COLOR_BLOCK)
-                        .apply();
+                PreferenceUtils.setPrefElementColors(mPreferences,
+                        i == 0 ? PreferenceUtils.COLOR_CAT : PreferenceUtils.COLOR_BLOCK);
             }
 
             @Override
@@ -307,10 +305,10 @@ public class PeriodicTableActivity extends FragmentActivity implements
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPreferences.registerOnSharedPreferenceChangeListener(this);
 
-        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(this, mPreferences);
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(mPreferences);
         setTheme(darkTheme ? R.style.DarkTheme_TableView : R.style.LightTheme_TableView);
 
-        final String colorKey = PreferenceUtils.getPrefElementColors(this, mPreferences);
+        final String colorKey = PreferenceUtils.getPrefElementColors(mPreferences);
         if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
             mProjection[5] = Elements.BLOCK;
         } else {
@@ -338,7 +336,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         }
         if(Elements.MELT.equals(mSubtextValueKey) || Elements.BOIL.equals(mSubtextValueKey)) {
             final double value;
-            switch(PreferenceUtils.getPrefTempUnit(this, mPreferences)) {
+            switch(PreferenceUtils.getPrefTempUnit(mPreferences)) {
                 case PreferenceUtils.TEMP_C:
                     value = UnitUtils.KtoC(cursor.getDouble(2));
                     break;
@@ -399,8 +397,8 @@ public class PeriodicTableActivity extends FragmentActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(PreferenceUtils.getKeyElementColors(this))) {
-            final String colorKey = PreferenceUtils.getPrefElementColors(this, mPreferences);
+        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
+            final String colorKey = PreferenceUtils.getPrefElementColors(mPreferences);
             if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
                 mProjection[5] = Elements.BLOCK;
                 mSpinnerBlockColors.setSelection(1);
@@ -409,7 +407,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
                 mSpinnerBlockColors.setSelection(0);
             }
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
-        } else if(key.equals(PreferenceUtils.KEY_SUBTEXT_VALUE)) {
+        } else if(PreferenceUtils.KEY_SUBTEXT_VALUE.equals(key)) {
             mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(sharedPreferences);
             mProjection[2] = mSubtextValueKey;
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();

@@ -254,7 +254,7 @@ public class ElementDetailsFragment extends DialogFragment
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String tempUnit = PreferenceUtils.getPrefTempUnit(getContext(), prefs);
+        final String tempUnit = PreferenceUtils.getPrefTempUnit(prefs);
         if(PreferenceUtils.TEMP_K.equals(tempUnit)) {
             mTemperatureUnits = Units.KELVIN;
         } else if(PreferenceUtils.TEMP_C.equals(tempUnit)) {
@@ -263,7 +263,7 @@ public class ElementDetailsFragment extends DialogFragment
             mTemperatureUnits = Units.FAHRENHEIT;
         }
 
-        final String colorKey = PreferenceUtils.getPrefElementColors(getContext(), prefs);
+        final String colorKey = PreferenceUtils.getPrefElementColors(prefs);
         if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
             mColorKey = Elements.BLOCK;
         } else {
@@ -563,11 +563,11 @@ public class ElementDetailsFragment extends DialogFragment
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(PreferenceUtils.getKeyTempUnit(getContext()))) {
+        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
             loadPreferences();
             mTxtMelt.setText(getTemperature(Elements.MELT));
             mTxtBoil.setText(getTemperature(Elements.BOIL));
-        } else if(key.equals(PreferenceUtils.getKeyElementColors(getContext()))) {
+        } else if(PreferenceUtils.KEY_SUBTEXT_VALUE.equals(key)) {
             loadPreferences();
             setBlockBackground();
         }

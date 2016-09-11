@@ -22,10 +22,8 @@
  */
 package com.ultramegatech.ey.util;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.ultramegatech.ey.R;
 import com.ultramegatech.ey.provider.Elements;
 
 /**
@@ -34,6 +32,14 @@ import com.ultramegatech.ey.provider.Elements;
  * @author Steve Guidetti
  */
 public class PreferenceUtils {
+    /**
+     * The keys for the preference
+     */
+    public static final String KEY_DARK_THEME = "theme";
+    public static final String KEY_TEMP_UNITS = "tempUnit";
+    public static final String KEY_ELEMENT_COLORS = "elementColors";
+    public static final String KEY_SUBTEXT_VALUE = "subtextValue";
+
     /**
      * Temperature unit preference values
      */
@@ -48,87 +54,43 @@ public class PreferenceUtils {
     public static final String COLOR_BLOCK = "block";
 
     /**
-     * The key for the block subtext value preference
-     */
-    public static final String KEY_SUBTEXT_VALUE = "subtextValue";
-
-    /**
-     * Cached preference key names
-     */
-    private static String sPrefDarkTheme;
-    private static String sPrefTempUnit;
-    private static String sPrefElementColors;
-
-    /**
-     * Get the dark theme preference.
+     * Get the value of the dark theme preference.
      *
-     * @param context The Context
-     * @param prefs   The SharedPreferences
+     * @param prefs The SharedPreferences
      * @return Whether to use the dark theme
      */
-    public static boolean getPrefDarkTheme(Context context, SharedPreferences prefs) {
-        return prefs.getBoolean(getKeyDarkTheme(context), false);
+    public static boolean getPrefDarkTheme(SharedPreferences prefs) {
+        return prefs.getBoolean(KEY_DARK_THEME, false);
     }
 
     /**
-     * Get the key for the dark theme preference.
+     * Get the value of the temperature unit preference.
      *
-     * @param context The Context
-     * @return The key for the dark theme preference
-     */
-    public static String getKeyDarkTheme(Context context) {
-        if(sPrefDarkTheme == null) {
-            sPrefDarkTheme = context.getString(R.string.prefKeyDarkTheme);
-        }
-        return sPrefDarkTheme;
-    }
-
-    /**
-     * Get the temperature unit preference.
-     *
-     * @param context The Context
-     * @param prefs   The SharedPreferences
+     * @param prefs The SharedPreferences
      * @return The unit to use for temperature values
      */
-    public static String getPrefTempUnit(Context context, SharedPreferences prefs) {
-        return prefs.getString(getKeyTempUnit(context), TEMP_K);
+    public static String getPrefTempUnit(SharedPreferences prefs) {
+        return prefs.getString(KEY_TEMP_UNITS, TEMP_K);
     }
 
     /**
-     * Get the key for the temperature unit preference.
+     * Get the value of the element colors preference.
      *
-     * @param context The Context
-     * @return The key for the temperature unit preference
-     */
-    public static String getKeyTempUnit(Context context) {
-        if(sPrefTempUnit == null) {
-            sPrefTempUnit = context.getString(R.string.prefKeyTemp);
-        }
-        return sPrefTempUnit;
-    }
-
-    /**
-     * Get the element colors preference.
-     *
-     * @param context The Context
-     * @param prefs   The SharedPreferences
+     * @param prefs The SharedPreferences
      * @return The property to use for coloring elements
      */
-    public static String getPrefElementColors(Context context, SharedPreferences prefs) {
-        return prefs.getString(getKeyElementColors(context), COLOR_CAT);
+    public static String getPrefElementColors(SharedPreferences prefs) {
+        return prefs.getString(KEY_ELEMENT_COLORS, COLOR_CAT);
     }
 
     /**
-     * Get the key for the element colors preference.
+     * Set value of the element colors preference.
      *
-     * @param context The Context
-     * @return The key for the element colors preference
+     * @param prefs The SharedPreferences
+     * @param value The value
      */
-    public static String getKeyElementColors(Context context) {
-        if(sPrefElementColors == null) {
-            sPrefElementColors = context.getString(R.string.prefKeyColors);
-        }
-        return sPrefElementColors;
+    public static void setPrefElementColors(SharedPreferences prefs, String value) {
+        prefs.edit().putString(KEY_ELEMENT_COLORS, value).apply();
     }
 
     /**
