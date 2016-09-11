@@ -50,9 +50,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal"
-                tools:ignore="RelativeOverlap">
+                tools:ignore="RelativeOverlap,UnusedAttribute">
 
                 <TextView
                     style="@android:style/TextAppearance.Medium"
@@ -64,7 +64,9 @@
                 <Spinner
                     android:id="@+id/subtextValue"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/labelSubtextValue"
+                    android:spinnerMode="dialog" />
 
                 <TextView
                     style="@android:style/TextAppearance.Medium"
@@ -79,7 +81,9 @@
                     android:id="@+id/blockColors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/elementColorNames" />
+                    android:entries="@array/elementColorNames"
+                    android:prompt="@string/labelBlockColors"
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
