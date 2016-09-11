@@ -254,13 +254,15 @@ public class ElementDetailsFragment extends DialogFragment
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        final String tempUnit = PreferenceUtils.getPrefTempUnit(prefs);
-        if(PreferenceUtils.TEMP_K.equals(tempUnit)) {
-            mTemperatureUnits = Units.KELVIN;
-        } else if(PreferenceUtils.TEMP_C.equals(tempUnit)) {
-            mTemperatureUnits = Units.CELSIUS;
-        } else {
-            mTemperatureUnits = Units.FAHRENHEIT;
+        switch(PreferenceUtils.getPrefTempUnit(prefs)) {
+            case PreferenceUtils.TEMP_C:
+                mTemperatureUnits = Units.CELSIUS;
+                break;
+            case PreferenceUtils.TEMP_F:
+                mTemperatureUnits = Units.FAHRENHEIT;
+                break;
+            default:
+                mTemperatureUnits = Units.KELVIN;
         }
 
         final String colorKey = PreferenceUtils.getPrefElementColors(prefs);

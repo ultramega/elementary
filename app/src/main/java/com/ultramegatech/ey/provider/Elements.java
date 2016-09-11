@@ -89,18 +89,27 @@ public class Elements implements BaseColumns {
      * @return The column type
      */
     public static Type getColumnType(String c) {
-        if(c.equals(SYMBOL) || c.equals(BLOCK) || c.equals(CONFIGURATION) || c.equals(ELECTRONS)) {
-            return Type.TEXT;
-        }
-        if(c.equals(WEIGHT) || c.equals(DENSITY) || c.equals(MELT) || c.equals(BOIL)
-                || c.equals(HEAT) || c.equals(NEGATIVITY) || c.equals(ABUNDANCE)) {
-            return Type.REAL;
-        }
-        if(c.equals(NUMBER) || c.equals(GROUP) || c.equals(PERIOD) || c.equals(CATEGORY)) {
-            return Type.INTEGER;
-        }
-        if(c.equals(UNSTABLE)) {
-            return Type.BOOLEAN;
+        switch(c) {
+            case SYMBOL:
+            case BLOCK:
+            case CONFIGURATION:
+            case ELECTRONS:
+                return Type.TEXT;
+            case WEIGHT:
+            case DENSITY:
+            case MELT:
+            case BOIL:
+            case HEAT:
+            case NEGATIVITY:
+            case ABUNDANCE:
+                return Type.REAL;
+            case NUMBER:
+            case GROUP:
+            case PERIOD:
+            case CATEGORY:
+                return Type.INTEGER;
+            case UNSTABLE:
+                return Type.BOOLEAN;
         }
 
         return Type.UNDEFINED;
