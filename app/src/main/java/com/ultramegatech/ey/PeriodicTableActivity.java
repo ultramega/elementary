@@ -103,11 +103,6 @@ public class PeriodicTableActivity extends FragmentActivity implements
     private ZoomControls mZoomControls;
 
     /**
-     * The key to the value to display as the block subtext
-     */
-    private String mSubtextValueKey;
-
-    /**
      * The Spinner to choose how to color the blocks
      */
     private Spinner mSpinnerBlockColors;
@@ -116,6 +111,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
      * The SharedPreferences for the Activity
      */
     private SharedPreferences mPreferences;
+
+    /**
+     * The key to the value to display as the block subtext
+     */
+    private String mSubtextValueKey;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -144,6 +144,17 @@ public class PeriodicTableActivity extends FragmentActivity implements
             }
         });
 
+        setupZoomControls();
+        setupSubtextValueSpinner();
+        setupBlockColorSpinner();
+
+        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+    }
+
+    /**
+     * Set up the controls for zooming in and out.
+     */
+    private void setupZoomControls() {
         mZoomControls = (ZoomControls)findViewById(R.id.zoom);
         mZoomControls.setIsZoomOutEnabled(false);
         mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
@@ -160,11 +171,6 @@ public class PeriodicTableActivity extends FragmentActivity implements
                 mZoomControls.setIsZoomInEnabled(true);
             }
         });
-
-        setupSubtextValueSpinner();
-        setupBlockColorSpinner();
-
-        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
     /**
