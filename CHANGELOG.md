@@ -1,4 +1,11 @@
-﻿- v.0.5.1 (9/8/16):
+﻿- v.0.5.2 (9/11/16):
+   * Added buttons to zoom in and out
+   * Added spinner to select what to display in each block in the Periodic Table view
+   * Added spinner to set the coloring of the blocks from the Periodic Table view
+   * Changed the label for Heat to Specific Heat
+   * Fixed fling gestures moving in the wrong direction
+   * Miscellaneous interface adjustments
+- v.0.5.1 (9/8/16):
    * Reduced application file size
    * Increased responsiveness of tapping an element
 - v.0.5.0 (9/8/16):
