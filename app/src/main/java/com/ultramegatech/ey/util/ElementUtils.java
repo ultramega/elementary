@@ -140,7 +140,7 @@ public class ElementUtils {
         final HashMap<Object, Item> colorMap = new LinkedHashMap<>();
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        final String colorKey = prefs.getString("elementColors", "category");
+        final String colorKey = PreferenceUtils.getPrefElementColors(prefs);
 
         final Resources res = context.getResources();
         final Object[] keys;
