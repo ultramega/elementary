@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.provider.Elements;
 
 /**
  * Helpers for the shared preferences of the application.
@@ -45,6 +46,11 @@ public class PreferenceUtils {
      */
     public static final String COLOR_CAT = "category";
     public static final String COLOR_BLOCK = "block";
+
+    /**
+     * The key for the block subtext value preference
+     */
+    public static final String KEY_SUBTEXT_VALUE = "subtextValue";
 
     /**
      * Cached preference key names
@@ -123,5 +129,25 @@ public class PreferenceUtils {
             sPrefElementColors = context.getString(R.string.prefKeyColors);
         }
         return sPrefElementColors;
+    }
+
+    /**
+     * Get value of the block subtext value preference.
+     *
+     * @param prefs The SharedPreferences
+     * @return The value of the block subtext value preference
+     */
+    public static String getPrefSubtextValue(SharedPreferences prefs) {
+        return prefs.getString(KEY_SUBTEXT_VALUE, Elements.WEIGHT);
+    }
+
+    /**
+     * Set value of the block subtext value preference.
+     *
+     * @param prefs The SharedPreferences
+     * @param value The value
+     */
+    public static void setPrefSubtextValue(SharedPreferences prefs, String value) {
+        prefs.edit().putString(KEY_SUBTEXT_VALUE, value).apply();
     }
 }

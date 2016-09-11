@@ -41,12 +41,40 @@
             android:layout_weight="1"
             app:title="@string/titlePeriodicTable" />
 
-        <ZoomControls
-            android:id="@+id/zoom"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0" />
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal"
+                tools:ignore="RelativeOverlap">
+
+                <TextView
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/subtextValue"
+                    android:text="@string/labelSubtextValue" />
+
+                <Spinner
+                    android:id="@+id/subtextValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <ZoomControls
+                android:id="@+id/zoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
@@ -58,12 +86,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:clickable="true" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
             android:clickable="true" />
 
         <View

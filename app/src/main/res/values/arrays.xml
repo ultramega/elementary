@@ -99,4 +99,26 @@
         <item>Atomic Number</item>
         <item>Element Name</item>
     </string-array>
+
+    <!--
+        Options for the block subtext value
+    -->
+    <string-array name="subtextValues" translatable="false">
+        <item>w</item>
+        <item>dens</item>
+        <item>melt</item>
+        <item>boil</item>
+        <item>heat</item>
+        <item>neg</item>
+        <item>ab</item>
+    </string-array>
+    <string-array name="subtextValueNames">
+        <item>Atomic Weight</item>
+        <item>Density (g/cm³)</item>
+        <item>Melting Point (K)</item>
+        <item>Boiling Point (K)</item>
+        <item>Specific Heat (J/g·K)</item>
+        <item>Electronegativity (Pauling)</item>
+        <item>Abundance (mg/kg)</item>
+    </string-array>
 </resources>
