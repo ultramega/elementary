@@ -199,6 +199,10 @@ public class PeriodicTableActivity extends FragmentActivity implements
      */
     private void setupBlockColorSpinner() {
         mSpinnerBlockColors = (Spinner)findViewById(R.id.blockColors);
+        if(mSpinnerBlockColors == null) {
+            return;
+        }
+
         final String pref = PreferenceUtils.getPrefElementColors(mPreferences);
         mSpinnerBlockColors.setSelection(pref.equals(PreferenceUtils.COLOR_CAT) ? 0 : 1);
         mSpinnerBlockColors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

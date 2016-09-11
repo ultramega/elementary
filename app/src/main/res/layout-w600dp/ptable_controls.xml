@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:ignore="RelativeOverlap,UnusedAttribute">
+
+    <TextView
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/subtextValue"
+        android:text="@string/labelSubtextValue" />
+
+    <Spinner
+        android:id="@+id/subtextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/labelSubtextValue"
+        android:spinnerMode="dialog" />
+
+    <TextView
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:labelFor="@+id/blockColors"
+        android:text="@string/labelBlockColors" />
+
+    <Spinner
+        android:id="@+id/blockColors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/elementColorNames"
+        android:prompt="@string/labelBlockColors"
+        android:spinnerMode="dialog" />
+
+</LinearLayout>
