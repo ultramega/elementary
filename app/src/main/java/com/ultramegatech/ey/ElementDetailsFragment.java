@@ -565,11 +565,11 @@ public class ElementDetailsFragment extends DialogFragment
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
+        if(PreferenceUtils.KEY_TEMP_UNITS.equals(key)) {
             loadPreferences();
             mTxtMelt.setText(getTemperature(Elements.MELT));
             mTxtBoil.setText(getTemperature(Elements.BOIL));
-        } else if(PreferenceUtils.KEY_SUBTEXT_VALUE.equals(key)) {
+        } else if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
             loadPreferences();
             setBlockBackground();
         }
