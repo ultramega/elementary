@@ -108,6 +108,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
     private String mSubtextValueKey;
 
     /**
+     * The Spinner to choose how to color the blocks
+     */
+    private Spinner mSpinnerBlockColors;
+
+    /**
      * The SharedPreferences for the Activity
      */
     private SharedPreferences mPreferences;
@@ -157,6 +162,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         });
 
         setupSubtextValueSpinner();
+        setupBlockColorSpinner();
 
         getSupportLoaderManager().initLoader(0, null, this).forceLoad();
     }
@@ -174,6 +180,28 @@ public class PeriodicTableActivity extends FragmentActivity implements
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 PreferenceUtils.setPrefSubtextValue(mPreferences, adapter.getItem(i));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+    }
+
+    /**
+     * Set up the Spinner for choosing how to color the blocks.
+     */
+    private void setupBlockColorSpinner() {
+        mSpinnerBlockColors = (Spinner)findViewById(R.id.blockColors);
+        final String pref = PreferenceUtils.getPrefElementColors(this, mPreferences);
+        mSpinnerBlockColors.setSelection(pref.equals(PreferenceUtils.COLOR_CAT) ? 0 : 1);
+        mSpinnerBlockColors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                mPreferences.edit()
+                        .putString(PreferenceUtils.getKeyElementColors(PeriodicTableActivity.this),
+                                i == 0 ? PreferenceUtils.COLOR_CAT : PreferenceUtils.COLOR_BLOCK)
+                        .apply();
             }
 
             @Override
@@ -372,7 +400,14 @@ public class PeriodicTableActivity extends FragmentActivity implements
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals(PreferenceUtils.getKeyElementColors(this))) {
-            loadPreferences();
+            final String colorKey = PreferenceUtils.getPrefElementColors(this, mPreferences);
+            if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
+                mProjection[5] = Elements.BLOCK;
+                mSpinnerBlockColors.setSelection(1);
+            } else {
+                mProjection[5] = Elements.CATEGORY;
+                mSpinnerBlockColors.setSelection(0);
+            }
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         } else if(key.equals(PreferenceUtils.KEY_SUBTEXT_VALUE)) {
             mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(sharedPreferences);

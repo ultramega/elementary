@@ -64,6 +64,7 @@
     <string name="labelAbundance">Abundance:</string>
 
     <string name="labelSubtextValue">Show:</string>
+    <string name="labelBlockColors">Color by:</string>
 
     <string name="hintFilter">Filter by Name or Symbol</string>
 
