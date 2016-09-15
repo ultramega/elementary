@@ -47,12 +47,12 @@
     <string name="prefKeyColors" translatable="false">elementColors</string>
     <string name="prefTitleColors">Element Colors</string>
     <string name="prefSummaryColors">Property used to color the elements</string>
-    <string name="prefKeySubtextValue">subtextValue</string>
+    <string name="prefKeySubtextValue" translatable="false">subtextValue</string>
     <string name="prefTitleSubtextValue">Block Value</string>
     <string name="prefSummarySubtextValue">The value to display under the element symbol</string>
-    <string name="prefKeyShowControls">showControls</string>
+    <string name="prefKeyShowControls" translatable="false">showControls</string>
     <string name="prefTitleShowControls">Periodic Table Controls</string>
-    <string name="prefSummaryShowControls">Show the controls for the Periodic Table</string>
+    <string name="prefSummaryShowControls">Show the controls for the Periodic Table in the Table View</string>
 
     <string name="labelNumber">Atomic Number:</string>
     <string name="labelSymbol">Symbol:</string>
