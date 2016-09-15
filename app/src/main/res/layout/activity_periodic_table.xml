@@ -42,10 +42,12 @@
             app:title="@string/titlePeriodicTable" />
 
         <RelativeLayout
+            android:id="@+id/controls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:paddingRight="30dp"
+            android:visibility="gone">
 
             <include
                 layout="@layout/ptable_controls"

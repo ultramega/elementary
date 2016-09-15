@@ -50,6 +50,9 @@
     <string name="prefKeySubtextValue">subtextValue</string>
     <string name="prefTitleSubtextValue">Block Value</string>
     <string name="prefSummarySubtextValue">The value to display under the element symbol</string>
+    <string name="prefKeyShowControls">showControls</string>
+    <string name="prefTitleShowControls">Periodic Table Controls</string>
+    <string name="prefSummaryShowControls">Show the controls for the Periodic Table</string>
 
     <string name="labelNumber">Atomic Number:</string>
     <string name="labelSymbol">Symbol:</string>

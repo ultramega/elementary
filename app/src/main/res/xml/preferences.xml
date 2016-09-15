@@ -50,4 +50,9 @@
         android:key="@string/prefKeySubtextValue"
         android:summary="@string/prefSummarySubtextValue"
         android:title="@string/prefTitleSubtextValue" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/prefKeyShowControls"
+        android:summary="@string/prefSummaryShowControls"
+        android:title="@string/prefTitleShowControls" />
 </PreferenceScreen>

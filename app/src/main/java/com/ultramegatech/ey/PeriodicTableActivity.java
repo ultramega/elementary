@@ -98,6 +98,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
     private PeriodicTableView mPeriodicTableView;
 
     /**
+     * The controls for the Periodic Table
+     */
+    private View mControlBar;
+
+    /**
      * The zoom controls
      */
     private ZoomControls mZoomControls;
@@ -148,6 +153,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
                 mZoomControls.setIsZoomOutEnabled(periodicTableView.canZoomOut());
             }
         });
+
+        mControlBar = findViewById(R.id.controls);
+        if(PreferenceUtils.getPrefShowControls(mPreferences)) {
+            mControlBar.setVisibility(View.VISIBLE);
+        }
 
         setupZoomControls();
         setupSubtextValueSpinner();
@@ -421,23 +431,29 @@ public class PeriodicTableActivity extends FragmentActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
-            final String colorKey = PreferenceUtils.getPrefElementColors(mPreferences);
-            if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
-                mProjection[5] = Elements.BLOCK;
-                mSpinnerBlockColors.setSelection(1);
-            } else {
-                mProjection[5] = Elements.CATEGORY;
-                mSpinnerBlockColors.setSelection(0);
-            }
-            getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
-        } else if(PreferenceUtils.KEY_SUBTEXT_VALUE.equals(key)) {
-            mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(sharedPreferences);
-            mSpinnerSubtextValue.setSelection(
-                    ((BlockSubtextValueListAdapter)mSpinnerSubtextValue.getAdapter())
-                            .getItemIndex(mSubtextValueKey));
-            mProjection[2] = mSubtextValueKey;
-            getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
+        switch(key) {
+            case PreferenceUtils.KEY_SHOW_CONTROLS:
+                mControlBar.setVisibility(PreferenceUtils.getPrefShowControls(mPreferences)
+                        ? View.VISIBLE : View.GONE);
+                break;
+            case PreferenceUtils.KEY_ELEMENT_COLORS:
+                final String colorKey = PreferenceUtils.getPrefElementColors(mPreferences);
+                if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
+                    mProjection[5] = Elements.BLOCK;
+                    mSpinnerBlockColors.setSelection(1);
+                } else {
+                    mProjection[5] = Elements.CATEGORY;
+                    mSpinnerBlockColors.setSelection(0);
+                }
+                getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
+                break;
+            case PreferenceUtils.KEY_SUBTEXT_VALUE:
+                mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(sharedPreferences);
+                mSpinnerSubtextValue.setSelection(
+                        ((BlockSubtextValueListAdapter)mSpinnerSubtextValue.getAdapter())
+                                .getItemIndex(mSubtextValueKey));
+                mProjection[2] = mSubtextValueKey;
+                getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         }
     }
 }

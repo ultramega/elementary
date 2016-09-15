@@ -39,6 +39,7 @@ public class PreferenceUtils {
     public static final String KEY_TEMP_UNITS = "tempUnit";
     public static final String KEY_ELEMENT_COLORS = "elementColors";
     public static final String KEY_SUBTEXT_VALUE = "subtextValue";
+    public static final String KEY_SHOW_CONTROLS = "showControls";
 
     /**
      * Temperature unit preference values
@@ -111,5 +112,15 @@ public class PreferenceUtils {
      */
     public static void setPrefSubtextValue(SharedPreferences prefs, String value) {
         prefs.edit().putString(KEY_SUBTEXT_VALUE, value).apply();
+    }
+
+    /**
+     * Get the value of the show controls preference.
+     *
+     * @param prefs The SharedPreferences
+     * @return The value of the show controls preference
+     */
+    public static boolean getPrefShowControls(SharedPreferences prefs) {
+        return prefs.getBoolean(KEY_SHOW_CONTROLS, true);
     }
 }
