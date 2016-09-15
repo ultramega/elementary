@@ -47,6 +47,9 @@
     <string name="prefKeyColors" translatable="false">elementColors</string>
     <string name="prefTitleColors">Element Colors</string>
     <string name="prefSummaryColors">Property used to color the elements</string>
+    <string name="prefKeySubtextValue">subtextValue</string>
+    <string name="prefTitleSubtextValue">Block Value</string>
+    <string name="prefSummarySubtextValue">The value to display under the element symbol</string>
 
     <string name="labelNumber">Atomic Number:</string>
     <string name="labelSymbol">Symbol:</string>

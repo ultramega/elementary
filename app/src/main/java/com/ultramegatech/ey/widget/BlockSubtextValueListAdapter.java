@@ -23,8 +23,6 @@
 package com.ultramegatech.ey.widget;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ultramegatech.ey.R;
-import com.ultramegatech.ey.util.PreferenceUtils;
+import com.ultramegatech.ey.util.SubtextValuesHelper;
 
 /**
  * Custom Adapter for the block subtext Spinner.
@@ -40,7 +38,7 @@ import com.ultramegatech.ey.util.PreferenceUtils;
  * @author Steve Guidetti
  */
 public class BlockSubtextValueListAdapter extends BaseAdapter
-        implements SharedPreferences.OnSharedPreferenceChangeListener {
+        implements SubtextValuesHelper.OnSubtextValuesChangedListener {
     /**
      * The Context
      */
@@ -52,9 +50,9 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
     private final String[] mKeys;
 
     /**
-     * The names of the items
+     * The SubtextValuesHelper to manage the list of options
      */
-    private final String[] mNames;
+    private final SubtextValuesHelper mHelper;
 
     /**
      * @param context The Context
@@ -62,33 +60,7 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
     public BlockSubtextValueListAdapter(Context context) {
         mContext = context;
         mKeys = context.getResources().getStringArray(R.array.subtextValues);
-        mNames = context.getResources().getStringArray(R.array.subtextValueNames);
-
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        prefs.registerOnSharedPreferenceChangeListener(this);
-
-        updateTempUnit(prefs);
-    }
-
-    /**
-     * Update the unit for temperatures.
-     *
-     * @param prefs The SharedPreferences
-     */
-    private void updateTempUnit(SharedPreferences prefs) {
-        final String unit;
-        switch(PreferenceUtils.getPrefTempUnit(prefs)) {
-            case PreferenceUtils.TEMP_C:
-                unit = "℃";
-                break;
-            case PreferenceUtils.TEMP_F:
-                unit = "℉";
-                break;
-            default:
-                unit = "K";
-        }
-        mNames[2] = mNames[2].substring(0, mNames[2].length() - 2) + unit + ")";
-        mNames[3] = mNames[3].substring(0, mNames[3].length() - 2) + unit + ")";
+        mHelper = new SubtextValuesHelper(context, this);
     }
 
     @Override
@@ -148,16 +120,13 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
             holder.text = (TextView)convertView.findViewById(android.R.id.text1);
             convertView.setTag(holder);
         }
-        ((ViewHolder)convertView.getTag()).text.setText(mNames[position]);
+        ((ViewHolder)convertView.getTag()).text.setText(mHelper.getItem(position));
         return convertView;
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(PreferenceUtils.KEY_TEMP_UNITS.equals(key)) {
-            updateTempUnit(sharedPreferences);
-            notifyDataSetChanged();
-        }
+    public void onSubtextValuesChanged(SubtextValuesHelper helper) {
+        notifyDataSetChanged();
     }
 
     /**

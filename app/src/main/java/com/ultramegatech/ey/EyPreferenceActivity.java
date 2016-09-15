@@ -26,12 +26,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.PreferenceUtils;
+import com.ultramegatech.ey.util.SubtextValuesHelper;
 
 /**
  * Simple implementation of PreferenceActivity for setting general application settings.
@@ -39,7 +41,13 @@ import com.ultramegatech.ey.util.PreferenceUtils;
  * @author Steve Guidetti
  */
 public class EyPreferenceActivity extends PreferenceActivity
-        implements SharedPreferences.OnSharedPreferenceChangeListener {
+        implements SharedPreferences.OnSharedPreferenceChangeListener,
+        SubtextValuesHelper.OnSubtextValuesChangedListener {
+    /**
+     * The Preference for setting the block subtext value
+     */
+    private ListPreference mSubtextValuePreference;
+
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,10 @@ public class EyPreferenceActivity extends PreferenceActivity
 
         ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
         addPreferencesFromResource(R.xml.preferences);
+
+        mSubtextValuePreference = (ListPreference)findPreference(PreferenceUtils.KEY_SUBTEXT_VALUE);
+        final SubtextValuesHelper subtextValuesHelper = new SubtextValuesHelper(this, this);
+        mSubtextValuePreference.setEntries(subtextValuesHelper.getList());
     }
 
     @Override
@@ -84,5 +96,10 @@ public class EyPreferenceActivity extends PreferenceActivity
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSubtextValuesChanged(SubtextValuesHelper helper) {
+        mSubtextValuePreference.setEntries(helper.getList());
     }
 }

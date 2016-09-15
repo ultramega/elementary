@@ -103,6 +103,11 @@ public class PeriodicTableActivity extends FragmentActivity implements
     private ZoomControls mZoomControls;
 
     /**
+     * The Spinner to choose the block subtext value
+     */
+    private Spinner mSpinnerSubtextValue;
+
+    /**
      * The Spinner to choose how to color the blocks
      */
     private Spinner mSpinnerBlockColors;
@@ -177,12 +182,12 @@ public class PeriodicTableActivity extends FragmentActivity implements
      * Set up the Spinner for choosing the value to display as the subtext of each block.
      */
     private void setupSubtextValueSpinner() {
-        final Spinner spinner = (Spinner)findViewById(R.id.subtextValue);
+        mSpinnerSubtextValue = (Spinner)findViewById(R.id.subtextValue);
         final BlockSubtextValueListAdapter adapter = new BlockSubtextValueListAdapter(this);
-        spinner.setAdapter(adapter);
-        spinner.setSelection(adapter.getItemIndex(PreferenceUtils
+        mSpinnerSubtextValue.setAdapter(adapter);
+        mSpinnerSubtextValue.setSelection(adapter.getItemIndex(PreferenceUtils
                 .getPrefSubtextValue(mPreferences)));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mSpinnerSubtextValue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 PreferenceUtils.setPrefSubtextValue(mPreferences, adapter.getItem(i));
@@ -419,6 +424,9 @@ public class PeriodicTableActivity extends FragmentActivity implements
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         } else if(PreferenceUtils.KEY_SUBTEXT_VALUE.equals(key)) {
             mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(sharedPreferences);
+            mSpinnerSubtextValue.setSelection(
+                    ((BlockSubtextValueListAdapter)mSpinnerSubtextValue.getAdapter())
+                            .getItemIndex(mSubtextValueKey));
             mProjection[2] = mSubtextValueKey;
             getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
         }
