@@ -363,6 +363,15 @@ public class PeriodicTableActivity extends FragmentActivity implements
             }
             return df.format(value);
         }
+        if(Elements.DENSITY.equals(mSubtextValueKey)) {
+            if(!cursor.isNull(2)) {
+                final double value = cursor.getDouble(2);
+                if(value < 0.0001) {
+                    return "<0.0001";
+                }
+                return df.format(value);
+            }
+        }
         if(Elements.ABUNDANCE.equals(mSubtextValueKey)) {
             if(!cursor.isNull(2)) {
                 final double value = cursor.getDouble(2);
