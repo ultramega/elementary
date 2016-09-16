@@ -851,8 +851,13 @@ public class PeriodicTableView extends View implements Observer {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if(mContentRect.isEmpty()) {
-            mContentRect.set(0, 0, w, h);
+        if(mContentRect.width() < w) {
+            mContentRect.left = 0;
+            mContentRect.right = w;
+        }
+        if(mContentRect.height() < h) {
+            mContentRect.top = 0;
+            mContentRect.bottom = h;
         }
 
         mEdgeEffectTop.setSize(w, h);
