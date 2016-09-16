@@ -42,6 +42,10 @@
     <string name="prefSummaryTemp">Unidade usada para mostrar os valores de temperatura</string>
     <string name="prefTitleColors">Cores dos elementos</string>
     <string name="prefSummaryColors">Propriedade usada na cor dos elementos</string>
+    <string name="prefTitleSubtextValue">Valor do bloco</string>
+    <string name="prefSummarySubtextValue">Valor a exibir abaixo do símbolo do elemento</string>
+    <string name="prefTitleShowControls">Controles da Tabela Periódica</string>
+    <string name="prefSummaryShowControls">Mostra os controles da Tabela Periódica na exibição em tabela</string>
 
     <string name="labelNumber">Número atômico:</string>
     <string name="labelSymbol">Símbolo:</string>
