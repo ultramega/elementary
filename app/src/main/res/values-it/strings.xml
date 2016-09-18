@@ -42,6 +42,10 @@
     <string name="prefSummaryTemp">Unità usata nel campo di temperatura</string>
     <string name="prefTitleColors">Colore degli elementi</string>
     <string name="prefSummaryColors">Proprietà usata per colorare gli elementi</string>
+    <string name="prefTitleSubtextValue">Valore della Casella</string>
+    <string name="prefSummarySubtextValue">Il valore da mostrare sotto il simbolo dell\'elemento</string>
+    <string name="prefTitleShowControls">Controlli della Tavola Periodica</string>
+    <string name="prefSummaryShowControls">Mostra i controlli per la Tavola Periodica nella Vista Tabella</string>
 
     <string name="labelNumber">Numero atomico:</string>
     <string name="labelSymbol">Simbolo:</string>
@@ -64,8 +68,4 @@
     <string name="hintFilter">Filtra per nome o per simbolo</string>
 
     <string name="unknown">sconosciuto</string>
-    <string name="prefSummaryShowControls">Mostra i controlli per la Tavola Periodica nella Vista Tabella</string>
-    <string name="prefSummarySubtextValue">Il valore da mostrare sotto il simbolo dell\'elemento</string>
-    <string name="prefTitleShowControls">Controlli della Tavola Periodica</string>
-    <string name="prefTitleSubtextValue">Valore della Casella</string>
 </resources>
