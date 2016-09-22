@@ -36,12 +36,12 @@ class Zoomer {
     /**
      * The interpolator to use
      */
-    private Interpolator mInterpolator;
+    private final Interpolator mInterpolator;
 
     /**
      * The animation duration in milliseconds
      */
-    private int mAnimationDuration;
+    private final int mAnimationDuration;
 
     /**
      * Whether the current operation has finished

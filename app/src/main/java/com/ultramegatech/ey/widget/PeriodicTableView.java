@@ -186,33 +186,33 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * The area for drawing the content
      */
-    private Rect mContentRect = new Rect();
+    private final Rect mContentRect = new Rect();
 
     /**
      * The offset of the content within the content area
      */
-    private Point mContentOffset = new Point();
+    private final Point mContentOffset = new Point();
 
     /**
      * The initial area for relative scale operations
      */
-    private Rect mScaleRect = new Rect();
+    private final Rect mScaleRect = new Rect();
 
     /**
      * The focal point of the current scale operation
      */
-    private PointF mScaleFocalPoint = new PointF();
+    private final PointF mScaleFocalPoint = new PointF();
 
     /**
      * Touch gesture detectors
      */
-    private ScaleGestureDetector mScaleGestureDetector;
-    private GestureDetector mGestureDetector;
+    private final ScaleGestureDetector mScaleGestureDetector;
+    private final GestureDetector mGestureDetector;
 
     /**
      * Handler for animating programmatic scaling
      */
-    private Zoomer mZoomer;
+    private final Zoomer mZoomer;
 
     /**
      * The current zoom level
@@ -222,15 +222,15 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Handler for programmatic scrolling and flings
      */
-    private Scroller mScroller;
+    private final Scroller mScroller;
 
     /**
      * Edge effects to provide visual indicators that an edge has been reached
      */
-    private EdgeEffectCompat mEdgeEffectTop;
-    private EdgeEffectCompat mEdgeEffectBottom;
-    private EdgeEffectCompat mEdgeEffectLeft;
-    private EdgeEffectCompat mEdgeEffectRight;
+    private final EdgeEffectCompat mEdgeEffectTop;
+    private final EdgeEffectCompat mEdgeEffectBottom;
+    private final EdgeEffectCompat mEdgeEffectLeft;
+    private final EdgeEffectCompat mEdgeEffectRight;
 
     public PeriodicTableView(Context context) {
         this(context, null, 0);
