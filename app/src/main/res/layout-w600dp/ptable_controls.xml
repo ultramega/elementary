@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:entries="@array/elementColorNames"
         android:prompt="@string/labelBlockColors"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog"
+        tools:ignore="InconsistentLayout" />
 
 </LinearLayout>
