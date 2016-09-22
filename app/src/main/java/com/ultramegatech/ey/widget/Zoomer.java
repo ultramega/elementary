@@ -32,7 +32,7 @@ import android.view.animation.Interpolator;
  *
  * @author Steve Guidetti
  */
-public class Zoomer {
+class Zoomer {
     /**
      * The interpolator to use
      */
