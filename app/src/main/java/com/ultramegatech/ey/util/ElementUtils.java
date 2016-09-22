@@ -156,10 +156,8 @@ public class ElementUtils {
             nameValues = res.getStringArray(R.array.ptCategories);
         }
 
-        if(keys != null && colorValues != null && nameValues != null) {
-            for(int i = 0; i < keys.length; i++) {
-                colorMap.put(keys[i], new Item(colorValues[i], nameValues[i]));
-            }
+        for(int i = 0; i < keys.length; i++) {
+            colorMap.put(keys[i], new Item(colorValues[i], nameValues[i]));
         }
 
         return colorMap;
