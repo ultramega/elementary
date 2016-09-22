@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:hint="@string/hintFilter"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/sort"
