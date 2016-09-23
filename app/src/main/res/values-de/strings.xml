@@ -42,6 +42,10 @@
     <string name="prefSummaryTemp">Bevorzugtes Einheitensystem</string>
     <string name="prefTitleColors">Elementfarben</string>
     <string name="prefSummaryColors">Bevorzugtes Farbschema</string>
+    <string name="prefTitleSubtextValue">Blockwert</string>
+    <string name="prefSummarySubtextValue">Der Wert unter dem Elementsymbol angezeigt</string>
+    <string name="prefTitleShowControls">Tabellenansicht Steuerung</string>
+    <string name="prefSummaryShowControls">Zeigen Sie die Bedienelemente für das Periodensystem in der Tabellenansicht</string>
 
     <string name="labelNumber">Ordnungszahl:</string>
     <string name="labelSymbol">Symbol:</string>
