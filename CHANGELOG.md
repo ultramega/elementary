@@ -1,4 +1,7 @@
-﻿- v.0.6.0 (9/11/16):
+﻿- v.0.6.1 (9/23/16):
+   * Added setting in the Options page to change what to display under the symbol in each block
+   * Added setting to show or hide the controls under the Periodic Table view
+- v.0.6.0 (9/11/16):
    * Added buttons to zoom in and out
    * Added spinner to select what to display in each block in the Periodic Table view
    * Added spinner to set the coloring of the blocks from the Periodic Table view
