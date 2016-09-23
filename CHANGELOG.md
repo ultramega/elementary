@@ -1,4 +1,4 @@
-﻿- v.0.5.2 (9/11/16):
+﻿- v.0.6.0 (9/11/16):
    * Added buttons to zoom in and out
    * Added spinner to select what to display in each block in the Periodic Table view
    * Added spinner to set the coloring of the blocks from the Periodic Table view
