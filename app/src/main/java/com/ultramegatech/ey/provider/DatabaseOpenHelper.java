@@ -76,7 +76,7 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
      */
     private final Context mContext;
 
-    public DatabaseOpenHelper(Context context) {
+    DatabaseOpenHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
         mContext = context;
     }

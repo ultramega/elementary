@@ -61,8 +61,8 @@ public class PeriodicTableBlock {
     /**
      * Grid position
      */
-    public int row;
-    public int col;
+    int row;
+    int col;
 
     /**
      * Block background color

@@ -71,7 +71,7 @@ class Zoomer {
     /**
      * @param context The Context
      */
-    public Zoomer(Context context) {
+    Zoomer(Context context) {
         mInterpolator = new DecelerateInterpolator();
         mAnimationDuration = context.getResources()
                 .getInteger(android.R.integer.config_shortAnimTime);
@@ -83,7 +83,7 @@ class Zoomer {
      * @param currentZoom The current zoom level
      * @param targetZoom  The target zoom level
      */
-    public void startZoom(float currentZoom, float targetZoom) {
+    void startZoom(float currentZoom, float targetZoom) {
         mStartTime = SystemClock.elapsedRealtime();
         mStartZoom = mCurrentZoom = currentZoom;
         mTargetZoom = targetZoom;
@@ -94,7 +94,7 @@ class Zoomer {
     /**
      * Stop the current operation
      */
-    public void forceFinished() {
+    void forceFinished() {
         mZoomInProgress = false;
     }
 
@@ -103,7 +103,7 @@ class Zoomer {
      *
      * @return Whether the zoom operation has finished
      */
-    public boolean isFinished() {
+    boolean isFinished() {
         return !mZoomInProgress;
     }
 
@@ -112,7 +112,7 @@ class Zoomer {
      *
      * @return Whether a zoom operation is in progress
      */
-    public boolean computeZoom() {
+    boolean computeZoom() {
         if(!mZoomInProgress) {
             return false;
         }
@@ -135,7 +135,7 @@ class Zoomer {
      *
      * @return The current zoom level
      */
-    public float getCurrZoom() {
+    float getCurrZoom() {
         return mCurrentZoom;
     }
 }

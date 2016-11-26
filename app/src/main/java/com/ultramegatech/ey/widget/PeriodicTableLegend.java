@@ -37,7 +37,7 @@ import java.util.Observable;
  *
  * @author Steve Guidetti
  */
-@SuppressWarnings("unused,WeakerAccess")
+@SuppressWarnings("unused")
 public class PeriodicTableLegend extends Observable {
     /**
      * Map of values to legend items
@@ -83,7 +83,7 @@ public class PeriodicTableLegend extends Observable {
      *
      * @param blocks The list of blocks
      */
-    public void colorBlocks(List<PeriodicTableBlock> blocks) {
+    void colorBlocks(List<PeriodicTableBlock> blocks) {
         if(mMap == null) {
             return;
         }
@@ -98,7 +98,7 @@ public class PeriodicTableLegend extends Observable {
      *
      * @param block The block
      */
-    public void colorBlock(PeriodicTableBlock block) {
+    void colorBlock(PeriodicTableBlock block) {
         if(mMap == null) {
             return;
         }
@@ -114,7 +114,7 @@ public class PeriodicTableLegend extends Observable {
      * @param canvas Canvas on which to draw
      * @param rect   Boundaries within which to draw
      */
-    public void drawLegend(Canvas canvas, Rect rect) {
+    void drawLegend(Canvas canvas, Rect rect) {
         if(mMap == null) {
             return;
         }

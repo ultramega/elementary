@@ -276,7 +276,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         /**
          * @param sortField One of the SORT_ constants
          */
-        public ElementComparator(int sortField) {
+        ElementComparator(int sortField) {
             mSortField = sortField;
         }
 
