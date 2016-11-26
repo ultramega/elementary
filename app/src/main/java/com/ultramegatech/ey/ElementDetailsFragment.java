@@ -203,7 +203,8 @@ public class ElementDetailsFragment extends DialogFragment
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_element_details, container, false);
 
         mTxtHeader = (TextView)root.findViewById(R.id.header);

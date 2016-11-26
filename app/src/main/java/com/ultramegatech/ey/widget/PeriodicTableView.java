@@ -411,7 +411,8 @@ public class PeriodicTableView extends View implements Observer {
             }
 
             @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+                                    float distanceY) {
                 clearSelection();
                 int offsetX = (int)-distanceX;
                 int offsetY = (int)-distanceY;
@@ -453,7 +454,8 @@ public class PeriodicTableView extends View implements Observer {
             }
 
             @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                                   float velocityY) {
                 clearSelection();
                 clearEdgeEffects();
                 mScroller.forceFinished(true);
@@ -1039,7 +1041,9 @@ public class PeriodicTableView extends View implements Observer {
             findBlockPosition(block);
 
             node.setBoundsInParent(new Rect(mRect));
-            node.setText(getContext().getString(R.string.descTableBlock, block.number, name, "", block.subtext));
+            // TODO: 11/25/2016 Add more details
+            node.setText(getContext().getString(R.string.descTableBlock, block.number, name, "",
+                    block.subtext));
             node.setClickable(true);
         }
 
