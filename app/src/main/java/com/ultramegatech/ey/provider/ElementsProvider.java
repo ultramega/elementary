@@ -68,6 +68,7 @@ public class ElementsProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
+        //noinspection ConstantConditions
         mDatabaseOpenHelper = new DatabaseOpenHelper(getContext());
         return true;
     }

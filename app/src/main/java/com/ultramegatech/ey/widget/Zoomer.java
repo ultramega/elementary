@@ -24,6 +24,7 @@ package com.ultramegatech.ey.widget;
 
 import android.content.Context;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
@@ -36,6 +37,7 @@ class Zoomer {
     /**
      * The interpolator to use
      */
+    @NonNull
     private final Interpolator mInterpolator;
 
     /**
@@ -71,7 +73,7 @@ class Zoomer {
     /**
      * @param context The Context
      */
-    Zoomer(Context context) {
+    Zoomer(@NonNull Context context) {
         mInterpolator = new DecelerateInterpolator();
         mAnimationDuration = context.getResources()
                 .getInteger(android.R.integer.config_shortAnimTime);

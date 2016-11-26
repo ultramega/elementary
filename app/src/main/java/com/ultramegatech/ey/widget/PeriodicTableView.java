@@ -98,14 +98,14 @@ public class PeriodicTableView extends View implements Observer {
          *
          * @param item The selected block
          */
-        void onItemClick(PeriodicTableBlock item);
+        void onItemClick(@NonNull PeriodicTableBlock item);
 
         /**
          * Called when a zoom operation has completed.
          *
          * @param periodicTableView The PeriodicTableView
          */
-        void onZoomEnd(PeriodicTableView periodicTableView);
+        void onZoomEnd(@NonNull PeriodicTableView periodicTableView);
     }
 
     /**
@@ -117,16 +117,19 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Callback for item clicks
      */
+    @Nullable
     private PeriodicTableListener mPeriodicTableListener;
 
     /**
      * Color legend
      */
+    @NonNull
     private final PeriodicTableLegend mLegend = new PeriodicTableLegend();
 
     /**
      * Title string
      */
+    @NonNull
     private CharSequence mTitle;
 
     /**
@@ -148,82 +151,99 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Paint for the table background
      */
+    @NonNull
     private final Paint mBgPaint = new Paint();
 
     /**
      * Paint for block backgrounds
      */
+    @NonNull
     private final Paint mBlockPaint = new Paint();
 
     /**
      * Paint for row and column headers
      */
-    private Paint mHeaderPaint;
+    @NonNull
+    private final Paint mHeaderPaint;
 
     /**
      * Paint for the table title
      */
-    private Paint mTitlePaint;
+    @NonNull
+    private final Paint mTitlePaint;
 
     /**
      * Paint for symbols
      */
-    private Paint mSymbolPaint;
+    @NonNull
+    private final Paint mSymbolPaint;
 
     /**
      * Paint for atomic numbers
      */
-    private Paint mNumberPaint;
+    @NonNull
+    private final Paint mNumberPaint;
 
     /**
      * Paint for the text below the symbol
      */
-    private Paint mSmallTextPaint;
+    @NonNull
+    private final Paint mSmallTextPaint;
 
     /**
      * Paint for the selection indicator
      */
-    private Paint mSelectedPaint;
+    @NonNull
+    private final Paint mSelectedPaint;
 
     /**
      * Rectangle for many purposes
      */
+    @NonNull
     private final Rect mRect = new Rect();
 
     /**
      * The currently selected block
      */
+    @Nullable
     private PeriodicTableBlock mBlockSelected;
 
     /**
      * The area for drawing the content
      */
+    @NonNull
     private final Rect mContentRect = new Rect();
 
     /**
      * The offset of the content within the content area
      */
+    @NonNull
     private final Point mContentOffset = new Point();
 
     /**
      * The initial area for relative scale operations
      */
+    @NonNull
     private final Rect mScaleRect = new Rect();
 
     /**
      * The focal point of the current scale operation
      */
+    @NonNull
     private final PointF mScaleFocalPoint = new PointF();
 
     /**
      * Touch gesture detectors
      */
+    @NonNull
     private final ScaleGestureDetector mScaleGestureDetector;
+    @NonNull
     private final GestureDetector mGestureDetector;
 
     /**
      * Handler for animating programmatic scaling
      */
+    @NonNull
     private final Zoomer mZoomer;
 
     /**
@@ -234,14 +254,19 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * Handler for programmatic scrolling and flings
      */
+    @NonNull
     private final Scroller mScroller;
 
     /**
      * Edge effects to provide visual indicators that an edge has been reached
      */
+    @NonNull
     private final EdgeEffectCompat mEdgeEffectTop;
+    @NonNull
     private final EdgeEffectCompat mEdgeEffectBottom;
+    @NonNull
     private final EdgeEffectCompat mEdgeEffectLeft;
+    @NonNull
     private final EdgeEffectCompat mEdgeEffectRight;
 
     /**
@@ -261,7 +286,25 @@ public class PeriodicTableView extends View implements Observer {
     public PeriodicTableView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        setupPaints();
+        mSelectedPaint = new Paint();
+        mSelectedPaint.setAntiAlias(true);
+        mSelectedPaint.setStyle(Paint.Style.STROKE);
+        mSelectedPaint.setStrokeJoin(Paint.Join.ROUND);
+        mSelectedPaint.setColor(COLOR_SELECTED);
+
+        mNumberPaint = new Paint();
+        mNumberPaint.setAntiAlias(true);
+        mNumberPaint.setColor(COLOR_BLOCK_FOREGROUND);
+
+        mSymbolPaint = new Paint(mNumberPaint);
+        mSymbolPaint.setTextAlign(Paint.Align.CENTER);
+
+        mTitlePaint = new Paint(mSymbolPaint);
+        mHeaderPaint = new Paint(mSymbolPaint);
+        mSmallTextPaint = new Paint(mSymbolPaint);
+
+        mNumberPaint.setSubpixelText(true);
+        mSmallTextPaint.setSubpixelText(true);
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PeriodicTableView,
                 defStyle, 0);
@@ -292,35 +335,11 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     /**
-     * Initialize and configure all Paint objects.
-     */
-    private void setupPaints() {
-        mSelectedPaint = new Paint();
-        mSelectedPaint.setAntiAlias(true);
-        mSelectedPaint.setStyle(Paint.Style.STROKE);
-        mSelectedPaint.setStrokeJoin(Paint.Join.ROUND);
-        mSelectedPaint.setColor(COLOR_SELECTED);
-
-        mNumberPaint = new Paint();
-        mNumberPaint.setAntiAlias(true);
-        mNumberPaint.setColor(COLOR_BLOCK_FOREGROUND);
-
-        mSymbolPaint = new Paint(mNumberPaint);
-        mSymbolPaint.setTextAlign(Paint.Align.CENTER);
-
-        mTitlePaint = new Paint(mSymbolPaint);
-        mHeaderPaint = new Paint(mSymbolPaint);
-        mSmallTextPaint = new Paint(mSymbolPaint);
-
-        mNumberPaint.setSubpixelText(true);
-        mSmallTextPaint.setSubpixelText(true);
-    }
-
-    /**
      * Create the listener for the ScaleGestureDetector.
      *
      * @return The OnScaleGestureListener
      */
+    @NonNull
     private ScaleGestureDetector.OnScaleGestureListener getOnScaleGestureListener() {
         return new ScaleGestureDetector.SimpleOnScaleGestureListener() {
             /**
@@ -361,6 +380,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @return The OnGestureListener
      */
+    @NonNull
     private GestureDetector.OnGestureListener getOnGestureListener() {
         return new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -484,7 +504,6 @@ public class PeriodicTableView extends View implements Observer {
         ViewCompat.postInvalidateOnAnimation(this);
     }
 
-
     /**
      * Get the current background color.
      *
@@ -500,7 +519,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param blocks The list of blocks
      */
-    public void setBlocks(List<PeriodicTableBlock> blocks) {
+    public void setBlocks(@NonNull List<PeriodicTableBlock> blocks) {
         mPeriodicTableBlocks.clear();
         mPeriodicTableBlocks.addAll(blocks);
 
@@ -546,6 +565,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @return The PeriodicTableLegend
      */
+    @NonNull
     public PeriodicTableLegend getLegend() {
         return mLegend;
     }
@@ -555,7 +575,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param listener The PeriodicTableListener
      */
-    public void setPeriodicTableListener(PeriodicTableListener listener) {
+    public void setPeriodicTableListener(@Nullable PeriodicTableListener listener) {
         mPeriodicTableListener = listener;
     }
 
@@ -564,6 +584,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @return The PeriodicTableListener
      */
+    @Nullable
     public PeriodicTableListener getPeriodicTableListener() {
         return mPeriodicTableListener;
     }
@@ -582,7 +603,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param title The title
      */
-    public void setTitle(CharSequence title) {
+    public void setTitle(@NonNull CharSequence title) {
         mTitle = title;
         ViewCompat.postInvalidateOnAnimation(this);
     }
@@ -592,6 +613,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @return The title
      */
+    @NonNull
     public CharSequence getTitle() {
         return mTitle;
     }
@@ -656,7 +678,7 @@ public class PeriodicTableView extends View implements Observer {
      * @param rect The block boundaries
      * @return True if the block is visible
      */
-    private boolean isBlockVisible(Rect rect) {
+    private boolean isBlockVisible(@NonNull Rect rect) {
         return rect.intersects(0, 0, getWidth(), getHeight());
     }
 
@@ -665,7 +687,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param block The block
      */
-    private void findBlockPosition(PeriodicTableBlock block) {
+    private void findBlockPosition(@NonNull PeriodicTableBlock block) {
         mRect.right =
                 (block.col * mBlockSize + mContentRect.left + mContentOffset.x + mPadding) - 1;
         mRect.bottom =
@@ -685,7 +707,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param canvas The Canvas
      */
-    private void writeHeaders(Canvas canvas) {
+    private void writeHeaders(@NonNull Canvas canvas) {
         mHeaderPaint.setTextSize(mBlockSize / 4);
 
         for(int i = 1; i <= mNumCols; i++) {
@@ -719,13 +741,11 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param canvas The Canvas
      */
-    private void writeTitle(Canvas canvas) {
-        if(mTitle != null) {
-            canvas.drawText(mTitle, 0, mTitle.length(),
-                    mBlockSize * mNumCols / 2 + mContentRect.left + mContentOffset.x,
-                    mBlockSize + mContentRect.top + mContentOffset.y,
-                    mTitlePaint);
-        }
+    private void writeTitle(@NonNull Canvas canvas) {
+        canvas.drawText(mTitle, 0, mTitle.length(),
+                mBlockSize * mNumCols / 2 + mContentRect.left + mContentOffset.x,
+                mBlockSize + mContentRect.top + mContentOffset.y,
+                mTitlePaint);
     }
 
     /**
@@ -733,7 +753,7 @@ public class PeriodicTableView extends View implements Observer {
      *
      * @param canvas The Canvas
      */
-    private void drawEdgeEffects(Canvas canvas) {
+    private void drawEdgeEffects(@NonNull Canvas canvas) {
         boolean invalidate = false;
 
         if(!mEdgeEffectTop.isFinished()) {

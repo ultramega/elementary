@@ -25,6 +25,7 @@ package com.ultramegatech.ey.util;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Build;
+import android.support.annotation.NonNull;
 
 /**
  * Compatibility layer for the ActionBar.
@@ -38,7 +39,8 @@ public class ActionBarCompat {
      * @param activity        The Activity
      * @param displayHomeAsUp Whether to display the up arrow on the home button
      */
-    public static void setDisplayHomeAsUpEnabled(Activity activity, boolean displayHomeAsUp) {
+    public static void setDisplayHomeAsUpEnabled(@NonNull Activity activity,
+                                                 boolean displayHomeAsUp) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             final ActionBar actionBar = activity.getActionBar();
             if(actionBar != null) {

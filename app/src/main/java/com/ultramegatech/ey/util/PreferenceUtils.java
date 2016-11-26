@@ -23,6 +23,7 @@
 package com.ultramegatech.ey.util;
 
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 
 import com.ultramegatech.ey.provider.Elements;
 
@@ -61,7 +62,7 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @return Whether to use the dark theme
      */
-    public static boolean getPrefDarkTheme(SharedPreferences prefs) {
+    public static boolean getPrefDarkTheme(@NonNull SharedPreferences prefs) {
         return prefs.getBoolean(KEY_DARK_THEME, false);
     }
 
@@ -71,7 +72,8 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @return The unit to use for temperature values
      */
-    public static String getPrefTempUnit(SharedPreferences prefs) {
+    @NonNull
+    public static String getPrefTempUnit(@NonNull SharedPreferences prefs) {
         return prefs.getString(KEY_TEMP_UNITS, TEMP_K);
     }
 
@@ -81,7 +83,8 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @return The property to use for coloring elements
      */
-    public static String getPrefElementColors(SharedPreferences prefs) {
+    @NonNull
+    public static String getPrefElementColors(@NonNull SharedPreferences prefs) {
         return prefs.getString(KEY_ELEMENT_COLORS, COLOR_CAT);
     }
 
@@ -91,7 +94,7 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @param value The value
      */
-    public static void setPrefElementColors(SharedPreferences prefs, String value) {
+    public static void setPrefElementColors(@NonNull SharedPreferences prefs, String value) {
         prefs.edit().putString(KEY_ELEMENT_COLORS, value).apply();
     }
 
@@ -101,7 +104,8 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @return The value of the block subtext value preference
      */
-    public static String getPrefSubtextValue(SharedPreferences prefs) {
+    @NonNull
+    public static String getPrefSubtextValue(@NonNull SharedPreferences prefs) {
         return prefs.getString(KEY_SUBTEXT_VALUE, Elements.WEIGHT);
     }
 
@@ -111,7 +115,7 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @param value The value
      */
-    public static void setPrefSubtextValue(SharedPreferences prefs, String value) {
+    public static void setPrefSubtextValue(@NonNull SharedPreferences prefs, String value) {
         prefs.edit().putString(KEY_SUBTEXT_VALUE, value).apply();
     }
 
@@ -121,7 +125,7 @@ public class PreferenceUtils {
      * @param prefs The SharedPreferences
      * @return The value of the show controls preference
      */
-    public static boolean getPrefShowControls(SharedPreferences prefs) {
+    public static boolean getPrefShowControls(@NonNull SharedPreferences prefs) {
         return prefs.getBoolean(KEY_SHOW_CONTROLS, true);
     }
 }

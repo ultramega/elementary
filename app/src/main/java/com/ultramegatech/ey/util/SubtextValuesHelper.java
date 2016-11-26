@@ -25,6 +25,8 @@ package com.ultramegatech.ey.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.ultramegatech.ey.R;
 
@@ -45,24 +47,27 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
          *
          * @param helper The SubtextValuesHelper
          */
-        void onSubtextValuesChanged(SubtextValuesHelper helper);
+        void onSubtextValuesChanged(@NonNull SubtextValuesHelper helper);
     }
 
     /**
      * The list of options for the block subtext value
      */
+    @NonNull
     private final String[] mList;
 
     /**
      * The listener for changes to the list of values
      */
+    @Nullable
     private final OnSubtextValuesChangedListener mListener;
 
     /**
      * @param context  The Context
      * @param listener The listener for changes to the list of values
      */
-    public SubtextValuesHelper(Context context, OnSubtextValuesChangedListener listener) {
+    public SubtextValuesHelper(@NonNull Context context,
+                               @Nullable OnSubtextValuesChangedListener listener) {
         mList = context.getResources().getStringArray(R.array.subtextValueNames);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -77,6 +82,7 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
      *
      * @return The list of options for the block subtext value
      */
+    @NonNull
     public String[] getList() {
         return Arrays.copyOf(mList, mList.length);
     }
@@ -87,6 +93,7 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
      * @param index The index of the item
      * @return The item
      */
+    @Nullable
     public String getItem(int index) {
         if(index >= 0 && index < mList.length) {
             return mList[index];
@@ -99,7 +106,7 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
      *
      * @param prefs The SharedPreferences
      */
-    private void updateTempUnit(SharedPreferences prefs) {
+    private void updateTempUnit(@NonNull SharedPreferences prefs) {
         final String unit;
         switch(PreferenceUtils.getPrefTempUnit(prefs)) {
             case PreferenceUtils.TEMP_C:

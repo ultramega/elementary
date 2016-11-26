@@ -22,6 +22,8 @@
  */
 package com.ultramegatech.ey.util;
 
+import android.support.annotation.NonNull;
+
 /**
  * Utility to convert values between different units.
  *
@@ -34,7 +36,8 @@ public class UnitUtils {
      * @param k Value in Kelvin
      * @return Value in degrees Celsius
      */
-    public static Double KtoC(Double k) {
+    @NonNull
+    public static Double KtoC(@NonNull Double k) {
         return k - 273.15;
     }
 
@@ -44,7 +47,8 @@ public class UnitUtils {
      * @param k Value in Kelvin
      * @return Value in degrees Fahrenheit
      */
-    public static Double KtoF(Double k) {
+    @NonNull
+    public static Double KtoF(@NonNull Double k) {
         return k * 9.0 / 5 - 459.67;
     }
 }

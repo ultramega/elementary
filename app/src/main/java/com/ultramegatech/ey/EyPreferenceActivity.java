@@ -29,6 +29,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
 import com.ultramegatech.ey.util.ActionBarCompat;
@@ -99,7 +100,7 @@ public class EyPreferenceActivity extends PreferenceActivity
     }
 
     @Override
-    public void onSubtextValuesChanged(SubtextValuesHelper helper) {
+    public void onSubtextValuesChanged(@NonNull SubtextValuesHelper helper) {
         mSubtextValuePreference.setEntries(helper.getList());
     }
 }

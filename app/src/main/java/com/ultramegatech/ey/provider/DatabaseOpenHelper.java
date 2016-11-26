@@ -25,6 +25,7 @@ package com.ultramegatech.ey.provider;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
 import com.ultramegatech.ey.R;
 
@@ -74,9 +75,13 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
     /**
      * The Context
      */
+    @NonNull
     private final Context mContext;
 
-    DatabaseOpenHelper(Context context) {
+    /**
+     * @param context The Context
+     */
+    DatabaseOpenHelper(@NonNull Context context) {
         super(context, DB_NAME, null, VERSION);
         mContext = context;
     }
@@ -98,7 +103,7 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
      *
      * @param db The database
      */
-    private void populateDatabase(SQLiteDatabase db) {
+    private void populateDatabase(@NonNull SQLiteDatabase db) {
         final InputStream is = mContext.getResources().openRawResource(R.raw.elements);
         final Scanner scanner = new Scanner(is).useDelimiter("\\n");
         while(scanner.hasNext()) {

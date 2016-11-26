@@ -48,6 +48,7 @@ public class ElementListFragment extends ListFragment
     /**
      * Fields to read from the database
      */
+    @NonNull
     private final String[] mListProjection = new String[] {
             Elements._ID,
             Elements.NUMBER,

@@ -26,6 +26,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.ultramegatech.ey.R;
 import com.ultramegatech.ey.widget.PeriodicTableLegend.Item;
@@ -102,17 +104,19 @@ public class ElementUtils {
     /**
      * The Context
      */
+    @NonNull
     private final Context mContext;
 
     /**
      * Map of values to colors
      */
+    @Nullable
     private HashMap<Object, Item> mLegendMap;
 
     /**
      * @param context The Context
      */
-    public ElementUtils(Context context) {
+    public ElementUtils(@NonNull Context context) {
         mContext = context;
     }
 
@@ -122,7 +126,7 @@ public class ElementUtils {
      * @param key The category name
      * @return Color hex value
      */
-    public int getElementColor(String key) {
+    public int getElementColor(@NonNull String key) {
         if(mLegendMap == null) {
             mLegendMap = getLegendMap(mContext);
         }
@@ -136,7 +140,8 @@ public class ElementUtils {
      * @param context The Context
      * @return Map of legend items
      */
-    public static HashMap<Object, Item> getLegendMap(Context context) {
+    @NonNull
+    public static HashMap<Object, Item> getLegendMap(@NonNull Context context) {
         final HashMap<Object, Item> colorMap = new LinkedHashMap<>();
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -83,6 +84,7 @@ public class ElementDetailsFragment extends DialogFragment
     /**
      * Values from the database row
      */
+    @NonNull
     private final ContentValues mData = new ContentValues();
 
     /**
@@ -143,6 +145,7 @@ public class ElementDetailsFragment extends DialogFragment
      * @param atomicNumber The atomic number of the element to display
      * @return An instance of this Fragment
      */
+    @NonNull
     public static DialogFragment getInstance(int atomicNumber) {
         final DialogFragment fragment = new ElementDetailsFragment();
 
@@ -159,7 +162,8 @@ public class ElementDetailsFragment extends DialogFragment
      * @param atomicSymbol The atomic symbol of the element to display
      * @return An instance of this Fragment
      */
-    public static DialogFragment getInstance(String atomicSymbol) {
+    @NonNull
+    public static DialogFragment getInstance(@NonNull String atomicSymbol) {
         final DialogFragment fragment = new ElementDetailsFragment();
 
         final Bundle args = new Bundle();
@@ -175,7 +179,7 @@ public class ElementDetailsFragment extends DialogFragment
      * @param fm           The FragmentManager to use
      * @param atomicNumber The atomic number of the element to display
      */
-    public static void showDialog(FragmentManager fm, int atomicNumber) {
+    public static void showDialog(@NonNull FragmentManager fm, int atomicNumber) {
         getInstance(atomicNumber).show(fm, TAG);
     }
 
@@ -313,6 +317,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The category name
      */
+    @NonNull
     private CharSequence getCategory() {
         final CharSequence[] cats = getResources().getTextArray(R.array.ptCategories);
         return cats[mData.getAsInteger(Elements.CATEGORY)];
@@ -346,7 +351,8 @@ public class ElementDetailsFragment extends DialogFragment
      * @param key The value to read
      * @return The converted temperature string
      */
-    private String getTemperature(String key) {
+    @NonNull
+    private String getTemperature(@NonNull String key) {
         final Double kelvin = mData.getAsDouble(key);
         if(kelvin != null) {
             switch(mTemperatureUnits) {
@@ -368,6 +374,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The atomic weight
      */
+    @Nullable
     private String getWeight() {
         final Double value = mData.getAsDouble(Elements.WEIGHT);
         if(value != null) {
@@ -385,6 +392,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The formatted electron configuration
      */
+    @Nullable
     private Spanned getElectronConfiguration() {
         String value = mData.getAsString(Elements.CONFIGURATION);
         if(value != null) {
@@ -404,6 +412,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return List of electrons separated by commas
      */
+    @Nullable
     private String getElectrons() {
         final String value = mData.getAsString(Elements.ELECTRONS);
         if(value != null) {
@@ -417,6 +426,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return Group, period, block
      */
+    @NonNull
     private String getGPB() {
         String group = mData.getAsString(Elements.GROUP);
         String period = mData.getAsString(Elements.PERIOD);
@@ -432,6 +442,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The density
      */
+    @NonNull
     private String getDensity() {
         final Double value = mData.getAsDouble(Elements.DENSITY);
         if(value != null) {
@@ -445,6 +456,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The heat
      */
+    @NonNull
     private String getHeat() {
         final Double value = mData.getAsDouble(Elements.HEAT);
         if(value != null) {
@@ -458,6 +470,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The electronegativity
      */
+    @NonNull
     private String getNegativity() {
         final Double value = mData.getAsDouble(Elements.NEGATIVITY);
         if(value != null) {
@@ -471,6 +484,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The abundance
      */
+    @NonNull
     private String getAbundance() {
         final Double value = mData.getAsDouble(Elements.ABUNDANCE);
         if(value != null) {
@@ -511,6 +525,7 @@ public class ElementDetailsFragment extends DialogFragment
      *
      * @return The content Uri
      */
+    @NonNull
     private Uri getUri() {
         final Bundle args = getArguments();
         if(args != null) {

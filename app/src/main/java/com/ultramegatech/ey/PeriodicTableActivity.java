@@ -31,6 +31,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
@@ -82,6 +83,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
     /**
      * Fields to read from the database
      */
+    @NonNull
     private final String[] mProjection = new String[] {
             Elements.NUMBER,
             Elements.SYMBOL,
@@ -143,12 +145,12 @@ public class PeriodicTableActivity extends FragmentActivity implements
         mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
         mPeriodicTableView.setPeriodicTableListener(new PeriodicTableView.PeriodicTableListener() {
             @Override
-            public void onItemClick(PeriodicTableBlock item) {
+            public void onItemClick(@NonNull PeriodicTableBlock item) {
                 ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.number);
             }
 
             @Override
-            public void onZoomEnd(PeriodicTableView periodicTableView) {
+            public void onZoomEnd(@NonNull PeriodicTableView periodicTableView) {
                 mZoomControls.setIsZoomInEnabled(periodicTableView.canZoomIn());
                 mZoomControls.setIsZoomOutEnabled(periodicTableView.canZoomOut());
             }
@@ -351,7 +353,8 @@ public class PeriodicTableActivity extends FragmentActivity implements
      * @param df     The DecimalFormat to use for decimal values
      * @return The subtext for the current record
      */
-    private String getSubtext(Cursor cursor, DecimalFormat df) {
+    @NonNull
+    private String getSubtext(@NonNull Cursor cursor, @NonNull DecimalFormat df) {
         if(Elements.WEIGHT.equals(mSubtextValueKey)) {
             if(cursor.getInt(cursor.getColumnIndex(Elements.UNSTABLE)) == 1) {
                 return "[" + cursor.getInt(2) + "]";

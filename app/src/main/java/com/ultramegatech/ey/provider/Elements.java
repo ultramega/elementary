@@ -25,6 +25,7 @@ package com.ultramegatech.ey.provider;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.support.annotation.NonNull;
 
 /**
  * Data contract for the 'elements' table. Provides column names, column types, and ContentProvider
@@ -89,6 +90,7 @@ public class Elements implements BaseColumns {
      * @param c The column name
      * @return The column type
      */
+    @NonNull
     public static Type getColumnType(String c) {
         switch(c) {
             case SYMBOL:

@@ -23,6 +23,8 @@
 package com.ultramegatech.ey.widget;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,21 +57,25 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * The Context
      */
+    @NonNull
     private final Context mContext;
 
     /**
      * The filter for this ListAdapter
      */
+    @NonNull
     private final Filter mFilter;
 
     /**
      * The original data set
      */
+    @NonNull
     private final ArrayList<ElementHolder> mListItems = new ArrayList<>();
 
     /**
      * The filtered and sorted data set
      */
+    @NonNull
     private final ArrayList<ElementHolder> mFiltered = new ArrayList<>();
 
     /**
@@ -85,7 +91,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * @param context The Context
      */
-    public ElementListAdapter(Context context) {
+    public ElementListAdapter(@NonNull Context context) {
         mContext = context;
 
         mFilter = new Filter() {
@@ -134,6 +140,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         return view;
     }
 
+    @NonNull
     @Override
     public Filter getFilter() {
         return mFilter;
@@ -159,7 +166,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      *
      * @param listItems The list of elements
      */
-    public void setItems(ArrayList<ElementHolder> listItems) {
+    public void setItems(@Nullable ArrayList<ElementHolder> listItems) {
         mListItems.clear();
         mFiltered.clear();
 
@@ -187,7 +194,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      *
      * @param filter Text used to filter the elements
      */
-    private void filterList(CharSequence filter) {
+    private void filterList(@Nullable CharSequence filter) {
         mFiltered.clear();
 
         if(TextUtils.isEmpty(filter)) {
@@ -231,16 +238,19 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         /**
          * The atomic number
          */
+        @NonNull
         public final String number;
 
         /**
          * The element symbol
          */
+        @NonNull
         public final String symbol;
 
         /**
          * The element name
          */
+        @NonNull
         public final String name;
 
         /**
@@ -254,7 +264,8 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
          * @param name   The element name
          * @param color  The block color
          */
-        public ElementHolder(String number, String symbol, String name, int color) {
+        public ElementHolder(@NonNull String number, @NonNull String symbol, @NonNull String name,
+                             int color) {
             this.id = Long.valueOf(number);
             this.number = number;
             this.symbol = symbol;
