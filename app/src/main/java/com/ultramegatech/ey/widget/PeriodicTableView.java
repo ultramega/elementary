@@ -61,6 +61,7 @@ import java.util.Observer;
  *
  * @author Steve Guidetti
  */
+@SuppressWarnings("unused,WeakerAccess")
 public class PeriodicTableView extends View implements Observer {
     /**
      * The amount to zoom in or out for programmatic zooms

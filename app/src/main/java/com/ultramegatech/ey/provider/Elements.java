@@ -32,6 +32,7 @@ import android.provider.BaseColumns;
  *
  * @author Steve Guidetti
  */
+@SuppressWarnings("unused,WeakerAccess")
 public class Elements implements BaseColumns {
     /**
      * Database table name

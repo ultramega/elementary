@@ -44,6 +44,7 @@ import java.util.Comparator;
  *
  * @author Steve Guidetti
  */
+@SuppressWarnings("unused")
 public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filterable {
     /**
      * Sorting options

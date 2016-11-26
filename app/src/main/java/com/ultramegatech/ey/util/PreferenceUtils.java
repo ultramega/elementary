@@ -31,6 +31,7 @@ import com.ultramegatech.ey.provider.Elements;
  *
  * @author Steve Guidetti
  */
+@SuppressWarnings("unused,WeakerAccess")
 public class PreferenceUtils {
     /**
      * The keys for the preference

@@ -37,6 +37,7 @@ import java.util.Observable;
  *
  * @author Steve Guidetti
  */
+@SuppressWarnings("unused,WeakerAccess")
 public class PeriodicTableLegend extends Observable {
     /**
      * Map of values to legend items
