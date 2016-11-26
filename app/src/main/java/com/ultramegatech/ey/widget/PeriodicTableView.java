@@ -29,17 +29,27 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.widget.EdgeEffectCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Scroller;
 
 import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.util.ElementUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -100,7 +110,8 @@ public class PeriodicTableView extends View implements Observer {
     /**
      * The list of blocks to render
      */
-    private List<PeriodicTableBlock> mPeriodicTableBlocks;
+    @NonNull
+    private final List<PeriodicTableBlock> mPeriodicTableBlocks = new ArrayList<>();
 
     /**
      * Callback for item clicks
@@ -232,6 +243,12 @@ public class PeriodicTableView extends View implements Observer {
     private final EdgeEffectCompat mEdgeEffectLeft;
     private final EdgeEffectCompat mEdgeEffectRight;
 
+    /**
+     * The accessibility delegate for this View
+     */
+    @Nullable
+    private AccessibilityDelegate mAccessibilityDelegate;
+
     public PeriodicTableView(Context context) {
         this(context, null, 0);
     }
@@ -266,6 +283,11 @@ public class PeriodicTableView extends View implements Observer {
         mEdgeEffectTop = new EdgeEffectCompat(context);
         mEdgeEffectRight = new EdgeEffectCompat(context);
         mEdgeEffectBottom = new EdgeEffectCompat(context);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            mAccessibilityDelegate = new AccessibilityDelegate(this);
+            ViewCompat.setAccessibilityDelegate(this, mAccessibilityDelegate);
+        }
     }
 
     /**
@@ -402,6 +424,10 @@ public class PeriodicTableView extends View implements Observer {
                     }
                 }
 
+                if(mAccessibilityDelegate != null) {
+                    mAccessibilityDelegate.invalidateRoot();
+                }
+
                 return true;
             }
 
@@ -474,14 +500,13 @@ public class PeriodicTableView extends View implements Observer {
      * @param blocks The list of blocks
      */
     public void setBlocks(List<PeriodicTableBlock> blocks) {
-        if(blocks.isEmpty()) {
-            return;
-        }
+        mPeriodicTableBlocks.clear();
+        mPeriodicTableBlocks.addAll(blocks);
 
         int numRows = 0;
         int numCols = 0;
 
-        for(PeriodicTableBlock block : blocks) {
+        for(PeriodicTableBlock block : mPeriodicTableBlocks) {
             if(block.period > numRows) {
                 numRows = block.period;
             }
@@ -507,9 +532,11 @@ public class PeriodicTableView extends View implements Observer {
 
         mNumRows = numRows;
         mNumCols = numCols;
-        mPeriodicTableBlocks = blocks;
 
         measureCanvas();
+        if(mAccessibilityDelegate != null) {
+            mAccessibilityDelegate.invalidateRoot();
+        }
         ViewCompat.postInvalidateOnAnimation(this);
     }
 
@@ -849,6 +876,26 @@ public class PeriodicTableView extends View implements Observer {
     }
 
     @Override
+    protected boolean dispatchHoverEvent(MotionEvent event) {
+        return (mAccessibilityDelegate != null && mAccessibilityDelegate.dispatchHoverEvent(event))
+                || super.dispatchHoverEvent(event);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        return (mAccessibilityDelegate != null && mAccessibilityDelegate.dispatchKeyEvent(event))
+                || super.dispatchKeyEvent(event);
+    }
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        if(mAccessibilityDelegate != null) {
+            mAccessibilityDelegate.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        }
+    }
+
+    @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         if(mContentRect.width() < w) {
@@ -889,42 +936,40 @@ public class PeriodicTableView extends View implements Observer {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawRect(0, 0, getRight(), getBottom(), mBgPaint);
-        if(mPeriodicTableBlocks != null) {
-            mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top + mContentOffset.y;
-            mRect.left = mBlockSize * 4 + mContentRect.left + mContentOffset.x;
-            mRect.bottom = mRect.top + mBlockSize * 2;
-            mRect.right = mRect.left + mBlockSize * 8;
-            mLegend.drawLegend(canvas, mRect);
+        mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top + mContentOffset.y;
+        mRect.left = mBlockSize * 4 + mContentRect.left + mContentOffset.x;
+        mRect.bottom = mRect.top + mBlockSize * 2;
+        mRect.right = mRect.left + mBlockSize * 8;
+        mLegend.drawLegend(canvas, mRect);
 
-            writeHeaders(canvas);
-            writeTitle(canvas);
+        writeHeaders(canvas);
+        writeTitle(canvas);
 
-            for(PeriodicTableBlock block : mPeriodicTableBlocks) {
-                findBlockPosition(block);
+        for(PeriodicTableBlock block : mPeriodicTableBlocks) {
+            findBlockPosition(block);
 
-                if(!isBlockVisible(mRect)) {
-                    continue;
-                }
-
-                mBlockPaint.setColor(block.color);
-
-                canvas.drawRect(mRect, mBlockPaint);
-
-                canvas.drawText(block.symbol, mRect.left + mBlockSize / 2,
-                        mRect.bottom - (int)(mBlockSize / 2.8), mSymbolPaint);
-
-                canvas.drawText(String.valueOf(block.number), mRect.left + mBlockSize / 20,
-                        mRect.top + mNumberPaint.getTextSize(), mNumberPaint);
-
-                canvas.drawText(block.subtext, mRect.left + mBlockSize / 2,
-                        mRect.bottom - mBlockSize / 20, mSmallTextPaint);
+            if(!isBlockVisible(mRect)) {
+                continue;
             }
 
-            if(mBlockSelected != null) {
-                mSelectedPaint.setStrokeWidth(mBlockSize / 10);
-                findBlockPosition(mBlockSelected);
-                canvas.drawRect(mRect, mSelectedPaint);
-            }
+            mBlockPaint.setColor(block.color);
+
+            canvas.drawRect(mRect, mBlockPaint);
+
+            canvas.drawText(block.symbol, mRect.left + mBlockSize / 2,
+                    mRect.bottom - (int)(mBlockSize / 2.8), mSymbolPaint);
+
+            canvas.drawText(String.valueOf(block.number), mRect.left + mBlockSize / 20,
+                    mRect.top + mNumberPaint.getTextSize(), mNumberPaint);
+
+            canvas.drawText(block.subtext, mRect.left + mBlockSize / 2,
+                    mRect.bottom - mBlockSize / 20, mSmallTextPaint);
+        }
+
+        if(mBlockSelected != null) {
+            mSelectedPaint.setStrokeWidth(mBlockSize / 10);
+            findBlockPosition(mBlockSelected);
+            canvas.drawRect(mRect, mSelectedPaint);
         }
 
         drawEdgeEffects(canvas);
@@ -936,5 +981,58 @@ public class PeriodicTableView extends View implements Observer {
             mLegend.colorBlocks(mPeriodicTableBlocks);
         }
         ViewCompat.postInvalidateOnAnimation(this);
+    }
+
+    /**
+     * The ExploreByTouchHelper implementation to provide accessibility.
+     */
+    private class AccessibilityDelegate extends ExploreByTouchHelper {
+        @RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+        AccessibilityDelegate(View host) {
+            super(host);
+        }
+
+        @Override
+        protected int getVirtualViewAt(float x, float y) {
+            for(PeriodicTableBlock block : mPeriodicTableBlocks) {
+                findBlockPosition(block);
+                if(mRect.contains((int)x, (int)y)) {
+                    return block.number - 1;
+                }
+            }
+            return INVALID_ID;
+        }
+
+        @Override
+        protected void getVisibleVirtualViews(List<Integer> virtualViewIds) {
+            for(PeriodicTableBlock block : mPeriodicTableBlocks) {
+                virtualViewIds.add(block.number - 1);
+            }
+        }
+
+        @Override
+        protected void onPopulateNodeForVirtualView(int virtualViewId,
+                                                    AccessibilityNodeInfoCompat node) {
+            final PeriodicTableBlock block = mPeriodicTableBlocks.get(virtualViewId);
+            final String name = getContext().getString(ElementUtils.getElementName(block.number));
+            findBlockPosition(block);
+
+            node.setBoundsInParent(new Rect(mRect));
+            node.setText(getContext().getString(R.string.descTableBlock, block.number, name, "", block.subtext));
+            node.setClickable(true);
+        }
+
+        @Override
+        protected boolean onPerformActionForVirtualView(int virtualViewId, int action,
+                                                        Bundle arguments) {
+            switch(action) {
+                case AccessibilityNodeInfoCompat.ACTION_CLICK:
+                    if(mPeriodicTableListener != null) {
+                        mPeriodicTableListener.onItemClick(mPeriodicTableBlocks.get(virtualViewId));
+                    }
+                    return true;
+            }
+            return false;
+        }
     }
 }
