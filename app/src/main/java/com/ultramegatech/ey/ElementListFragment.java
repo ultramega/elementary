@@ -25,8 +25,10 @@ package com.ultramegatech.ey;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.ListFragment;
@@ -37,6 +39,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.ey.widget.ElementListAdapter;
 
 /**
@@ -45,7 +48,8 @@ import com.ultramegatech.ey.widget.ElementListAdapter;
  *
  * @author Steve Guidetti
  */
-public class ElementListFragment extends ListFragment {
+public class ElementListFragment extends ListFragment
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
     /**
      * Keys for saving instance state
      */
@@ -83,6 +87,9 @@ public class ElementListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.registerOnSharedPreferenceChangeListener(this);
+
         if(savedInstanceState != null) {
             mSort = savedInstanceState.getInt(KEY_SORT, mSort);
             mSortReverse = savedInstanceState.getBoolean(KEY_SORT_REVERSE, mSortReverse);
@@ -113,6 +120,13 @@ public class ElementListFragment extends ListFragment {
         outState.putBoolean(KEY_SORT_REVERSE, mSortReverse);
         outState.putString(KEY_FILTER, mFilter);
         outState.putLong(KEY_ACTIVATED_ITEM, mActivatedItem);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -193,6 +207,13 @@ public class ElementListFragment extends ListFragment {
             getListView().setItemChecked(position, true);
         } else {
             getListView().setItemChecked(getListView().getCheckedItemPosition(), false);
+        }
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
+            mAdapter.notifyDataSetInvalidated();
         }
     }
 

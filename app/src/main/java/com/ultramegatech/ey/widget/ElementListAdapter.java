@@ -102,9 +102,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         Element element;
         for(int i = 0; i < elements.length; i++) {
             element = elements[i];
-            mListItems[i] = new ElementHolder(String.valueOf(element.number), element.symbol,
-                    context.getString(ElementUtils.getElementName(element.number)),
-                    ElementUtils.getElementColor(element));
+            mListItems[i] = new ElementHolder(context, element);
         }
 
         mFilter = new Filter() {
@@ -123,6 +121,14 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     @Override
+    public void notifyDataSetInvalidated() {
+        super.notifyDataSetInvalidated();
+        for(ElementHolder holder : mListItems) {
+            holder.color = ElementUtils.getElementColor(holder.element);
+        }
+    }
+
+    @Override
     public int getCount() {
         return mFiltered.size();
     }
@@ -134,7 +140,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
 
     @Override
     public long getItemId(int i) {
-        return mFiltered.get(i).id;
+        return mFiltered.get(i).element.number;
     }
 
     @Override
@@ -145,8 +151,8 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
 
         final ElementHolder holder = getItem(i);
 
-        ((TextView)view.findViewById(R.id.number)).setText(holder.number);
-        ((TextView)view.findViewById(R.id.symbol)).setText(holder.symbol);
+        ((TextView)view.findViewById(R.id.number)).setText(String.valueOf(holder.element.number));
+        ((TextView)view.findViewById(R.id.symbol)).setText(holder.element.symbol);
         ((TextView)view.findViewById(R.id.name)).setText(holder.name);
         view.findViewById(R.id.block).setBackgroundColor(holder.color);
 
@@ -167,7 +173,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      */
     public int getItemPosition(long id) {
         for(int i = 0; i < mFiltered.size(); i++) {
-            if(getItem(i).id == id) {
+            if(getItem(i).element.number == id) {
                 return i;
             }
         }
@@ -199,7 +205,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         }
 
         for(ElementHolder element : mListItems) {
-            if(element.symbol.toLowerCase().startsWith(filter.toString().toLowerCase())
+            if(element.element.symbol.toLowerCase().startsWith(filter.toString().toLowerCase())
                     || element.name.toLowerCase().startsWith(filter.toString().toLowerCase())) {
                 mFiltered.add(element);
             }
@@ -227,21 +233,10 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      */
     private static class ElementHolder {
         /**
-         * The database ID
-         */
-        public final long id;
-
-        /**
-         * The atomic number
+         * The Element
          */
         @NonNull
-        public final String number;
-
-        /**
-         * The element symbol
-         */
-        @NonNull
-        public final String symbol;
+        public final Element element;
 
         /**
          * The element name
@@ -252,21 +247,16 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         /**
          * The block color
          */
-        public final int color;
+        public int color;
 
         /**
-         * @param number The atomic number
-         * @param symbol The element symbol
-         * @param name   The element name
-         * @param color  The block color
+         * @param context The Context
+         * @param element The Element
          */
-        ElementHolder(@NonNull String number, @NonNull String symbol, @NonNull String name,
-                      int color) {
-            this.id = Long.valueOf(number);
-            this.number = number;
-            this.symbol = symbol;
-            this.name = name;
-            this.color = color;
+        ElementHolder(@NonNull Context context, @NonNull Element element) {
+            this.element = element;
+            this.name = context.getString(ElementUtils.getElementName(element.number));
+            this.color = ElementUtils.getElementColor(element);
         }
 
     }
@@ -290,7 +280,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         @Override
         public int compare(ElementHolder l, ElementHolder r) {
             if(mSortField == SORT_NUMBER) {
-                return Integer.valueOf(l.number) - Integer.valueOf(r.number);
+                return l.element.number - r.element.number;
             }
 
             return l.name.compareTo(r.name);
