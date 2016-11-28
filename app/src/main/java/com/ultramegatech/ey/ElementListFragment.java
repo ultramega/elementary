@@ -176,6 +176,7 @@ public class ElementListFragment extends ListFragment {
      * Turn on activate-on-click mode. When this mode is on, list items will be given the activated
      * state when touched.
      */
+    @SuppressWarnings("SameParameterValue")
     public void setActivateOnItemClick(boolean activateOnItemClick) {
         getListView().setChoiceMode(activateOnItemClick
                 ? ListView.CHOICE_MODE_SINGLE
