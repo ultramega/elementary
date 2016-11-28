@@ -26,16 +26,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.ActivityInfo;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,9 +41,9 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.ZoomControls;
 
+import com.ultramegatech.ey.provider.Element;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.CommonMenuHandler;
-import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.ey.util.UnitUtils;
 import com.ultramegatech.ey.widget.BlockSubtextValueListAdapter;
@@ -63,8 +59,8 @@ import java.util.ArrayList;
  *
  * @author Steve Guidetti
  */
-public class PeriodicTableActivity extends FragmentActivity implements
-        LoaderCallbacks<Cursor>, OnSharedPreferenceChangeListener {
+public class PeriodicTableActivity extends FragmentActivity
+        implements OnSharedPreferenceChangeListener {
     /**
      * Delay in milliseconds before entering or re-entering immersive full screen mode
      */
@@ -79,20 +75,6 @@ public class PeriodicTableActivity extends FragmentActivity implements
      * Callback to enter immersive full screen mode
      */
     private Runnable mImmersiveModeCallback;
-
-    /**
-     * Fields to read from the database
-     */
-    @NonNull
-    private final String[] mProjection = new String[] {
-            Elements.NUMBER,
-            Elements.SYMBOL,
-            Elements.WEIGHT,
-            Elements.GROUP,
-            Elements.PERIOD,
-            Elements.CATEGORY,
-            Elements.UNSTABLE
-    };
 
     /**
      * The main View
@@ -120,14 +102,13 @@ public class PeriodicTableActivity extends FragmentActivity implements
     private Spinner mSpinnerBlockColors;
 
     /**
-     * The SharedPreferences for the Activity
+     * Format for decimal values
      */
-    private SharedPreferences mPreferences;
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat();
 
-    /**
-     * The key to the value to display as the block subtext
-     */
-    private String mSubtextValueKey;
+    static {
+        DECIMAL_FORMAT.setMaximumFractionDigits(4);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,9 +117,14 @@ public class PeriodicTableActivity extends FragmentActivity implements
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
-        loadPreferences();
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme();
+        setTheme(darkTheme ? R.style.DarkTheme_TableView : R.style.LightTheme_TableView);
 
         super.onCreate(savedInstanceState);
+
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
+
         setupImmersiveMode();
         setContentView(R.layout.activity_periodic_table);
 
@@ -146,7 +132,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         mPeriodicTableView.setPeriodicTableListener(new PeriodicTableView.PeriodicTableListener() {
             @Override
             public void onItemClick(@NonNull PeriodicTableBlock item) {
-                ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.number);
+                ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.element.number);
             }
 
             @Override
@@ -157,7 +143,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         });
 
         mControlBar = findViewById(R.id.controls);
-        if(PreferenceUtils.getPrefShowControls(mPreferences)) {
+        if(PreferenceUtils.getPrefShowControls()) {
             mControlBar.setVisibility(View.VISIBLE);
         }
 
@@ -165,7 +151,7 @@ public class PeriodicTableActivity extends FragmentActivity implements
         setupSubtextValueSpinner();
         setupBlockColorSpinner();
 
-        getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+        loadElements();
     }
 
     /**
@@ -197,12 +183,12 @@ public class PeriodicTableActivity extends FragmentActivity implements
         mSpinnerSubtextValue = (Spinner)findViewById(R.id.subtextValue);
         final BlockSubtextValueListAdapter adapter = new BlockSubtextValueListAdapter(this);
         mSpinnerSubtextValue.setAdapter(adapter);
-        mSpinnerSubtextValue.setSelection(adapter.getItemIndex(PreferenceUtils
-                .getPrefSubtextValue(mPreferences)));
+        mSpinnerSubtextValue.setSelection(adapter
+                .getItemIndex(PreferenceUtils.getPrefSubtextValue()));
         mSpinnerSubtextValue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                PreferenceUtils.setPrefSubtextValue(mPreferences, adapter.getItem(i));
+                PreferenceUtils.setPrefSubtextValue(adapter.getItem(i));
             }
 
             @Override
@@ -220,13 +206,13 @@ public class PeriodicTableActivity extends FragmentActivity implements
             return;
         }
 
-        final String pref = PreferenceUtils.getPrefElementColors(mPreferences);
+        final String pref = PreferenceUtils.getPrefElementColors();
         mSpinnerBlockColors.setSelection(pref.equals(PreferenceUtils.COLOR_CAT) ? 0 : 1);
         mSpinnerBlockColors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                PreferenceUtils.setPrefElementColors(mPreferences,
-                        i == 0 ? PreferenceUtils.COLOR_CAT : PreferenceUtils.COLOR_BLOCK);
+                PreferenceUtils.setPrefElementColors(i == 0 ? PreferenceUtils.COLOR_CAT
+                        : PreferenceUtils.COLOR_BLOCK);
             }
 
             @Override
@@ -326,101 +312,79 @@ public class PeriodicTableActivity extends FragmentActivity implements
     }
 
     /**
-     * Load relevant preferences.
+     * Get the block subtext for an element block.
+     *
+     * @param element The Element
+     * @return The subtext for the element
      */
-    private void loadPreferences() {
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mPreferences.registerOnSharedPreferenceChangeListener(this);
-
-        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(mPreferences);
-        setTheme(darkTheme ? R.style.DarkTheme_TableView : R.style.LightTheme_TableView);
-
-        final String colorKey = PreferenceUtils.getPrefElementColors(mPreferences);
-        if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
-            mProjection[5] = Elements.BLOCK;
-        } else {
-            mProjection[5] = Elements.CATEGORY;
+    @NonNull
+    private String getSubtext(@NonNull Element element) {
+        switch(PreferenceUtils.getPrefSubtextValue()) {
+            case PreferenceUtils.SUBTEXT_WEIGHT:
+                if(element.unstable) {
+                    return "[" + element.weight + "]";
+                } else {
+                    return DECIMAL_FORMAT.format(element.weight);
+                }
+            case PreferenceUtils.SUBTEXT_MELT:
+            case PreferenceUtils.SUBTEXT_BOIL:
+                Double value;
+                if(PreferenceUtils.SUBTEXT_MELT.equals(PreferenceUtils.getPrefSubtextValue())) {
+                    value = element.melt;
+                } else {
+                    value = element.boil;
+                }
+                if(value != null) {
+                    switch(PreferenceUtils.getPrefTempUnit()) {
+                        case PreferenceUtils.TEMP_C:
+                            value = UnitUtils.KtoC(value);
+                            break;
+                        case PreferenceUtils.TEMP_F:
+                            value = UnitUtils.KtoF(value);
+                            break;
+                    }
+                    return DECIMAL_FORMAT.format(value);
+                }
+                break;
+            case PreferenceUtils.SUBTEXT_DENSITY:
+                if(element.density != null) {
+                    if(element.density < 0.0001) {
+                        return "<0.0001";
+                    }
+                    return DECIMAL_FORMAT.format(element.density);
+                }
+                break;
+            case PreferenceUtils.SUBTEXT_ABUNDANCE:
+                if(element.abundance != null) {
+                    if(element.abundance < 0.001) {
+                        return "<0.001";
+                    }
+                    return DECIMAL_FORMAT.format(element.abundance);
+                }
+                break;
+            case PreferenceUtils.SUBTEXT_HEAT:
+                if(element.heat != null) {
+                    return String.valueOf(element.heat);
+                }
+                break;
+            case PreferenceUtils.SUBTEXT_NEGATIVITY:
+                if(element.negativity != null) {
+                    return String.valueOf(element.negativity);
+                }
+                break;
         }
-
-        mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(mPreferences);
-        mProjection[2] = mSubtextValueKey;
+        return "?";
     }
 
     /**
-     * Get the block subtext for the current record of the provided Cursor.
-     *
-     * @param cursor The Cursor
-     * @param df     The DecimalFormat to use for decimal values
-     * @return The subtext for the current record
+     * Load the Elements into PeriodicTableBlock.
      */
-    @NonNull
-    private String getSubtext(@NonNull Cursor cursor, @NonNull DecimalFormat df) {
-        if(Elements.WEIGHT.equals(mSubtextValueKey)) {
-            if(cursor.getInt(cursor.getColumnIndex(Elements.UNSTABLE)) == 1) {
-                return "[" + cursor.getInt(2) + "]";
-            } else {
-                return df.format(cursor.getDouble(2));
-            }
-        }
-        if(Elements.MELT.equals(mSubtextValueKey) || Elements.BOIL.equals(mSubtextValueKey)) {
-            final double value;
-            switch(PreferenceUtils.getPrefTempUnit(mPreferences)) {
-                case PreferenceUtils.TEMP_C:
-                    value = UnitUtils.KtoC(cursor.getDouble(2));
-                    break;
-                case PreferenceUtils.TEMP_F:
-                    value = UnitUtils.KtoF(cursor.getDouble(2));
-                    break;
-                default:
-                    value = cursor.getDouble(2);
-            }
-            return df.format(value);
-        }
-        if(Elements.DENSITY.equals(mSubtextValueKey)) {
-            if(!cursor.isNull(2)) {
-                final double value = cursor.getDouble(2);
-                if(value < 0.0001) {
-                    return "<0.0001";
-                }
-                return df.format(value);
-            }
-        }
-        if(Elements.ABUNDANCE.equals(mSubtextValueKey)) {
-            if(!cursor.isNull(2)) {
-                final double value = cursor.getDouble(2);
-                if(value < 0.001) {
-                    return "<0.001";
-                }
-                return df.format(value);
-            }
-        }
-        final String value = cursor.getString(2);
-        return value == null ? "?" : value;
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this, Elements.CONTENT_URI, mProjection, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
-        mPeriodicTableView.getLegend().setMap(ElementUtils.getLegendMap(this));
-
+    private void loadElements() {
         final ArrayList<PeriodicTableBlock> periodicTableBlocks = new ArrayList<>();
         PeriodicTableBlock block;
-
-        final DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(4);
-
-        while(d.moveToNext()) {
-            block = new PeriodicTableBlock();
-            block.number = d.getInt(0);
-            block.symbol = d.getString(1);
-            block.subtext = getSubtext(d, df);
-            block.group = d.getInt(3);
-            block.period = d.getInt(4);
-            block.category = d.getString(5);
+        for(Element element : Elements.getElements()) {
+            block = new PeriodicTableBlock(element);
+            block.subtext = getSubtext(element);
 
             periodicTableBlocks.add(block);
         }
@@ -429,34 +393,26 @@ public class PeriodicTableActivity extends FragmentActivity implements
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-    }
-
-    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch(key) {
             case PreferenceUtils.KEY_SHOW_CONTROLS:
-                mControlBar.setVisibility(PreferenceUtils.getPrefShowControls(mPreferences)
-                        ? View.VISIBLE : View.GONE);
+                mControlBar.setVisibility(PreferenceUtils.getPrefShowControls() ? View.VISIBLE
+                        : View.GONE);
                 break;
             case PreferenceUtils.KEY_ELEMENT_COLORS:
-                final String colorKey = PreferenceUtils.getPrefElementColors(mPreferences);
-                if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
-                    mProjection[5] = Elements.BLOCK;
+                loadElements();
+                if(PreferenceUtils.COLOR_BLOCK.equals(PreferenceUtils.getPrefElementColors())) {
                     mSpinnerBlockColors.setSelection(1);
                 } else {
-                    mProjection[5] = Elements.CATEGORY;
                     mSpinnerBlockColors.setSelection(0);
                 }
-                getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
+                mPeriodicTableView.invalidateLegend();
                 break;
             case PreferenceUtils.KEY_SUBTEXT_VALUE:
-                mSubtextValueKey = PreferenceUtils.getPrefSubtextValue(sharedPreferences);
+                loadElements();
                 mSpinnerSubtextValue.setSelection(
                         ((BlockSubtextValueListAdapter)mSpinnerSubtextValue.getAdapter())
-                                .getItemIndex(mSubtextValueKey));
-                mProjection[2] = mSubtextValueKey;
-                getSupportLoaderManager().restartLoader(0, null, this).forceLoad();
+                                .getItemIndex(PreferenceUtils.getPrefSubtextValue()));
         }
     }
 }

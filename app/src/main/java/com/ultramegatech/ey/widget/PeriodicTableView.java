@@ -51,8 +51,6 @@ import com.ultramegatech.ey.util.ElementUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Zoomable, color coded View of the Periodic Table of the Elements. Renders a list of
@@ -62,7 +60,7 @@ import java.util.Observer;
  * @author Steve Guidetti
  */
 @SuppressWarnings("unused,WeakerAccess")
-public class PeriodicTableView extends View implements Observer {
+public class PeriodicTableView extends View {
     /**
      * The amount to zoom in or out for programmatic zooms
      */
@@ -124,7 +122,7 @@ public class PeriodicTableView extends View implements Observer {
      * Color legend
      */
     @NonNull
-    private final PeriodicTableLegend mLegend = new PeriodicTableLegend();
+    private final PeriodicTableLegend mLegend;
 
     /**
      * Title string
@@ -315,7 +313,7 @@ public class PeriodicTableView extends View implements Observer {
 
         a.recycle();
 
-        mLegend.addObserver(this);
+        mLegend = new PeriodicTableLegend(context);
 
         mScaleGestureDetector = new ScaleGestureDetector(context, getOnScaleGestureListener());
         mGestureDetector = new GestureDetector(context, getOnGestureListener());
@@ -529,26 +527,26 @@ public class PeriodicTableView extends View implements Observer {
         int numCols = 0;
 
         for(PeriodicTableBlock block : mPeriodicTableBlocks) {
-            if(block.period > numRows) {
-                numRows = block.period;
+            if(block.element.period > numRows) {
+                numRows = block.element.period;
             }
-            if(block.group > numCols) {
-                numCols = block.group;
+            if(block.element.group > numCols) {
+                numCols = block.element.group;
             }
-            if(block.group == 0) {
-                if(block.period == 6) {
+            if(block.element.group == 0) {
+                if(block.element.period == 6) {
                     block.row = 8;
-                    block.col = block.number - 54;
-                } else if(block.period == 7) {
+                    block.col = block.element.number - 54;
+                } else if(block.element.period == 7) {
                     block.row = 9;
-                    block.col = block.number - 86;
+                    block.col = block.element.number - 86;
                 }
             } else {
-                block.row = block.period;
-                block.col = block.group;
+                block.row = block.element.period;
+                block.col = block.element.group;
             }
 
-            mLegend.colorBlock(block);
+            block.color = ElementUtils.getElementColor(block.element);
         }
         numRows += 2;
 
@@ -562,14 +560,9 @@ public class PeriodicTableView extends View implements Observer {
         ViewCompat.postInvalidateOnAnimation(this);
     }
 
-    /**
-     * Get the color legend.
-     *
-     * @return The PeriodicTableLegend
-     */
-    @NonNull
-    public PeriodicTableLegend getLegend() {
-        return mLegend;
+    public void invalidateLegend() {
+        mLegend.invalidate(getContext());
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     /**
@@ -697,7 +690,7 @@ public class PeriodicTableView extends View implements Observer {
         mRect.left = mRect.right - mBlockSize + 1;
         mRect.top = mRect.bottom - mBlockSize + 1;
 
-        final int number = block.number;
+        final int number = block.element.number;
         if((number > 56 && number < 72) || (number > 88 && number < 104)) {
             mRect.top += mPadding / 2;
             mRect.bottom += mPadding / 2;
@@ -979,10 +972,10 @@ public class PeriodicTableView extends View implements Observer {
 
             canvas.drawRect(mRect, mBlockPaint);
 
-            canvas.drawText(block.symbol, mRect.left + mBlockSize / 2,
+            canvas.drawText(block.element.symbol, mRect.left + mBlockSize / 2,
                     mRect.bottom - (int)(mBlockSize / 2.8), mSymbolPaint);
 
-            canvas.drawText(String.valueOf(block.number), mRect.left + mBlockSize / 20,
+            canvas.drawText(String.valueOf(block.element.number), mRect.left + mBlockSize / 20,
                     mRect.top + mNumberPaint.getTextSize(), mNumberPaint);
 
             canvas.drawText(block.subtext, mRect.left + mBlockSize / 2,
@@ -996,14 +989,6 @@ public class PeriodicTableView extends View implements Observer {
         }
 
         drawEdgeEffects(canvas);
-    }
-
-    @Override
-    public void update(Observable observable, Object data) {
-        if(observable instanceof PeriodicTableLegend) {
-            mLegend.colorBlocks(mPeriodicTableBlocks);
-        }
-        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     /**
@@ -1020,7 +1005,7 @@ public class PeriodicTableView extends View implements Observer {
             for(PeriodicTableBlock block : mPeriodicTableBlocks) {
                 findBlockPosition(block);
                 if(mRect.contains((int)x, (int)y)) {
-                    return block.number - 1;
+                    return block.element.number - 1;
                 }
             }
             return INVALID_ID;
@@ -1029,7 +1014,7 @@ public class PeriodicTableView extends View implements Observer {
         @Override
         protected void getVisibleVirtualViews(List<Integer> virtualViewIds) {
             for(PeriodicTableBlock block : mPeriodicTableBlocks) {
-                virtualViewIds.add(block.number - 1);
+                virtualViewIds.add(block.element.number - 1);
             }
         }
 
@@ -1037,13 +1022,14 @@ public class PeriodicTableView extends View implements Observer {
         protected void onPopulateNodeForVirtualView(int virtualViewId,
                                                     AccessibilityNodeInfoCompat node) {
             final PeriodicTableBlock block = mPeriodicTableBlocks.get(virtualViewId);
-            final String name = getContext().getString(ElementUtils.getElementName(block.number));
+            final String name =
+                    getContext().getString(ElementUtils.getElementName(block.element.number));
             findBlockPosition(block);
 
             node.setBoundsInParent(new Rect(mRect));
             // TODO: 11/25/2016 Add more details
-            node.setText(getContext().getString(R.string.descTableBlock, block.number, name, "",
-                    block.subtext));
+            node.setText(getContext().getString(R.string.descTableBlock, block.element.number, name,
+                    "", block.subtext));
             node.setClickable(true);
         }
 

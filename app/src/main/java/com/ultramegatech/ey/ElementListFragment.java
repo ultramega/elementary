@@ -1,19 +1,35 @@
+/*
+ * The MIT License (MIT)
+ * Copyright © 2016 Steve Guidetti
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the “Software”), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.ultramegatech.ey;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.ListFragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,12 +37,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.ultramegatech.ey.provider.Elements;
-import com.ultramegatech.ey.util.ElementUtils;
-import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.ey.widget.ElementListAdapter;
-
-import java.util.ArrayList;
 
 /**
  * This Fragment displays a sortable filterable list of all the elements. Clicking on an item
@@ -34,9 +45,7 @@ import java.util.ArrayList;
  *
  * @author Steve Guidetti
  */
-public class ElementListFragment extends ListFragment
-        implements LoaderManager.LoaderCallbacks<Cursor>,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+public class ElementListFragment extends ListFragment {
     /**
      * Keys for saving instance state
      */
@@ -44,17 +53,6 @@ public class ElementListFragment extends ListFragment
     private static final String KEY_SORT_REVERSE = "key_sort_reverse";
     private static final String KEY_FILTER = "key_filter";
     private static final String KEY_ACTIVATED_ITEM = "key_activated_item";
-
-    /**
-     * Fields to read from the database
-     */
-    @NonNull
-    private final String[] mListProjection = new String[] {
-            Elements._ID,
-            Elements.NUMBER,
-            Elements.SYMBOL,
-            Elements.CATEGORY
-    };
 
     /**
      * The Adapter backing the list
@@ -84,7 +82,6 @@ public class ElementListFragment extends ListFragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        loadPreferences();
 
         if(savedInstanceState != null) {
             mSort = savedInstanceState.getInt(KEY_SORT, mSort);
@@ -93,7 +90,6 @@ public class ElementListFragment extends ListFragment
             mActivatedItem = savedInstanceState.getLong(KEY_ACTIVATED_ITEM, mActivatedItem);
         }
 
-        setListShown(false);
         mAdapter = new ElementListAdapter(getContext());
         mAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
@@ -102,12 +98,12 @@ public class ElementListFragment extends ListFragment
                 setActivatedPosition(mAdapter.getItemPosition(mActivatedItem));
             }
         });
+        mAdapter.getFilter().filter(mFilter);
+        mAdapter.setSort(mSort, mSortReverse);
         setListAdapter(mAdapter);
 
         setupFilter();
         setupSort();
-
-        getLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
     @Override
@@ -120,31 +116,9 @@ public class ElementListFragment extends ListFragment
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        prefs.unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         mActivatedItem = id;
         ((ElementListActivity)getActivity()).onItemSelected((int)id);
-    }
-
-    /**
-     * Load relevant preferences.
-     */
-    private void loadPreferences() {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        prefs.registerOnSharedPreferenceChangeListener(this);
-
-        final String colorKey = PreferenceUtils.getPrefElementColors(prefs);
-        if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
-            mListProjection[3] = Elements.BLOCK;
-        } else {
-            mListProjection[3] = Elements.CATEGORY;
-        }
     }
 
     /**
@@ -218,45 +192,6 @@ public class ElementListFragment extends ListFragment
             getListView().setItemChecked(position, true);
         } else {
             getListView().setItemChecked(getListView().getCheckedItemPosition(), false);
-        }
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(getContext(), Elements.CONTENT_URI, mListProjection, null, null,
-                Elements.NUMBER + " ASC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
-        final ElementUtils utils = new ElementUtils(getContext());
-
-        final ArrayList<ElementListAdapter.ElementHolder> data = new ArrayList<>();
-        while(d.moveToNext()) {
-            final String number = d.getString(1);
-            final String symbol = d.getString(2);
-            final String name = getString(ElementUtils.getElementName(d.getInt(1)));
-            final int color = utils.getElementColor(d.getString(3));
-
-            data.add(new ElementListAdapter.ElementHolder(number, symbol, name, color));
-        }
-
-        mAdapter.setItems(data);
-        mAdapter.getFilter().filter(mFilter);
-        mAdapter.setSort(mSort, mSortReverse);
-
-        setListShown(true);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
-            loadPreferences();
-            getLoaderManager().restartLoader(0, null, this).forceLoad();
         }
     }
 

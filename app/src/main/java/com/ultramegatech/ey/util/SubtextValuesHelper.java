@@ -73,7 +73,7 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.registerOnSharedPreferenceChangeListener(this);
 
-        updateTempUnit(prefs);
+        updateTempUnit();
         mListener = listener;
     }
 
@@ -103,12 +103,10 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
 
     /**
      * Update the unit for temperatures.
-     *
-     * @param prefs The SharedPreferences
      */
-    private void updateTempUnit(@NonNull SharedPreferences prefs) {
+    private void updateTempUnit() {
         final String unit;
-        switch(PreferenceUtils.getPrefTempUnit(prefs)) {
+        switch(PreferenceUtils.getPrefTempUnit()) {
             case PreferenceUtils.TEMP_C:
                 unit = "℃";
                 break;
@@ -125,7 +123,7 @@ public class SubtextValuesHelper implements SharedPreferences.OnSharedPreference
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(PreferenceUtils.KEY_TEMP_UNITS.equals(key)) {
-            updateTempUnit(sharedPreferences);
+            updateTempUnit();
             if(mListener != null) {
                 mListener.onSubtextValuesChanged(this);
             }

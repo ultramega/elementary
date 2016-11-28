@@ -1,17 +1,17 @@
 /*
  * The MIT License (MIT)
  * Copyright © 2016 Steve Guidetti
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the “Software”), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,44 +20,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ultramegatech.ey.widget;
+package com.ultramegatech.ey;
 
-import android.support.annotation.NonNull;
+import android.app.Application;
 
-import com.ultramegatech.ey.provider.Element;
+import com.ultramegatech.ey.util.ElementUtils;
+import com.ultramegatech.ey.util.PreferenceUtils;
 
 /**
- * Stores data for a single block on a PeriodicTableView.
+ * The Application object representing the app.
  *
  * @author Steve Guidetti
  */
-public class PeriodicTableBlock {
-    /**
-     * The Element
-     */
-    @NonNull
-    public final Element element;
-
-    /**
-     * Text to display below the symbol
-     */
-    public String subtext;
-
-    /**
-     * Block background color
-     */
-    public int color = 0xFFCCCCCC;
-
-    /**
-     * Grid position
-     */
-    int row;
-    int col;
-
-    /**
-     * @param element The Element
-     */
-    public PeriodicTableBlock(@NonNull Element element) {
-        this.element = element;
+public class ElementaryApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        PreferenceUtils.setup(this);
+        ElementUtils.setup(this);
     }
 }

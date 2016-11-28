@@ -36,6 +36,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.provider.Element;
+import com.ultramegatech.ey.provider.Elements;
+import com.ultramegatech.ey.util.ElementUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,7 +73,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      * The original data set
      */
     @NonNull
-    private final ArrayList<ElementHolder> mListItems = new ArrayList<>();
+    private final ElementHolder[] mListItems;
 
     /**
      * The filtered and sorted data set
@@ -93,6 +96,16 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      */
     public ElementListAdapter(@NonNull Context context) {
         mContext = context;
+
+        final Element[] elements = Elements.getElements();
+        mListItems = new ElementHolder[elements.length];
+        Element element;
+        for(int i = 0; i < elements.length; i++) {
+            element = elements[i];
+            mListItems[i] = new ElementHolder(String.valueOf(element.number), element.symbol,
+                    context.getString(ElementUtils.getElementName(element.number)),
+                    ElementUtils.getElementColor(element));
+        }
 
         mFilter = new Filter() {
             @Override
@@ -162,23 +175,6 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     /**
-     * Set the list of elements
-     *
-     * @param listItems The list of elements
-     */
-    public void setItems(@Nullable ArrayList<ElementHolder> listItems) {
-        mListItems.clear();
-        mFiltered.clear();
-
-        if(listItems != null) {
-            mListItems.addAll(listItems);
-            mFiltered.addAll(listItems);
-        }
-
-        notifyDataSetChanged();
-    }
-
-    /**
      * Set the field used to sort elements.
      *
      * @param sortBy  One of the SORT_ constants
@@ -198,7 +194,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
         mFiltered.clear();
 
         if(TextUtils.isEmpty(filter)) {
-            mFiltered.addAll(mListItems);
+            Collections.addAll(mFiltered, mListItems);
             return;
         }
 
@@ -229,7 +225,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     /**
      * Class to hold data for a single element.
      */
-    public static class ElementHolder {
+    private static class ElementHolder {
         /**
          * The database ID
          */
@@ -264,8 +260,8 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
          * @param name   The element name
          * @param color  The block color
          */
-        public ElementHolder(@NonNull String number, @NonNull String symbol, @NonNull String name,
-                             int color) {
+        ElementHolder(@NonNull String number, @NonNull String symbol, @NonNull String name,
+                      int color) {
             this.id = Long.valueOf(number);
             this.number = number;
             this.symbol = symbol;

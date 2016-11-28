@@ -23,9 +23,7 @@
 package com.ultramegatech.ey;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -50,8 +48,7 @@ public class ElementListActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme(prefs);
+        final boolean darkTheme = PreferenceUtils.getPrefDarkTheme();
         setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
 
         super.onCreate(savedInstanceState);

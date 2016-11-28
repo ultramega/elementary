@@ -23,17 +23,13 @@
 package com.ultramegatech.ey.util;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.ultramegatech.ey.R;
-import com.ultramegatech.ey.widget.PeriodicTableLegend.Item;
+import com.ultramegatech.ey.provider.Element;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 /**
  * Utility class for common methods relating to chemical elements.
@@ -102,70 +98,63 @@ public class ElementUtils {
     };
 
     /**
-     * The Context
+     * The map of keys to color values
      */
     @NonNull
-    private final Context mContext;
+    private final static HashMap<String, Integer> COLOR_MAP = new HashMap<>();
 
     /**
-     * Map of values to colors
-     */
-    @Nullable
-    private HashMap<Object, Item> mLegendMap;
-
-    /**
-     * @param context The Context
-     */
-    public ElementUtils(@NonNull Context context) {
-        mContext = context;
-    }
-
-    /**
-     * Get the element color based on the category name.
-     *
-     * @param key The category name
-     * @return Color hex value
-     */
-    public int getElementColor(@NonNull String key) {
-        if(mLegendMap == null) {
-            mLegendMap = getLegendMap(mContext);
-        }
-
-        return mLegendMap.get(key).color;
-    }
-
-    /**
-     * Load the element legend map from array resources.
+     * Perform initial setup.
      *
      * @param context The Context
-     * @return Map of legend items
      */
-    @NonNull
-    public static HashMap<Object, Item> getLegendMap(@NonNull Context context) {
-        final HashMap<Object, Item> colorMap = new LinkedHashMap<>();
-
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        final String colorKey = PreferenceUtils.getPrefElementColors(prefs);
-
+    public static void setup(@NonNull Context context) {
         final Resources res = context.getResources();
-        final Object[] keys;
-        final int[] colorValues;
-        final String[] nameValues;
-        if(colorKey.equals("block")) {
-            keys = res.getStringArray(R.array.ptBlocks);
-            colorValues = res.getIntArray(R.array.ptBlockColors);
-            nameValues = res.getStringArray(R.array.ptBlocks);
-        } else {
-            keys = new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-            colorValues = res.getIntArray(R.array.ptCategoryColors);
-            nameValues = res.getStringArray(R.array.ptCategories);
-        }
 
+        String[] keys = res.getStringArray(R.array.ptBlocks);
+        int[] colorValues = res.getIntArray(R.array.ptBlockColors);
         for(int i = 0; i < keys.length; i++) {
-            colorMap.put(keys[i], new Item(colorValues[i], nameValues[i]));
+            COLOR_MAP.put(keys[i], colorValues[i]);
         }
 
-        return colorMap;
+        keys = new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        colorValues = res.getIntArray(R.array.ptCategoryColors);
+        for(int i = 0; i < keys.length; i++) {
+            COLOR_MAP.put(keys[i], colorValues[i]);
+        }
+    }
+
+    /**
+     * Get the color value associated with a key.
+     *
+     * @param key The key
+     * @return The color value
+     */
+    public static int getKeyColor(Object key) {
+        return COLOR_MAP.get(key.toString());
+    }
+
+    /**
+     * Get the color for an element.
+     *
+     * @param element The Element
+     * @return The color value
+     */
+    public static int getElementColor(@NonNull Element element) {
+        return COLOR_MAP.get(getColorKey(element));
+    }
+
+    /**
+     * Get the key to use for coloring an element.
+     *
+     * @param element The Element
+     * @return The key
+     */
+    private static String getColorKey(@NonNull Element element) {
+        if(PreferenceUtils.COLOR_CAT.equals(PreferenceUtils.getPrefElementColors())) {
+            return String.valueOf(element.category);
+        }
+        return String.valueOf(element.block);
     }
 
     /**

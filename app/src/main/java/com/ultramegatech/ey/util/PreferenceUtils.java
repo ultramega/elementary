@@ -22,10 +22,10 @@
  */
 package com.ultramegatech.ey.util;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-
-import com.ultramegatech.ey.provider.Elements;
 
 /**
  * Helpers for the shared preferences of the application.
@@ -57,75 +57,129 @@ public class PreferenceUtils {
     public static final String COLOR_BLOCK = "block";
 
     /**
+     * Subtext value values
+     */
+    public static final String SUBTEXT_WEIGHT = "w";
+    public static final String SUBTEXT_DENSITY = "dens";
+    public static final String SUBTEXT_MELT = "melt";
+    public static final String SUBTEXT_BOIL = "boil";
+    public static final String SUBTEXT_HEAT = "heat";
+    public static final String SUBTEXT_NEGATIVITY = "neg";
+    public static final String SUBTEXT_ABUNDANCE = "ab";
+
+    private static boolean sPrefDarkTheme;
+    private static String sPrefTempUnit;
+    private static String sPrefElementColors;
+    private static String sPrefSubtextValue;
+    private static boolean sPrefShowControls;
+
+    private static SharedPreferences sPreferences;
+
+    private static final SharedPreferences.OnSharedPreferenceChangeListener LISTENER =
+            new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+                                                      String key) {
+                    update(sharedPreferences, key);
+                }
+            };
+
+    public static void setup(@NonNull Context context) {
+        sPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        sPreferences.registerOnSharedPreferenceChangeListener(LISTENER);
+
+        sPrefDarkTheme = sPreferences.getBoolean(KEY_DARK_THEME, false);
+        sPrefTempUnit = sPreferences.getString(KEY_TEMP_UNITS, TEMP_K);
+        sPrefElementColors = sPreferences.getString(KEY_ELEMENT_COLORS, COLOR_CAT);
+        sPrefSubtextValue = sPreferences.getString(KEY_SUBTEXT_VALUE, SUBTEXT_WEIGHT);
+        sPrefShowControls = sPreferences.getBoolean(KEY_SHOW_CONTROLS, true);
+    }
+
+    private static void update(@NonNull SharedPreferences prefs, @NonNull String key) {
+        switch(key) {
+            case KEY_DARK_THEME:
+                sPrefDarkTheme = prefs.getBoolean(key, false);
+                break;
+            case KEY_TEMP_UNITS:
+                sPrefTempUnit = prefs.getString(KEY_TEMP_UNITS, TEMP_K);
+                break;
+            case KEY_ELEMENT_COLORS:
+                sPrefElementColors = prefs.getString(KEY_ELEMENT_COLORS, COLOR_CAT);
+                break;
+            case KEY_SUBTEXT_VALUE:
+                sPrefSubtextValue = prefs.getString(KEY_SUBTEXT_VALUE, SUBTEXT_WEIGHT);
+                break;
+            case KEY_SHOW_CONTROLS:
+                sPrefShowControls = prefs.getBoolean(KEY_SHOW_CONTROLS, true);
+                break;
+        }
+    }
+
+    /**
      * Get the value of the dark theme preference.
      *
-     * @param prefs The SharedPreferences
      * @return Whether to use the dark theme
      */
-    public static boolean getPrefDarkTheme(@NonNull SharedPreferences prefs) {
-        return prefs.getBoolean(KEY_DARK_THEME, false);
+    public static boolean getPrefDarkTheme() {
+        return sPrefDarkTheme;
     }
 
     /**
      * Get the value of the temperature unit preference.
      *
-     * @param prefs The SharedPreferences
      * @return The unit to use for temperature values
      */
     @NonNull
-    public static String getPrefTempUnit(@NonNull SharedPreferences prefs) {
-        return prefs.getString(KEY_TEMP_UNITS, TEMP_K);
+    public static String getPrefTempUnit() {
+        return sPrefTempUnit;
     }
 
     /**
      * Get the value of the element colors preference.
      *
-     * @param prefs The SharedPreferences
      * @return The property to use for coloring elements
      */
     @NonNull
-    public static String getPrefElementColors(@NonNull SharedPreferences prefs) {
-        return prefs.getString(KEY_ELEMENT_COLORS, COLOR_CAT);
+    public static String getPrefElementColors() {
+        return sPrefElementColors;
     }
 
     /**
      * Set value of the element colors preference.
      *
-     * @param prefs The SharedPreferences
      * @param value The value
      */
-    public static void setPrefElementColors(@NonNull SharedPreferences prefs, String value) {
-        prefs.edit().putString(KEY_ELEMENT_COLORS, value).apply();
+    public static void setPrefElementColors(String value) {
+        sPrefElementColors = value;
+        sPreferences.edit().putString(KEY_ELEMENT_COLORS, value).apply();
     }
 
     /**
      * Get value of the block subtext value preference.
      *
-     * @param prefs The SharedPreferences
      * @return The value of the block subtext value preference
      */
     @NonNull
-    public static String getPrefSubtextValue(@NonNull SharedPreferences prefs) {
-        return prefs.getString(KEY_SUBTEXT_VALUE, Elements.WEIGHT);
+    public static String getPrefSubtextValue() {
+        return sPrefSubtextValue;
     }
 
     /**
      * Set value of the block subtext value preference.
      *
-     * @param prefs The SharedPreferences
      * @param value The value
      */
-    public static void setPrefSubtextValue(@NonNull SharedPreferences prefs, String value) {
-        prefs.edit().putString(KEY_SUBTEXT_VALUE, value).apply();
+    public static void setPrefSubtextValue(String value) {
+        sPrefSubtextValue = value;
+        sPreferences.edit().putString(KEY_SUBTEXT_VALUE, value).apply();
     }
 
     /**
      * Get the value of the show controls preference.
      *
-     * @param prefs The SharedPreferences
      * @return The value of the show controls preference
      */
-    public static boolean getPrefShowControls(@NonNull SharedPreferences prefs) {
-        return prefs.getBoolean(KEY_SHOW_CONTROLS, true);
+    public static boolean getPrefShowControls() {
+        return sPrefShowControls;
     }
 }

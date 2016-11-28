@@ -22,29 +22,31 @@
  */
 package com.ultramegatech.ey.widget;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 
+import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.util.ElementUtils;
+import com.ultramegatech.ey.util.PreferenceUtils;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
-import java.util.Observable;
 
 /**
- * Renders a color legend on a PeriodicTableView. Also used to set the color value of
- * PeriodicTableBlock objects based on the legend.
+ * Renders a color legend on a PeriodicTableView.
  *
  * @author Steve Guidetti
  */
-@SuppressWarnings("unused")
-public class PeriodicTableLegend extends Observable {
+class PeriodicTableLegend {
     /**
-     * Map of values to legend items
+     * Map of key values to labels
      */
     @NonNull
-    private final HashMap<Object, Item> mMap = new HashMap<>();
+    private final HashMap<String, String> mMap = new HashMap<>();
 
     /**
      * Paint used to draw backgrounds
@@ -65,44 +67,33 @@ public class PeriodicTableLegend extends Observable {
     private final Rect mRect = new Rect();
 
     /**
-     * Set the legend map.
-     *
-     * @param hashMap Map of values to legend items
+     * @param context The Context
      */
-    public void setMap(@NonNull HashMap<Object, Item> hashMap) {
-        mMap.clear();
-        mMap.putAll(hashMap);
-        notifyObservers();
+    PeriodicTableLegend(@NonNull Context context) {
+        invalidate(context);
     }
 
     /**
-     * Get the legend map.
+     * Load the legend data from resources.
      *
-     * @return Map of values to legend items
+     * @param context The Context
      */
-    @NonNull
-    public HashMap<Object, Item> getMap() {
-        return mMap;
-    }
-
-    /**
-     * Color a list of blocks.
-     *
-     * @param blocks The list of blocks
-     */
-    void colorBlocks(@NonNull List<PeriodicTableBlock> blocks) {
-        for(PeriodicTableBlock block : blocks) {
-            colorBlock(block);
+    void invalidate(@NonNull Context context) {
+        final Resources res = context.getResources();
+        final String[] keys;
+        final String[] nameValues;
+        if(PreferenceUtils.COLOR_BLOCK.equals(PreferenceUtils.getPrefElementColors())) {
+            keys = res.getStringArray(R.array.ptBlocks);
+            nameValues = res.getStringArray(R.array.ptBlocks);
+        } else {
+            keys = new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+            nameValues = res.getStringArray(R.array.ptCategories);
         }
-    }
 
-    /**
-     * Set the color value of a block.
-     *
-     * @param block The block
-     */
-    void colorBlock(@NonNull PeriodicTableBlock block) {
-        block.color = mMap.get(block.category).color;
+        mMap.clear();
+        for(int i = 0; i < keys.length; i++) {
+            mMap.put(keys[i], nameValues[i]);
+        }
     }
 
     /**
@@ -123,44 +114,19 @@ public class PeriodicTableLegend extends Observable {
         mTextPaint.setTextSize(boxHeight / 2);
 
         int n = 0;
-        for(Entry<Object, Item> entry : mMap.entrySet()) {
+        for(Entry<String, String> entry : mMap.entrySet()) {
             mRect.top = rect.top + n % rows * boxHeight + 1;
             mRect.left = rect.left + n / rows * boxWidth + 1;
             mRect.bottom = mRect.top + boxHeight - 1;
             mRect.right = mRect.left + boxWidth - 1;
 
-            mPaint.setColor(entry.getValue().color);
+            mPaint.setColor(ElementUtils.getKeyColor(entry.getKey()));
             canvas.drawRect(mRect, mPaint);
 
-            canvas.drawText(entry.getValue().name, mRect.left + boxWidth / 20,
+            canvas.drawText(entry.getValue(), mRect.left + boxWidth / 20,
                     mRect.bottom - boxHeight / 2 + mTextPaint.getTextSize() / 2, mTextPaint);
 
             n++;
-        }
-    }
-
-    /**
-     * Represents an item on the legend.
-     */
-    public static class Item {
-        /**
-         * The hex value for the color
-         */
-        public final int color;
-
-        /**
-         * The display name of this item
-         */
-        @NonNull
-        public final String name;
-
-        /**
-         * @param color The hex value for the color
-         * @param name  The display name of this item
-         */
-        public Item(int color, @NonNull String name) {
-            this.color = color;
-            this.name = name;
         }
     }
 }

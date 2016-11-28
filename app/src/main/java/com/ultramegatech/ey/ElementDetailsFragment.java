@@ -22,11 +22,8 @@
  */
 package com.ultramegatech.ey;
 
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,9 +32,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -46,6 +40,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ultramegatech.ey.provider.Element;
 import com.ultramegatech.ey.provider.Elements;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
@@ -61,8 +56,7 @@ import java.util.Locale;
  * @author Steve Guidetti
  */
 public class ElementDetailsFragment extends DialogFragment
-        implements LoaderManager.LoaderCallbacks<Cursor>,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
     /**
      * The tag to identify the Fragment
      */
@@ -73,29 +67,6 @@ public class ElementDetailsFragment extends DialogFragment
      */
     private static final String ARG_ATOMIC_NUMBER = "atomic_number";
     private static final String ARG_ATOMIC_SYMBOL = "atomic_symbol";
-
-    /**
-     * Units of measurement
-     */
-    private enum Units {
-        KELVIN, CELSIUS, FAHRENHEIT
-    }
-
-    /**
-     * Values from the database row
-     */
-    @NonNull
-    private final ContentValues mData = new ContentValues();
-
-    /**
-     * Units to use for temperature values
-     */
-    private Units mTemperatureUnits;
-
-    /**
-     * Field used for coloring the element block
-     */
-    private String mColorKey;
 
     /**
      * Header text
@@ -137,7 +108,16 @@ public class ElementDetailsFragment extends DialogFragment
     /**
      * Format for decimal values
      */
-    private DecimalFormat mDecimalFormat;
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat();
+
+    static {
+        DECIMAL_FORMAT.setMaximumFractionDigits(8);
+    }
+
+    /**
+     * The Element being displayed
+     */
+    private Element mElement;
 
     /**
      * Create a new instance of this Fragment.
@@ -187,18 +167,20 @@ public class ElementDetailsFragment extends DialogFragment
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NO_TITLE, 0);
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        loadPreferences();
+        PreferenceManager.getDefaultSharedPreferences(getContext())
+                .registerOnSharedPreferenceChangeListener(this);
+
+        final Bundle args = getArguments();
+        if(args != null) {
+            if(args.containsKey(ARG_ATOMIC_NUMBER)) {
+                mElement = Elements.getElement(args.getInt(ARG_ATOMIC_NUMBER));
+            } else if(args.containsKey(ARG_ATOMIC_SYMBOL)) {
+                mElement = Elements.getElement(args.getString(ARG_ATOMIC_SYMBOL));
+            }
+        }
 
         mStringUnknown = getString(R.string.unknown);
-        mDecimalFormat = new DecimalFormat();
-        mDecimalFormat.setMaximumFractionDigits(8);
-
-        getLoaderManager().initLoader(0, null, this).forceLoad();
     }
 
     @Nullable
@@ -246,6 +228,12 @@ public class ElementDetailsFragment extends DialogFragment
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        populateViews();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -253,37 +241,13 @@ public class ElementDetailsFragment extends DialogFragment
     }
 
     /**
-     * Load relevant preferences.
-     */
-    private void loadPreferences() {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        prefs.registerOnSharedPreferenceChangeListener(this);
-
-        switch(PreferenceUtils.getPrefTempUnit(prefs)) {
-            case PreferenceUtils.TEMP_C:
-                mTemperatureUnits = Units.CELSIUS;
-                break;
-            case PreferenceUtils.TEMP_F:
-                mTemperatureUnits = Units.FAHRENHEIT;
-                break;
-            default:
-                mTemperatureUnits = Units.KELVIN;
-        }
-
-        final String colorKey = PreferenceUtils.getPrefElementColors(prefs);
-        if(PreferenceUtils.COLOR_BLOCK.equals(colorKey)) {
-            mColorKey = Elements.BLOCK;
-        } else {
-            mColorKey = Elements.CATEGORY;
-        }
-    }
-
-    /**
-     * Fill Views with data loaded from the database.
+     * Fill Views with element data.
      */
     private void populateViews() {
-        final String name =
-                getString(ElementUtils.getElementName(mData.getAsInteger(Elements.NUMBER)));
+        if(mElement == null) {
+            return;
+        }
+        final String name = getString(ElementUtils.getElementName(mElement.number));
 
         if(!getShowsDialog()) {
             getActivity().setTitle(getString(R.string.titleElementDetails, name));
@@ -291,14 +255,14 @@ public class ElementDetailsFragment extends DialogFragment
 
         mTxtHeader.setText(name);
 
-        mTxtElementSymbol.setText(mData.getAsString(Elements.SYMBOL));
-        mTxtElementNumber.setText(mData.getAsString(Elements.NUMBER));
+        mTxtElementSymbol.setText(mElement.symbol);
+        mTxtElementNumber.setText(String.valueOf(mElement.number));
         mTxtElementWeight.setText(getWeight());
         populateBlockElectrons();
         setBlockBackground();
 
-        mTxtNumber.setText(mData.getAsString(Elements.NUMBER));
-        mTxtSymbol.setText(mData.getAsString(Elements.SYMBOL));
+        mTxtNumber.setText(String.valueOf(mElement.number));
+        mTxtSymbol.setText(String.valueOf(mElement.symbol));
         mTxtName.setText(name);
         mTxtWeight.setText(getWeight());
         mTxtConfiguration.setText(getElectronConfiguration());
@@ -306,8 +270,8 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtCategory.setText(getCategory());
         mTxtGPB.setText(getGPB());
         mTxtDensity.setText(getDensity());
-        mTxtMelt.setText(getTemperature(Elements.MELT));
-        mTxtBoil.setText(getTemperature(Elements.BOIL));
+        mTxtMelt.setText(getTemperature(mElement.melt));
+        mTxtBoil.setText(getTemperature(mElement.boil));
         mTxtHeat.setText(getHeat());
         mTxtNegativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
@@ -321,18 +285,14 @@ public class ElementDetailsFragment extends DialogFragment
     @NonNull
     private CharSequence getCategory() {
         final CharSequence[] cats = getResources().getTextArray(R.array.ptCategories);
-        return cats[mData.getAsInteger(Elements.CATEGORY)];
+        return cats[mElement.category];
     }
 
     /**
      * Set the block color based on element properties.
      */
     private void setBlockBackground() {
-        final String key = mData.getAsString(mColorKey);
-        if(key == null) {
-            return;
-        }
-        final int background = new ElementUtils(getContext()).getElementColor(key);
+        final int background = ElementUtils.getElementColor(mElement);
         mElementBlock.setBackgroundColor(background);
     }
 
@@ -340,26 +300,22 @@ public class ElementDetailsFragment extends DialogFragment
      * Fill the column of electrons in the block.
      */
     private void populateBlockElectrons() {
-        final String electrons = mData.getAsString(Elements.ELECTRONS);
-        if(electrons != null) {
-            mTxtElementElectrons.setText(electrons.replace(',', '\n'));
-        }
+        mTxtElementElectrons.setText(mElement.electrons.replace(',', '\n'));
     }
 
     /**
      * Get a value as a temperature string.
      *
-     * @param key The value to read
+     * @param kelvin The temperature in Kelvin
      * @return The converted temperature string
      */
     @NonNull
-    private String getTemperature(@NonNull String key) {
-        final Double kelvin = mData.getAsDouble(key);
+    private String getTemperature(@Nullable Double kelvin) {
         if(kelvin != null) {
-            switch(mTemperatureUnits) {
-                case CELSIUS:
+            switch(PreferenceUtils.getPrefTempUnit()) {
+                case PreferenceUtils.TEMP_C:
                     return String.format(Locale.getDefault(), "%.2f ℃", UnitUtils.KtoC(kelvin));
-                case FAHRENHEIT:
+                case PreferenceUtils.TEMP_F:
                     return String.format(Locale.getDefault(), "%.2f ℉", UnitUtils.KtoF(kelvin));
                 default:
                     return String.format(Locale.getDefault(), "%.2f K", kelvin);
@@ -377,15 +333,10 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @Nullable
     private String getWeight() {
-        final Double value = mData.getAsDouble(Elements.WEIGHT);
-        if(value != null) {
-            final Boolean unstable = mData.getAsBoolean(Elements.UNSTABLE);
-            if(unstable != null && unstable) {
-                return String.format(Locale.getDefault(), "[%.0f]", value);
-            }
-            return mDecimalFormat.format(value);
+        if(mElement.unstable) {
+            return String.format(Locale.getDefault(), "[%.0f]", mElement.weight);
         }
-        return null;
+        return DECIMAL_FORMAT.format(mElement.weight);
     }
 
     /**
@@ -395,17 +346,14 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @Nullable
     private Spanned getElectronConfiguration() {
-        String value = mData.getAsString(Elements.CONFIGURATION);
-        if(value != null) {
-            value = value.replaceAll("([spdf])([0-9]+)", "$1<sup><small>$2</small></sup>");
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                return Html.fromHtml(value, 0);
-            } else {
-                //noinspection deprecation
-                return Html.fromHtml(value);
-            }
+        final String value = mElement.configuration
+                .replaceAll("([spdf])([0-9]+)", "$1<sup><small>$2</small></sup>");
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(value, 0);
+        } else {
+            //noinspection deprecation
+            return Html.fromHtml(value);
         }
-        return null;
     }
 
     /**
@@ -415,11 +363,7 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @Nullable
     private String getElectrons() {
-        final String value = mData.getAsString(Elements.ELECTRONS);
-        if(value != null) {
-            return value.replace(",", ", ");
-        }
-        return null;
+        return mElement.electrons.replace(",", ", ");
     }
 
     /**
@@ -429,12 +373,9 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @NonNull
     private String getGPB() {
-        String group = mData.getAsString(Elements.GROUP);
-        String period = mData.getAsString(Elements.PERIOD);
-        String block = mData.getAsString(Elements.BLOCK);
-        if(group == null || group.equals("0")) {
-            group = "n/a";
-        }
+        String group = mElement.group == 0 ? "n/a" : String.valueOf(mElement.group);
+        String period = String.valueOf(mElement.period);
+        String block = String.valueOf(mElement.block);
         return group + ", " + period + ", " + block;
     }
 
@@ -445,9 +386,8 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @NonNull
     private String getDensity() {
-        final Double value = mData.getAsDouble(Elements.DENSITY);
-        if(value != null) {
-            return mDecimalFormat.format(value) + " g/cm³";
+        if(mElement.density != null) {
+            return DECIMAL_FORMAT.format(mElement.density) + " g/cm³";
         }
         return mStringUnknown;
     }
@@ -459,9 +399,8 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @NonNull
     private String getHeat() {
-        final Double value = mData.getAsDouble(Elements.HEAT);
-        if(value != null) {
-            return mDecimalFormat.format(value) + " J/g·K";
+        if(mElement.heat != null) {
+            return DECIMAL_FORMAT.format(mElement.heat) + " J/g·K";
         }
         return mStringUnknown;
     }
@@ -473,9 +412,8 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @NonNull
     private String getNegativity() {
-        final Double value = mData.getAsDouble(Elements.NEGATIVITY);
-        if(value != null) {
-            return mDecimalFormat.format(value);
+        if(mElement.negativity != null) {
+            return DECIMAL_FORMAT.format(mElement.negativity);
         }
         return mStringUnknown;
     }
@@ -487,12 +425,11 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @NonNull
     private String getAbundance() {
-        final Double value = mData.getAsDouble(Elements.ABUNDANCE);
-        if(value != null) {
-            if(value < 0.001) {
+        if(mElement.abundance != null) {
+            if(mElement.abundance < 0.001) {
                 return "<0.001 mg/kg";
             }
-            return mDecimalFormat.format(value) + " mg/kg";
+            return DECIMAL_FORMAT.format(mElement.abundance) + " mg/kg";
         }
         return mStringUnknown;
     }
@@ -501,12 +438,11 @@ public class ElementDetailsFragment extends DialogFragment
      * Launch YouTube video Intent.
      */
     private void showVideo() {
-        final Integer num = mData.getAsInteger(Elements.NUMBER);
-        if(num == null) {
+        if(mElement == null) {
             return;
         }
         final Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://dev.ultramegasoft.com/el/video?num=" + num));
+                Uri.parse("http://dev.ultramegasoft.com/el/video?num=" + mElement.number));
         startActivity(intent);
     }
 
@@ -514,79 +450,24 @@ public class ElementDetailsFragment extends DialogFragment
      * Launch view Intent for the Wikipedia page.
      */
     private void showWikipedia() {
-        final int pageId = ElementUtils.getElementWiki(mData.getAsInteger(Elements.NUMBER));
+        if(mElement == null) {
+            return;
+        }
+        final int pageId = ElementUtils.getElementWiki(mElement.number);
         final Uri uri = Uri.parse(String.format("https://%s.m.wikipedia.org/wiki/%s",
                 getString(R.string.wikiLang), getString(pageId)));
         final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 
-    /**
-     * Get the content Uri based on the Fragment argument.
-     *
-     * @return The content Uri
-     */
-    @NonNull
-    private Uri getUri() {
-        final Bundle args = getArguments();
-        if(args != null) {
-            if(args.containsKey(ARG_ATOMIC_NUMBER)) {
-                return ContentUris.withAppendedId(Elements.CONTENT_URI_ITEM,
-                        args.getInt(ARG_ATOMIC_NUMBER));
-            } else if(args.containsKey(ARG_ATOMIC_SYMBOL)) {
-                return Uri.withAppendedPath(Elements.CONTENT_URI_ITEM,
-                        args.getString(ARG_ATOMIC_SYMBOL));
-            }
-        }
-        return ContentUris.withAppendedId(Elements.CONTENT_URI_ITEM, 0);
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(getContext(), getUri(), null, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor d) {
-        if(d.moveToFirst()) {
-            final String[] columns = d.getColumnNames();
-            for(int i = 0; i < columns.length; i++) {
-                if(d.isNull(i)) {
-                    continue;
-                }
-
-                switch(Elements.getColumnType(columns[i])) {
-                    case INTEGER:
-                        mData.put(columns[i], d.getInt(i));
-                        break;
-                    case REAL:
-                        mData.put(columns[i], d.getDouble(i));
-                        break;
-                    case BOOLEAN:
-                        mData.put(columns[i], d.getInt(i) == 1);
-                        break;
-                    case TEXT:
-                        mData.put(columns[i], d.getString(i));
-                        break;
-                }
-            }
-
-            populateViews();
-        }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-    }
-
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(PreferenceUtils.KEY_TEMP_UNITS.equals(key)) {
-            loadPreferences();
-            mTxtMelt.setText(getTemperature(Elements.MELT));
-            mTxtBoil.setText(getTemperature(Elements.BOIL));
+            if(mElement != null) {
+                mTxtMelt.setText(getTemperature(mElement.melt));
+                mTxtBoil.setText(getTemperature(mElement.boil));
+            }
         } else if(PreferenceUtils.KEY_ELEMENT_COLORS.equals(key)) {
-            loadPreferences();
             setBlockBackground();
         }
     }
