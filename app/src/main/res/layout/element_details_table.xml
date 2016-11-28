@@ -40,6 +40,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/number"
                     android:text="@string/labelNumber" />
 
                 <TextView
@@ -51,6 +52,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/symbol"
                     android:text="@string/labelSymbol" />
 
                 <TextView
@@ -62,6 +64,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/name"
                     android:text="@string/labelName" />
 
                 <TextView
@@ -73,6 +76,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/weight"
                     android:text="@string/labelWeight" />
 
                 <TextView
@@ -84,6 +88,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/category"
                     android:text="@string/labelCategory" />
 
                 <TextView
@@ -95,6 +100,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/gpb"
                     android:text="@string/labelGPB" />
 
                 <TextView
@@ -106,6 +112,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/config"
                     android:text="@string/labelConfiguration" />
 
                 <TextView
@@ -117,6 +124,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/electrons"
                     android:text="@string/labelElectrons" />
 
                 <TextView
@@ -128,6 +136,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/density"
                     android:text="@string/labelDensity" />
 
                 <TextView
@@ -139,6 +148,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/melt"
                     android:text="@string/labelMelt" />
 
                 <TextView
@@ -150,6 +160,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/boil"
                     android:text="@string/labelBoil" />
 
                 <TextView
@@ -161,6 +172,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/heat"
                     android:text="@string/labelHeat" />
 
                 <TextView
@@ -172,6 +184,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/negativity"
                     android:text="@string/labelNegativity" />
 
                 <TextView
@@ -183,6 +196,7 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
+                    android:labelFor="@+id/abundance"
                     android:text="@string/labelAbundance" />
 
                 <TextView
