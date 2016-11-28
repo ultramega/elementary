@@ -23,6 +23,7 @@
 package com.ultramegatech.ey.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -47,7 +48,9 @@ import android.view.View;
 import android.widget.Scroller;
 
 import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.provider.Element;
 import com.ultramegatech.ey.util.ElementUtils;
+import com.ultramegatech.ey.util.PreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -555,6 +558,7 @@ public class PeriodicTableView extends View {
 
         measureCanvas();
         if(mAccessibilityDelegate != null) {
+            mAccessibilityDelegate.loadLabels();
             mAccessibilityDelegate.invalidateRoot();
         }
         ViewCompat.postInvalidateOnAnimation(this);
@@ -995,9 +999,69 @@ public class PeriodicTableView extends View {
      * The ExploreByTouchHelper implementation to provide accessibility.
      */
     private class AccessibilityDelegate extends ExploreByTouchHelper {
+        /**
+         * The description string for unknown values
+         */
+        @NonNull
+        private final String mUnknownString;
+
+        /**
+         * The label for subtext descriptions
+         */
+        private String mSubtextLabel;
+
+        /**
+         * The label for category descriptions
+         */
+        private String mCatLabel;
+
+        /**
+         * The list of category names
+         */
+        private String[] mCatNames;
+
         @RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
         AccessibilityDelegate(View host) {
             super(host);
+            mUnknownString = getResources().getString(R.string.unknown);
+            loadLabels();
+        }
+
+        /**
+         * Load the labels used for descriptions.
+         */
+        void loadLabels() {
+            final Resources res = getResources();
+            switch(PreferenceUtils.getPrefSubtextValue()) {
+                case PreferenceUtils.SUBTEXT_DENSITY:
+                    mSubtextLabel = res.getString(R.string.labelDensity);
+                    break;
+                case PreferenceUtils.SUBTEXT_MELT:
+                    mSubtextLabel = res.getString(R.string.labelMelt);
+                    break;
+                case PreferenceUtils.SUBTEXT_BOIL:
+                    mSubtextLabel = res.getString(R.string.labelBoil);
+                    break;
+                case PreferenceUtils.SUBTEXT_HEAT:
+                    mSubtextLabel = res.getString(R.string.labelHeat);
+                    break;
+                case PreferenceUtils.SUBTEXT_NEGATIVITY:
+                    mSubtextLabel = res.getString(R.string.labelNegativity);
+                    break;
+                case PreferenceUtils.SUBTEXT_ABUNDANCE:
+                    mSubtextLabel = res.getString(R.string.labelAbundance);
+                    break;
+                default:
+                    mSubtextLabel = res.getString(R.string.labelWeight);
+            }
+            if(PreferenceUtils.COLOR_BLOCK.equals(PreferenceUtils.getPrefElementColors())) {
+                mCatLabel = res.getStringArray(R.array.elementColorNames)[1];
+            } else {
+                if(mCatNames == null) {
+                    mCatNames = res.getStringArray(R.array.ptCategories);
+                }
+                mCatLabel = res.getStringArray(R.array.elementColorNames)[0];
+            }
         }
 
         @Override
@@ -1022,15 +1086,60 @@ public class PeriodicTableView extends View {
         protected void onPopulateNodeForVirtualView(int virtualViewId,
                                                     AccessibilityNodeInfoCompat node) {
             final PeriodicTableBlock block = mPeriodicTableBlocks.get(virtualViewId);
-            final String name =
-                    getContext().getString(ElementUtils.getElementName(block.element.number));
             findBlockPosition(block);
-
             node.setBoundsInParent(new Rect(mRect));
-            // TODO: 11/25/2016 Add more details
-            node.setText(getContext().getString(R.string.descTableBlock, block.element.number, name,
-                    "", block.subtext));
+            node.setText(getDescription(block));
             node.setClickable(true);
+        }
+
+        /**
+         * Get the description for a block.
+         *
+         * @param block The PeriodicTableBlock
+         * @return The description string
+         */
+        private String getDescription(@NonNull PeriodicTableBlock block) {
+            final Element element = block.element;
+            final Resources res = getResources();
+            final String symbol = element.symbol.toUpperCase();
+            final String name = res.getString(ElementUtils.getElementName(element.number));
+
+            final String subtext;
+            switch(PreferenceUtils.getPrefSubtextValue()) {
+                case PreferenceUtils.SUBTEXT_WEIGHT:
+                    subtext = element.unstable ? String.valueOf((int)element.weight)
+                            : block.subtext;
+                    break;
+                case PreferenceUtils.SUBTEXT_DENSITY:
+                    subtext = element.density == null ? mUnknownString : block.subtext;
+                    break;
+                case PreferenceUtils.SUBTEXT_MELT:
+                    subtext = element.melt == null ? mUnknownString : block.subtext;
+                    break;
+                case PreferenceUtils.SUBTEXT_BOIL:
+                    subtext = element.boil == null ? mUnknownString : block.subtext;
+                    break;
+                case PreferenceUtils.SUBTEXT_HEAT:
+                    subtext = element.heat == null ? mUnknownString : block.subtext;
+                    break;
+                case PreferenceUtils.SUBTEXT_NEGATIVITY:
+                    subtext = element.negativity == null ? mUnknownString : block.subtext;
+                    break;
+                case PreferenceUtils.SUBTEXT_ABUNDANCE:
+                    subtext = element.abundance == null ? mUnknownString : block.subtext;
+                    break;
+                default:
+                    subtext = mUnknownString;
+            }
+            final String cat;
+            if(PreferenceUtils.COLOR_BLOCK.equals(PreferenceUtils.getPrefElementColors())) {
+                cat = String.valueOf(element.block);
+            } else {
+                cat = mCatNames[element.category];
+            }
+
+            return res.getString(R.string.descTableBlock, element.number, symbol, name,
+                    mSubtextLabel, subtext, mCatLabel, cat);
         }
 
         @Override
