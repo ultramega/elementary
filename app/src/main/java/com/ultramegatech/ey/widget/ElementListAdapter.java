@@ -26,6 +26,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -134,29 +135,38 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
     }
 
     @Override
-    public ElementHolder getItem(int i) {
-        return mFiltered.get(i);
+    public ElementHolder getItem(int position) {
+        return mFiltered.get(position);
     }
 
     @Override
-    public long getItemId(int i) {
-        return mFiltered.get(i).element.number;
+    public long getItemId(int position) {
+        return mFiltered.get(position).element.number;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup vg) {
-        if(view == null) {
-            view = View.inflate(mContext, R.layout.element_list_item, null);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if(convertView == null) {
+            convertView = LayoutInflater.from(mContext)
+                    .inflate(R.layout.element_list_item, parent, false);
+            final ViewHolder holder = new ViewHolder();
+            holder.block = convertView.findViewById(R.id.block);
+            holder.number = (TextView)convertView.findViewById(R.id.number);
+            holder.symbol = (TextView)convertView.findViewById(R.id.symbol);
+            holder.name = (TextView)convertView.findViewById(R.id.name);
+            convertView.setTag(holder);
         }
 
-        final ElementHolder holder = getItem(i);
+        final ElementHolder item = getItem(position);
+        final ViewHolder holder = (ViewHolder)convertView.getTag();
 
-        ((TextView)view.findViewById(R.id.number)).setText(String.valueOf(holder.element.number));
-        ((TextView)view.findViewById(R.id.symbol)).setText(holder.element.symbol);
-        ((TextView)view.findViewById(R.id.name)).setText(holder.name);
-        view.findViewById(R.id.block).setBackgroundColor(holder.color);
+        holder.number.setText(String.valueOf(item.element.number));
+        holder.symbol.setText(item.element.symbol);
+        holder.symbol.setContentDescription(item.element.symbol.toUpperCase());
+        holder.name.setText(item.name);
+        holder.block.setBackgroundColor(item.color);
 
-        return view;
+        return convertView;
     }
 
     @NonNull
@@ -258,7 +268,6 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
             this.name = context.getString(ElementUtils.getElementName(element.number));
             this.color = ElementUtils.getElementColor(element);
         }
-
     }
 
     /**
@@ -285,6 +294,30 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
 
             return l.name.compareTo(r.name);
         }
+    }
 
+    /**
+     * Caches references to Views within a layout.
+     */
+    private static class ViewHolder {
+        /**
+         * The element block container
+         */
+        View block;
+
+        /**
+         * The element number
+         */
+        TextView number;
+
+        /**
+         * The element symbol
+         */
+        TextView symbol;
+
+        /**
+         * The element name
+         */
+        TextView name;
     }
 }
