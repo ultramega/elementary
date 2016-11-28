@@ -262,7 +262,8 @@ public class ElementDetailsFragment extends DialogFragment
         setBlockBackground();
 
         mTxtNumber.setText(String.valueOf(mElement.number));
-        mTxtSymbol.setText(String.valueOf(mElement.symbol));
+        mTxtSymbol.setText(mElement.symbol);
+        mTxtSymbol.setContentDescription(mElement.symbol.toUpperCase());
         mTxtName.setText(name);
         mTxtWeight.setText(getWeight());
         mTxtConfiguration.setText(getElectronConfiguration());
