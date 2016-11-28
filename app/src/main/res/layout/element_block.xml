@@ -27,8 +27,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="70dp"
     android:layout_height="match_parent"
+    android:importantForAccessibility="noHideDescendants"
     android:minHeight="70dp"
-    tools:ignore="RtlHardcoded,SmallSp">
+    tools:ignore="RtlHardcoded,SmallSp,UnusedAttribute">
 
     <TextView
         android:id="@+id/elementSymbol"
