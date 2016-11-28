@@ -24,7 +24,7 @@
 <resources>
     <string name="app_name" translatable="false">Elementary</string>
 
-    <string name="titleElementDetails">Element Details - %s</string>
+    <string name="titleElementDetails" formatted="true">Element Details - %s</string>
     <string name="titlePeriodicTable">Periodic Table of the Elements</string>
     <string name="titleElementList">List of Elements</string>
     <string name="titlePreferences">Elementary Options</string>

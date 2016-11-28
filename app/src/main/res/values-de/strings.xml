@@ -22,7 +22,7 @@
   THE SOFTWARE.
 -->
 <resources>
-    <string name="titleElementDetails">Element Details - %s</string>
+    <string name="titleElementDetails" formatted="true">Element Details - %s</string>
     <string name="titlePeriodicTable">Periodensystem der Elemente</string>
     <string name="titleElementList">Liste aller Elemente</string>
     <string name="titlePreferences">Elementary Optionen</string>
