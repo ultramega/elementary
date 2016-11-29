@@ -33,7 +33,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Html;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -267,7 +266,7 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtSymbol.setContentDescription(mElement.symbol.toUpperCase());
         mTxtName.setText(name);
         mTxtWeight.setText(getWeight());
-        mTxtConfiguration.setText(getElectronConfiguration());
+        getElectronConfiguration(mTxtConfiguration);
         mTxtElectrons.setText(getElectrons());
         mTxtCategory.setText(getCategory());
         mTxtGPB.setText(getGPB());
@@ -344,24 +343,38 @@ public class ElementDetailsFragment extends DialogFragment
     /**
      * Get the electron configuration.
      *
-     * @return The formatted electron configuration
+     * @param textView The TextView to display the electron configuration
      */
-    @Nullable
-    private Spanned getElectronConfiguration() {
+    @SuppressWarnings("deprecation")
+    private void getElectronConfiguration(@NonNull TextView textView) {
         final StringBuilder builder = new StringBuilder();
+        final StringBuilder descBuilder = new StringBuilder();
+
         if(mElement.configuration.baseElement != null) {
             builder.append('[').append(mElement.configuration.baseElement).append("] ");
+            final Element baseElement = Elements.getElement(mElement.configuration.baseElement);
+            if(baseElement != null) {
+                descBuilder.append(getString(ElementUtils.getElementName(baseElement.number)));
+                descBuilder.append(", ");
+            }
         }
+
         for(Element.Orbital orbital : mElement.configuration.orbitals) {
             builder.append(orbital.shell).append(orbital.orbital);
             builder.append("<sup><small>").append(orbital.electrons).append("</small></sup> ");
+            descBuilder.append(orbital.shell).append(' ');
+            descBuilder.append(String.valueOf(orbital.orbital).toUpperCase()).append(' ');
+            descBuilder.append(orbital.electrons).append(", ");
         }
-        final String value = builder.toString().trim();
+
+        descBuilder.delete(descBuilder.length() - 2, descBuilder.length() - 1);
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return Html.fromHtml(value, 0);
+            textView.setText(Html.fromHtml(builder.toString().trim(), 0));
+            textView.setContentDescription(Html.fromHtml(descBuilder.toString(), 0));
         } else {
-            //noinspection deprecation
-            return Html.fromHtml(value);
+            textView.setText(Html.fromHtml(builder.toString().trim()));
+            textView.setContentDescription(Html.fromHtml(descBuilder.toString()));
         }
     }
 
