@@ -100,7 +100,6 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/gpb"
                     android:text="@string/labelGPB" />
 
                 <TextView

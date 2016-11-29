@@ -269,7 +269,7 @@ public class ElementDetailsFragment extends DialogFragment
         getElectronConfiguration(mTxtConfiguration);
         mTxtElectrons.setText(getElectrons());
         mTxtCategory.setText(getCategory());
-        mTxtGPB.setText(getGPB());
+        getGPB(mTxtGPB);
         mTxtDensity.setText(getDensity());
         mTxtMelt.setText(getTemperature(mElement.melt));
         mTxtBoil.setText(getTemperature(mElement.boil));
@@ -391,14 +391,30 @@ public class ElementDetailsFragment extends DialogFragment
     /**
      * Get the group, period, and block.
      *
-     * @return Group, period, block
+     * @param textView The TextView to display the group, period, and block
      */
-    @NonNull
-    private String getGPB() {
-        String group = mElement.group == 0 ? "n/a" : String.valueOf(mElement.group);
-        String period = String.valueOf(mElement.period);
-        String block = String.valueOf(mElement.block);
-        return group + ", " + period + ", " + block;
+    private void getGPB(@NonNull TextView textView) {
+        final StringBuilder builder = new StringBuilder();
+        final StringBuilder descBuilder = new StringBuilder();
+
+        if(mElement.group == 0) {
+            builder.append("∅, ");
+        } else {
+            builder.append(mElement.group).append(", ");
+            descBuilder.append(getString(R.string.descGroup)).append(' ').append(mElement.group)
+                    .append(", ");
+        }
+
+        builder.append(mElement.period).append(", ");
+        descBuilder.append(getString(R.string.descPeriod)).append(' ').append(mElement.period)
+                .append(", ");
+
+        builder.append(mElement.block);
+        descBuilder.append(getString(R.string.descBlock)).append(' ')
+                .append(String.valueOf(mElement.block).toUpperCase());
+
+        textView.setText(builder.toString());
+        textView.setContentDescription(descBuilder.toString());
     }
 
     /**

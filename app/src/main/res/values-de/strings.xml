@@ -67,5 +67,9 @@
 
     <string name="hintFilter">Nach Name oder Symbol sortieren</string>
 
+    <string name="descGroup">Gruppe</string>
+    <string name="descPeriod">Periode</string>
+    <string name="descBlock">Block</string>
+
     <string name="unknown">Unbekannt</string>
 </resources>

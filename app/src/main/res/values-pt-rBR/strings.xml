@@ -67,5 +67,9 @@
 
     <string name="hintFilter">Filtrar por Nome ou Símbolo</string>
 
+    <string name="descGroup">Grupo</string>
+    <string name="descPeriod">Período</string>
+    <string name="descBlock">Bloco</string>
+
     <string name="unknown">desconhecido</string>
 </resources>

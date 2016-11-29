@@ -75,6 +75,9 @@
     <string name="hintFilter">Filter by Name or Symbol</string>
 
     <string name="descTableBlock" formatted="true" translatable="false">%1$d, %2$s, %3$s, %4$s %5$s, %6$s: %7$s</string>
+    <string name="descGroup">Group</string>
+    <string name="descPeriod">Period</string>
+    <string name="descBlock">Block</string>
 
     <string name="unknown">unknown</string>
 </resources>
