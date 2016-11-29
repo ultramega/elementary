@@ -1,4 +1,7 @@
-﻿- v.0.6.1 (9/23/16):
+﻿- v.0.7.0 (11/29/16):
+   * Added accessibility support to the Periodic Table
+   * Improved accessible descriptions in the element details page
+- v.0.6.1 (9/23/16):
    * Added setting in the Options page to change what to display under the symbol in each block
    * Added setting to show or hide the controls under the Periodic Table view
 - v.0.6.0 (9/11/16):
