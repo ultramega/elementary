@@ -254,39 +254,23 @@ public class ElementDetailsFragment extends DialogFragment
         }
 
         mTxtHeader.setText(name);
+        mTxtName.setText(name);
 
-        mTxtElementSymbol.setText(mElement.symbol);
-        mTxtElementNumber.setText(String.valueOf(mElement.number));
-        getWeight(mTxtElementWeight);
-        populateBlockElectrons();
         setBlockBackground();
 
-        mTxtNumber.setText(String.valueOf(mElement.number));
-        mTxtSymbol.setText(mElement.symbol);
-        mTxtSymbol.setContentDescription(mElement.symbol.toUpperCase());
-        mTxtName.setText(name);
-        getWeight(mTxtWeight);
-        getElectronConfiguration(mTxtConfiguration);
-        mTxtElectrons.setText(getElectrons());
-        mTxtCategory.setText(getCategory());
-        getGPB(mTxtGPB);
+        getNumber();
+        getSymbol();
+        getWeight();
+        getCategory();
+        getGPB();
+        getElectronConfiguration();
+        getElectrons();
         mTxtDensity.setText(getDensity());
         mTxtMelt.setText(getTemperature(mElement.melt));
         mTxtBoil.setText(getTemperature(mElement.boil));
         mTxtHeat.setText(getHeat());
         mTxtNegativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
-    }
-
-    /**
-     * Get the category name.
-     *
-     * @return The category name
-     */
-    @NonNull
-    private CharSequence getCategory() {
-        final CharSequence[] cats = getResources().getTextArray(R.array.ptCategories);
-        return cats[mElement.category];
     }
 
     /**
@@ -298,56 +282,76 @@ public class ElementDetailsFragment extends DialogFragment
     }
 
     /**
-     * Fill the column of electrons in the block.
+     * Get the atomic number.
      */
-    private void populateBlockElectrons() {
-        mTxtElementElectrons.setText(TextUtils.join("\n", mElement.electrons));
+    private void getNumber() {
+        mTxtNumber.setText(String.valueOf(mElement.number));
+        mTxtElementNumber.setText(String.valueOf(mElement.number));
     }
 
     /**
-     * Get a value as a temperature string.
-     *
-     * @param kelvin The temperature in Kelvin
-     * @return The converted temperature string
+     * Get the element symbol.
      */
-    @NonNull
-    private String getTemperature(@Nullable Double kelvin) {
-        if(kelvin != null) {
-            switch(PreferenceUtils.getPrefTempUnit()) {
-                case PreferenceUtils.TEMP_C:
-                    return String.format(Locale.getDefault(), "%.2f ℃", UnitUtils.KtoC(kelvin));
-                case PreferenceUtils.TEMP_F:
-                    return String.format(Locale.getDefault(), "%.2f ℉", UnitUtils.KtoF(kelvin));
-                default:
-                    return String.format(Locale.getDefault(), "%.2f K", kelvin);
-            }
-        }
-
-        return mStringUnknown;
+    private void getSymbol() {
+        mTxtSymbol.setText(mElement.symbol);
+        mTxtSymbol.setContentDescription(mElement.symbol.toUpperCase());
+        mTxtElementSymbol.setText(mElement.symbol);
     }
 
     /**
      * Get the atomic weight. For unstable elements, the value of the most stable isotope is
      * returned surrounded by brackets.
-     *
-     * @param textView The TextView to display the weight
      */
-    private void getWeight(@NonNull TextView textView) {
+    private void getWeight() {
         if(mElement.unstable) {
-            textView.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.weight));
-            textView.setContentDescription(String.valueOf((int)mElement.weight));
+            mTxtWeight.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.weight));
+            mTxtWeight.setContentDescription(String.valueOf((int)mElement.weight));
         } else {
-            textView.setText(DECIMAL_FORMAT.format(mElement.weight));
+            mTxtWeight.setText(DECIMAL_FORMAT.format(mElement.weight));
         }
+        mTxtElementWeight.setText(mTxtWeight.getText());
+    }
+
+    /**
+     * Get the category name.
+     */
+    private void getCategory() {
+        final CharSequence[] cats = getResources().getTextArray(R.array.ptCategories);
+        mTxtCategory.setText(cats[mElement.category]);
+    }
+
+    /**
+     * Get the group, period, and block.
+     */
+    private void getGPB() {
+        final StringBuilder builder = new StringBuilder();
+        final StringBuilder descBuilder = new StringBuilder();
+
+        if(mElement.group == 0) {
+            builder.append("∅, ");
+        } else {
+            builder.append(mElement.group).append(", ");
+            descBuilder.append(getString(R.string.descGroup)).append(' ').append(mElement.group)
+                    .append(", ");
+        }
+
+        builder.append(mElement.period).append(", ");
+        descBuilder.append(getString(R.string.descPeriod)).append(' ').append(mElement.period)
+                .append(", ");
+
+        builder.append(mElement.block);
+        descBuilder.append(getString(R.string.descBlock)).append(' ')
+                .append(String.valueOf(mElement.block).toUpperCase());
+
+        mTxtGPB.setText(builder.toString());
+        mTxtGPB.setContentDescription(descBuilder.toString());
     }
 
     /**
      * Get the electron configuration.
-     *
-     * @param textView The TextView to display the electron configuration
      */
     @SuppressWarnings("deprecation")
-    private void getElectronConfiguration(@NonNull TextView textView) {
+    private void getElectronConfiguration() {
         final StringBuilder builder = new StringBuilder();
         final StringBuilder descBuilder = new StringBuilder();
 
@@ -371,51 +375,20 @@ public class ElementDetailsFragment extends DialogFragment
         descBuilder.delete(descBuilder.length() - 2, descBuilder.length() - 1);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            textView.setText(Html.fromHtml(builder.toString().trim(), 0));
-            textView.setContentDescription(Html.fromHtml(descBuilder.toString(), 0));
+            mTxtConfiguration.setText(Html.fromHtml(builder.toString().trim(), 0));
+            mTxtConfiguration.setContentDescription(Html.fromHtml(descBuilder.toString(), 0));
         } else {
-            textView.setText(Html.fromHtml(builder.toString().trim()));
-            textView.setContentDescription(Html.fromHtml(descBuilder.toString()));
+            mTxtConfiguration.setText(Html.fromHtml(builder.toString().trim()));
+            mTxtConfiguration.setContentDescription(Html.fromHtml(descBuilder.toString()));
         }
     }
 
     /**
      * Get the electrons per shell.
-     *
-     * @return List of electrons separated by commas
      */
-    @Nullable
-    private String getElectrons() {
-        return TextUtils.join(", ", mElement.electrons);
-    }
-
-    /**
-     * Get the group, period, and block.
-     *
-     * @param textView The TextView to display the group, period, and block
-     */
-    private void getGPB(@NonNull TextView textView) {
-        final StringBuilder builder = new StringBuilder();
-        final StringBuilder descBuilder = new StringBuilder();
-
-        if(mElement.group == 0) {
-            builder.append("∅, ");
-        } else {
-            builder.append(mElement.group).append(", ");
-            descBuilder.append(getString(R.string.descGroup)).append(' ').append(mElement.group)
-                    .append(", ");
-        }
-
-        builder.append(mElement.period).append(", ");
-        descBuilder.append(getString(R.string.descPeriod)).append(' ').append(mElement.period)
-                .append(", ");
-
-        builder.append(mElement.block);
-        descBuilder.append(getString(R.string.descBlock)).append(' ')
-                .append(String.valueOf(mElement.block).toUpperCase());
-
-        textView.setText(builder.toString());
-        textView.setContentDescription(descBuilder.toString());
+    private void getElectrons() {
+        mTxtElectrons.setText(TextUtils.join(", ", mElement.electrons));
+        mTxtElementElectrons.setText(TextUtils.join("\n", mElement.electrons));
     }
 
     /**
@@ -428,6 +401,28 @@ public class ElementDetailsFragment extends DialogFragment
         if(mElement.density != null) {
             return DECIMAL_FORMAT.format(mElement.density) + " g/cm³";
         }
+        return mStringUnknown;
+    }
+
+    /**
+     * Get a value as a temperature string.
+     *
+     * @param kelvin The temperature in Kelvin
+     * @return The converted temperature string
+     */
+    @NonNull
+    private String getTemperature(@Nullable Double kelvin) {
+        if(kelvin != null) {
+            switch(PreferenceUtils.getPrefTempUnit()) {
+                case PreferenceUtils.TEMP_C:
+                    return String.format(Locale.getDefault(), "%.2f ℃", UnitUtils.KtoC(kelvin));
+                case PreferenceUtils.TEMP_F:
+                    return String.format(Locale.getDefault(), "%.2f ℉", UnitUtils.KtoF(kelvin));
+                default:
+                    return String.format(Locale.getDefault(), "%.2f K", kelvin);
+            }
+        }
+
         return mStringUnknown;
     }
 
