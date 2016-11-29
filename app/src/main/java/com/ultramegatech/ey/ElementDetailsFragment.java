@@ -257,7 +257,7 @@ public class ElementDetailsFragment extends DialogFragment
 
         mTxtElementSymbol.setText(mElement.symbol);
         mTxtElementNumber.setText(String.valueOf(mElement.number));
-        mTxtElementWeight.setText(getWeight());
+        getWeight(mTxtElementWeight);
         populateBlockElectrons();
         setBlockBackground();
 
@@ -265,7 +265,7 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtSymbol.setText(mElement.symbol);
         mTxtSymbol.setContentDescription(mElement.symbol.toUpperCase());
         mTxtName.setText(name);
-        mTxtWeight.setText(getWeight());
+        getWeight(mTxtWeight);
         getElectronConfiguration(mTxtConfiguration);
         mTxtElectrons.setText(getElectrons());
         mTxtCategory.setText(getCategory());
@@ -330,14 +330,15 @@ public class ElementDetailsFragment extends DialogFragment
      * Get the atomic weight. For unstable elements, the value of the most stable isotope is
      * returned surrounded by brackets.
      *
-     * @return The atomic weight
+     * @param textView The TextView to display the weight
      */
-    @Nullable
-    private String getWeight() {
+    private void getWeight(@NonNull TextView textView) {
         if(mElement.unstable) {
-            return String.format(Locale.getDefault(), "[%.0f]", mElement.weight);
+            textView.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.weight));
+            textView.setContentDescription(String.valueOf((int)mElement.weight));
+        } else {
+            textView.setText(DECIMAL_FORMAT.format(mElement.weight));
         }
-        return DECIMAL_FORMAT.format(mElement.weight);
     }
 
     /**
