@@ -107,13 +107,13 @@ public class Element {
      * The electron configuration
      */
     @NonNull
-    public final String configuration;
+    public final Configuration configuration;
 
     /**
      * The number of electrons per shell
      */
     @NonNull
-    public final String electrons;
+    public final Integer[] electrons;
 
     /**
      * Whether the element is unstable
@@ -141,8 +141,8 @@ public class Element {
     Element(int number, @NonNull String symbol, int group, int period, char block,
             double weight, @Nullable Double density, @Nullable Double melt,
             @Nullable Double boil, @Nullable Double heat, @Nullable Double negativity,
-            @Nullable Double abundance, int category, @NonNull String configuration,
-            @NonNull String electrons, boolean unstable) {
+            @Nullable Double abundance, int category, @NonNull Configuration configuration,
+            @NonNull Integer[] electrons, boolean unstable) {
         this.number = number;
         this.symbol = symbol;
         this.group = group;
@@ -159,5 +159,63 @@ public class Element {
         this.configuration = configuration;
         this.electrons = electrons;
         this.unstable = unstable;
+    }
+
+    /**
+     * Represents the electron configuration of an element.
+     */
+    public static class Configuration {
+        /**
+         * The symbol of the base element that this configuration is built upon, if any
+         */
+        @Nullable
+        public final String baseElement;
+
+        /**
+         * The list of orbitals
+         */
+        @NonNull
+        public final Orbital[] orbitals;
+
+        /**
+         * @param baseElement The symbol of the base element that this configuration is built upon,
+         *                    if any
+         * @param orbitals    The list of orbitals
+         */
+        Configuration(@Nullable String baseElement, @NonNull Orbital[] orbitals) {
+            this.baseElement = baseElement;
+            this.orbitals = orbitals;
+        }
+    }
+
+    /**
+     * Represents an orbital in an electron configuration.
+     */
+    public static class Orbital {
+        /**
+         * The shell number
+         */
+        public final int shell;
+
+        /**
+         * The orbital type
+         */
+        public final char orbital;
+
+        /**
+         * The number of electrons in this orbital
+         */
+        public final int electrons;
+
+        /**
+         * @param shell     The shell number
+         * @param orbital   The orbital type
+         * @param electrons The number of electrons in this orbital
+         */
+        Orbital(int shell, char orbital, int electrons) {
+            this.shell = shell;
+            this.orbital = orbital;
+            this.electrons = electrons;
+        }
     }
 }

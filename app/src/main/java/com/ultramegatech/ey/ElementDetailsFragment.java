@@ -34,6 +34,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -301,7 +302,7 @@ public class ElementDetailsFragment extends DialogFragment
      * Fill the column of electrons in the block.
      */
     private void populateBlockElectrons() {
-        mTxtElementElectrons.setText(mElement.electrons.replace(',', '\n'));
+        mTxtElementElectrons.setText(TextUtils.join("\n", mElement.electrons));
     }
 
     /**
@@ -347,8 +348,15 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @Nullable
     private Spanned getElectronConfiguration() {
-        final String value = mElement.configuration
-                .replaceAll("([spdf])([0-9]+)", "$1<sup><small>$2</small></sup>");
+        final StringBuilder builder = new StringBuilder();
+        if(mElement.configuration.baseElement != null) {
+            builder.append('[').append(mElement.configuration.baseElement).append("] ");
+        }
+        for(Element.Orbital orbital : mElement.configuration.orbitals) {
+            builder.append(orbital.shell).append(orbital.orbital);
+            builder.append("<sup><small>").append(orbital.electrons).append("</small></sup> ");
+        }
+        final String value = builder.toString().trim();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return Html.fromHtml(value, 0);
         } else {
@@ -364,7 +372,7 @@ public class ElementDetailsFragment extends DialogFragment
      */
     @Nullable
     private String getElectrons() {
-        return mElement.electrons.replace(",", ", ");
+        return TextUtils.join(", ", mElement.electrons);
     }
 
     /**

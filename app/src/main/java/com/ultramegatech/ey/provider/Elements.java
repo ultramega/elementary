@@ -51,8 +51,10 @@ public class Elements {
                     2.2,
                     1400.0,
                     0,
-                    "1s1",
-                    "1",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 1)
+                    }),
+                    new Integer[] {1},
                     false
             ),
             new Element(
@@ -69,8 +71,10 @@ public class Elements {
                     null,
                     0.008,
                     1,
-                    "1s2",
-                    "2",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2)
+                    }),
+                    new Integer[] {2},
                     false
             ),
             new Element(
@@ -87,8 +91,11 @@ public class Elements {
                     0.98,
                     20.0,
                     2,
-                    "1s2 2s1",
-                    "2,1",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 1)
+                    }),
+                    new Integer[] {2, 1},
                     false
             ),
             new Element(
@@ -105,8 +112,11 @@ public class Elements {
                     1.57,
                     2.8,
                     3,
-                    "1s2 2s2",
-                    "2,2",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2)
+                    }),
+                    new Integer[] {2, 2},
                     false
             ),
             new Element(
@@ -123,8 +133,12 @@ public class Elements {
                     2.04,
                     10.0,
                     4,
-                    "1s2 2s2 2p1",
-                    "2,3",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2),
+                            new Element.Orbital(2, 'p', 1)
+                    }),
+                    new Integer[] {2, 3},
                     false
             ),
             new Element(
@@ -141,8 +155,12 @@ public class Elements {
                     2.55,
                     200.0,
                     0,
-                    "1s2 2s2 2p2",
-                    "2,4",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2),
+                            new Element.Orbital(2, 'p', 2)
+                    }),
+                    new Integer[] {2, 4},
                     false
             ),
             new Element(
@@ -159,8 +177,12 @@ public class Elements {
                     3.04,
                     19.0,
                     0,
-                    "1s2 2s2 2p3",
-                    "2,5",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2),
+                            new Element.Orbital(2, 'p', 3)
+                    }),
+                    new Integer[] {2, 5},
                     false
             ),
             new Element(
@@ -177,8 +199,12 @@ public class Elements {
                     3.44,
                     461000.0,
                     0,
-                    "1s2 2s2 2p4",
-                    "2,6",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2),
+                            new Element.Orbital(2, 'p', 4)
+                    }),
+                    new Integer[] {2, 6},
                     false
             ),
             new Element(
@@ -195,8 +221,12 @@ public class Elements {
                     3.98,
                     585.0,
                     5,
-                    "1s2 2s2 2p5",
-                    "2,7",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2),
+                            new Element.Orbital(2, 'p', 5)
+                    }),
+                    new Integer[] {2, 7},
                     false
             ),
             new Element(
@@ -213,8 +243,12 @@ public class Elements {
                     null,
                     0.005,
                     1,
-                    "1s2 2s2 2p6",
-                    "2,8",
+                    new Element.Configuration(null, new Element.Orbital[] {
+                            new Element.Orbital(1, 's', 2),
+                            new Element.Orbital(2, 's', 2),
+                            new Element.Orbital(2, 'p', 6)
+                    }),
+                    new Integer[] {2, 8},
                     false
             ),
             new Element(
@@ -231,8 +265,10 @@ public class Elements {
                     0.93,
                     23600.0,
                     2,
-                    "[Ne] 3s1",
-                    "2,8,1",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 1},
                     false
             ),
             new Element(
@@ -249,8 +285,10 @@ public class Elements {
                     1.31,
                     23300.0,
                     3,
-                    "[Ne] 3s2",
-                    "2,8,2",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 2},
                     false
             ),
             new Element(
@@ -267,8 +305,11 @@ public class Elements {
                     1.61,
                     82300.0,
                     6,
-                    "[Ne] 3s2 3p1",
-                    "2,8,3",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2),
+                            new Element.Orbital(3, 'p', 1)
+                    }),
+                    new Integer[] {2, 8, 3},
                     false
             ),
             new Element(
@@ -285,8 +326,11 @@ public class Elements {
                     1.9,
                     282000.0,
                     4,
-                    "[Ne] 3s2 3p2",
-                    "2,8,4",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2),
+                            new Element.Orbital(3, 'p', 2)
+                    }),
+                    new Integer[] {2, 8, 4},
                     false
             ),
             new Element(
@@ -303,8 +347,11 @@ public class Elements {
                     2.19,
                     1050.0,
                     0,
-                    "[Ne] 3s2 3p3",
-                    "2,8,5",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2),
+                            new Element.Orbital(3, 'p', 3)
+                    }),
+                    new Integer[] {2, 8, 5},
                     false
             ),
             new Element(
@@ -321,8 +368,11 @@ public class Elements {
                     2.58,
                     350.0,
                     0,
-                    "[Ne] 3s2 3p4",
-                    "2,8,6",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2),
+                            new Element.Orbital(3, 'p', 4)
+                    }),
+                    new Integer[] {2, 8, 6},
                     false
             ),
             new Element(
@@ -339,8 +389,11 @@ public class Elements {
                     3.16,
                     145.0,
                     5,
-                    "[Ne] 3s2 3p5",
-                    "2,8,7",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2),
+                            new Element.Orbital(3, 'p', 5)
+                    }),
+                    new Integer[] {2, 8, 7},
                     false
             ),
             new Element(
@@ -357,8 +410,11 @@ public class Elements {
                     null,
                     3.5,
                     1,
-                    "[Ne] 3s2 3p6",
-                    "2,8,8",
+                    new Element.Configuration("Ne", new Element.Orbital[] {
+                            new Element.Orbital(3, 's', 2),
+                            new Element.Orbital(3, 'p', 6)
+                    }),
+                    new Integer[] {2, 8, 8},
                     false
             ),
             new Element(
@@ -375,8 +431,10 @@ public class Elements {
                     0.82,
                     20900.0,
                     2,
-                    "[Ar] 4s1",
-                    "2,8,8,1",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(4, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 8, 1},
                     false
             ),
             new Element(
@@ -393,8 +451,10 @@ public class Elements {
                     1.0,
                     41500.0,
                     3,
-                    "[Ar] 4s2",
-                    "2,8,8,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 8, 2},
                     false
             ),
             new Element(
@@ -411,8 +471,11 @@ public class Elements {
                     1.36,
                     22.0,
                     7,
-                    "[Ar] 3d1 4s2",
-                    "2,8,9,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 9, 2},
                     false
             ),
             new Element(
@@ -429,8 +492,11 @@ public class Elements {
                     1.54,
                     5650.0,
                     7,
-                    "[Ar] 3d2 4s2",
-                    "2,8,10,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 2),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 10, 2},
                     false
             ),
             new Element(
@@ -447,8 +513,11 @@ public class Elements {
                     1.63,
                     120.0,
                     7,
-                    "[Ar] 3d3 4s2",
-                    "2,8,11,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 3),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 11, 2},
                     false
             ),
             new Element(
@@ -465,8 +534,11 @@ public class Elements {
                     1.66,
                     102.0,
                     7,
-                    "[Ar] 3d5 4s1",
-                    "2,8,13,1",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 5),
+                            new Element.Orbital(4, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 13, 1},
                     false
             ),
             new Element(
@@ -483,8 +555,11 @@ public class Elements {
                     1.55,
                     950.0,
                     7,
-                    "[Ar] 3d5 4s2",
-                    "2,8,13,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 5),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 13, 2},
                     false
             ),
             new Element(
@@ -501,8 +576,11 @@ public class Elements {
                     1.83,
                     56300.0,
                     7,
-                    "[Ar] 3d6 4s2",
-                    "2,8,14,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 6),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 14, 2},
                     false
             ),
             new Element(
@@ -519,8 +597,11 @@ public class Elements {
                     1.88,
                     25.0,
                     7,
-                    "[Ar] 3d7 4s2",
-                    "2,8,15,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 7),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 15, 2},
                     false
             ),
             new Element(
@@ -537,8 +618,11 @@ public class Elements {
                     1.91,
                     84.0,
                     7,
-                    "[Ar] 3d8 4s2",
-                    "2,8,16,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 8),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 16, 2},
                     false
             ),
             new Element(
@@ -555,8 +639,11 @@ public class Elements {
                     1.9,
                     60.0,
                     7,
-                    "[Ar] 3d10 4s1",
-                    "2,8,18,1",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 1},
                     false
             ),
             new Element(
@@ -573,8 +660,11 @@ public class Elements {
                     1.65,
                     70.0,
                     7,
-                    "[Ar] 3d10 4s2",
-                    "2,8,18,2",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 2},
                     false
             ),
             new Element(
@@ -591,8 +681,12 @@ public class Elements {
                     1.81,
                     19.0,
                     6,
-                    "[Ar] 3d10 4s2 4p1",
-                    "2,8,18,3",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2),
+                            new Element.Orbital(4, 'p', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 3},
                     false
             ),
             new Element(
@@ -609,8 +703,12 @@ public class Elements {
                     2.01,
                     1.5,
                     4,
-                    "[Ar] 3d10 4s2 4p2",
-                    "2,8,18,4",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2),
+                            new Element.Orbital(4, 'p', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 4},
                     false
             ),
             new Element(
@@ -627,8 +725,12 @@ public class Elements {
                     2.18,
                     1.8,
                     4,
-                    "[Ar] 3d10 4s2 4p3",
-                    "2,8,18,5",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2),
+                            new Element.Orbital(4, 'p', 3)
+                    }),
+                    new Integer[] {2, 8, 18, 5},
                     false
             ),
             new Element(
@@ -645,8 +747,12 @@ public class Elements {
                     2.55,
                     0.05,
                     0,
-                    "[Ar] 3d10 4s2 4p4",
-                    "2,8,18,6",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2),
+                            new Element.Orbital(4, 'p', 4)
+                    }),
+                    new Integer[] {2, 8, 18, 6},
                     false
             ),
             new Element(
@@ -663,8 +769,12 @@ public class Elements {
                     2.96,
                     2.4,
                     5,
-                    "[Ar] 3d10 4s2 4p5",
-                    "2,8,18,7",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2),
+                            new Element.Orbital(4, 'p', 5)
+                    }),
+                    new Integer[] {2, 8, 18, 7},
                     false
             ),
             new Element(
@@ -681,8 +791,12 @@ public class Elements {
                     3.0,
                     0.0,
                     1,
-                    "[Ar] 3d10 4s2 4p6",
-                    "2,8,18,8",
+                    new Element.Configuration("Ar", new Element.Orbital[] {
+                            new Element.Orbital(3, 'd', 1),
+                            new Element.Orbital(4, 's', 2),
+                            new Element.Orbital(4, 'p', 6)
+                    }),
+                    new Integer[] {2, 8, 18, 8},
                     false
             ),
             new Element(
@@ -699,8 +813,10 @@ public class Elements {
                     0.82,
                     90.0,
                     2,
-                    "[Kr] 5s1",
-                    "2,8,18,8,1",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(5, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 8, 1},
                     false
             ),
             new Element(
@@ -717,8 +833,10 @@ public class Elements {
                     0.95,
                     370.0,
                     3,
-                    "[Kr] 5s2",
-                    "2,8,18,8,2",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(5, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 8, 2},
                     false
             ),
             new Element(
@@ -735,8 +853,11 @@ public class Elements {
                     1.22,
                     33.0,
                     7,
-                    "[Kr] 4d1 5s2",
-                    "2,8,18,9,2",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 9, 2},
                     false
             ),
             new Element(
@@ -753,8 +874,11 @@ public class Elements {
                     1.33,
                     165.0,
                     7,
-                    "[Kr] 4d2 5s2",
-                    "2,8,18,10,2",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 2),
+                            new Element.Orbital(5, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 10, 2},
                     false
             ),
             new Element(
@@ -771,8 +895,11 @@ public class Elements {
                     1.6,
                     20.0,
                     7,
-                    "[Kr] 4d4 5s1",
-                    "2,8,18,12,1",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 4),
+                            new Element.Orbital(5, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 12, 1},
                     false
             ),
             new Element(
@@ -789,8 +916,11 @@ public class Elements {
                     2.16,
                     1.2,
                     7,
-                    "[Kr] 4d5 5s1",
-                    "2,8,18,13,1",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 5),
+                            new Element.Orbital(5, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 13, 1},
                     false
             ),
             new Element(
@@ -807,8 +937,11 @@ public class Elements {
                     1.9,
                     0.0,
                     7,
-                    "[Kr] 4d5 5s2",
-                    "2,8,18,13,2",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 5),
+                            new Element.Orbital(5, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 13, 2},
                     true
             ),
             new Element(
@@ -825,8 +958,11 @@ public class Elements {
                     2.2,
                     0.001,
                     7,
-                    "[Kr] 4d7 5s1",
-                    "2,8,18,15,1",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 7),
+                            new Element.Orbital(5, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 15, 1},
                     false
             ),
             new Element(
@@ -843,8 +979,11 @@ public class Elements {
                     2.28,
                     0.001,
                     7,
-                    "[Kr] 4d8 5s1",
-                    "2,8,18,16,1",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 8),
+                            new Element.Orbital(5, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 16, 1},
                     false
             ),
             new Element(
@@ -861,8 +1000,10 @@ public class Elements {
                     2.2,
                     0.015,
                     7,
-                    "[Kr] 4d10",
-                    "2,8,18,18",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 18},
                     false
             ),
             new Element(
@@ -879,8 +1020,11 @@ public class Elements {
                     1.93,
                     0.075,
                     7,
-                    "[Kr] 4d10 5s1",
-                    "2,8,18,18,1",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 1},
                     false
             ),
             new Element(
@@ -897,8 +1041,11 @@ public class Elements {
                     1.69,
                     0.159,
                     7,
-                    "[Kr] 4d10 5s2",
-                    "2,8,18,18,2",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 2},
                     false
             ),
             new Element(
@@ -915,8 +1062,12 @@ public class Elements {
                     1.78,
                     0.25,
                     6,
-                    "[Kr] 4d10 5s2 5p1",
-                    "2,8,18,18,3",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2),
+                            new Element.Orbital(5, 'p', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 3},
                     false
             ),
             new Element(
@@ -933,8 +1084,12 @@ public class Elements {
                     1.96,
                     2.3,
                     6,
-                    "[Kr] 4d10 5s2 5p2",
-                    "2,8,18,18,4",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2),
+                            new Element.Orbital(5, 'p', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 4},
                     false
             ),
             new Element(
@@ -951,8 +1106,12 @@ public class Elements {
                     2.05,
                     0.2,
                     4,
-                    "[Kr] 4d10 5s2 5p3",
-                    "2,8,18,18,5",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2),
+                            new Element.Orbital(5, 'p', 3)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 5},
                     false
             ),
             new Element(
@@ -969,8 +1128,12 @@ public class Elements {
                     2.1,
                     0.001,
                     4,
-                    "[Kr] 4d10 5s2 5p4",
-                    "2,8,18,18,6",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2),
+                            new Element.Orbital(5, 'p', 4)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 6},
                     false
             ),
             new Element(
@@ -987,8 +1150,12 @@ public class Elements {
                     2.66,
                     0.45,
                     5,
-                    "[Kr] 4d10 5s2 5p5",
-                    "2,8,18,18,7",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2),
+                            new Element.Orbital(5, 'p', 5)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 7},
                     false
             ),
             new Element(
@@ -1005,8 +1172,12 @@ public class Elements {
                     2.6,
                     0.0,
                     1,
-                    "[Kr] 4d10 5s2 5p6",
-                    "2,8,18,18,8",
+                    new Element.Configuration("Kr", new Element.Orbital[] {
+                            new Element.Orbital(4, 'd', 1),
+                            new Element.Orbital(5, 's', 2),
+                            new Element.Orbital(5, 'p', 6)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 8},
                     false
             ),
             new Element(
@@ -1023,8 +1194,10 @@ public class Elements {
                     0.79,
                     3.0,
                     2,
-                    "[Xe] 6s1",
-                    "2,8,18,18,8,1",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(6, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 8, 1},
                     false
             ),
             new Element(
@@ -1041,8 +1214,10 @@ public class Elements {
                     0.89,
                     425.0,
                     3,
-                    "[Xe] 6s2",
-                    "2,8,18,18,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 8, 2},
                     false
             ),
             new Element(
@@ -1059,8 +1234,11 @@ public class Elements {
                     1.1,
                     39.0,
                     8,
-                    "[Xe] 5d1 6s2",
-                    "2,8,18,18,9,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 18, 9, 2},
                     false
             ),
             new Element(
@@ -1077,8 +1255,12 @@ public class Elements {
                     1.12,
                     66.5,
                     8,
-                    "[Xe] 4f1 5d1 6s2",
-                    "2,8,18,19,9,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 19, 9, 2},
                     false
             ),
             new Element(
@@ -1095,8 +1277,11 @@ public class Elements {
                     1.13,
                     9.2,
                     8,
-                    "[Xe] 4f3 6s2",
-                    "2,8,18,21,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 3),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 21, 8, 2},
                     false
             ),
             new Element(
@@ -1113,8 +1298,11 @@ public class Elements {
                     1.14,
                     41.5,
                     8,
-                    "[Xe] 4f4 6s2",
-                    "2,8,18,22,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 4),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 22, 8, 2},
                     false
             ),
             new Element(
@@ -1131,8 +1319,11 @@ public class Elements {
                     null,
                     0.0,
                     8,
-                    "[Xe] 4f5 6s2",
-                    "2,8,18,23,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 5),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 23, 8, 2},
                     true
             ),
             new Element(
@@ -1149,8 +1340,11 @@ public class Elements {
                     1.17,
                     7.05,
                     8,
-                    "[Xe] 4f6 6s2",
-                    "2,8,18,24,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 6),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 24, 8, 2},
                     false
             ),
             new Element(
@@ -1167,8 +1361,11 @@ public class Elements {
                     1.2,
                     2.0,
                     8,
-                    "[Xe] 4f7 6s2",
-                    "2,8,18,25,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 7),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 25, 8, 2},
                     false
             ),
             new Element(
@@ -1185,8 +1382,12 @@ public class Elements {
                     1.2,
                     6.2,
                     8,
-                    "[Xe] 4f7 5d1 6s2",
-                    "2,8,18,25,9,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 7),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 25, 9, 2},
                     false
             ),
             new Element(
@@ -1203,8 +1404,11 @@ public class Elements {
                     1.2,
                     1.2,
                     8,
-                    "[Xe] 4f9 6s2",
-                    "2,8,18,27,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 9),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 27, 8, 2},
                     false
             ),
             new Element(
@@ -1221,8 +1425,11 @@ public class Elements {
                     1.22,
                     5.2,
                     8,
-                    "[Xe] 4f10 6s2",
-                    "2,8,18,28,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 28, 8, 2},
                     false
             ),
             new Element(
@@ -1239,8 +1446,11 @@ public class Elements {
                     1.23,
                     1.3,
                     8,
-                    "[Xe] 4f11 6s2",
-                    "2,8,18,29,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 29, 8, 2},
                     false
             ),
             new Element(
@@ -1257,8 +1467,11 @@ public class Elements {
                     1.24,
                     3.5,
                     8,
-                    "[Xe] 4f12 6s2",
-                    "2,8,18,30,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 30, 8, 2},
                     false
             ),
             new Element(
@@ -1275,8 +1488,11 @@ public class Elements {
                     1.25,
                     0.52,
                     8,
-                    "[Xe] 4f13 6s2",
-                    "2,8,18,31,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 31, 8, 2},
                     false
             ),
             new Element(
@@ -1293,8 +1509,11 @@ public class Elements {
                     1.1,
                     3.2,
                     8,
-                    "[Xe] 4f14 6s2",
-                    "2,8,18,32,8,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 8, 2},
                     false
             ),
             new Element(
@@ -1311,8 +1530,12 @@ public class Elements {
                     1.27,
                     0.8,
                     8,
-                    "[Xe] 4f14 5d1 6s2",
-                    "2,8,18,32,9,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 9, 2},
                     false
             ),
             new Element(
@@ -1329,8 +1552,12 @@ public class Elements {
                     1.3,
                     3.0,
                     7,
-                    "[Xe] 4f14 5d2 6s2",
-                    "2,8,18,32,10,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 2),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 10, 2},
                     false
             ),
             new Element(
@@ -1347,8 +1574,12 @@ public class Elements {
                     1.5,
                     2.0,
                     7,
-                    "[Xe] 4f14 5d3 6s2",
-                    "2,8,18,32,11,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 3),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 11, 2},
                     false
             ),
             new Element(
@@ -1365,8 +1596,12 @@ public class Elements {
                     2.36,
                     1.3,
                     7,
-                    "[Xe] 4f14 5d4 6s2",
-                    "2,8,18,32,12,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 4),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 12, 2},
                     false
             ),
             new Element(
@@ -1383,8 +1618,12 @@ public class Elements {
                     1.9,
                     0.0,
                     7,
-                    "[Xe] 4f14 5d5 6s2",
-                    "2,8,18,32,13,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 5),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 13, 2},
                     false
             ),
             new Element(
@@ -1401,8 +1640,12 @@ public class Elements {
                     2.2,
                     0.002,
                     7,
-                    "[Xe] 4f14 5d6 6s2",
-                    "2,8,18,32,14,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 6),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 14, 2},
                     false
             ),
             new Element(
@@ -1419,8 +1662,12 @@ public class Elements {
                     2.2,
                     0.001,
                     7,
-                    "[Xe] 4f14 5d7 6s2",
-                    "2,8,18,32,15,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 7),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 15, 2},
                     false
             ),
             new Element(
@@ -1437,8 +1684,12 @@ public class Elements {
                     2.28,
                     0.005,
                     7,
-                    "[Xe] 4f14 5d9 6s1",
-                    "2,8,18,32,17,1",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 9),
+                            new Element.Orbital(6, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 17, 1},
                     false
             ),
             new Element(
@@ -1455,8 +1706,12 @@ public class Elements {
                     2.54,
                     0.004,
                     7,
-                    "[Xe] 4f14 5d10 6s1",
-                    "2,8,18,32,18,1",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 1},
                     false
             ),
             new Element(
@@ -1473,8 +1728,12 @@ public class Elements {
                     2.0,
                     0.085,
                     7,
-                    "[Xe] 4f14 5d10 6s2",
-                    "2,8,18,32,18,2",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 2},
                     false
             ),
             new Element(
@@ -1491,8 +1750,13 @@ public class Elements {
                     1.62,
                     0.85,
                     6,
-                    "[Xe] 4f14 5d10 6s2 6p1",
-                    "2,8,18,32,18,3",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2),
+                            new Element.Orbital(6, 'p', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 3},
                     false
             ),
             new Element(
@@ -1509,8 +1773,13 @@ public class Elements {
                     2.33,
                     14.0,
                     6,
-                    "[Xe] 4f14 5d10 6s2 6p2",
-                    "2,8,18,32,18,4",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2),
+                            new Element.Orbital(6, 'p', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 4},
                     false
             ),
             new Element(
@@ -1527,8 +1796,13 @@ public class Elements {
                     2.02,
                     0.009,
                     6,
-                    "[Xe] 4f14 5d10 6s2 6p3",
-                    "2,8,18,32,18,5",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2),
+                            new Element.Orbital(6, 'p', 3)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 5},
                     false
             ),
             new Element(
@@ -1545,8 +1819,13 @@ public class Elements {
                     2.0,
                     0.0,
                     4,
-                    "[Xe] 4f14 5d10 6s2 6p4",
-                    "2,8,18,32,18,6",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2),
+                            new Element.Orbital(6, 'p', 4)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 6},
                     true
             ),
             new Element(
@@ -1563,8 +1842,13 @@ public class Elements {
                     2.2,
                     0.0,
                     5,
-                    "[Xe] 4f14 5d10 6s2 6p5",
-                    "2,8,18,32,18,7",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2),
+                            new Element.Orbital(6, 'p', 5)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 7},
                     true
             ),
             new Element(
@@ -1581,8 +1865,13 @@ public class Elements {
                     null,
                     0.0,
                     1,
-                    "[Xe] 4f14 5d10 6s2 6p6",
-                    "2,8,18,32,18,8",
+                    new Element.Configuration("Xe", new Element.Orbital[] {
+                            new Element.Orbital(4, 'f', 1),
+                            new Element.Orbital(5, 'd', 1),
+                            new Element.Orbital(6, 's', 2),
+                            new Element.Orbital(6, 'p', 6)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 8},
                     true
             ),
             new Element(
@@ -1599,8 +1888,10 @@ public class Elements {
                     0.7,
                     0.0,
                     2,
-                    "[Rn] 7s1",
-                    "2,8,18,32,18,8,1",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(7, 's', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 8, 1},
                     true
             ),
             new Element(
@@ -1617,8 +1908,10 @@ public class Elements {
                     0.9,
                     0.0,
                     3,
-                    "[Rn] 7s2",
-                    "2,8,18,32,18,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 8, 2},
                     true
             ),
             new Element(
@@ -1635,8 +1928,11 @@ public class Elements {
                     1.1,
                     0.0,
                     9,
-                    "[Rn] 6d1 7s2",
-                    "2,8,18,32,18,9,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 9, 2},
                     true
             ),
             new Element(
@@ -1653,8 +1949,11 @@ public class Elements {
                     1.3,
                     9.6,
                     9,
-                    "[Rn] 6d2 7s2",
-                    "2,8,18,32,18,10,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(6, 'd', 2),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 18, 10, 2},
                     false
             ),
             new Element(
@@ -1671,8 +1970,12 @@ public class Elements {
                     1.5,
                     0.0,
                     9,
-                    "[Rn] 5f2 6d1 7s2",
-                    "2,8,18,32,20,9,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 2),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 20, 9, 2},
                     false
             ),
             new Element(
@@ -1689,8 +1992,12 @@ public class Elements {
                     1.38,
                     2.7,
                     9,
-                    "[Rn] 5f3 6d1 7s2",
-                    "2,8,18,32,21,9,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 3),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 21, 9, 2},
                     false
             ),
             new Element(
@@ -1707,8 +2014,12 @@ public class Elements {
                     1.36,
                     0.0,
                     9,
-                    "[Rn] 5f4 6d1 7s2",
-                    "2,8,18,32,22,9,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 4),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 22, 9, 2},
                     true
             ),
             new Element(
@@ -1725,8 +2036,11 @@ public class Elements {
                     1.28,
                     0.0,
                     9,
-                    "[Rn] 5f6 7s2",
-                    "2,8,18,32,24,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 6),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 24, 8, 2},
                     true
             ),
             new Element(
@@ -1743,8 +2057,11 @@ public class Elements {
                     1.3,
                     0.0,
                     9,
-                    "[Rn] 5f7 7s2",
-                    "2,8,18,32,25,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 7),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 25, 8, 2},
                     true
             ),
             new Element(
@@ -1761,8 +2078,12 @@ public class Elements {
                     1.3,
                     0.0,
                     9,
-                    "[Rn] 5f7 6d1 7s2",
-                    "2,8,18,32,25,9,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 7),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 25, 9, 2},
                     true
             ),
             new Element(
@@ -1779,8 +2100,11 @@ public class Elements {
                     1.3,
                     0.0,
                     9,
-                    "[Rn] 5f9 7s2",
-                    "2,8,18,32,27,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 9),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 27, 8, 2},
                     true
             ),
             new Element(
@@ -1797,8 +2121,11 @@ public class Elements {
                     1.3,
                     0.0,
                     9,
-                    "[Rn] 5f10 7s2",
-                    "2,8,18,32,28,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 28, 8, 2},
                     true
             ),
             new Element(
@@ -1815,8 +2142,11 @@ public class Elements {
                     1.3,
                     null,
                     9,
-                    "[Rn] 5f11 7s2",
-                    "2,8,18,32,29,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 29, 8, 2},
                     true
             ),
             new Element(
@@ -1833,8 +2163,11 @@ public class Elements {
                     1.3,
                     null,
                     9,
-                    "[Rn] 5f12 7s2",
-                    "2,8,18,32,30,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 30, 8, 2},
                     true
             ),
             new Element(
@@ -1851,8 +2184,11 @@ public class Elements {
                     1.3,
                     null,
                     9,
-                    "[Rn] 5f13 7s2",
-                    "2,8,18,32,31,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 31, 8, 2},
                     true
             ),
             new Element(
@@ -1869,8 +2205,11 @@ public class Elements {
                     1.3,
                     null,
                     9,
-                    "[Rn] 5f14 7s2",
-                    "2,8,18,32,32,8,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 8, 2},
                     true
             ),
             new Element(
@@ -1887,8 +2226,12 @@ public class Elements {
                     1.3,
                     null,
                     9,
-                    "[Rn] 5f14 7s2 7p1",
-                    "2,8,18,32,32,8,3",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 8, 3},
                     true
             ),
             new Element(
@@ -1905,8 +2248,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 5f14 6d2 7s2",
-                    "2,8,18,32,32,10,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 2),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 10, 2},
                     true
             ),
             new Element(
@@ -1923,8 +2270,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 5f14 6d3 7s2",
-                    "2,8,18,32,32,11,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 3),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 11, 2},
                     true
             ),
             new Element(
@@ -1941,8 +2292,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 7s2 5f14 6d4",
-                    "2,8,18,32,32,12,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 4)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 12, 2},
                     true
             ),
             new Element(
@@ -1959,8 +2314,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 5f14 6d5 7s2",
-                    "2,8,18,32,32,13,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 5),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 13, 2},
                     true
             ),
             new Element(
@@ -1977,8 +2336,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 5f14 6d6 7s2",
-                    "2,8,18,32,32,14,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 6),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 14, 2},
                     true
             ),
             new Element(
@@ -1995,8 +2358,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 7s2 5f14 6d7",
-                    "2,8,18,32,32,15,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 7)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 15, 2},
                     true
             ),
             new Element(
@@ -2013,8 +2380,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 7s2 5f14 6d8",
-                    "2,8,18,32,32,17,1",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 8)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 17, 1},
                     true
             ),
             new Element(
@@ -2031,8 +2402,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 5f14 6d9 7s2",
-                    "2,8,18,32,32,18,1",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 9),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 1},
                     true
             ),
             new Element(
@@ -2049,8 +2424,12 @@ public class Elements {
                     null,
                     null,
                     7,
-                    "[Rn] 5f14 6d10 7s2",
-                    "2,8,18,32,32,18,2",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 2},
                     true
             ),
             new Element(
@@ -2067,8 +2446,13 @@ public class Elements {
                     null,
                     null,
                     6,
-                    "[Rn] 5f14 6d10 7s2 7p1",
-                    "2,8,18,32,32,18,3",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 1)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 3},
                     true
             ),
             new Element(
@@ -2085,8 +2469,13 @@ public class Elements {
                     null,
                     null,
                     6,
-                    "[Rn] 5f14 6d10 7s2 7p2",
-                    "2,8,18,32,32,18,4",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 2)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 4},
                     true
             ),
             new Element(
@@ -2103,8 +2492,13 @@ public class Elements {
                     null,
                     null,
                     6,
-                    "[Rn] 5f14 6d10 7s2 7p3",
-                    "2,8,18,32,32,18,5",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 3)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 5},
                     true
             ),
             new Element(
@@ -2121,8 +2515,13 @@ public class Elements {
                     null,
                     null,
                     6,
-                    "[Rn] 5f14 6d10 7s2 7p4",
-                    "2,8,18,32,32,18,6",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 4)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 6},
                     true
             ),
             new Element(
@@ -2139,8 +2538,13 @@ public class Elements {
                     null,
                     null,
                     5,
-                    "[Rn] 5f14 6d10 7s2 7p5",
-                    "2,8,18,32,32,18,7",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 5)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 7},
                     true
             ),
             new Element(
@@ -2157,10 +2561,15 @@ public class Elements {
                     null,
                     null,
                     1,
-                    "[Rn] 5f14 6d10 7s2 7p6",
-                    "2,8,18,32,32,18,8",
+                    new Element.Configuration("Rn", new Element.Orbital[] {
+                            new Element.Orbital(5, 'f', 1),
+                            new Element.Orbital(6, 'd', 1),
+                            new Element.Orbital(7, 's', 2),
+                            new Element.Orbital(7, 'p', 6)
+                    }),
+                    new Integer[] {2, 8, 18, 32, 32, 18, 8},
                     true
-            ),
+            )
     };
 
     /**
