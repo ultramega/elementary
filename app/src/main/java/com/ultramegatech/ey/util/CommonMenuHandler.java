@@ -22,10 +22,11 @@
  */
 package com.ultramegatech.ey.util;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 
+import com.ultramegatech.ey.AboutFragment;
 import com.ultramegatech.ey.EyPreferenceActivity;
 import com.ultramegatech.ey.R;
 
@@ -38,23 +39,17 @@ public class CommonMenuHandler {
     /**
      * Select an action based on a menu selection.
      *
-     * @param context The Context
-     * @param id      Menu item ID
+     * @param activity The calling Activity
+     * @param id       Menu item ID
      */
-    public static void handleSelect(@NonNull Context context, int id) {
+    public static void handleSelect(@NonNull FragmentActivity activity, int id) {
         switch(id) {
             case R.id.menu_options:
-                launchOptionsActivity(context);
+                activity.startActivity(new Intent(activity, EyPreferenceActivity.class));
+                break;
+            case R.id.menu_about:
+                AboutFragment.showDialog(activity.getSupportFragmentManager());
                 break;
         }
-    }
-
-    /**
-     * Launch the EyPreferenceActivity.
-     *
-     * @param context The Context
-     */
-    private static void launchOptionsActivity(@NonNull Context context) {
-        context.startActivity(new Intent(context, EyPreferenceActivity.class));
     }
 }

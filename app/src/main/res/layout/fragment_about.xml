@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="1">
+
+            <TableRow>
+
+                <TextView
+                    style="@style/ElementDetails.Label"
+                    android:text="@string/aboutVersion" />
+
+                <TextView
+                    android:id="@+id/version"
+                    style="@style/ElementDetails.Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textIsSelectable="true" />
+            </TableRow>
+
+            <TableRow android:paddingTop="8dp">
+
+                <TextView
+                    style="@style/ElementDetails.Label"
+                    android:text="@string/aboutSupport" />
+
+                <TextView
+                    android:id="@+id/support"
+                    style="@style/Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aboutEmail" />
+            </TableRow>
+
+            <TableRow android:paddingTop="8dp">
+
+                <TextView
+                    style="@style/ElementDetails.Label"
+                    android:text="@string/aboutWebsite" />
+
+                <TextView
+                    android:id="@+id/website"
+                    style="@style/Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aboutWebsiteUrl" />
+            </TableRow>
+
+            <TableRow android:paddingTop="8dp">
+
+                <TextView
+                    style="@style/ElementDetails.Label"
+                    android:text="@string/aboutLicense" />
+
+                <TextView
+                    android:id="@+id/license"
+                    style="@style/Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="start"
+                    android:text="@string/aboutLicenseName" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>

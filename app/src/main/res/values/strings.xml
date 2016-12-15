@@ -24,6 +24,7 @@
 <resources>
     <string name="app_name" translatable="false">Elementary</string>
 
+    <string name="titleAbout">About Elementary</string>
     <string name="titleElementDetails" formatted="true">Element details for %s</string>
     <string name="titlePeriodicTable">Periodic Table of the Elements</string>
     <string name="titleElementList">List of elements</string>
@@ -34,6 +35,7 @@
     <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Sort</string>
 
+    <string name="menuAbout">About</string>
     <string name="menuOptions">Settings</string>
     <string name="menuList">List view</string>
     <string name="menuTable">Table view</string>
@@ -72,6 +74,20 @@
     <string name="labelBlockColors">Color by</string>
 
     <string name="hintFilter">Filter by name or symbol</string>
+
+    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
+    <string name="aboutEmail" translatable="false">elementary@ultramegasoft.com</string>
+    <string name="aboutEmailSubject" translatable="false" formatted="true">Elementary %s</string>
+    <string name="aboutSendEmail">Contact support</string>
+    <string name="aboutLicense">License</string>
+    <string name="aboutLicenseName">MIT License</string>
+    <string name="aboutLicenseUrl" translatable="false">https://raw.githubusercontent.com/ultramega/elementary/master/LICENSE.txt</string>
+    <string name="aboutSupport">Support</string>
+    <string name="aboutVersion">Version</string>
+    <string name="aboutWebsite">Website</string>
+    <string name="aboutWebsiteUrl" translatable="false">https://github.com/ultramega/elementary</string>
+
+    <string name="errorNoEmail">No email client found</string>
 
     <string name="descTableBlock" formatted="true" translatable="false">%1$d, %2$s, %3$s, %4$s %5$s, %6$s %7$s</string>
     <string name="descGroup">group</string>

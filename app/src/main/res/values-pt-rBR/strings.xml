@@ -22,6 +22,7 @@
   THE SOFTWARE.
 -->
 <resources>
+    <string name="titleAbout">Sobre Elementary</string>
     <string name="titleElementDetails" formatted="true">Detalhes do elemento para %s</string>
     <string name="titlePeriodicTable">Tabela Periódica dos Elementos</string>
     <string name="titleElementList">Lista dos elementos</string>
@@ -32,6 +33,7 @@
     <string name="buttonWiki">Wikipédia</string>
     <string name="buttonSort">Ordenar</string>
 
+    <string name="menuAbout">Informação</string>
     <string name="menuOptions">Configurar</string>
     <string name="menuList">Exibição em lista</string>
     <string name="menuTable">Exibição em tabela</string>
@@ -65,6 +67,15 @@
     <string name="labelBlockColors">Colorir por</string>
 
     <string name="hintFilter">Filtrar por nome ou símbolo</string>
+
+    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
+    <string name="aboutSendEmail">Contacte o suporte técnico</string>
+    <string name="aboutLicense">Licença</string>
+    <string name="aboutSupport">Apoio</string>
+    <string name="aboutVersion">Versão</string>
+    <string name="aboutWebsite">Site</string>
+
+    <string name="errorNoEmail">Nenhum cliente de e-mail encontrado</string>
 
     <string name="descGroup">grupo</string>
     <string name="descPeriod">período</string>
