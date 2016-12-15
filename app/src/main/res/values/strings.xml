@@ -24,60 +24,59 @@
 <resources>
     <string name="app_name" translatable="false">Elementary</string>
 
-    <string name="titleElementDetails" formatted="true">Element Details - %s</string>
+    <string name="titleElementDetails" formatted="true">Element details for %s</string>
     <string name="titlePeriodicTable">Periodic Table of the Elements</string>
-    <string name="titleElementList">List of Elements</string>
-    <string name="titlePreferences">Elementary Options</string>
-    <string name="titleSort">Sort by:</string>
+    <string name="titleElementList">List of elements</string>
+    <string name="titlePreferences">Elementary settings</string>
+    <string name="titleSort">Sort by</string>
 
-    <string name="buttonVideo">Watch Video</string>
+    <string name="buttonVideo">Watch video</string>
     <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Sort</string>
 
-    <string name="menuOptions">Options</string>
-    <string name="menuList">List View</string>
-    <string name="menuTable">Table View</string>
+    <string name="menuOptions">Settings</string>
+    <string name="menuList">List view</string>
+    <string name="menuTable">Table view</string>
 
     <string name="prefKeyDarkTheme" translatable="false">theme</string>
-    <string name="prefTitleDarkTheme">Dark Theme</string>
-    <string name="prefSummaryDarkTheme">Use the dark theme</string>
+    <string name="prefTitleDarkTheme">Dark theme</string>
     <string name="prefKeyTemp" translatable="false">tempUnit</string>
-    <string name="prefTitleTemp">Temperature Units</string>
+    <string name="prefTitleTemp">Temperature units</string>
     <string name="prefSummaryTemp">Units used to display temperature values</string>
     <string name="prefKeyColors" translatable="false">elementColors</string>
-    <string name="prefTitleColors">Element Colors</string>
+    <string name="prefTitleColors">Element colors</string>
     <string name="prefSummaryColors">Property used to color the elements</string>
     <string name="prefKeySubtextValue" translatable="false">subtextValue</string>
-    <string name="prefTitleSubtextValue">Block Value</string>
+    <string name="prefTitleSubtextValue">Block value</string>
     <string name="prefSummarySubtextValue">The value to display under the element symbol</string>
     <string name="prefKeyShowControls" translatable="false">showControls</string>
-    <string name="prefTitleShowControls">Periodic Table Controls</string>
-    <string name="prefSummaryShowControls">Show the controls for the Periodic Table in the Table View</string>
+    <string name="prefTitleShowControls">Periodic Table controls</string>
+    <string name="prefSummaryShowControls">Show the controls for the Periodic Table in the table view</string>
 
-    <string name="labelNumber">Atomic Number:</string>
-    <string name="labelSymbol">Symbol:</string>
-    <string name="labelName">Name:</string>
-    <string name="labelWeight">Atomic Weight:</string>
-    <string name="labelCategory">Category:</string>
-    <string name="labelGPB">Group, Period, Block:</string>
-    <string name="labelConfiguration">Electron Configuration:</string>
-    <string name="labelElectrons">Electrons Per Shell:</string>
-    <string name="labelDensity">Density:</string>
-    <string name="labelMelt">Melting Point:</string>
-    <string name="labelBoil">Boiling Point:</string>
-    <string name="labelHeat">Specific Heat:</string>
-    <string name="labelNegativity">Electronegativity:</string>
-    <string name="labelAbundance">Abundance:</string>
+    <string name="labelNumber">Atomic number</string>
+    <string name="labelSymbol">Symbol</string>
+    <string name="labelName">Name</string>
+    <string name="labelWeight">Atomic weight</string>
+    <string name="labelCategory">Category</string>
+    <string name="labelGPB">Group, period, block</string>
+    <string name="labelConfiguration">Electron configuration</string>
+    <string name="labelElectrons">Electrons per shell</string>
+    <string name="labelDensity">Density</string>
+    <string name="labelMelt">Melting point</string>
+    <string name="labelBoil">Boiling point</string>
+    <string name="labelHeat">Specific heat</string>
+    <string name="labelNegativity">Electronegativity</string>
+    <string name="labelAbundance">Abundance</string>
 
-    <string name="labelSubtextValue">Display:</string>
-    <string name="labelBlockColors">Color by:</string>
+    <string name="labelSubtextValue">Display</string>
+    <string name="labelBlockColors">Color by</string>
 
-    <string name="hintFilter">Filter by Name or Symbol</string>
+    <string name="hintFilter">Filter by name or symbol</string>
 
-    <string name="descTableBlock" formatted="true" translatable="false">%1$d, %2$s, %3$s, %4$s %5$s, %6$s: %7$s</string>
-    <string name="descGroup">Group</string>
-    <string name="descPeriod">Period</string>
-    <string name="descBlock">Block</string>
+    <string name="descTableBlock" formatted="true" translatable="false">%1$d, %2$s, %3$s, %4$s %5$s, %6$s %7$s</string>
+    <string name="descGroup">group</string>
+    <string name="descPeriod">period</string>
+    <string name="descBlock">block</string>
 
     <string name="unknown">unknown</string>
 </resources>

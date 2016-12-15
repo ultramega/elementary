@@ -22,22 +22,21 @@
   THE SOFTWARE.
 -->
 <resources>
-    <string name="titleElementDetails" formatted="true">Detalhes do elemento - %s</string>
+    <string name="titleElementDetails" formatted="true">Detalhes do elemento para %s</string>
     <string name="titlePeriodicTable">Tabela Periódica dos Elementos</string>
-    <string name="titleElementList">Lista dos Elementos</string>
-    <string name="titlePreferences">Opções do Elementary</string>
-    <string name="titleSort">Ordenar por:</string>
+    <string name="titleElementList">Lista dos elementos</string>
+    <string name="titlePreferences">Configurar do elementary</string>
+    <string name="titleSort">Ordenar por</string>
 
     <string name="buttonVideo">Assistir vídeo</string>
     <string name="buttonWiki">Wikipédia</string>
     <string name="buttonSort">Ordenar</string>
 
-    <string name="menuOptions">Opções</string>
+    <string name="menuOptions">Configurar</string>
     <string name="menuList">Exibição em lista</string>
     <string name="menuTable">Exibição em tabela</string>
 
     <string name="prefTitleDarkTheme">Tema escuro</string>
-    <string name="prefSummaryDarkTheme">Usa um tema escuro</string>
     <string name="prefTitleTemp">Unidade de temperatura</string>
     <string name="prefSummaryTemp">Unidade usada para mostrar os valores de temperatura</string>
     <string name="prefTitleColors">Cores dos elementos</string>
@@ -47,29 +46,29 @@
     <string name="prefTitleShowControls">Controles da Tabela Periódica</string>
     <string name="prefSummaryShowControls">Mostra os controles da Tabela Periódica na exibição em tabela</string>
 
-    <string name="labelNumber">Número atômico:</string>
-    <string name="labelSymbol">Símbolo:</string>
-    <string name="labelName">Nome:</string>
-    <string name="labelWeight">Massa atômica relativa:</string>
-    <string name="labelCategory">Categoria:</string>
-    <string name="labelGPB">Grupo, Período, Bloco:</string>
-    <string name="labelConfiguration">Configuração eletrônica:</string>
-    <string name="labelElectrons">Elétrons por nível:</string>
-    <string name="labelDensity">Densidade:</string>
-    <string name="labelMelt">Ponto de fusão:</string>
-    <string name="labelBoil">Ponto de ebulição:</string>
-    <string name="labelHeat">Calor específico:</string>
-    <string name="labelNegativity">Eletronegatividade:</string>
-    <string name="labelAbundance">Abundância:</string>
+    <string name="labelNumber">Número atômico</string>
+    <string name="labelSymbol">Símbolo</string>
+    <string name="labelName">Nome</string>
+    <string name="labelWeight">Massa atômica relativa</string>
+    <string name="labelCategory">Categoria</string>
+    <string name="labelGPB">Grupo, período, bloco</string>
+    <string name="labelConfiguration">Configuração eletrônica</string>
+    <string name="labelElectrons">Elétrons por nível</string>
+    <string name="labelDensity">Densidade</string>
+    <string name="labelMelt">Ponto de fusão</string>
+    <string name="labelBoil">Ponto de ebulição</string>
+    <string name="labelHeat">Calor específico</string>
+    <string name="labelNegativity">Eletronegatividade</string>
+    <string name="labelAbundance">Abundância</string>
 
-    <string name="labelSubtextValue">Mostrar:</string>
-    <string name="labelBlockColors">Colorir por:</string>
+    <string name="labelSubtextValue">Mostrar</string>
+    <string name="labelBlockColors">Colorir por</string>
 
-    <string name="hintFilter">Filtrar por Nome ou Símbolo</string>
+    <string name="hintFilter">Filtrar por nome ou símbolo</string>
 
-    <string name="descGroup">Grupo</string>
-    <string name="descPeriod">Período</string>
-    <string name="descBlock">Bloco</string>
+    <string name="descGroup">grupo</string>
+    <string name="descPeriod">período</string>
+    <string name="descBlock">bloco</string>
 
     <string name="unknown">desconhecido</string>
 </resources>

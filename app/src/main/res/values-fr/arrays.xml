@@ -39,16 +39,16 @@
         <item>Bloc</item>
     </string-array>
     <string-array name="subtextValueNames">
-        <item>Masse Atomique</item>
+        <item>Masse atomique</item>
         <item>Densité (g/cm³)</item>
-        <item>Point De Fusion (K)</item>
-        <item>Point d\'Ébullition (K)</item>
-        <item>Chaleur Spécifique (J/g·K)</item>
+        <item>Point de fusion (K)</item>
+        <item>Point d\'ebullition (K)</item>
+        <item>Chaleur spécifique (J/g·K)</item>
         <item>Électronégativité (Pauling)</item>
         <item>Abondance (mg/kg)</item>
     </string-array>
     <string-array name="sortFieldNames">
-        <item>Numéro Atomique</item>
+        <item>Numéro atomique</item>
         <item>Nom de l\'élément</item>
     </string-array>
 </resources>

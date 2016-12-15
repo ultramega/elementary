@@ -22,54 +22,53 @@
   THE SOFTWARE.
 -->
 <resources>
-    <string name="titleElementDetails" formatted="true">Detalles Elemento - %s</string>
+    <string name="titleElementDetails" formatted="true">Detalles elemento por %s</string>
     <string name="titlePeriodicTable">Tabla Periódica de los Elementos</string>
-    <string name="titleElementList">Lista de Elementos</string>
-    <string name="titlePreferences">Opciones de Elementary</string>
-    <string name="titleSort">Ordenar por:</string>
+    <string name="titleElementList">Lista de elementos</string>
+    <string name="titlePreferences">Ajustes de Elementary</string>
+    <string name="titleSort">Ordenar por</string>
 
-    <string name="buttonVideo">Ver Video</string>
+    <string name="buttonVideo">Ver video</string>
     <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Clase</string>
 
-    <string name="menuOptions">Opciones</string>
-    <string name="menuList">Vista de la Lista</string>
-    <string name="menuTable">Vista de la Tabla</string>
+    <string name="menuOptions">Ajustes</string>
+    <string name="menuList">Vista de la lista</string>
+    <string name="menuTable">Vista de la tabla</string>
 
-    <string name="prefTitleDarkTheme">Tema Oscuro</string>
-    <string name="prefSummaryDarkTheme">Utilice el tema oscuro</string>
-    <string name="prefTitleTemp">Unidades Temperatura</string>
+    <string name="prefTitleDarkTheme">Tema oscuro</string>
+    <string name="prefTitleTemp">Unidades temperatura</string>
     <string name="prefSummaryTemp">Unidades utilizan para mostrar los valores de temperatura</string>
-    <string name="prefTitleColors">Colores Elemento</string>
+    <string name="prefTitleColors">Colores elemento</string>
     <string name="prefSummaryColors">Propiedad utiliza para dar color a los elementos</string>
-    <string name="prefTitleSubtextValue">Valor de Bloque</string>
+    <string name="prefTitleSubtextValue">Valor de bloque</string>
     <string name="prefSummarySubtextValue">Valor a mostrar bajo el símbolo del elemento</string>
     <string name="prefTitleShowControls">Controles de Tabla Periódica</string>
-    <string name="prefSummaryShowControls">Mostrar los controles de Tabla Periódica en la Vista de Tabla</string>
+    <string name="prefSummaryShowControls">Mostrar los controles de Tabla Periódica en la vista de tabla</string>
 
-    <string name="labelNumber">Número Atómico:</string>
-    <string name="labelSymbol">Símbolo:</string>
-    <string name="labelName">Nombre:</string>
-    <string name="labelWeight">Masa Atómica:</string>
-    <string name="labelCategory">Serie Química:</string>
-    <string name="labelGPB">Grupo, Período, Bloque:</string>
-    <string name="labelConfiguration">Configuración Electrónica:</string>
-    <string name="labelElectrons">Electrones por Nivel:</string>
-    <string name="labelDensity">Densidad:</string>
-    <string name="labelMelt">Punto de Fusión:</string>
-    <string name="labelBoil">Punto de Ebullición:</string>
-    <string name="labelHeat">Calor Especifico:</string>
-    <string name="labelNegativity">Electronegatividad:</string>
-    <string name="labelAbundance">Abundancia:</string>
+    <string name="labelNumber">Número atómico</string>
+    <string name="labelSymbol">Símbolo</string>
+    <string name="labelName">Nombre</string>
+    <string name="labelWeight">Masa atómica</string>
+    <string name="labelCategory">Serie química</string>
+    <string name="labelGPB">Grupo, período, bloque</string>
+    <string name="labelConfiguration">Configuración electrónica</string>
+    <string name="labelElectrons">Electrones por nivel</string>
+    <string name="labelDensity">Densidad</string>
+    <string name="labelMelt">Punto de fusión</string>
+    <string name="labelBoil">Punto de ebullición</string>
+    <string name="labelHeat">Calor especifico</string>
+    <string name="labelNegativity">Electronegatividad</string>
+    <string name="labelAbundance">Abundancia</string>
 
-    <string name="labelSubtextValue">Mostrar:</string>
-    <string name="labelBlockColors">Colorear por:</string>
+    <string name="labelSubtextValue">Mostrar</string>
+    <string name="labelBlockColors">Colorear por</string>
 
     <string name="hintFilter">Filtrar por nombre o símbolo</string>
 
-    <string name="descGroup">Grupo</string>
-    <string name="descPeriod">Período</string>
-    <string name="descBlock">Bloque</string>
+    <string name="descGroup">grupo</string>
+    <string name="descPeriod">período</string>
+    <string name="descBlock">bloque</string>
 
     <string name="unknown">desconocido</string>
 </resources>

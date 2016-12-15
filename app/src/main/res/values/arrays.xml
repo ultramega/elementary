@@ -105,11 +105,11 @@
         <item>ab</item>
     </string-array>
     <string-array name="subtextValueNames">
-        <item>Atomic Weight</item>
+        <item>Atomic weight</item>
         <item>Density (g/cm³)</item>
-        <item>Melting Point (K)</item>
-        <item>Boiling Point (K)</item>
-        <item>Specific Heat (J/g·K)</item>
+        <item>Melting point (K)</item>
+        <item>Boiling point (K)</item>
+        <item>Specific heat (J/g·K)</item>
         <item>Electronegativity (Pauling)</item>
         <item>Abundance (mg/kg)</item>
     </string-array>
@@ -118,7 +118,7 @@
         Options for the list sorting dialog
     -->
     <string-array name="sortFieldNames">
-        <item>Atomic Number</item>
-        <item>Element Name</item>
+        <item>Atomic number</item>
+        <item>Element name</item>
     </string-array>
 </resources>
