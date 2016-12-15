@@ -23,10 +23,10 @@
 -->
 <resources>
     <string name="titleAbout">Über Elementary</string>
-    <string name="titleElementDetails" formatted="true">Element details für %s</string>
+    <string name="titleElementDetails" formatted="true">Element Details für %s</string>
     <string name="titlePeriodicTable">Periodensystem der Elemente</string>
-    <string name="titleElementList">Liste aller elemente</string>
-    <string name="titlePreferences">Elementary einstellungen</string>
+    <string name="titleElementList">Liste aller Elemente</string>
+    <string name="titlePreferences">Elementary Einstellungen</string>
     <string name="titleSort">Sortieren nach</string>
 
     <string name="buttonVideo">Video</string>
@@ -35,38 +35,38 @@
 
     <string name="menuAbout">Information</string>
     <string name="menuOptions">Einstellungen</string>
-    <string name="menuList">Listen-ansicht</string>
-    <string name="menuTable">Tabellen-ansicht</string>
+    <string name="menuList">Listen-Ansicht</string>
+    <string name="menuTable">Tabellen-Ansicht</string>
 
-    <string name="prefTitleDarkTheme">Dunkles theme</string>
+    <string name="prefTitleDarkTheme">Dunkles Theme</string>
     <string name="prefTitleTemp">Maßeinheit</string>
-    <string name="prefSummaryTemp">Bevorzugtes einheitensystem</string>
+    <string name="prefSummaryTemp">Bevorzugtes Einheitensystem</string>
     <string name="prefTitleColors">Elementfarben</string>
-    <string name="prefSummaryColors">Bevorzugtes farbschema</string>
+    <string name="prefSummaryColors">Bevorzugtes Farbschema</string>
     <string name="prefTitleSubtextValue">Blockwert</string>
-    <string name="prefSummarySubtextValue">Der wert unter dem elementsymbol angezeigt</string>
-    <string name="prefTitleShowControls">Tabellenansicht steuerung</string>
-    <string name="prefSummaryShowControls">Zeigen sie die bedienelemente für das Periodensystem in der tabellenansicht</string>
+    <string name="prefSummarySubtextValue">Der Wert unter dem Elementsymbol angezeigt</string>
+    <string name="prefTitleShowControls">Tabellenansicht Steuerung</string>
+    <string name="prefSummaryShowControls">Zeigen Sie die Bedienelemente für das Periodensystem in der Tabellenansicht</string>
 
     <string name="labelNumber">Ordnungszahl</string>
     <string name="labelSymbol">Symbol</string>
     <string name="labelName">Name</string>
     <string name="labelWeight">Atommasse</string>
     <string name="labelCategory">Serie</string>
-    <string name="labelGPB">Gruppe, periode, block</string>
+    <string name="labelGPB">Gruppe, Periode, Block</string>
     <string name="labelConfiguration">Elektronenkonfiguration</string>
-    <string name="labelElectrons">Elektronen pro schale</string>
+    <string name="labelElectrons">Elektronen pro Schale</string>
     <string name="labelDensity">Dichte</string>
     <string name="labelMelt">Schmelzpunkt</string>
     <string name="labelBoil">Siedepunkt</string>
-    <string name="labelHeat">Spezifisch hitze</string>
+    <string name="labelHeat">Spezifisch Hitze</string>
     <string name="labelNegativity">Elektronegativität</string>
     <string name="labelAbundance">Vorkommen</string>
 
     <string name="labelSubtextValue">Anzeigen</string>
     <string name="labelBlockColors">Färben nach</string>
 
-    <string name="hintFilter">Nach name oder symbol sortieren</string>
+    <string name="hintFilter">Nach Name oder Symbol sortieren</string>
 
     <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
     <string name="aboutSendEmail">Kontaktieren Sie den Technischen Support</string>
@@ -77,9 +77,9 @@
 
     <string name="errorNoEmail">Kein E-Mail-Client gefunden</string>
 
-    <string name="descGroup">gruppe</string>
-    <string name="descPeriod">periode</string>
-    <string name="descBlock">block</string>
+    <string name="descGroup">Gruppe</string>
+    <string name="descPeriod">Periode</string>
+    <string name="descBlock">Block</string>
 
     <string name="unknown">unbekannt</string>
 </resources>
