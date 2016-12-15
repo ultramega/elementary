@@ -59,7 +59,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="EyPreferenceActivity"
-            android:label="@string/titlePreferences" />
+            android:name=".SettingsActivity"
+            android:label="@string/titleSettings" />
     </application>
 </manifest>

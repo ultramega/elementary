@@ -26,7 +26,7 @@
     <string name="titleElementDetails" formatted="true">Détails de l\'élément pour %s</string>
     <string name="titlePeriodicTable">Tableau Périodique des Éléments</string>
     <string name="titleElementList">Liste des éléments</string>
-    <string name="titlePreferences">Paramètres de Elementary</string>
+    <string name="titleSettings">Paramètres de Elementary</string>
     <string name="titleSort">Trier par</string>
 
     <string name="buttonVideo">Regarder la vidéo</string>
@@ -34,7 +34,7 @@
     <string name="buttonSort">Trier</string>
 
     <string name="menuAbout">Information</string>
-    <string name="menuOptions">Paramètres</string>
+    <string name="menuSettings">Paramètres</string>
     <string name="menuList">Liste</string>
     <string name="menuTable">Tableau</string>
 

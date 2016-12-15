@@ -27,8 +27,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 
 import com.ultramegatech.ey.AboutFragment;
-import com.ultramegatech.ey.EyPreferenceActivity;
 import com.ultramegatech.ey.R;
+import com.ultramegatech.ey.SettingsActivity;
 
 /**
  * Handles menu items shared by all Activities.
@@ -44,8 +44,8 @@ public class CommonMenuHandler {
      */
     public static void handleSelect(@NonNull FragmentActivity activity, int id) {
         switch(id) {
-            case R.id.menu_options:
-                activity.startActivity(new Intent(activity, EyPreferenceActivity.class));
+            case R.id.menu_settings:
+                activity.startActivity(new Intent(activity, SettingsActivity.class));
                 break;
             case R.id.menu_about:
                 AboutFragment.showDialog(activity.getSupportFragmentManager());

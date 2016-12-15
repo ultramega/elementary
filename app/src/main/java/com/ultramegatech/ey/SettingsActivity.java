@@ -41,7 +41,7 @@ import com.ultramegatech.ey.util.SubtextValuesHelper;
  *
  * @author Steve Guidetti
  */
-public class EyPreferenceActivity extends PreferenceActivity
+public class SettingsActivity extends PreferenceActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener,
         SubtextValuesHelper.OnSubtextValuesChangedListener {
     /**
@@ -81,7 +81,7 @@ public class EyPreferenceActivity extends PreferenceActivity
         if(PreferenceUtils.KEY_DARK_THEME.equals(key)) {
             sharedPreferences.edit().commit();
 
-            final Intent intent = new Intent(this, EyPreferenceActivity.class);
+            final Intent intent = new Intent(this, SettingsActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
 
