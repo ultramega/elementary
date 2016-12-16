@@ -29,7 +29,7 @@
     android:orientation="horizontal"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    tools:ignore="UnusedAttribute">
+    tools:ignore="InconsistentLayout,UnusedAttribute">
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,5 +43,29 @@
         android:layout_height="wrap_content"
         android:prompt="@string/labelSubtextValue"
         android:spinnerMode="dialog" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="20dp"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/blockColors"
+        android:text="@string/labelBlockColors" />
+
+    <Spinner
+        android:id="@+id/blockColors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/elementColorNames"
+        android:prompt="@string/labelBlockColors"
+        android:spinnerMode="dialog" />
+
+    <ZoomControls
+        android:id="@+id/zoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end" />
 
 </LinearLayout>

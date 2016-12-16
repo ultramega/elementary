@@ -137,6 +137,9 @@ public class PeriodicTableActivity extends FragmentActivity
 
             @Override
             public void onZoomEnd(@NonNull PeriodicTableView periodicTableView) {
+                if(mZoomControls == null) {
+                    return;
+                }
                 mZoomControls.setIsZoomInEnabled(periodicTableView.canZoomIn());
                 mZoomControls.setIsZoomOutEnabled(periodicTableView.canZoomOut());
             }
@@ -159,6 +162,9 @@ public class PeriodicTableActivity extends FragmentActivity
      */
     private void setupZoomControls() {
         mZoomControls = (ZoomControls)findViewById(R.id.zoom);
+        if(mZoomControls == null) {
+            return;
+        }
         mZoomControls.setIsZoomOutEnabled(false);
         mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
             @Override
