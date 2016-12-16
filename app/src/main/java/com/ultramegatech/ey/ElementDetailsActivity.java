@@ -105,10 +105,8 @@ public class ElementDetailsActivity extends FragmentActivity {
         switch(id) {
             case android.R.id.home:
                 finish();
-                break;
-            default:
-                CommonMenuHandler.handleSelect(this, id);
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+        return CommonMenuHandler.handleSelect(this, id) || super.onOptionsItemSelected(item);
     }
 }

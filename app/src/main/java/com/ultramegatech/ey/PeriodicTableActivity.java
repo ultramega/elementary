@@ -304,11 +304,9 @@ public class PeriodicTableActivity extends FragmentActivity
         switch(id) {
             case R.id.menu_list:
                 startActivity(new Intent(this, ElementListActivity.class));
-                break;
-            default:
-                CommonMenuHandler.handleSelect(this, id);
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+        return CommonMenuHandler.handleSelect(this, id) || super.onOptionsItemSelected(item);
     }
 
     /**

@@ -41,15 +41,17 @@ public class CommonMenuHandler {
      *
      * @param activity The calling Activity
      * @param id       Menu item ID
+     * @return Whether the menu selection was handled
      */
-    public static void handleSelect(@NonNull FragmentActivity activity, int id) {
+    public static boolean handleSelect(@NonNull FragmentActivity activity, int id) {
         switch(id) {
             case R.id.menu_settings:
                 activity.startActivity(new Intent(activity, SettingsActivity.class));
-                break;
+                return true;
             case R.id.menu_about:
                 AboutFragment.showDialog(activity.getSupportFragmentManager());
-                break;
+                return true;
         }
+        return false;
     }
 }
