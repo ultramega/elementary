@@ -68,12 +68,12 @@
 
     <string name="hintFilter">Filtrar por nome ou símbolo</string>
 
-    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
-    <string name="aboutSendEmail">Contacte o suporte técnico</string>
-    <string name="aboutLicense">Licença</string>
-    <string name="aboutSupport">Apoio</string>
     <string name="aboutVersion">Versão</string>
+    <string name="aboutSupport">Apoio</string>
     <string name="aboutWebsite">Site</string>
+    <string name="aboutLicense">Licença</string>
+    <string name="aboutSendEmail">Contacte o suporte técnico</string>
+    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
 
     <string name="errorNoEmail">Nenhum cliente de e-mail encontrado</string>
 
