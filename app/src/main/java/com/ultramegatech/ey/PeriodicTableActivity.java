@@ -38,8 +38,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.ZoomControls;
@@ -166,13 +164,10 @@ public class PeriodicTableActivity extends FragmentActivity
      * Set up the controls for zooming in and out.
      */
     private void setupZoomControls() {
-        final Animation fadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
-        final Animation fadeOut = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
-
         final Runnable hideZoom = new Runnable() {
             @Override
             public void run() {
-                mZoomControls.startAnimation(fadeOut);
+                mZoomControls.hide();
                 mZoomControls.setVisibility(View.INVISIBLE);
             }
         };
@@ -203,7 +198,7 @@ public class PeriodicTableActivity extends FragmentActivity
             public void onClick(View view) {
                 mHandler.removeCallbacks(hideZoom);
                 if(mZoomControls.getVisibility() == View.INVISIBLE) {
-                    mZoomControls.startAnimation(fadeIn);
+                    mZoomControls.show();
                     mZoomControls.setVisibility(View.VISIBLE);
                 }
                 mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
