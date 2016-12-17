@@ -84,7 +84,7 @@
     <string name="aboutSendEmail">Contact support</string>
     <string name="aboutEmailSubject" formatted="true" translatable="false">Elementary %s</string>
     <string name="aboutWebsiteUrl" translatable="false">https://github.com/ultramega/elementary</string>
-    <string name="aboutLicenseName">MIT License</string>
+    <string name="aboutLicenseName" translatable="false">MIT License</string>
     <string name="aboutLicenseUrl" translatable="false">https://raw.githubusercontent.com/ultramega/elementary/master/LICENSE.txt</string>
     <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
 
