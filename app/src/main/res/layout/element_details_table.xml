@@ -23,6 +23,7 @@
 -->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,177 +32,216 @@
         android:layout_height="wrap_content"
         android:fillViewport="true">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:stretchColumns="1">
+            android:orientation="vertical">
 
-            <TableRow style="@style/TableRow.Odd">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/number"
-                    android:text="@string/labelNumber" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/number"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/number"
+                        android:text="@string/labelNumber" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/number"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/symbol"
-                    android:text="@string/labelSymbol" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/symbol"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/symbol"
+                        android:text="@string/labelSymbol" />
 
-            <TableRow style="@style/TableRow.Odd">
+                    <TextView
+                        android:id="@+id/symbol"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/name"
-                    android:text="@string/labelName" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/name"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/name"
+                        android:text="@string/labelName" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/name"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/weight"
-                    android:text="@string/labelWeight" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/weight"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/weight"
+                        android:text="@string/labelWeight" />
 
-            <TableRow style="@style/TableRow.Odd">
+                    <TextView
+                        android:id="@+id/weight"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/category"
-                    android:text="@string/labelCategory" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/category"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/category"
+                        android:text="@string/labelCategory" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/category"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:text="@string/labelGPB" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/gpb"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:text="@string/labelGPB" />
 
-            <TableRow style="@style/TableRow.Odd">
+                    <TextView
+                        android:id="@+id/gpb"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/config"
-                    android:text="@string/labelConfiguration" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/config"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/config"
+                        android:text="@string/labelConfiguration" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/config"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/electrons"
-                    android:text="@string/labelElectrons" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/electrons"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/electrons"
+                        android:text="@string/labelElectrons" />
 
-            <TableRow style="@style/TableRow.Odd">
+                    <TextView
+                        android:id="@+id/electrons"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/density"
-                    android:text="@string/labelDensity" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/density"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/density"
+                        android:text="@string/labelDensity" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/density"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/melt"
-                    android:text="@string/labelMelt" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/melt"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/melt"
+                        android:text="@string/labelMelt" />
 
-            <TableRow style="@style/TableRow.Odd">
+                    <TextView
+                        android:id="@+id/melt"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/boil"
-                    android:text="@string/labelBoil" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/boil"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/boil"
+                        android:text="@string/labelBoil" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/boil"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/heat"
-                    android:text="@string/labelHeat" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/heat"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/heat"
+                        android:text="@string/labelHeat" />
 
-            <TableRow style="@style/TableRow.Odd">
+                    <TextView
+                        android:id="@+id/heat"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/negativity"
-                    android:text="@string/labelNegativity" />
+                <TableRow style="@style/TableRow.Odd">
 
-                <TextView
-                    android:id="@+id/negativity"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/negativity"
+                        android:text="@string/labelNegativity" />
 
-            <TableRow style="@style/TableRow">
+                    <TextView
+                        android:id="@+id/negativity"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
 
-                <TextView
-                    style="@style/ElementDetails.Label"
-                    android:labelFor="@+id/abundance"
-                    android:text="@string/labelAbundance" />
+                <TableRow style="@style/TableRow">
 
-                <TextView
-                    android:id="@+id/abundance"
-                    style="@style/ElementDetails.Value" />
-            </TableRow>
-        </TableLayout>
+                    <TextView
+                        style="@style/ElementDetails.Label"
+                        android:labelFor="@+id/abundance"
+                        android:text="@string/labelAbundance" />
+
+                    <TextView
+                        android:id="@+id/abundance"
+                        style="@style/ElementDetails.Value" />
+                </TableRow>
+            </TableLayout>
+
+            <android.support.v4.widget.Space
+                android:layout_width="wrap_content"
+                android:layout_height="12dp" />
+
+            <TextView
+                style="@style/ElementDetails.Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/labelIsotopes" />
+
+            <TableLayout
+                android:id="@+id/isoTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TableRow tools:ignore="UselessParent">
+
+                    <TextView
+                        style="@android:style/TextAppearance.Small"
+                        android:gravity="center"
+                        android:text="@string/labelSymbol" />
+
+                    <android.support.v4.widget.Space android:layout_width="12dp" />
+
+                    <TextView
+                        style="@android:style/TextAppearance.Small"
+                        android:gravity="center"
+                        android:text="@string/labelWeight" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
     </HorizontalScrollView>
 </ScrollView>

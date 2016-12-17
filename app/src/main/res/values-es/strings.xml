@@ -62,6 +62,7 @@
     <string name="labelHeat">Calor especifico</string>
     <string name="labelNegativity">Electronegatividad</string>
     <string name="labelAbundance">Abundancia</string>
+    <string name="labelIsotopes">Isótopos comunes</string>
 
     <string name="labelSubtextValue">Mostrar</string>
     <string name="labelBlockColors">Colorear por</string>

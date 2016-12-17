@@ -38,10 +38,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ultramegatech.ey.provider.Element;
 import com.ultramegatech.ey.provider.Elements;
+import com.ultramegatech.ey.provider.Isotope;
+import com.ultramegatech.ey.provider.Isotopes;
 import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.ey.util.UnitUtils;
@@ -99,6 +103,11 @@ public class ElementDetailsFragment extends DialogFragment
     private TextView mTxtHeat;
     private TextView mTxtNegativity;
     private TextView mTxtAbundance;
+
+    /**
+     * The table for common isotopes.
+     */
+    private TableLayout mIsoTable;
 
     /**
      * Value to return for unknown values
@@ -212,6 +221,8 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtNegativity = (TextView)root.findViewById(R.id.negativity);
         mTxtAbundance = (TextView)root.findViewById(R.id.abundance);
 
+        mIsoTable = (TableLayout)root.findViewById(R.id.isoTable);
+
         root.findViewById(R.id.videoButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showVideo();
@@ -271,6 +282,8 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtHeat.setText(getHeat());
         mTxtNegativity.setText(getNegativity());
         mTxtAbundance.setText(getAbundance());
+
+        populateIsotopes();
     }
 
     /**
@@ -466,6 +479,28 @@ public class ElementDetailsFragment extends DialogFragment
             return DECIMAL_FORMAT.format(mElement.abundance) + " mg/kg";
         }
         return mStringUnknown;
+    }
+
+    /**
+     * Populate the table of common isotopes.
+     */
+    private void populateIsotopes() {
+        final Isotope[] isotopes = Isotopes.getIsotopes(mElement.number);
+        if(isotopes != null) {
+            final LayoutInflater inflater = LayoutInflater.from(getContext());
+            for(Isotope isotope : isotopes) {
+                final TableRow tableRow =
+                        (TableRow)inflater.inflate(R.layout.isotope_table_row, mIsoTable, false);
+
+                final TextView symbolText = (TextView)tableRow.findViewById(R.id.isoSymbol);
+                symbolText.setText(isotope.getSymbol());
+
+                final TextView massText = (TextView)tableRow.findViewById(R.id.isoMass);
+                massText.setText(DECIMAL_FORMAT.format(isotope.mass));
+
+                mIsoTable.addView(tableRow);
+            }
+        }
     }
 
     /**
