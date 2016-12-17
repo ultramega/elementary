@@ -75,7 +75,8 @@ public class PeriodicTableActivity extends FragmentActivity
     /**
      * Handler for posting delayed callbacks
      */
-    private Handler mHandler;
+    @NonNull
+    private final Handler mHandler = new Handler();
 
     /**
      * Callback to enter immersive full screen mode
@@ -173,6 +174,7 @@ public class PeriodicTableActivity extends FragmentActivity
         };
 
         mZoomControls = (ZoomControls)findViewById(R.id.zoom);
+        mZoomControls.setVisibility(View.INVISIBLE);
         mZoomControls.setIsZoomOutEnabled(false);
         mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
             @Override
@@ -272,7 +274,6 @@ public class PeriodicTableActivity extends FragmentActivity
      */
     private void setupImmersiveMode() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            mHandler = new Handler();
             mImmersiveModeCallback = new Runnable() {
                 @Override
                 public void run() {
