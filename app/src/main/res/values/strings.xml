@@ -34,6 +34,7 @@
     <string name="buttonVideo">Watch video</string>
     <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Sort</string>
+    <string name="buttonZoom">Zoom</string>
 
     <string name="menuAbout">About</string>
     <string name="menuSettings">Settings</string>

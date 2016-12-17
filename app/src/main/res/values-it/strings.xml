@@ -32,6 +32,7 @@
     <string name="buttonVideo">Guarda il video</string>
     <string name="buttonWiki">Wikipedia</string>
     <string name="buttonSort">Ordina</string>
+    <string name="buttonZoom">Ingrandimento</string>
 
     <string name="menuAbout">Informazioni</string>
     <string name="menuSettings">Impostazioni</string>

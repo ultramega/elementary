@@ -37,6 +37,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.ZoomControls;
@@ -65,6 +67,11 @@ public class PeriodicTableActivity extends FragmentActivity
      * Delay in milliseconds before entering or re-entering immersive full screen mode
      */
     private static final long IMMERSIVE_MODE_DELAY = 3000;
+
+    /**
+     * Delay in milliseconds before hiding the zoom controls
+     */
+    private static final long ZOOM_BUTTON_DELAY = 3000;
 
     /**
      * Handler for posting delayed callbacks
@@ -137,9 +144,6 @@ public class PeriodicTableActivity extends FragmentActivity
 
             @Override
             public void onZoomEnd(@NonNull PeriodicTableView periodicTableView) {
-                if(mZoomControls == null) {
-                    return;
-                }
                 mZoomControls.setIsZoomInEnabled(periodicTableView.canZoomIn());
                 mZoomControls.setIsZoomOutEnabled(periodicTableView.canZoomOut());
             }
@@ -161,23 +165,47 @@ public class PeriodicTableActivity extends FragmentActivity
      * Set up the controls for zooming in and out.
      */
     private void setupZoomControls() {
+        final Animation fadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        final Animation fadeOut = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
+
+        final Runnable hideZoom = new Runnable() {
+            @Override
+            public void run() {
+                mZoomControls.startAnimation(fadeOut);
+                mZoomControls.setVisibility(View.INVISIBLE);
+            }
+        };
+
         mZoomControls = (ZoomControls)findViewById(R.id.zoom);
-        if(mZoomControls == null) {
-            return;
-        }
         mZoomControls.setIsZoomOutEnabled(false);
         mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mHandler.removeCallbacks(hideZoom);
                 mPeriodicTableView.zoomIn();
                 mZoomControls.setIsZoomOutEnabled(true);
+                mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
             }
         });
         mZoomControls.setOnZoomOutClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mHandler.removeCallbacks(hideZoom);
                 mPeriodicTableView.zoomOut();
                 mZoomControls.setIsZoomInEnabled(true);
+                mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
+            }
+        });
+
+        findViewById(R.id.zoomButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mHandler.removeCallbacks(hideZoom);
+                if(mZoomControls.getVisibility() == View.INVISIBLE) {
+                    mZoomControls.startAnimation(fadeIn);
+                    mZoomControls.setVisibility(View.VISIBLE);
+                }
+                mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
             }
         });
     }
