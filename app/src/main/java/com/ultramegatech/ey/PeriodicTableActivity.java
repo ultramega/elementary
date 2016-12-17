@@ -65,12 +65,12 @@ public class PeriodicTableActivity extends FragmentActivity
     /**
      * Delay in milliseconds before entering or re-entering immersive full screen mode
      */
-    private static final long IMMERSIVE_MODE_DELAY = 3000;
+    private static final long IMMERSIVE_MODE_DELAY = 4000;
 
     /**
      * Delay in milliseconds before hiding the zoom controls
      */
-    private static final long ZOOM_BUTTON_DELAY = 3000;
+    private static final long ZOOM_BUTTON_DELAY = 5000;
 
     /**
      * Handler for posting delayed callbacks
