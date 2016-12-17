@@ -72,6 +72,7 @@ public class AboutFragment extends DialogFragment {
      * @return The View to place inside the Dialog
      */
     @SuppressLint("InflateParams")
+    @NonNull
     private View getLayout() {
         final View root = LayoutInflater.from(getContext()).inflate(R.layout.fragment_about, null);
 

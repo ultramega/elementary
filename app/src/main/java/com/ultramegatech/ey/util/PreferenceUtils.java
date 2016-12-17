@@ -149,7 +149,7 @@ public class PreferenceUtils {
      *
      * @param value The value
      */
-    public static void setPrefElementColors(String value) {
+    public static void setPrefElementColors(@NonNull String value) {
         sPrefElementColors = value;
         sPreferences.edit().putString(KEY_ELEMENT_COLORS, value).apply();
     }
@@ -169,7 +169,7 @@ public class PreferenceUtils {
      *
      * @param value The value
      */
-    public static void setPrefSubtextValue(String value) {
+    public static void setPrefSubtextValue(@NonNull String value) {
         sPrefSubtextValue = value;
         sPreferences.edit().putString(KEY_SUBTEXT_VALUE, value).apply();
     }

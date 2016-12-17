@@ -130,7 +130,7 @@ public class ElementUtils {
      * @param key The key
      * @return The color value
      */
-    public static int getKeyColor(Object key) {
+    public static int getKeyColor(@NonNull Object key) {
         return COLOR_MAP.get(key.toString());
     }
 
@@ -150,6 +150,7 @@ public class ElementUtils {
      * @param element The Element
      * @return The key
      */
+    @NonNull
     private static String getColorKey(@NonNull Element element) {
         if(PreferenceUtils.COLOR_CAT.equals(PreferenceUtils.getPrefElementColors())) {
             return String.valueOf(element.category);
