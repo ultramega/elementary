@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -303,6 +304,20 @@ public class PeriodicTableActivity extends FragmentActivity
                             }
                         }
                     });
+
+            final ActionBar actionBar = getActionBar();
+            if(actionBar != null) {
+                actionBar.addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
+                    @Override
+                    public void onMenuVisibilityChanged(boolean isVisible) {
+                        if(isVisible) {
+                            mHandler.removeCallbacks(mImmersiveModeCallback);
+                        } else {
+                            mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
+                        }
+                    }
+                });
+            }
         }
     }
 
