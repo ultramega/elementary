@@ -265,7 +265,7 @@ public class PeriodicTableActivity extends FragmentActivity
         super.onWindowFocusChanged(hasFocus);
         if(hasFocus && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mHandler.removeCallbacks(mImmersiveModeCallback);
-            mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
+            hideSystemUi();
         }
     }
 
