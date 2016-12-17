@@ -1052,7 +1052,7 @@ public class PeriodicTableView extends View {
                     mSubtextLabel = res.getString(R.string.labelAbundance);
                     break;
                 default:
-                    mSubtextLabel = res.getString(R.string.labelWeight);
+                    mSubtextLabel = res.getString(R.string.labelMass);
             }
             if(PreferenceUtils.COLOR_BLOCK.equals(PreferenceUtils.getPrefElementColors())) {
                 mCatLabel = res.getStringArray(R.array.elementColorNames)[1];
@@ -1107,8 +1107,7 @@ public class PeriodicTableView extends View {
             final String subtext;
             switch(PreferenceUtils.getPrefSubtextValue()) {
                 case PreferenceUtils.SUBTEXT_WEIGHT:
-                    subtext = element.unstable ? String.valueOf((int)element.weight)
-                            : block.subtext;
+                    subtext = element.unstable ? String.valueOf((int)element.mass) : block.subtext;
                     break;
                 case PreferenceUtils.SUBTEXT_DENSITY:
                     subtext = element.density == null ? mUnknownString : block.subtext;

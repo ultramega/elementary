@@ -326,9 +326,9 @@ public class PeriodicTableActivity extends FragmentActivity
         switch(PreferenceUtils.getPrefSubtextValue()) {
             case PreferenceUtils.SUBTEXT_WEIGHT:
                 if(element.unstable) {
-                    return "[" + (int)element.weight + "]";
+                    return "[" + (int)element.mass + "]";
                 } else {
-                    return DECIMAL_FORMAT.format(element.weight);
+                    return DECIMAL_FORMAT.format(element.mass);
                 }
             case PreferenceUtils.SUBTEXT_MELT:
             case PreferenceUtils.SUBTEXT_BOIL:

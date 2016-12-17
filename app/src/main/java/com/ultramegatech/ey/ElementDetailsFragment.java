@@ -271,7 +271,7 @@ public class ElementDetailsFragment extends DialogFragment
 
         getNumber();
         getSymbol();
-        getWeight();
+        getMass();
         getCategory();
         getGPB();
         getElectronConfiguration();
@@ -312,15 +312,15 @@ public class ElementDetailsFragment extends DialogFragment
     }
 
     /**
-     * Get the atomic weight. For unstable elements, the value of the most stable isotope is
+     * Get the relative atomic mass. For unstable elements, the value of the most stable isotope is
      * returned surrounded by brackets.
      */
-    private void getWeight() {
+    private void getMass() {
         if(mElement.unstable) {
-            mTxtWeight.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.weight));
-            mTxtWeight.setContentDescription(String.valueOf((int)mElement.weight));
+            mTxtWeight.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.mass));
+            mTxtWeight.setContentDescription(String.valueOf((int)mElement.mass));
         } else {
-            mTxtWeight.setText(DECIMAL_FORMAT.format(mElement.weight));
+            mTxtWeight.setText(DECIMAL_FORMAT.format(mElement.mass));
         }
         mTxtElementWeight.setText(mTxtWeight.getText());
     }

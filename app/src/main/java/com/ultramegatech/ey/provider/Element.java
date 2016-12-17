@@ -58,9 +58,9 @@ public class Element {
     public final char block;
 
     /**
-     * The atomic weight
+     * The relative atomic mass
      */
-    public final double weight;
+    public final double mass;
 
     /**
      * The density in g/cm³
@@ -126,7 +126,7 @@ public class Element {
      * @param group         The group
      * @param period        The period
      * @param block         The block
-     * @param weight        The atomic weight
+     * @param mass          The relative atomic mass
      * @param density       The density in g/cm³
      * @param melt          The melting point in K
      * @param boil          The boiling point in K
@@ -138,17 +138,17 @@ public class Element {
      * @param electrons     The number of electrons per shell
      * @param unstable      Whether the element is unstable
      */
-    Element(int number, @NonNull String symbol, int group, int period, char block,
-            double weight, @Nullable Double density, @Nullable Double melt,
-            @Nullable Double boil, @Nullable Double heat, @Nullable Double negativity,
-            @Nullable Double abundance, int category, @NonNull Configuration configuration,
-            @NonNull Integer[] electrons, boolean unstable) {
+    Element(int number, @NonNull String symbol, int group, int period, char block, double mass,
+            @Nullable Double density, @Nullable Double melt, @Nullable Double boil,
+            @Nullable Double heat, @Nullable Double negativity, @Nullable Double abundance,
+            int category, @NonNull Configuration configuration, @NonNull Integer[] electrons,
+            boolean unstable) {
         this.number = number;
         this.symbol = symbol;
         this.group = group;
         this.period = period;
         this.block = block;
-        this.weight = weight;
+        this.mass = mass;
         this.density = density;
         this.melt = melt;
         this.boil = boil;

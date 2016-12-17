@@ -51,7 +51,7 @@
     <string name="labelNumber">Número atômico</string>
     <string name="labelSymbol">Símbolo</string>
     <string name="labelName">Nome</string>
-    <string name="labelWeight">Massa atômica relativa</string>
+    <string name="labelMass">Massa atômica</string>
     <string name="labelCategory">Categoria</string>
     <string name="labelGPB">Grupo, período, bloco</string>
     <string name="labelConfiguration">Configuração eletrônica</string>

@@ -39,7 +39,7 @@
         <item>Bloco</item>
     </string-array>
     <string-array name="subtextValueNames">
-        <item>Massa atômica relativa</item>
+        <item>Massa atômica</item>
         <item>Densidade (g/cm³)</item>
         <item>Ponto de fusão (K)</item>
         <item>Ponto de ebulição (K)</item>

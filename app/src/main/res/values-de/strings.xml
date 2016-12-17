@@ -51,7 +51,7 @@
     <string name="labelNumber">Ordnungszahl</string>
     <string name="labelSymbol">Symbol</string>
     <string name="labelName">Name</string>
-    <string name="labelWeight">Atommasse</string>
+    <string name="labelMass">Atommasse</string>
     <string name="labelCategory">Serie</string>
     <string name="labelGPB">Gruppe, Periode, Block</string>
     <string name="labelConfiguration">Elektronenkonfiguration</string>
