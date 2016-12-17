@@ -209,7 +209,7 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtNumber = (TextView)root.findViewById(R.id.number);
         mTxtSymbol = (TextView)root.findViewById(R.id.symbol);
         mTxtName = (TextView)root.findViewById(R.id.name);
-        mTxtWeight = (TextView)root.findViewById(R.id.weight);
+        mTxtWeight = (TextView)root.findViewById(R.id.mass);
         mTxtConfiguration = (TextView)root.findViewById(R.id.config);
         mTxtElectrons = (TextView)root.findViewById(R.id.electrons);
         mTxtCategory = (TextView)root.findViewById(R.id.category);
