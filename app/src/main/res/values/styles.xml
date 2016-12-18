@@ -63,7 +63,7 @@
     </style>
 
     <style name="Link" parent="ElementDetails">
-        <item name="android:textColor">?android:attr/textColorLink</item>
+        <item name="android:textColor">#FF4F8FFF</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">middle</item>
     </style>
