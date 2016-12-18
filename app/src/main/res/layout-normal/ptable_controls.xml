@@ -74,5 +74,4 @@
         android:entries="@array/elementColorNames"
         android:prompt="@string/labelBlockColors"
         android:spinnerMode="dialog" />
-
 </LinearLayout>

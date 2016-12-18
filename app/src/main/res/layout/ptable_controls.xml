@@ -26,11 +26,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
+    android:layout_gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    tools:ignore="UnusedAttribute">
+    tools:ignore="InconsistentLayout,UnusedAttribute">
 
     <ImageButton
         android:id="@+id/zoomButton"
@@ -57,4 +57,7 @@
         android:prompt="@string/labelSubtextValue"
         android:spinnerMode="dialog" />
 
+    <android.support.v4.widget.Space
+        android:layout_width="20dp"
+        android:layout_height="match_parent" />
 </LinearLayout>
