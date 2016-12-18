@@ -81,6 +81,7 @@
     <string name="aboutSupport">Support</string>
     <string name="aboutWebsite">Website</string>
     <string name="aboutLicense">License</string>
+    <string name="aboutSources">Sources</string>
     <string name="aboutEmail" translatable="false">elementary@ultramegasoft.com</string>
     <string name="aboutSendEmail">Contact support</string>
     <string name="aboutEmailSubject" formatted="true" translatable="false">Elementary %s</string>
@@ -88,6 +89,8 @@
     <string name="aboutLicenseName" translatable="false">MIT License</string>
     <string name="aboutLicenseUrl" translatable="false">https://raw.githubusercontent.com/ultramega/elementary/master/LICENSE.txt</string>
     <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
+    <string name="aboutCitations" translatable="false"><![CDATA[Coursey, J.S., Schwab, D.J., Tsai, J.J., and Dragoset, R.A. (2015), Atomic Weights and Isotopic Compositions (version 4.1). [Online] Available: http://physics.nist.gov/Comp [2016, December 17]. National Institute of Standards and Technology, Gaithersburg, MD.
+\n\nDayah, M. (1997, October 1). Dynamic Periodic Table. Retrieved December 18, 2016, from Ptable: http://www.ptable.com]]></string>
 
     <string name="errorNoEmail">No email client found</string>
 

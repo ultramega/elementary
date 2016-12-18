@@ -74,6 +74,7 @@
     <string name="aboutSupport">Sostegno</string>
     <string name="aboutWebsite">Sito Web</string>
     <string name="aboutLicense">Licenza</string>
+    <string name="aboutSources">Fonti</string>
     <string name="aboutSendEmail">Contattare il supporto tecnico</string>
     <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
 

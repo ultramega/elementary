@@ -74,6 +74,24 @@
             </TableRow>
         </TableLayout>
 
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <TextView
+            style="@style/ElementDetails.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/aboutSources" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:text="@string/aboutCitations"
+            android:textIsSelectable="true" />
+
         <TextView
             android:id="@+id/copyright"
             android:layout_width="wrap_content"
