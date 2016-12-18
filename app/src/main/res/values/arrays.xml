@@ -105,7 +105,7 @@
         <item>ab</item>
     </string-array>
     <string-array name="subtextValueNames">
-        <item>Atomic mass</item>
+        <item>Atomic weight</item>
         <item>Density (g/cm³)</item>
         <item>Melting point (K)</item>
         <item>Boiling point (K)</item>

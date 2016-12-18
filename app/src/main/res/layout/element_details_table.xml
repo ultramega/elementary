@@ -82,11 +82,11 @@
 
                     <TextView
                         style="@style/ElementDetails.Label"
-                        android:labelFor="@+id/mass"
-                        android:text="@string/labelMass" />
+                        android:labelFor="@+id/weight"
+                        android:text="@string/labelWeight" />
 
                     <TextView
-                        android:id="@+id/mass"
+                        android:id="@+id/weight"
                         style="@style/ElementDetails.Value" />
                 </TableRow>
 
@@ -239,7 +239,7 @@
                     <TextView
                         style="@android:style/TextAppearance.Small"
                         android:gravity="center"
-                        android:text="@string/labelMass" />
+                        android:text="@string/labelWeight" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

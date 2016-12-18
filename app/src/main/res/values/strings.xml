@@ -59,7 +59,7 @@
     <string name="labelNumber">Atomic number</string>
     <string name="labelSymbol">Symbol</string>
     <string name="labelName">Name</string>
-    <string name="labelMass">Atomic mass</string>
+    <string name="labelWeight">Atomic weight</string>
     <string name="labelCategory">Category</string>
     <string name="labelGPB">Group, period, block</string>
     <string name="labelConfiguration">Electron configuration</string>

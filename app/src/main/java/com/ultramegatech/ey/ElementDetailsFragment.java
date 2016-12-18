@@ -209,7 +209,7 @@ public class ElementDetailsFragment extends DialogFragment
         mTxtNumber = (TextView)root.findViewById(R.id.number);
         mTxtSymbol = (TextView)root.findViewById(R.id.symbol);
         mTxtName = (TextView)root.findViewById(R.id.name);
-        mTxtWeight = (TextView)root.findViewById(R.id.mass);
+        mTxtWeight = (TextView)root.findViewById(R.id.weight);
         mTxtConfiguration = (TextView)root.findViewById(R.id.config);
         mTxtElectrons = (TextView)root.findViewById(R.id.electrons);
         mTxtCategory = (TextView)root.findViewById(R.id.category);
@@ -271,7 +271,7 @@ public class ElementDetailsFragment extends DialogFragment
 
         getNumber();
         getSymbol();
-        getMass();
+        getWeight();
         getCategory();
         getGPB();
         getElectronConfiguration();
@@ -312,15 +312,15 @@ public class ElementDetailsFragment extends DialogFragment
     }
 
     /**
-     * Get the relative atomic mass. For unstable elements, the value of the most stable isotope is
+     * Get the atomic weight. For unstable elements, the value of the most stable isotope is
      * returned surrounded by brackets.
      */
-    private void getMass() {
+    private void getWeight() {
         if(mElement.unstable) {
-            mTxtWeight.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.mass));
-            mTxtWeight.setContentDescription(String.valueOf((int)mElement.mass));
+            mTxtWeight.setText(String.format(Locale.getDefault(), "[%.0f]", mElement.weight));
+            mTxtWeight.setContentDescription(String.valueOf((int)mElement.weight));
         } else {
-            mTxtWeight.setText(DECIMAL_FORMAT.format(mElement.mass));
+            mTxtWeight.setText(DECIMAL_FORMAT.format(mElement.weight));
         }
         mTxtElementWeight.setText(mTxtWeight.getText());
     }
