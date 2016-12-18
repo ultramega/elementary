@@ -487,7 +487,7 @@ public class ElementDetailsFragment extends DialogFragment
     private void populateIsotopes() {
         final Isotope[] isotopes = Isotopes.getIsotopes(mElement.number);
         if(isotopes != null) {
-            final LayoutInflater inflater = LayoutInflater.from(getContext());
+            final LayoutInflater inflater = getLayoutInflater(null);
             for(Isotope isotope : isotopes) {
                 final TableRow tableRow =
                         (TableRow)inflater.inflate(R.layout.isotope_table_row, mIsoTable, false);
