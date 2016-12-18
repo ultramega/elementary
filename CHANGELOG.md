@@ -1,4 +1,11 @@
-﻿- v.0.7.0 (11/29/16):
+﻿- v.0.8.0 (12/18/16):
+   * Added a list of the most common isotopes to each element
+   * Added "About" dialog with app information
+   * Hid the zoom controls by default
+   * Updated strings according to the Material style guide
+   * Fixed the Action Bar hiding itself while the menu is open
+   * Miscellaneous interface adjustments
+- v.0.7.0 (11/29/16):
    * Added accessibility support to the Periodic Table
    * Improved accessible descriptions in the element details page
 - v.0.6.1 (9/23/16):
