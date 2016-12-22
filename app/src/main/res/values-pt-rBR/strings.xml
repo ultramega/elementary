@@ -22,11 +22,11 @@
   THE SOFTWARE.
 -->
 <resources>
-    <string name="titleAbout">Sobre Elementary</string>
-    <string name="titleElementDetails" formatted="true">Detalhes do elemento para %s</string>
+    <string name="titleAbout">Sobre o Elementary</string>
+    <string name="titleElementDetails" formatted="true">Detalhes do elemento %s</string>
     <string name="titlePeriodicTable">Tabela Periódica dos Elementos</string>
     <string name="titleElementList">Lista dos elementos</string>
-    <string name="titleSettings">Configurar do elementary</string>
+    <string name="titleSettings">Configurações do Elementary</string>
     <string name="titleSort">Ordenar por</string>
 
     <string name="buttonVideo">Assistir vídeo</string>
@@ -34,8 +34,8 @@
     <string name="buttonSort">Ordenar</string>
     <string name="buttonZoom">Zoom</string>
 
-    <string name="menuAbout">Informação</string>
-    <string name="menuSettings">Configurar</string>
+    <string name="menuAbout">Sobre</string>
+    <string name="menuSettings">Configurações</string>
     <string name="menuList">Exibição em lista</string>
     <string name="menuTable">Exibição em tabela</string>
 
@@ -71,7 +71,7 @@
     <string name="hintFilter">Filtrar por nome ou símbolo</string>
 
     <string name="aboutVersion">Versão</string>
-    <string name="aboutSupport">Apoio</string>
+    <string name="aboutSupport">Suporte</string>
     <string name="aboutWebsite">Site</string>
     <string name="aboutLicense">Licença</string>
     <string name="aboutSources">Fontes</string>
