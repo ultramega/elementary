@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2016 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <!--
+        List of element names identified by their atomic number
+    -->
+    <string name="el001">水素</string>
+    <string name="el002">ヘリウム</string>
+    <string name="el003">リチウム</string>
+    <string name="el004">ベリリウム</string>
+    <string name="el005">ホウ素</string>
+    <string name="el006">炭素</string>
+    <string name="el007">窒素</string>
+    <string name="el008">酸素</string>
+    <string name="el009">フッ素</string>
+    <string name="el010">ネオン</string>
+    <string name="el011">ナトリウム</string>
+    <string name="el012">マグネシウム</string>
+    <string name="el013">アルミニウム</string>
+    <string name="el014">ケイ素</string>
+    <string name="el015">リン</string>
+    <string name="el016">硫黄</string>
+    <string name="el017">塩素</string>
+    <string name="el018">アルゴン</string>
+    <string name="el019">カリウム</string>
+    <string name="el020">カルシウム</string>
+    <string name="el021">スカンジウム</string>
+    <string name="el022">チタン</string>
+    <string name="el023">バナジウム</string>
+    <string name="el024">クロム</string>
+    <string name="el025">マンガン</string>
+    <string name="el026">鉄</string>
+    <string name="el027">コバルト</string>
+    <string name="el028">ニッケル</string>
+    <string name="el029">銅</string>
+    <string name="el030">亜鉛</string>
+    <string name="el031">ガリウム</string>
+    <string name="el032">ゲルマニウム</string>
+    <string name="el033">ヒ素</string>
+    <string name="el034">セレン</string>
+    <string name="el035">臭素</string>
+    <string name="el036">クリプトン</string>
+    <string name="el037">ルビジウム</string>
+    <string name="el038">ストロンチウム</string>
+    <string name="el039">イットリウム</string>
+    <string name="el040">ジルコニウム</string>
+    <string name="el041">ニオブ</string>
+    <string name="el042">モリブデン</string>
+    <string name="el043">テクネチウム</string>
+    <string name="el044">ルテニウム</string>
+    <string name="el045">ロジウム</string>
+    <string name="el046">パラジウム</string>
+    <string name="el047">銀</string>
+    <string name="el048">カドミウム</string>
+    <string name="el049">インジウム</string>
+    <string name="el050">スズ</string>
+    <string name="el051">アンチモン</string>
+    <string name="el052">テルル</string>
+    <string name="el053">ヨウ素</string>
+    <string name="el054">キセノン</string>
+    <string name="el055">セシウム</string>
+    <string name="el056">バリウム</string>
+    <string name="el057">ランタン</string>
+    <string name="el058">セリウム</string>
+    <string name="el059">プラセオジム</string>
+    <string name="el060">ネオジム</string>
+    <string name="el061">プロメチウム</string>
+    <string name="el062">サマリウム</string>
+    <string name="el063">ユウロピウム</string>
+    <string name="el064">ガドリニウム</string>
+    <string name="el065">テルビウム</string>
+    <string name="el066">ジスプロシウム</string>
+    <string name="el067">ホルミウム</string>
+    <string name="el068">エルビウム</string>
+    <string name="el069">ツリウム</string>
+    <string name="el070">イッテルビウム</string>
+    <string name="el071">ルテチウム</string>
+    <string name="el072">ハフニウム</string>
+    <string name="el073">タンタル</string>
+    <string name="el074">タングステン</string>
+    <string name="el075">レニウム</string>
+    <string name="el076">オスミウム</string>
+    <string name="el077">イリジウム</string>
+    <string name="el078">白金</string>
+    <string name="el079">金</string>
+    <string name="el080">水銀</string>
+    <string name="el081">タリウム</string>
+    <string name="el082">鉛</string>
+    <string name="el083">ビスマス</string>
+    <string name="el084">ポロニウム</string>
+    <string name="el085">アスタチン</string>
+    <string name="el086">ラドン</string>
+    <string name="el087">フランシウム</string>
+    <string name="el088">ラジウム</string>
+    <string name="el089">アクチニウム</string>
+    <string name="el090">トリウム</string>
+    <string name="el091">プロトアクチニウム</string>
+    <string name="el092">ウラン</string>
+    <string name="el093">ネプツニウム</string>
+    <string name="el094">プルトニウム</string>
+    <string name="el095">アメリシウム</string>
+    <string name="el096">キュリウム</string>
+    <string name="el097">バークリウム</string>
+    <string name="el098">カリホルニウム</string>
+    <string name="el099">アインスタイニウム</string>
+    <string name="el100">フェルミウム</string>
+    <string name="el101">メンデレビウム</string>
+    <string name="el102">ノーベリウム</string>
+    <string name="el103">ローレンシウム</string>
+    <string name="el104">ラザホージウム</string>
+    <string name="el105">ドブニウム</string>
+    <string name="el106">シーボーギウム</string>
+    <string name="el107">ボーリウム</string>
+    <string name="el108">ハッシウム</string>
+    <string name="el109">マイトネリウム</string>
+    <string name="el110">ダームスタチウム</string>
+    <string name="el111">レントゲニウム</string>
+    <string name="el112">コペルニシウム</string>
+    <string name="el113">ニホニウム</string>
+    <string name="el114">フレロビウム</string>
+    <string name="el115">モスコビウム</string>
+    <string name="el116">リバモリウム</string>
+    <string name="el117">テネシン</string>
+    <string name="el118">オガネソン</string>
+
+    <!--
+        The language code subdomain of Wikipedia
+    -->
+    <string name="wikiLang">ja</string>
+
+    <!--
+        List of Wikipedia pages for each element identified by their atomic number
+        
+        These are usually just the name of the element, but there may be exceptions in cases of
+        ambiguity.
+    -->
+    <string name="wiki001">水素</string>
+    <string name="wiki002">ヘリウム</string>
+    <string name="wiki003">リチウム</string>
+    <string name="wiki004">ベリリウム</string>
+    <string name="wiki005">ホウ素</string>
+    <string name="wiki006">炭素</string>
+    <string name="wiki007">窒素</string>
+    <string name="wiki008">酸素</string>
+    <string name="wiki009">フッ素</string>
+    <string name="wiki010">ネオン</string>
+    <string name="wiki011">ナトリウム</string>
+    <string name="wiki012">マグネシウム</string>
+    <string name="wiki013">アルミニウム</string>
+    <string name="wiki014">ケイ素</string>
+    <string name="wiki015">リン</string>
+    <string name="wiki016">硫黄</string>
+    <string name="wiki017">塩素</string>
+    <string name="wiki018">アルゴン</string>
+    <string name="wiki019">カリウム</string>
+    <string name="wiki020">カルシウム</string>
+    <string name="wiki021">スカンジウム</string>
+    <string name="wiki022">チタン</string>
+    <string name="wiki023">バナジウム</string>
+    <string name="wiki024">クロム</string>
+    <string name="wiki025">マンガン</string>
+    <string name="wiki026">鉄</string>
+    <string name="wiki027">コバルト</string>
+    <string name="wiki028">ニッケル</string>
+    <string name="wiki029">銅</string>
+    <string name="wiki030">亜鉛</string>
+    <string name="wiki031">ガリウム</string>
+    <string name="wiki032">ゲルマニウム</string>
+    <string name="wiki033">ヒ素</string>
+    <string name="wiki034">セレン</string>
+    <string name="wiki035">臭素</string>
+    <string name="wiki036">クリプトン</string>
+    <string name="wiki037">ルビジウム</string>
+    <string name="wiki038">ストロンチウム</string>
+    <string name="wiki039">イットリウム</string>
+    <string name="wiki040">ジルコニウム</string>
+    <string name="wiki041">ニオブ</string>
+    <string name="wiki042">モリブデン</string>
+    <string name="wiki043">テクネチウム</string>
+    <string name="wiki044">ルテニウム</string>
+    <string name="wiki045">ロジウム</string>
+    <string name="wiki046">パラジウム</string>
+    <string name="wiki047">銀</string>
+    <string name="wiki048">カドミウム</string>
+    <string name="wiki049">インジウム</string>
+    <string name="wiki050">スズ</string>
+    <string name="wiki051">アンチモン</string>
+    <string name="wiki052">テルル</string>
+    <string name="wiki053">ヨウ素</string>
+    <string name="wiki054">キセノン</string>
+    <string name="wiki055">セシウム</string>
+    <string name="wiki056">バリウム</string>
+    <string name="wiki057">ランタン</string>
+    <string name="wiki058">セリウム</string>
+    <string name="wiki059">プラセオジム</string>
+    <string name="wiki060">ネオジム</string>
+    <string name="wiki061">プロメチウム</string>
+    <string name="wiki062">サマリウム</string>
+    <string name="wiki063">ユウロピウム</string>
+    <string name="wiki064">ガドリニウム</string>
+    <string name="wiki065">テルビウム</string>
+    <string name="wiki066">ジスプロシウム</string>
+    <string name="wiki067">ホルミウム</string>
+    <string name="wiki068">エルビウム</string>
+    <string name="wiki069">ツリウム</string>
+    <string name="wiki070">イッテルビウム</string>
+    <string name="wiki071">ルテチウム</string>
+    <string name="wiki072">ハフニウム</string>
+    <string name="wiki073">タンタル</string>
+    <string name="wiki074">タングステン</string>
+    <string name="wiki075">レニウム</string>
+    <string name="wiki076">オスミウム</string>
+    <string name="wiki077">イリジウム</string>
+    <string name="wiki078">白金</string>
+    <string name="wiki079">金</string>
+    <string name="wiki080">水銀</string>
+    <string name="wiki081">タリウム</string>
+    <string name="wiki082">鉛</string>
+    <string name="wiki083">ビスマス</string>
+    <string name="wiki084">ポロニウム</string>
+    <string name="wiki085">アスタチン</string>
+    <string name="wiki086">ラドン</string>
+    <string name="wiki087">フランシウム</string>
+    <string name="wiki088">ラジウム</string>
+    <string name="wiki089">アクチニウム</string>
+    <string name="wiki090">トリウム</string>
+    <string name="wiki091">プロトアクチニウム</string>
+    <string name="wiki092">ウラン</string>
+    <string name="wiki093">ネプツニウム</string>
+    <string name="wiki094">プルトニウム</string>
+    <string name="wiki095">アメリシウム</string>
+    <string name="wiki096">キュリウム</string>
+    <string name="wiki097">バークリウム</string>
+    <string name="wiki098">カリホルニウム</string>
+    <string name="wiki099">アインスタイニウム</string>
+    <string name="wiki100">フェルミウム</string>
+    <string name="wiki101">メンデレビウム</string>
+    <string name="wiki102">ノーベリウム</string>
+    <string name="wiki103">ローレンシウム</string>
+    <string name="wiki104">ラザホージウム</string>
+    <string name="wiki105">ドブニウム</string>
+    <string name="wiki106">シーボーギウム</string>
+    <string name="wiki107">ボーリウム</string>
+    <string name="wiki108">ハッシウム</string>
+    <string name="wiki109">マイトネリウム</string>
+    <string name="wiki110">ダームスタチウム</string>
+    <string name="wiki111">レントゲニウム</string>
+    <string name="wiki112">コペルニシウム</string>
+    <string name="wiki113">ニホニウム</string>
+    <string name="wiki114">フレロビウム</string>
+    <string name="wiki115">モスコビウム</string>
+    <string name="wiki116">リバモリウム</string>
+    <string name="wiki117">テネシン</string>
+    <string name="wiki118">オガネソン</string>
+</resources>
