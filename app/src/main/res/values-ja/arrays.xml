@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2016 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <!--
+        The colors and corresponding names for the element categories
+    -->
+    <string-array name="ptCategories">
+        <item>非金属</item>
+        <item>希ガス</item>
+        <item>アルカリ金属</item>
+        <item>アルカリ土類金属</item>
+        <item>半金属</item>
+        <item>ハロゲン</item>
+        <item>金属</item>
+        <item>遷移金属</item>
+        <item>ランタノイド (希土類)</item>
+        <item>アクチノイド</item>
+    </string-array>
+
+    <!--
+        The colors and corresponding names for the element blocks
+    -->
+
+    <!--
+        Options for the temperature units preference
+    -->
+
+    <!--
+        Options for the element colors preference
+    -->
+    <string-array name="elementColorNames">
+        <item>分類</item>
+        <item>ブロック</item>
+    </string-array>
+
+    <!--
+        Options for the block subtext value
+    -->
+    <string-array name="subtextValueNames">
+        <item>原子量</item>
+        <item>密度 (g/cm³)</item>
+        <item>融点 (K)</item>
+        <item>沸点 (K)</item>
+        <item>比熱 (J/g·K)</item>
+        <item>電気陰性度 (ポーリング)</item>
+        <item>存在度 (mg/kg)</item>
+    </string-array>
+
+    <!--
+        Options for the list sorting dialog
+    -->
+    <string-array name="sortFieldNames">
+        <item>原子番号</item>
+        <item>元素名</item>
+    </string-array>
+</resources>

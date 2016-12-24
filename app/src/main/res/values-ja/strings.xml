@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2016 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+
+    <string name="titleAbout">Elementary について</string>
+    <string name="titlePeriodicTable">元素の周期表</string>
+    <string name="titleElementList">周期表</string>
+    <string name="titleSettings">Elementary 設定</string>
+    <string name="titleSort">並び順</string>
+
+    <string name="buttonVideo">ビデオを見る</string>
+    <string name="buttonWiki">Wikipedia</string>
+    <string name="buttonSort">並び替え</string>
+    <string name="buttonZoom">ズーム</string>
+
+    <string name="menuAbout">アプリについて</string>
+    <string name="menuSettings">設定</string>
+    <string name="menuList">一覧表示</string>
+    <string name="menuTable">表表示</string>
+
+    <string name="prefTitleDarkTheme">ダークテーマ</string>
+    <string name="prefTitleTemp">温度単位</string>
+    <string name="prefSummaryTemp">温度の表示に使用される単位</string>
+    <string name="prefTitleColors">元素の色</string>
+    <string name="prefSummaryColors">元素の色付けに使用するプロパティ</string>
+    <string name="prefTitleSubtextValue">ブロック値</string>
+    <string name="prefSummarySubtextValue">元素記号の下に表示する値</string>
+    <string name="prefTitleShowControls">周期表のコントロール</string>
+    <string name="prefSummaryShowControls">表表示で周期表のコントロールを表示します</string>
+
+    <string name="labelNumber">原子番号</string>
+    <string name="labelSymbol">記号</string>
+    <string name="labelName">名前</string>
+    <string name="labelWeight">原子量</string>
+    <string name="labelCategory">分類</string>
+    <string name="labelGPB">族、周期、ブロック</string>
+    <string name="labelConfiguration">電子配置</string>
+    <string name="labelElectrons">亜殻</string>
+    <string name="labelDensity">密度</string>
+    <string name="labelMelt">融点</string>
+    <string name="labelBoil">沸点</string>
+    <string name="labelHeat">比熱</string>
+    <string name="labelNegativity">電気陰性度</string>
+    <string name="labelAbundance">存在度</string>
+    <string name="labelIsotopes">共通同位体</string>
+
+    <string name="labelSubtextValue">表示</string>
+    <string name="labelBlockColors">色</string>
+
+    <string name="hintFilter">名前または記号でフィルター</string>
+
+    <string name="aboutVersion">バージョン</string>
+    <string name="aboutSupport">サポート</string>
+    <string name="aboutWebsite">Webサイト</string>
+    <string name="aboutLicense">ライセンス</string>
+    <string name="aboutSources">ソース</string>
+    <string name="aboutSendEmail">お問い合せ</string>
+    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
+
+    <string name="errorNoEmail">メールクライアントが見つかりません</string>
+
+    <string name="descGroup">族</string>
+    <string name="descPeriod">周期</string>
+    <string name="descBlock">ブロック</string>
+
+    <string name="unknown">不明</string>
+</resources>
