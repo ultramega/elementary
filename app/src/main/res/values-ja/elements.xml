@@ -22,9 +22,6 @@
   THE SOFTWARE.
 -->
 <resources>
-    <!--
-        List of element names identified by their atomic number
-    -->
     <string name="el001">水素</string>
     <string name="el002">ヘリウム</string>
     <string name="el003">リチウム</string>
@@ -144,17 +141,8 @@
     <string name="el117">テネシン</string>
     <string name="el118">オガネソン</string>
 
-    <!--
-        The language code subdomain of Wikipedia
-    -->
     <string name="wikiLang">ja</string>
 
-    <!--
-        List of Wikipedia pages for each element identified by their atomic number
-        
-        These are usually just the name of the element, but there may be exceptions in cases of
-        ambiguity.
-    -->
     <string name="wiki001">水素</string>
     <string name="wiki002">ヘリウム</string>
     <string name="wiki003">リチウム</string>
