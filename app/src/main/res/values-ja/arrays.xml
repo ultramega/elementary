@@ -22,9 +22,6 @@
   THE SOFTWARE.
 -->
 <resources>
-    <!--
-        The colors and corresponding names for the element categories
-    -->
     <string-array name="ptCategories">
         <item>非金属</item>
         <item>希ガス</item>
@@ -37,26 +34,10 @@
         <item>ランタノイド (希土類)</item>
         <item>アクチノイド</item>
     </string-array>
-
-    <!--
-        The colors and corresponding names for the element blocks
-    -->
-
-    <!--
-        Options for the temperature units preference
-    -->
-
-    <!--
-        Options for the element colors preference
-    -->
     <string-array name="elementColorNames">
         <item>分類</item>
         <item>ブロック</item>
     </string-array>
-
-    <!--
-        Options for the block subtext value
-    -->
     <string-array name="subtextValueNames">
         <item>原子量</item>
         <item>密度 (g/cm³)</item>
@@ -66,10 +47,6 @@
         <item>電気陰性度 (ポーリング)</item>
         <item>存在度 (mg/kg)</item>
     </string-array>
-
-    <!--
-        Options for the list sorting dialog
-    -->
     <string-array name="sortFieldNames">
         <item>原子番号</item>
         <item>元素名</item>

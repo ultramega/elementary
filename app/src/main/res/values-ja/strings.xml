@@ -22,7 +22,6 @@
   THE SOFTWARE.
 -->
 <resources>
-
     <string name="titleAbout">Elementary について</string>
     <string name="titleElementDetails" formatted="true">%s 元素の詳細</string>
     <string name="titlePeriodicTable">元素の周期表</string>
