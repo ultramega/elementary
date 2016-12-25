@@ -23,6 +23,7 @@ Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
 - Italian translation: [rapgenic](https://github.com/rapgenic)
 - French translation: [Poussinou](https://github.com/Poussinou)
 - Brazilian Portuguese translation: [amalvarenga](https://github.com/amalvarenga)
+- Japanese translation: [naofum](https://github.com/naofum)
 
 ## Donate
 
