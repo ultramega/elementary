@@ -1,4 +1,7 @@
-﻿- v.0.8.0 (12/18/16):
+﻿- v.0.8.1 (12/26/16):
+   * Updated Brazilian Portuguese translation ([amalvarenga](https://github.com/amalvarenga))
+   * Added Japanese translation ([naofum](https://github.com/naofum))
+- v.0.8.0 (12/18/16):
    * Added a list of the most common isotopes to each element
    * Added "About" dialog with app information
    * Hid the zoom controls by default
