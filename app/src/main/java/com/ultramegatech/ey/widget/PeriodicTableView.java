@@ -957,9 +957,9 @@ public class PeriodicTableView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.drawRect(0, 0, getRight(), getBottom(), mBgPaint);
         mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top + mContentOffset.y;
-        mRect.left = mBlockSize * 4 + mContentRect.left + mContentOffset.x;
+        mRect.left = mBlockSize * 3 + mContentRect.left + mContentOffset.x;
         mRect.bottom = mRect.top + mBlockSize * 2;
-        mRect.right = mRect.left + mBlockSize * 8;
+        mRect.right = mRect.left + mBlockSize * 9;
         mLegend.drawLegend(canvas, mRect);
 
         writeHeaders(canvas);

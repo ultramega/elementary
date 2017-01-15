@@ -110,9 +110,22 @@ class PeriodicTableLegend {
         final int rows = 4;
         final int cols = (int)Math.ceil(count / (double)rows);
         final int boxHeight = (rect.bottom - rect.top) / rows;
-        final int boxWidth = (rect.right - rect.left) / cols;
 
         mTextPaint.setTextSize(boxHeight / 2);
+
+        int boxWidth = 0;
+        for(String value : mMap.values()) {
+            boxWidth = (int)Math.ceil(Math.max(boxWidth, mTextPaint.measureText(value)));
+        }
+        boxWidth += boxWidth / 10;
+
+        final float totalWidth = boxWidth * cols;
+        if(totalWidth > rect.width()) {
+            boxWidth *= rect.width() / totalWidth;
+            mTextPaint.setTextSize(mTextPaint.getTextSize() * rect.width() / totalWidth);
+        } else {
+            rect.left += (rect.width() - totalWidth) / 2;
+        }
 
         int n = 0;
         for(Entry<String, String> entry : mMap.entrySet()) {
