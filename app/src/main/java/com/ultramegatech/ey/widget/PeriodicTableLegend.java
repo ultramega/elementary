@@ -34,6 +34,7 @@ import com.ultramegatech.ey.util.ElementUtils;
 import com.ultramegatech.ey.util.PreferenceUtils;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 /**
@@ -46,7 +47,7 @@ class PeriodicTableLegend {
      * Map of key values to labels
      */
     @NonNull
-    private final HashMap<String, String> mMap = new HashMap<>();
+    private final HashMap<String, String> mMap = new LinkedHashMap<>();
 
     /**
      * Paint used to draw backgrounds
