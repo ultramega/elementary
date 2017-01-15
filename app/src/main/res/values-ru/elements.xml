@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <string name="el001">Водород</string>
+    <string name="el002">Гелий</string>
+    <string name="el003">Литий</string>
+    <string name="el004">Бериллий</string>
+    <string name="el005">Бор</string>
+    <string name="el006">Углерод</string>
+    <string name="el007">Азот</string>
+    <string name="el008">Кислород</string>
+    <string name="el009">Фтор</string>
+    <string name="el010">Неон</string>
+    <string name="el011">Натрий</string>
+    <string name="el012">Магний</string>
+    <string name="el013">Алюминий</string>
+    <string name="el014">Кремний</string>
+    <string name="el015">Фосфор</string>
+    <string name="el016">Сера</string>
+    <string name="el017">Хлор</string>
+    <string name="el018">Аргон</string>
+    <string name="el019">Калий</string>
+    <string name="el020">Кальций</string>
+    <string name="el021">Скандий</string>
+    <string name="el022">Титан</string>
+    <string name="el023">Ванадий</string>
+    <string name="el024">Хром</string>
+    <string name="el025">Марганец</string>
+    <string name="el026">Железо</string>
+    <string name="el027">Кобальт</string>
+    <string name="el028">Никель</string>
+    <string name="el029">Медь</string>
+    <string name="el030">Цинк</string>
+    <string name="el031">Галлий</string>
+    <string name="el032">Германий</string>
+    <string name="el033">Мышьяк</string>
+    <string name="el034">Селен</string>
+    <string name="el035">Бром</string>
+    <string name="el036">Криптон</string>
+    <string name="el037">Рубидий</string>
+    <string name="el038">Стронций</string>
+    <string name="el039">Иттрий</string>
+    <string name="el040">Цирконий</string>
+    <string name="el041">Ниобий</string>
+    <string name="el042">Молибден</string>
+    <string name="el043">Технеций</string>
+    <string name="el044">Рутений</string>
+    <string name="el045">Родий</string>
+    <string name="el046">Палладий</string>
+    <string name="el047">Серебро</string>
+    <string name="el048">Кадмий</string>
+    <string name="el049">Индий</string>
+    <string name="el050">Олово</string>
+    <string name="el051">Сурьма</string>
+    <string name="el052">Теллур</string>
+    <string name="el053">Иод</string>
+    <string name="el054">Ксенон</string>
+    <string name="el055">Цезий</string>
+    <string name="el056">Барий</string>
+    <string name="el057">Лантан</string>
+    <string name="el058">Церий</string>
+    <string name="el059">Празеодим</string>
+    <string name="el060">Неодим</string>
+    <string name="el061">Прометий</string>
+    <string name="el062">Самарий</string>
+    <string name="el063">Европий</string>
+    <string name="el064">Гадолиний</string>
+    <string name="el065">Тербий</string>
+    <string name="el066">Диспрозий</string>
+    <string name="el067">Гольмий</string>
+    <string name="el068">Эрбий</string>
+    <string name="el069">Тулий</string>
+    <string name="el070">Иттербий</string>
+    <string name="el071">Лютеций</string>
+    <string name="el072">Гафний</string>
+    <string name="el073">Тантал</string>
+    <string name="el074">Вольфрам</string>
+    <string name="el075">Рений</string>
+    <string name="el076">Осмий</string>
+    <string name="el077">Иридий</string>
+    <string name="el078">Платина</string>
+    <string name="el079">Золото</string>
+    <string name="el080">Ртуть</string>
+    <string name="el081">Таллий</string>
+    <string name="el082">Свинец</string>
+    <string name="el083">Висмут</string>
+    <string name="el084">Полоний</string>
+    <string name="el085">Астат</string>
+    <string name="el086">Радон</string>
+    <string name="el087">Франций</string>
+    <string name="el088">Радий</string>
+    <string name="el089">Актиний</string>
+    <string name="el090">Торий</string>
+    <string name="el091">Протактиний</string>
+    <string name="el092">Уран</string>
+    <string name="el093">Нептуний</string>
+    <string name="el094">Плутоний</string>
+    <string name="el095">Америций</string>
+    <string name="el096">Кюрий</string>
+    <string name="el097">Берклий</string>
+    <string name="el098">Калифорний</string>
+    <string name="el099">Эйнштений</string>
+    <string name="el100">Фермий</string>
+    <string name="el101">Менделевий</string>
+    <string name="el102">Нобелий</string>
+    <string name="el103">Лоуренсий</string>
+    <string name="el104">Резерфордий</string>
+    <string name="el105">Дубний</string>
+    <string name="el106">Сиборгий</string>
+    <string name="el107">Борий</string>
+    <string name="el108">Хассий</string>
+    <string name="el109">Мейтнерий</string>
+    <string name="el110">Дармштадтий</string>
+    <string name="el111">Рентгений</string>
+    <string name="el112">Коперниций</string>
+    <string name="el113">Нихоний</string>
+    <string name="el114">Флеровий</string>
+    <string name="el115">Московий</string>
+    <string name="el116">Ливерморий</string>
+    <string name="el117">Тенессин</string>
+    <string name="el118">Оганесон</string>
+
+    <string name="wikiLang">ru</string>
+
+    <string name="wiki001">Водород</string>
+    <string name="wiki002">Гелий</string>
+    <string name="wiki003">Литий</string>
+    <string name="wiki004">Бериллий</string>
+    <string name="wiki005">Бор</string>
+    <string name="wiki006">Углерод</string>
+    <string name="wiki007">Азот</string>
+    <string name="wiki008">Кислород</string>
+    <string name="wiki009">Фтор</string>
+    <string name="wiki010">Неон</string>
+    <string name="wiki011">Натрий</string>
+    <string name="wiki012">Магний</string>
+    <string name="wiki013">Алюминий</string>
+    <string name="wiki014">Кремний</string>
+    <string name="wiki015">Фосфор</string>
+    <string name="wiki016">Сера</string>
+    <string name="wiki017">Хлор</string>
+    <string name="wiki018">Аргон</string>
+    <string name="wiki019">Калий</string>
+    <string name="wiki020">Кальций</string>
+    <string name="wiki021">Скандий</string>
+    <string name="wiki022">Титан</string>
+    <string name="wiki023">Ванадий</string>
+    <string name="wiki024">Хром</string>
+    <string name="wiki025">Марганец</string>
+    <string name="wiki026">Железо</string>
+    <string name="wiki027">Кобальт</string>
+    <string name="wiki028">Никель</string>
+    <string name="wiki029">Медь</string>
+    <string name="wiki030">Цинк</string>
+    <string name="wiki031">Галлий</string>
+    <string name="wiki032">Германий</string>
+    <string name="wiki033">Мышьяк</string>
+    <string name="wiki034">Селен</string>
+    <string name="wiki035">Бром</string>
+    <string name="wiki036">Криптон</string>
+    <string name="wiki037">Рубидий</string>
+    <string name="wiki038">Стронций</string>
+    <string name="wiki039">Иттрий</string>
+    <string name="wiki040">Цирконий</string>
+    <string name="wiki041">Ниобий</string>
+    <string name="wiki042">Молибден</string>
+    <string name="wiki043">Технеций</string>
+    <string name="wiki044">Рутений</string>
+    <string name="wiki045">Родий</string>
+    <string name="wiki046">Палладий</string>
+    <string name="wiki047">Серебро</string>
+    <string name="wiki048">Кадмий</string>
+    <string name="wiki049">Индий</string>
+    <string name="wiki050">Олово</string>
+    <string name="wiki051">Сурьма</string>
+    <string name="wiki052">Теллур</string>
+    <string name="wiki053">Йод</string>
+    <string name="wiki054">Ксенон</string>
+    <string name="wiki055">Цезий</string>
+    <string name="wiki056">Барий</string>
+    <string name="wiki057">Лантан</string>
+    <string name="wiki058">Церий</string>
+    <string name="wiki059">Празеодим</string>
+    <string name="wiki060">Неодим</string>
+    <string name="wiki061">Прометий</string>
+    <string name="wiki062">Самарий</string>
+    <string name="wiki063">Европий</string>
+    <string name="wiki064">Гадолиний</string>
+    <string name="wiki065">Тербий</string>
+    <string name="wiki066">Диспрозий</string>
+    <string name="wiki067">Гольмий</string>
+    <string name="wiki068">Эрбий</string>
+    <string name="wiki069">Тулий</string>
+    <string name="wiki070">Иттербий</string>
+    <string name="wiki071">Лютеций</string>
+    <string name="wiki072">Гафний</string>
+    <string name="wiki073">Тантал</string>
+    <string name="wiki074">Вольфрам</string>
+    <string name="wiki075">Рений</string>
+    <string name="wiki076">Осмий</string>
+    <string name="wiki077">Иридий</string>
+    <string name="wiki078">Платина</string>
+    <string name="wiki079">Золото</string>
+    <string name="wiki080">Ртуть_(элемент)</string>
+    <string name="wiki081">Таллий</string>
+    <string name="wiki082">Свинец</string>
+    <string name="wiki083">Висмут</string>
+    <string name="wiki084">Полоний</string>
+    <string name="wiki085">Астат</string>
+    <string name="wiki086">Радон</string>
+    <string name="wiki087">Франций</string>
+    <string name="wiki088">Радий</string>
+    <string name="wiki089">Актиний</string>
+    <string name="wiki090">Торий</string>
+    <string name="wiki091">Протактиний</string>
+    <string name="wiki092">Уран</string>
+    <string name="wiki093">Нептуний</string>
+    <string name="wiki094">Плутоний</string>
+    <string name="wiki095">Америций</string>
+    <string name="wiki096">Кюрий</string>
+    <string name="wiki097">Берклий</string>
+    <string name="wiki098">Калифорний</string>
+    <string name="wiki099">Эйнштейний</string>
+    <string name="wiki100">Фермий</string>
+    <string name="wiki101">Менделевий</string>
+    <string name="wiki102">Нобелий</string>
+    <string name="wiki103">Лоуренсий</string>
+    <string name="wiki104">Резерфордий</string>
+    <string name="wiki105">Дубний</string>
+    <string name="wiki106">Сиборгий</string>
+    <string name="wiki107">Борий</string>
+    <string name="wiki108">Хассий</string>
+    <string name="wiki109">Мейтнерий</string>
+    <string name="wiki110">Дармштадтий</string>
+    <string name="wiki111">Рентгений</string>
+    <string name="wiki112">Коперниций</string>
+    <string name="wiki113">Нихоний</string>
+    <string name="wiki114">Флеровий</string>
+    <string name="wiki115">Московий</string>
+    <string name="wiki116">Ливерморий</string>
+    <string name="wiki117">Тенессин</string>
+    <string name="wiki118">Оганесон</string>
+</resources>

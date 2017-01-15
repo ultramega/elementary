@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+
+    <string name="titleAbout">О Elementary</string>
+    <string name="titleElementDetails" formatted="true">Детали элемента %s</string>
+    <string name="titlePeriodicTable">Периодическая таблица элементов</string>
+    <string name="titleElementList">Список элементов</string>
+    <string name="titleSettings">Настройки Elementary</string>
+    <string name="titleSort">Сортировка</string>
+
+    <string name="buttonVideo">Просмотр видео</string>
+    <string name="buttonWiki">Wikipedia</string>
+    <string name="buttonSort">Сортировка</string>
+    <string name="buttonZoom">Масштаб</string>
+
+    <string name="menuAbout">О</string>
+    <string name="menuSettings">Настройки</string>
+    <string name="menuList">Список</string>
+    <string name="menuTable">Таблица</string>
+
+    <string name="prefTitleDarkTheme">Темная тема</string>
+    <string name="prefTitleTemp">Единицы температуры</string>
+    <string name="prefSummaryTemp">Единицы измерения температуры</string>
+    <string name="prefTitleColors">Цвета элемента</string>
+    <string name="prefSummaryColors">Свойство для раскраски элементов</string>
+    <string name="prefTitleSubtextValue">Значение блока</string>
+    <string name="prefSummarySubtextValue">Значение под символом элемента</string>
+    <string name="prefTitleShowControls">Контролы периодической таблицы</string>
+    <string name="prefSummaryShowControls">Показ контролов в режиме таблицы</string>
+
+    <string name="labelNumber">Атомное число</string>
+    <string name="labelSymbol">Символ</string>
+    <string name="labelName">Имя</string>
+    <string name="labelWeight">Атомный вес</string>
+    <string name="labelCategory">Категория</string>
+    <string name="labelGPB">Группа, период, блок</string>
+    <string name="labelConfiguration">Электронная конфигурация</string>
+    <string name="labelElectrons">Электронов на оболочку</string>
+    <string name="labelDensity">Плотность</string>
+    <string name="labelMelt">Точка плавления</string>
+    <string name="labelBoil">Точка кипения</string>
+    <string name="labelHeat">Specific heat</string>
+    <string name="labelNegativity">Электроотрицательность</string>
+    <string name="labelAbundance">Abundance</string>
+    <string name="labelIsotopes">Общие изотопы</string>
+
+    <string name="labelSubtextValue">Отображение</string>
+    <string name="labelBlockColors">Раскраска по</string>
+
+    <string name="hintFilter">Фильтр по имени или символу</string>
+
+    <string name="aboutVersion">Версия</string>
+    <string name="aboutSupport">Поддержка</string>
+    <string name="aboutWebsite">Вебсайт</string>
+    <string name="aboutLicense">Лицензия</string>
+    <string name="aboutSources">Исходники</string>
+    <string name="aboutSendEmail">Контакты поддержки</string>
+
+    <string name="errorNoEmail">Не найден почтовый клиент</string>
+
+    <string name="descGroup">группа</string>
+    <string name="descPeriod">период</string>
+    <string name="descBlock">блок</string>
+
+    <string name="unknown">неизвестно</string>
+</resources>
