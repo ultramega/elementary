@@ -76,7 +76,6 @@
     <string name="aboutLicense">Licenza</string>
     <string name="aboutSources">Fonti</string>
     <string name="aboutSendEmail">Contattare il supporto tecnico</string>
-    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
 
     <string name="errorNoEmail">Nessun client di posta elettronica trovati</string>
 

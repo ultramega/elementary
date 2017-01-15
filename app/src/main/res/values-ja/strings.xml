@@ -76,7 +76,6 @@
     <string name="aboutLicense">ライセンス</string>
     <string name="aboutSources">ソース</string>
     <string name="aboutSendEmail">お問い合せ</string>
-    <string name="aboutCopyright" formatted="true">Copyright © %d UltraMega Software</string>
 
     <string name="errorNoEmail">メールクライアントが見つかりません</string>
 

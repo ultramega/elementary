@@ -36,8 +36,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
-
 /**
  * Dialog that shows information about the application.
  *
@@ -83,9 +81,6 @@ public class AboutFragment extends DialogFragment {
                 openLicense();
             }
         });
-        ((TextView)root.findViewById(R.id.copyright))
-                .setText(getString(R.string.aboutCopyright,
-                        Calendar.getInstance().get(Calendar.YEAR)));
 
         return root;
     }
