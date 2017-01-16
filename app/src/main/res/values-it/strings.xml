@@ -24,7 +24,7 @@
 <resources>
     <string name="titleAbout">A proposito di elementare</string>
     <string name="titleElementDetails" formatted="true">Informazioni sull\'elemento per %s</string>
-    <string name="titlePeriodicTable">Tavola periodica degli elementi</string>
+    <string name="titlePeriodicTable">Tavola Periodica degli Elementi</string>
     <string name="titleElementList">Lista degli elementi</string>
     <string name="titleSettings">Impostazioni di Elementary</string>
     <string name="titleSort">Ordina per:</string>
