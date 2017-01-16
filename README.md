@@ -24,6 +24,7 @@ Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
 - French translation: [Poussinou](https://github.com/Poussinou)
 - Brazilian Portuguese translation: [amalvarenga](https://github.com/amalvarenga)
 - Japanese translation: [naofum](https://github.com/naofum)
+- Russian translation: [ashed](https://github.com/ashed)
 
 ## Donate
 
