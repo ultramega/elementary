@@ -1,4 +1,10 @@
-﻿- v.0.8.1 (12/26/16):
+﻿- v.0.8.2 (1/15/17):
+   * Added Russian translation ([ashed](https://github.com/ashed))
+   * Fixed ordering of items in the legend
+   * Fixed sizing of the legend to allow for longer strings
+   * Fixed the filter hint sometimes taking up more than one line
+   * Fixed capitalization of the Periodic Table in Italian
+- v.0.8.1 (12/26/16):
    * Updated Brazilian Portuguese translation ([amalvarenga](https://github.com/amalvarenga))
    * Added Japanese translation ([naofum](https://github.com/naofum))
 - v.0.8.0 (12/18/16):
