@@ -1,4 +1,7 @@
-﻿- v.0.8.2 (1/15/17):
+﻿- v.0.8.3 (3/18/17):
+   * Fixed 11 Wikipedia links
+   * Fixed the support email link
+- v.0.8.2 (1/15/17):
    * Added Russian translation ([ashed](https://github.com/ashed))
    * Fixed ordering of items in the legend
    * Fixed sizing of the legend to allow for longer strings
