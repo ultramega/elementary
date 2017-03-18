@@ -76,9 +76,6 @@
     <string name="aboutWebsite">Вебсайт</string>
     <string name="aboutLicense">Лицензия</string>
     <string name="aboutSources">Исходники</string>
-    <string name="aboutSendEmail">Контакты поддержки</string>
-
-    <string name="errorNoEmail">Не найден почтовый клиент</string>
 
     <string name="descGroup">группа</string>
     <string name="descPeriod">период</string>

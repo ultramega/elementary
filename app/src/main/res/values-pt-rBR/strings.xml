@@ -75,9 +75,6 @@
     <string name="aboutWebsite">Site</string>
     <string name="aboutLicense">Licença</string>
     <string name="aboutSources">Fontes</string>
-    <string name="aboutSendEmail">Contacte o suporte técnico</string>
-
-    <string name="errorNoEmail">Nenhum cliente de e-mail encontrado</string>
 
     <string name="descGroup">grupo</string>
     <string name="descPeriod">período</string>

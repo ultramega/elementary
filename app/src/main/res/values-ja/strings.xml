@@ -75,9 +75,6 @@
     <string name="aboutWebsite">Webサイト</string>
     <string name="aboutLicense">ライセンス</string>
     <string name="aboutSources">ソース</string>
-    <string name="aboutSendEmail">お問い合せ</string>
-
-    <string name="errorNoEmail">メールクライアントが見つかりません</string>
 
     <string name="descGroup">族</string>
     <string name="descPeriod">周期</string>
