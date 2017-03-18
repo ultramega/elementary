@@ -34,7 +34,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.Locale;
 
 /**
  * Dialog that shows information about the application.
@@ -95,15 +96,12 @@ public class AboutFragment extends DialogFragment {
      * Open an email client to send a support request.
      */
     private void openEmail() {
-        final Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {getString(R.string.aboutEmail)});
-        intent.putExtra(Intent.EXTRA_SUBJECT,
-                getString(R.string.aboutEmailSubject, BuildConfig.VERSION_NAME));
-        if(intent.resolveActivity(getContext().getPackageManager()) != null) {
-            startActivity(Intent.createChooser(intent, getString(R.string.aboutSendEmail)));
-        } else {
-            Toast.makeText(getContext(), R.string.errorNoEmail, Toast.LENGTH_LONG).show();
-        }
+        final String email = getString(R.string.aboutEmail);
+        final String subject = getString(R.string.aboutEmailSubject, BuildConfig.VERSION_NAME);
+        final String uri = String.format(Locale.US, "mailto:%s?subject=%s", email, subject);
+        final Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
     }
 
     /**
