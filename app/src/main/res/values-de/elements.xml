@@ -144,7 +144,7 @@
     <string name="wikiLang">de</string>
 
     <string name="wiki001">Wasserstoff</string>
-    <string name="wiki002">Hwikiium</string>
+    <string name="wiki002">Helium</string>
     <string name="wiki003">Lithium</string>
     <string name="wiki004">Beryllium</string>
     <string name="wiki005">Bor</string>
@@ -158,7 +158,7 @@
     <string name="wiki013">Aluminium</string>
     <string name="wiki014">Silicium</string>
     <string name="wiki015">Phosphor</string>
-    <string name="wiki016">Schwefwiki</string>
+    <string name="wiki016">Schwefel</string>
     <string name="wiki017">Chlor</string>
     <string name="wiki018">Argon</string>
     <string name="wiki019">Kalium</string>
@@ -170,13 +170,13 @@
     <string name="wiki025">Mangan</string>
     <string name="wiki026">Eisen</string>
     <string name="wiki027">Cobalt</string>
-    <string name="wiki028">Nickwiki</string>
+    <string name="wiki028">Nickel</string>
     <string name="wiki029">Kupfer</string>
     <string name="wiki030">Zink</string>
     <string name="wiki031">Gallium</string>
     <string name="wiki032">Germanium</string>
     <string name="wiki033">Arsen</string>
-    <string name="wiki034">Swikien</string>
+    <string name="wiki034">Selen</string>
     <string name="wiki035">Brom</string>
     <string name="wiki036">Krypton</string>
     <string name="wiki037">Rubidium</string>
@@ -194,7 +194,7 @@
     <string name="wiki049">Indium</string>
     <string name="wiki050">Zinn</string>
     <string name="wiki051">Antimon</string>
-    <string name="wiki052">Twikilur</string>
+    <string name="wiki052">Tellur</string>
     <string name="wiki053">Iod</string>
     <string name="wiki054">Xenon</string>
     <string name="wiki055">Caesium</string>
@@ -239,12 +239,12 @@
     <string name="wiki094">Plutonium</string>
     <string name="wiki095">Americium</string>
     <string name="wiki096">Curium</string>
-    <string name="wiki097">Berkwikiium</string>
+    <string name="wiki097">Berkelium</string>
     <string name="wiki098">Californium</string>
     <string name="wiki099">Einsteinium</string>
     <string name="wiki100">Fermium</string>
-    <string name="wiki101">Mendwikievium</string>
-    <string name="wiki102">Nobwikiium</string>
+    <string name="wiki101">Mendelevium</string>
+    <string name="wiki102">Nobelium</string>
     <string name="wiki103">Lawrencium</string>
     <string name="wiki104">Rutherfordium</string>
     <string name="wiki105">Dubnium</string>

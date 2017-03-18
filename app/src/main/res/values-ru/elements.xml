@@ -222,7 +222,7 @@
     <string name="wiki077">Иридий</string>
     <string name="wiki078">Платина</string>
     <string name="wiki079">Золото</string>
-    <string name="wiki080">Ртуть_(элемент)</string>
+    <string name="wiki080">Ртуть</string>
     <string name="wiki081">Таллий</string>
     <string name="wiki082">Свинец</string>
     <string name="wiki083">Висмут</string>
@@ -259,6 +259,6 @@
     <string name="wiki114">Флеровий</string>
     <string name="wiki115">Московий</string>
     <string name="wiki116">Ливерморий</string>
-    <string name="wiki117">Тенессин</string>
+    <string name="wiki117">Теннессин</string>
     <string name="wiki118">Оганесон</string>
 </resources>
