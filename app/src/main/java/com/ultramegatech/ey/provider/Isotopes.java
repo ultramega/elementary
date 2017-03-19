@@ -31,7 +31,7 @@ import android.support.annotation.Nullable;
  */
 public class Isotopes {
     /**
-     * The list of isotopes grouper by element
+     * The list of isotopes grouped by element
      */
     private static final Isotope[][] ISOTOPES = new Isotope[][] {
             new Isotope[] {
