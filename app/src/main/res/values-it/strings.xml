@@ -22,7 +22,7 @@
   THE SOFTWARE.
 -->
 <resources>
-    <string name="titleAbout">A proposito di elementare</string>
+    <string name="titleAbout">A proposito di Elementary</string>
     <string name="titleElementDetails" formatted="true">Informazioni sull\'elemento per %s</string>
     <string name="titlePeriodicTable">Tavola Periodica degli Elementi</string>
     <string name="titleElementList">Lista degli elementi</string>
