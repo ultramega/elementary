@@ -26,14 +26,6 @@ Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
 - Japanese translation: [naofum](https://github.com/naofum)
 - Russian translation: [ashed](https://github.com/ashed)
 
-## Donate
-
-If you would like to support this project, donations are greatly appreciated!
-
-- [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=76UJ7AX8VJT5Q)
-- [![Flattr this](https://button.flattr.com/flattr-badge-large.png)](https://flattr.com/submit/auto?fid=jeznxl&url=https%3A%2F%2Fgithub.com%2Fultramega%2Felementary)
-- Bitcoin: 1NWnY7XCH65gu9xknsqNvDfyNhVy7AEeLS
-
 ## License
 
 The source code for Elementary is released under the terms of the [MIT License](http://sguidetti.mit-license.org/).
