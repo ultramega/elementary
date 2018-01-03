@@ -1085,7 +1085,7 @@ public class PeriodicTableView extends View {
 
         @Override
         protected void onPopulateNodeForVirtualView(int virtualViewId,
-                                                    AccessibilityNodeInfoCompat node) {
+                                                    @NonNull AccessibilityNodeInfoCompat node) {
             final PeriodicTableBlock block = mPeriodicTableBlocks.get(virtualViewId);
             findBlockPosition(block);
             node.setBoundsInParent(new Rect(mRect));

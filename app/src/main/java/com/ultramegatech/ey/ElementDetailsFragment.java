@@ -195,7 +195,7 @@ public class ElementDetailsFragment extends DialogFragment
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_element_details, container, false);
 
@@ -240,7 +240,7 @@ public class ElementDetailsFragment extends DialogFragment
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         populateViews();
     }

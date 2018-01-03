@@ -114,7 +114,7 @@ public class ElementListFragment extends ListFragment
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_SORT, mSort);
         outState.putBoolean(KEY_SORT_REVERSE, mSortReverse);
