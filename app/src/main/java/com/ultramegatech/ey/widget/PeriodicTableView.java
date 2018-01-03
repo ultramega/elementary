@@ -37,7 +37,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.EdgeEffectCompat;
 import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -45,6 +44,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.EdgeEffect;
 import android.widget.Scroller;
 
 import com.ultramegatech.ey.R;
@@ -262,13 +262,13 @@ public class PeriodicTableView extends View {
      * Edge effects to provide visual indicators that an edge has been reached
      */
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectTop;
+    private final EdgeEffect mEdgeEffectTop;
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectBottom;
+    private final EdgeEffect mEdgeEffectBottom;
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectLeft;
+    private final EdgeEffect mEdgeEffectLeft;
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectRight;
+    private final EdgeEffect mEdgeEffectRight;
 
     /**
      * The accessibility delegate for this View
@@ -324,10 +324,10 @@ public class PeriodicTableView extends View {
         mZoomer = new Zoomer(context);
         mScroller = new Scroller(context);
 
-        mEdgeEffectLeft = new EdgeEffectCompat(context);
-        mEdgeEffectTop = new EdgeEffectCompat(context);
-        mEdgeEffectRight = new EdgeEffectCompat(context);
-        mEdgeEffectBottom = new EdgeEffectCompat(context);
+        mEdgeEffectLeft = new EdgeEffect(context);
+        mEdgeEffectTop = new EdgeEffect(context);
+        mEdgeEffectRight = new EdgeEffect(context);
+        mEdgeEffectBottom = new EdgeEffect(context);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             mAccessibilityDelegate = new AccessibilityDelegate(this);
@@ -433,19 +433,17 @@ public class PeriodicTableView extends View {
 
                 if(mContentRect.height() > getHeight()) {
                     if(distanceY < 0 && mContentRect.top == 0) {
-                        mEdgeEffectTop.onPull(-distanceY / getHeight(), e2.getX() / getWidth());
+                        mEdgeEffectTop.onPull(-distanceY / getHeight());
                     } else if(distanceY > 0 && mContentRect.bottom == getHeight()) {
-                        mEdgeEffectBottom.onPull(-distanceY / getHeight(),
-                                1f - (e2.getX() / getWidth()));
+                        mEdgeEffectBottom.onPull(-distanceY / getHeight());
                     }
                 }
 
                 if(mContentRect.width() > getWidth()) {
                     if(distanceX < 0 && mContentRect.left == 0) {
-                        mEdgeEffectLeft.onPull(-distanceX / getWidth(),
-                                1f - (e2.getY() / getHeight()));
+                        mEdgeEffectLeft.onPull(-distanceX / getWidth());
                     } else if(distanceX > 0 && mContentRect.right == getWidth()) {
-                        mEdgeEffectRight.onPull(-distanceX / getWidth(), e2.getY() / getHeight());
+                        mEdgeEffectRight.onPull(-distanceX / getWidth());
                     }
                 }
 
