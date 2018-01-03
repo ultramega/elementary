@@ -131,6 +131,7 @@ public class ElementListFragment extends ListFragment
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
         mActivatedItem = id;
         ((ElementListActivity)getActivity()).onItemSelected((int)id);
     }
@@ -221,6 +222,7 @@ public class ElementListFragment extends ListFragment
      * Dialog for setting the sort parameter for the list.
      */
     public static class SortDialog extends DialogFragment {
+        @SuppressWarnings("MethodDoesntCallSuperMethod")
         @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

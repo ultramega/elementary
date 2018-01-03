@@ -342,6 +342,7 @@ public class PeriodicTableView extends View {
      */
     @NonNull
     private ScaleGestureDetector.OnScaleGestureListener getOnScaleGestureListener() {
+        //noinspection MethodDoesntCallSuperMethod
         return new ScaleGestureDetector.SimpleOnScaleGestureListener() {
             /**
              * The initial span of the scale gesture
@@ -383,6 +384,7 @@ public class PeriodicTableView extends View {
      */
     @NonNull
     private GestureDetector.OnGestureListener getOnGestureListener() {
+        //noinspection MethodDoesntCallSuperMethod
         return new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {
@@ -955,6 +957,7 @@ public class PeriodicTableView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         canvas.drawRect(0, 0, getRight(), getBottom(), mBgPaint);
         mRect.top = (int)(mBlockSize * 1.3) + mContentRect.top + mContentOffset.y;
         mRect.left = mBlockSize * 3 + mContentRect.left + mContentOffset.x;

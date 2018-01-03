@@ -192,6 +192,7 @@ public class ElementDetailsFragment extends DialogFragment
         mStringUnknown = getString(R.string.unknown);
     }
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
