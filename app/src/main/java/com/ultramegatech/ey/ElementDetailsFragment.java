@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -262,7 +263,10 @@ public class ElementDetailsFragment extends DialogFragment
         final String name = getString(ElementUtils.getElementName(mElement.number));
 
         if(!getShowsDialog()) {
-            getActivity().setTitle(getString(R.string.titleElementDetails, name));
+            final Activity activity = getActivity();
+            if(activity != null) {
+                activity.setTitle(getString(R.string.titleElementDetails, name));
+            }
         }
 
         mTxtHeader.setText(name);

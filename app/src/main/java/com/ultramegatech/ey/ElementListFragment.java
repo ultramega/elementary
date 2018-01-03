@@ -22,8 +22,10 @@
  */
 package com.ultramegatech.ey;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
@@ -31,6 +33,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -87,6 +90,11 @@ public class ElementListFragment extends ListFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        final Context context = getContext();
+        if(context == null) {
+            return;
+        }
+
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         prefs.registerOnSharedPreferenceChangeListener(this);
 
@@ -97,7 +105,7 @@ public class ElementListFragment extends ListFragment
             mActivatedItem = savedInstanceState.getLong(KEY_ACTIVATED_ITEM, mActivatedItem);
         }
 
-        mAdapter = new ElementListAdapter(getContext());
+        mAdapter = new ElementListAdapter(context);
         mAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
@@ -132,15 +140,25 @@ public class ElementListFragment extends ListFragment
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+
         mActivatedItem = id;
-        ((ElementListActivity)getActivity()).onItemSelected((int)id);
+
+        final ElementListActivity activity = (ElementListActivity)getActivity();
+        if(activity != null) {
+            activity.onItemSelected((int)id);
+        }
     }
 
     /**
      * Setup the listener for the filtering TextView.
      */
     private void setupFilter() {
-        final EditText filterEditText = getActivity().findViewById(R.id.filter);
+        final Activity activity = getActivity();
+        if(activity == null) {
+            return;
+        }
+
+        final EditText filterEditText = activity.findViewById(R.id.filter);
         filterEditText.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -159,7 +177,12 @@ public class ElementListFragment extends ListFragment
      * Setup the listener for the sort button.
      */
     private void setupSort() {
-        final Button sortButton = getActivity().findViewById(R.id.sort);
+        final Activity activity = getActivity();
+        if(activity == null) {
+            return;
+        }
+
+        final Button sortButton = activity.findViewById(R.id.sort);
         sortButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openSortDialog();
@@ -171,9 +194,14 @@ public class ElementListFragment extends ListFragment
      * Display the sorting dialog.
      */
     private void openSortDialog() {
+        final FragmentManager fm = getFragmentManager();
+        if(fm == null) {
+            return;
+        }
+
         final DialogFragment fragment = new SortDialog();
         fragment.setTargetFragment(this, 0);
-        fragment.show(getFragmentManager(), null);
+        fragment.show(fm, null);
     }
 
     /**
@@ -230,7 +258,12 @@ public class ElementListFragment extends ListFragment
                     .setTitle(R.string.titleSort)
                     .setItems(R.array.sortFieldNames, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
-                            ((ElementListFragment)getTargetFragment()).setSort(item);
+                            final ElementListFragment fragment =
+                                    (ElementListFragment)getTargetFragment();
+                            if(fragment != null) {
+                                fragment.setSort(item);
+                            }
+
                             dialog.dismiss();
                         }
                     })
