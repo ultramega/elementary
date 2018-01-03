@@ -132,7 +132,7 @@ public class PeriodicTableActivity extends FragmentActivity
         setupImmersiveMode();
         setContentView(R.layout.activity_periodic_table);
 
-        mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
+        mPeriodicTableView = findViewById(R.id.ptview);
         mPeriodicTableView.setPeriodicTableListener(new PeriodicTableView.PeriodicTableListener() {
             @Override
             public void onItemClick(@NonNull PeriodicTableBlock item) {
@@ -170,7 +170,7 @@ public class PeriodicTableActivity extends FragmentActivity
             }
         };
 
-        mZoomControls = (ZoomControls)findViewById(R.id.zoom);
+        mZoomControls = findViewById(R.id.zoom);
         mZoomControls.setVisibility(View.INVISIBLE);
         mZoomControls.setIsZoomOutEnabled(false);
         mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
@@ -209,7 +209,7 @@ public class PeriodicTableActivity extends FragmentActivity
      * Set up the Spinner for choosing the value to display as the subtext of each block.
      */
     private void setupSubtextValueSpinner() {
-        mSpinnerSubtextValue = (Spinner)findViewById(R.id.subtextValue);
+        mSpinnerSubtextValue = findViewById(R.id.subtextValue);
         final BlockSubtextValueListAdapter adapter = new BlockSubtextValueListAdapter(this);
         mSpinnerSubtextValue.setAdapter(adapter);
         mSpinnerSubtextValue.setSelection(adapter
@@ -230,7 +230,7 @@ public class PeriodicTableActivity extends FragmentActivity
      * Set up the Spinner for choosing how to color the blocks.
      */
     private void setupBlockColorSpinner() {
-        mSpinnerBlockColors = (Spinner)findViewById(R.id.blockColors);
+        mSpinnerBlockColors = findViewById(R.id.blockColors);
         if(mSpinnerBlockColors == null) {
             return;
         }

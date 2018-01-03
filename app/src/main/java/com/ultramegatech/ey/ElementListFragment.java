@@ -140,7 +140,7 @@ public class ElementListFragment extends ListFragment
      * Setup the listener for the filtering TextView.
      */
     private void setupFilter() {
-        final EditText filterEditText = (EditText)getActivity().findViewById(R.id.filter);
+        final EditText filterEditText = getActivity().findViewById(R.id.filter);
         filterEditText.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -159,7 +159,7 @@ public class ElementListFragment extends ListFragment
      * Setup the listener for the sort button.
      */
     private void setupSort() {
-        final Button sortButton = (Button)getActivity().findViewById(R.id.sort);
+        final Button sortButton = getActivity().findViewById(R.id.sort);
         sortButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openSortDialog();

@@ -151,9 +151,9 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
                     .inflate(R.layout.element_list_item, parent, false);
             final ViewHolder holder = new ViewHolder();
             holder.block = convertView.findViewById(R.id.block);
-            holder.number = (TextView)convertView.findViewById(R.id.number);
-            holder.symbol = (TextView)convertView.findViewById(R.id.symbol);
-            holder.name = (TextView)convertView.findViewById(R.id.name);
+            holder.number = convertView.findViewById(R.id.number);
+            holder.symbol = convertView.findViewById(R.id.symbol);
+            holder.name = convertView.findViewById(R.id.name);
             convertView.setTag(holder);
         }
 
