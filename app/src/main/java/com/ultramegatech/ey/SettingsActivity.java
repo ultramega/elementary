@@ -22,7 +22,6 @@
  */
 package com.ultramegatech.ey;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -75,12 +74,9 @@ public class SettingsActivity extends PreferenceActivity
         prefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    @SuppressLint("CommitPrefEdits")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(PreferenceUtils.KEY_DARK_THEME.equals(key)) {
-            sharedPreferences.edit().commit();
-
             final Intent intent = new Intent(this, SettingsActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
