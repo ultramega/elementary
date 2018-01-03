@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,7 +32,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
-import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.PreferenceUtils;
 import com.ultramegatech.ey.util.SubtextValuesHelper;
 
@@ -59,7 +59,11 @@ public class SettingsActivity extends PreferenceActivity
 
         super.onCreate(savedInstanceState);
 
-        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
+        final ActionBar actionBar = getActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         addPreferencesFromResource(R.xml.preferences);
 
         mSubtextValuePreference = (ListPreference)findPreference(PreferenceUtils.KEY_SUBTEXT_VALUE);

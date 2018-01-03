@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -33,7 +34,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
 
@@ -61,7 +61,10 @@ public class ElementDetailsActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
 
-        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
+        final ActionBar actionBar = getActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         if(savedInstanceState == null) {
             final Intent intent = getIntent();
