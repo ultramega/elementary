@@ -38,13 +38,13 @@ public class Isotope {
     /**
      * The mass number of the isotope
      */
-    public final int number;
+    private final int number;
 
     /**
      * The symbol for the isotope
      */
     @NonNull
-    public final String symbol;
+    private final String symbol;
 
     /**
      * The relative atomic mass of the isotope
