@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -888,6 +889,7 @@ public class PeriodicTableView extends View {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean ret = mScaleGestureDetector.onTouchEvent(event);
