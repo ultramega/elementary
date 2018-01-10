@@ -158,7 +158,7 @@ public class ElementListFragment extends ListFragment
             return;
         }
 
-        final EditText filterEditText = activity.findViewById(R.id.filter);
+        final EditText filterEditText = (EditText)activity.findViewById(R.id.filter);
         filterEditText.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -182,7 +182,7 @@ public class ElementListFragment extends ListFragment
             return;
         }
 
-        final Button sortButton = activity.findViewById(R.id.sort);
+        final Button sortButton = (Button)activity.findViewById(R.id.sort);
         sortButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openSortDialog();

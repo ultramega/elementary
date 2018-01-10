@@ -119,8 +119,11 @@ public class PeriodicTableActivity extends FragmentActivity
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme();
         setTheme(darkTheme ? R.style.DarkTheme_TableView : R.style.LightTheme_TableView);
 
@@ -132,7 +135,7 @@ public class PeriodicTableActivity extends FragmentActivity
         setupImmersiveMode();
         setContentView(R.layout.activity_periodic_table);
 
-        mPeriodicTableView = findViewById(R.id.ptview);
+        mPeriodicTableView = (PeriodicTableView)findViewById(R.id.ptview);
         mPeriodicTableView.setPeriodicTableListener(new PeriodicTableView.PeriodicTableListener() {
             @Override
             public void onItemClick(@NonNull PeriodicTableBlock item) {
@@ -170,7 +173,7 @@ public class PeriodicTableActivity extends FragmentActivity
             }
         };
 
-        mZoomControls = findViewById(R.id.zoom);
+        mZoomControls = (ZoomControls)findViewById(R.id.zoom);
         mZoomControls.setVisibility(View.INVISIBLE);
         mZoomControls.setIsZoomOutEnabled(false);
         mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
@@ -209,7 +212,7 @@ public class PeriodicTableActivity extends FragmentActivity
      * Set up the Spinner for choosing the value to display as the subtext of each block.
      */
     private void setupSubtextValueSpinner() {
-        mSpinnerSubtextValue = findViewById(R.id.subtextValue);
+        mSpinnerSubtextValue = (Spinner)findViewById(R.id.subtextValue);
         final BlockSubtextValueListAdapter adapter = new BlockSubtextValueListAdapter(this);
         mSpinnerSubtextValue.setAdapter(adapter);
         mSpinnerSubtextValue.setSelection(adapter
@@ -230,7 +233,7 @@ public class PeriodicTableActivity extends FragmentActivity
      * Set up the Spinner for choosing how to color the blocks.
      */
     private void setupBlockColorSpinner() {
-        mSpinnerBlockColors = findViewById(R.id.blockColors);
+        mSpinnerBlockColors = (Spinner)findViewById(R.id.blockColors);
         if(mSpinnerBlockColors == null) {
             return;
         }
