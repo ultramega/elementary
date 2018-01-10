@@ -48,7 +48,6 @@ public class SettingsActivity extends PreferenceActivity
      */
     private ListPreference mSubtextValuePreference;
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);

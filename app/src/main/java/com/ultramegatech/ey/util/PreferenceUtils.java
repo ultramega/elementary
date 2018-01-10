@@ -32,7 +32,7 @@ import android.support.annotation.NonNull;
  *
  * @author Steve Guidetti
  */
-@SuppressWarnings("unused,WeakerAccess")
+@SuppressWarnings("WeakerAccess")
 public class PreferenceUtils {
     /**
      * The keys for the preference

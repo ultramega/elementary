@@ -50,12 +50,12 @@ import java.util.Comparator;
  *
  * @author Steve Guidetti
  */
-@SuppressWarnings("unused")
 public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filterable {
     /**
      * Sorting options
      */
     public static final int SORT_NUMBER = 0;
+    @SuppressWarnings("unused")
     public static final int SORT_NAME = 1;
 
     /**

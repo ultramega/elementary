@@ -368,7 +368,6 @@ public class ElementDetailsFragment extends DialogFragment
     /**
      * Get the electron configuration.
      */
-    @SuppressWarnings("deprecation")
     private void getElectronConfiguration() {
         final StringBuilder builder = new StringBuilder();
         final StringBuilder descBuilder = new StringBuilder();
