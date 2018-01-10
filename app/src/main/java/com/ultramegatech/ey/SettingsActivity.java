@@ -74,7 +74,7 @@ public class SettingsActivity extends PreferenceActivity
         prefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    @SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
+    @SuppressLint("ApplySharedPref")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(PreferenceUtils.KEY_DARK_THEME.equals(key)) {
