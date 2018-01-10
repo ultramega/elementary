@@ -114,10 +114,14 @@ class PeriodicTableLegend {
         mTextPaint.setTextSize(boxHeight / 2);
 
         int boxWidth = 0;
-        for(String value : mMap.values()) {
-            boxWidth = (int)Math.ceil(Math.max(boxWidth, mTextPaint.measureText(value)));
+        if(cols < 2) {
+            boxWidth = rect.width();
+        } else {
+            for(String value : mMap.values()) {
+                boxWidth = (int)Math.ceil(Math.max(boxWidth, mTextPaint.measureText(value)));
+            }
+            boxWidth += boxWidth / 10;
         }
-        boxWidth += boxWidth / 10;
 
         final float totalWidth = boxWidth * cols;
         if(totalWidth > rect.width()) {
