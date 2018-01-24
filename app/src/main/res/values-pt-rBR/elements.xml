@@ -134,12 +134,12 @@
     <string name="el110">Darmstádio</string>
     <string name="el111">Roentgênio</string>
     <string name="el112">Copernício</string>
-    <string name="el113">Nihonium</string>
+    <string name="el113">Nihônio</string>
     <string name="el114">Fleróvio</string>
-    <string name="el115">Moscovium</string>
+    <string name="el115">Moscóvio</string>
     <string name="el116">Livermório</string>
-    <string name="el117">Tennessine</string>
-    <string name="el118">Oganesson</string>
+    <string name="el117">Tenessino</string>
+    <string name="el118">Oganessônio</string>
 
     <string name="wikiLang">pt</string>
 
@@ -257,8 +257,8 @@
     <string name="wiki112">Copernício</string>
     <string name="wiki113">Nihonium</string>
     <string name="wiki114">Fleróvio</string>
-    <string name="wiki115">Moscovium</string>
+    <string name="wiki115">Moscóvio</string>
     <string name="wiki116">Livermório</string>
-    <string name="wiki117">Tennessine</string>
+    <string name="wiki117">Tenesso</string>
     <string name="wiki118">Oganesson</string>
 </resources>
