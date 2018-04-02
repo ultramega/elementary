@@ -45,7 +45,7 @@
     <string name="prefTitleColors">Elementfarben</string>
     <string name="prefSummaryColors">Bevorzugtes Farbschema</string>
     <string name="prefTitleSubtextValue">Blockwert</string>
-    <string name="prefSummarySubtextValue">Der Wert unter dem Elementsymbol angezeigt</string>
+    <string name="prefSummarySubtextValue">Der unter dem Elementsymbol angezeigte Wert</string>
     <string name="prefTitleShowControls">Tabellenansicht Steuerung</string>
     <string name="prefSummaryShowControls">Zeigen Sie die Bedienelemente für das Periodensystem in der Tabellenansicht</string>
 
