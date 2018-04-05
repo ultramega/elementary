@@ -4,8 +4,6 @@ Elementary is a simple Periodic Table and element reference application for Andr
 
 [![Google Play](https://raw.githubusercontent.com/ultramega/elementary/master/store/en-play-badge.png)](https://play.google.com/store/apps/details?id=com.ultramegatech.ey) [![Amazon Appstore](https://raw.githubusercontent.com/ultramega/elementary/master/store/en-amazon-badge.png)](http://www.amazon.com/gp/mas/dl/android?p=com.ultramegatech.ey) [![F-Droid](https://raw.githubusercontent.com/ultramega/elementary/master/store/en-fdroid-badge.png)](https://f-droid.org/repository/browse/?fdid=com.ultramegatech.ey)
 
-[Also available for Windows 10](https://github.com/ultramega/elementary-uwp)
-
 ## Features
 
 - Zoomable Periodic Table of the Elements
