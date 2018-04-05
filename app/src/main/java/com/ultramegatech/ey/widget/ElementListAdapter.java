@@ -246,18 +246,18 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
          * The Element
          */
         @NonNull
-        public final Element element;
+        final Element element;
 
         /**
          * The element name
          */
         @NonNull
-        public final String name;
+        final String name;
 
         /**
          * The block color
          */
-        public int color;
+        int color;
 
         /**
          * @param context The Context

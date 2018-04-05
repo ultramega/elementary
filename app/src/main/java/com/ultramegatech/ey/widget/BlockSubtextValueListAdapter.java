@@ -144,6 +144,6 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
         /**
          * The primary text area
          */
-        public TextView text;
+        TextView text;
     }
 }
