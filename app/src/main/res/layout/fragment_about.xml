@@ -56,20 +56,6 @@
 
                 <TextView
                     style="@style/ElementDetails.Label"
-                    android:text="@string/aboutSupport" />
-
-                <TextView
-                    android:id="@+id/support"
-                    style="@style/Link"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/aboutEmail" />
-            </TableRow>
-
-            <TableRow android:paddingTop="8dp">
-
-                <TextView
-                    style="@style/ElementDetails.Label"
                     android:text="@string/aboutWebsite" />
 
                 <TextView

@@ -78,12 +78,9 @@
     <string name="hintFilter">Filter by name or symbol</string>
 
     <string name="aboutVersion">Version</string>
-    <string name="aboutSupport">Support</string>
     <string name="aboutWebsite">Website</string>
     <string name="aboutLicense">License</string>
     <string name="aboutSources">Sources</string>
-    <string name="aboutEmail" translatable="false">elementary@ultramegasoft.com</string>
-    <string name="aboutEmailSubject" formatted="true" translatable="false">Elementary %s</string>
     <string name="aboutWebsiteUrl" translatable="false">https://github.com/ultramega/elementary</string>
     <string name="aboutLicenseName" translatable="false">MIT License</string>
     <string name="aboutLicenseUrl" translatable="false">https://raw.githubusercontent.com/ultramega/elementary/master/LICENSE.txt</string>

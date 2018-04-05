@@ -35,8 +35,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 /**
  * Dialog that shows information about the application.
  *
@@ -65,12 +63,6 @@ public class AboutFragment extends DialogFragment {
         final View root = inflater.inflate(R.layout.fragment_about, null, false);
 
         ((TextView)root.findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
-        root.findViewById(R.id.support).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openEmail();
-            }
-        });
         root.findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,18 +83,6 @@ public class AboutFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getDialog().setTitle(R.string.titleAbout);
-    }
-
-    /**
-     * Open an email client to send a support request.
-     */
-    private void openEmail() {
-        final String email = getString(R.string.aboutEmail);
-        final String subject = getString(R.string.aboutEmailSubject, BuildConfig.VERSION_NAME);
-        final String uri = String.format(Locale.US, "mailto:%s?subject=%s", email, subject);
-        final Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(uri));
-        startActivity(intent);
     }
 
     /**
