@@ -23,7 +23,3 @@ Elementary はシンプルな周期表と元素を参照するアプリケーシ
 
 MIT ライセンスに基づいてライセンスされます
 ソースは以下で利用できます: https://github.com/ultramega/elementary
-
-Twitter: https://twitter.com/ultramegasoft
-Facebook: https://www.facebook.com/ultramegasoft
-Google+: https://plus.google.com/+UltraMegaSoftware

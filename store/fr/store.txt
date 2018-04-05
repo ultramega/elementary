@@ -23,7 +23,3 @@ Les vidéos sont fournies par le site Periodic Videos (http://www.periodicvideos
 
 Application distribuée sous les termes de la licence MIT.
 Les sources de cette application sont disponibles à l'adresse : https://github.com/ultramega/elementary
-
-Twitter: https://twitter.com/ultramegasoft
-Facebook: https://www.facebook.com/ultramegasoft
-Google+: https://plus.google.com/+UltraMegaSoftware

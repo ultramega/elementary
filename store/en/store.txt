@@ -23,7 +23,3 @@ Videos provided by Periodic Videos (http://www.periodicvideos.com/)
 
 Licensed under The MIT License
 Source available at: https://github.com/ultramega/elementary
-
-Twitter: https://twitter.com/ultramegasoft
-Facebook: https://www.facebook.com/ultramegasoft
-Google+: https://plus.google.com/+UltraMegaSoftware
