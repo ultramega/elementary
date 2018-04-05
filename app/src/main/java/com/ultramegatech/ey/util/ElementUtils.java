@@ -98,6 +98,36 @@ public class ElementUtils {
     };
 
     /**
+     * List of string resources for each element's YouTube video link
+     */
+    private static final int[] ELEMENT_VID = {
+            R.string.vid001, R.string.vid002, R.string.vid003, R.string.vid004, R.string.vid005,
+            R.string.vid006, R.string.vid007, R.string.vid008, R.string.vid009, R.string.vid010,
+            R.string.vid011, R.string.vid012, R.string.vid013, R.string.vid014, R.string.vid015,
+            R.string.vid016, R.string.vid017, R.string.vid018, R.string.vid019, R.string.vid020,
+            R.string.vid021, R.string.vid022, R.string.vid023, R.string.vid024, R.string.vid025,
+            R.string.vid026, R.string.vid027, R.string.vid028, R.string.vid029, R.string.vid030,
+            R.string.vid031, R.string.vid032, R.string.vid033, R.string.vid034, R.string.vid035,
+            R.string.vid036, R.string.vid037, R.string.vid038, R.string.vid039, R.string.vid040,
+            R.string.vid041, R.string.vid042, R.string.vid043, R.string.vid044, R.string.vid045,
+            R.string.vid046, R.string.vid047, R.string.vid048, R.string.vid049, R.string.vid050,
+            R.string.vid051, R.string.vid052, R.string.vid053, R.string.vid054, R.string.vid055,
+            R.string.vid056, R.string.vid057, R.string.vid058, R.string.vid059, R.string.vid060,
+            R.string.vid061, R.string.vid062, R.string.vid063, R.string.vid064, R.string.vid065,
+            R.string.vid066, R.string.vid067, R.string.vid068, R.string.vid069, R.string.vid070,
+            R.string.vid071, R.string.vid072, R.string.vid073, R.string.vid074, R.string.vid075,
+            R.string.vid076, R.string.vid077, R.string.vid078, R.string.vid079, R.string.vid080,
+            R.string.vid081, R.string.vid082, R.string.vid083, R.string.vid084, R.string.vid085,
+            R.string.vid086, R.string.vid087, R.string.vid088, R.string.vid089, R.string.vid090,
+            R.string.vid091, R.string.vid092, R.string.vid093, R.string.vid094, R.string.vid095,
+            R.string.vid096, R.string.vid097, R.string.vid098, R.string.vid099, R.string.vid100,
+            R.string.vid101, R.string.vid102, R.string.vid103, R.string.vid104, R.string.vid105,
+            R.string.vid106, R.string.vid107, R.string.vid108, R.string.vid109, R.string.vid110,
+            R.string.vid111, R.string.vid112, R.string.vid113, R.string.vid114, R.string.vid115,
+            R.string.vid116, R.string.vid117, R.string.vid118
+    };
+
+    /**
      * The map of keys to color values
      */
     @NonNull
@@ -184,5 +214,19 @@ public class ElementUtils {
         }
 
         return ELEMENT_WIKI[number - 1];
+    }
+
+    /**
+     * Get the YouTube link of an element.
+     *
+     * @param number The atomic number
+     * @return The string resource ID for the YouTube link
+     */
+    public static int getElementVideo(int number) {
+        if(number > ELEMENT_WIKI.length) {
+            return 0;
+        }
+
+        return ELEMENT_VID[number - 1];
     }
 }

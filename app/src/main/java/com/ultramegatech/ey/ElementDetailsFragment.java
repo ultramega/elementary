@@ -514,8 +514,14 @@ public class ElementDetailsFragment extends DialogFragment
         if(mElement == null) {
             return;
         }
+
+        final int resId = ElementUtils.getElementVideo(mElement.number);
+        if(resId == 0) {
+            return;
+        }
+
         final Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://dev.ultramegasoft.com/el/video?num=" + mElement.number));
+                Uri.parse("https://www.youtube.com/watch?v=" + getString(resId)));
         startActivity(intent);
     }
 

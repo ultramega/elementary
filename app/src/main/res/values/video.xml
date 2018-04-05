@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2018 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <!--
+        List of YouTube links for each element
+    -->
+    <string name="vid001" translatable="false">6rdmpx39PRk</string>
+    <string name="vid002" translatable="false">M6xZZiaLOV4</string>
+    <string name="vid003" translatable="false">LfS10ArXTBA</string>
+    <string name="vid004" translatable="false">qy8JyQShZRA</string>
+    <string name="vid005" translatable="false">JzqdHkpXuy4</string>
+    <string name="vid006" translatable="false">QuW4_bRHbUk</string>
+    <string name="vid007" translatable="false">zmvJ54kRpjg</string>
+    <string name="vid008" translatable="false">WuG5WTId-IY</string>
+    <string name="vid009" translatable="false">vtWp45Eewtw</string>
+    <string name="vid010" translatable="false">wzv0pb7mzaw</string>
+    <string name="vid011" translatable="false">7IT2I3LtlNE</string>
+    <string name="vid012" translatable="false">FKkWdizutxI</string>
+    <string name="vid013" translatable="false">4AhZ8503WPs</string>
+    <string name="vid014" translatable="false">a2aWO5cL410</string>
+    <string name="vid015" translatable="false">LSYLUat03A4</string>
+    <string name="vid016" translatable="false">mGMR72X8V-U</string>
+    <string name="vid017" translatable="false">BXCfBl4rmh0</string>
+    <string name="vid018" translatable="false">nrHVOFG2V-c</string>
+    <string name="vid019" translatable="false">pPdevJTGAYY</string>
+    <string name="vid020" translatable="false">V9fuY8_ffFg</string>
+    <string name="vid021" translatable="false">KkKv5ilmRjY</string>
+    <string name="vid022" translatable="false">MpFTQYynrc4</string>
+    <string name="vid023" translatable="false">MbCmaQzrZoc</string>
+    <string name="vid024" translatable="false">9NPjdDS11C4</string>
+    <string name="vid025" translatable="false">uTVtBuY9Q-0</string>
+    <string name="vid026" translatable="false">euQUgp5AY-Y</string>
+    <string name="vid027" translatable="false">MWtL3pvGC68</string>
+    <string name="vid028" translatable="false">AUmoaZn9bek</string>
+    <string name="vid029" translatable="false">kop1sWzTK-I</string>
+    <string name="vid030" translatable="false">99wPiMb-k0o</string>
+    <string name="vid031" translatable="false">N6ccRvKKwZQ</string>
+    <string name="vid032" translatable="false">osrKWVknkgs</string>
+    <string name="vid033" translatable="false">a2AbKwAvyos</string>
+    <string name="vid034" translatable="false">IHrUtKjcAFE</string>
+    <string name="vid035" translatable="false">Slt3_5upuSs</string>
+    <string name="vid036" translatable="false">il4OOY7Zseg</string>
+    <string name="vid037" translatable="false">0XLGopBovoI</string>
+    <string name="vid038" translatable="false">d5ztPGrsgNQ</string>
+    <string name="vid039" translatable="false">tTXjnQlAHAQ</string>
+    <string name="vid040" translatable="false">gNJE2MPktvg</string>
+    <string name="vid041" translatable="false">2ciPAsVTq6c</string>
+    <string name="vid042" translatable="false">ZRQ3vBGskds</string>
+    <string name="vid043" translatable="false">ud5c1TVkcnU</string>
+    <string name="vid044" translatable="false">wl5ZYb0hDTc</string>
+    <string name="vid045" translatable="false">PPSO5798k2I</string>
+    <string name="vid046" translatable="false">4ALTGeqmNFM</string>
+    <string name="vid047" translatable="false">pPd5qAb4J50</string>
+    <string name="vid048" translatable="false">boRius1DYdQ</string>
+    <string name="vid049" translatable="false">4opHafNmgCw</string>
+    <string name="vid050" translatable="false">qEwCPJOP0Mg</string>
+    <string name="vid051" translatable="false">kcc6qNT3BoU</string>
+    <string name="vid052" translatable="false">5ChFbVu4Mpk</string>
+    <string name="vid053" translatable="false">JUBsJLRSM64</string>
+    <string name="vid054" translatable="false">Ejoct_6pQ74</string>
+    <string name="vid055" translatable="false">5aD6HwUE2c0</string>
+    <string name="vid056" translatable="false">9srJdQU3NOo</string>
+    <string name="vid057" translatable="false">Q21clW0s0B8</string>
+    <string name="vid058" translatable="false">frD3126ry8o</string>
+    <string name="vid059" translatable="false">IL06CzXF3ns</string>
+    <string name="vid060" translatable="false">PBbl-3_R3mk</string>
+    <string name="vid061" translatable="false">px52fxITTrw</string>
+    <string name="vid062" translatable="false">LpTkBg8HpvY</string>
+    <string name="vid063" translatable="false">88YOmg_FUVo</string>
+    <string name="vid064" translatable="false">uUo7pY38fGY</string>
+    <string name="vid065" translatable="false">On5LjH9TQxY</string>
+    <string name="vid066" translatable="false">hFfR_qOSa-8</string>
+    <string name="vid067" translatable="false">HQahtzCU0BU</string>
+    <string name="vid068" translatable="false">E-DY_RT4fJ4</string>
+    <string name="vid069" translatable="false">CQFDIZfMPVQ</string>
+    <string name="vid070" translatable="false">Rp7-yNvOV4I</string>
+    <string name="vid071" translatable="false">a5T1xXoR8XI</string>
+    <string name="vid072" translatable="false">egw79BA_0PA</string>
+    <string name="vid073" translatable="false">51xFP1Yn3g0</string>
+    <string name="vid074" translatable="false">_PccntqMOoI</string>
+    <string name="vid075" translatable="false">VRccwkEmOYg</string>
+    <string name="vid076" translatable="false">AdX-T2Vv68Y</string>
+    <string name="vid077" translatable="false">cuovE4OQi2g</string>
+    <string name="vid078" translatable="false">byzaoji_9kk</string>
+    <string name="vid079" translatable="false">7dF0QTzcuac</string>
+    <string name="vid080" translatable="false">oL0M_6bfzkU</string>
+    <string name="vid081" translatable="false">bK6nnyibhdk</string>
+    <string name="vid082" translatable="false">2ERfPN5JLX8</string>
+    <string name="vid083" translatable="false">vyIo-c7VmIM</string>
+    <string name="vid084" translatable="false">bbr5yWwsI1o</string>
+    <string name="vid085" translatable="false">GP8jJgzEmwE</string>
+    <string name="vid086" translatable="false">mTuC_LrEfbU</string>
+    <string name="vid087" translatable="false">hpYxllgfMSg</string>
+    <string name="vid088" translatable="false">5_I6vj-lXNM</string>
+    <string name="vid089" translatable="false">rKm0ShaJNFM</string>
+    <string name="vid090" translatable="false">2yZGcr0mpw0</string>
+    <string name="vid091" translatable="false">bsIMMa7iEKU</string>
+    <string name="vid092" translatable="false">B8vVZTvJNGk</string>
+    <string name="vid093" translatable="false">1D75B0_URbE</string>
+    <string name="vid094" translatable="false">89UNPdNtOoE</string>
+    <string name="vid095" translatable="false">PB38NyjmneE</string>
+    <string name="vid096" translatable="false">sZobqPFNcwg</string>
+    <string name="vid097" translatable="false">imXT9QwRzks</string>
+    <string name="vid098" translatable="false">eG6HyPrTccI</string>
+    <string name="vid099" translatable="false">-G_4nJLNXA0</string>
+    <string name="vid100" translatable="false">SQhI52sqanA</string>
+    <string name="vid101" translatable="false">0JlshAo8DuE</string>
+    <string name="vid102" translatable="false">t_ZpauMxapY</string>
+    <string name="vid103" translatable="false">_zBsnnJOkyA</string>
+    <string name="vid104" translatable="false">dOj9ZjKnJcY</string>
+    <string name="vid105" translatable="false">eeczRrDoL_M</string>
+    <string name="vid106" translatable="false">UWq0djr790E</string>
+    <string name="vid107" translatable="false">okJnQIjELY4</string>
+    <string name="vid108" translatable="false">u4GEVxbLego</string>
+    <string name="vid109" translatable="false">N8VR7Qscq4k</string>
+    <string name="vid110" translatable="false">lhvMqva3-7M</string>
+    <string name="vid111" translatable="false">MTq1hzhCF0g</string>
+    <string name="vid112" translatable="false">QHcbQfcwegY</string>
+    <string name="vid113" translatable="false">-HcSEKuYGM8</string>
+    <string name="vid114" translatable="false">5L-NNFPiRog</string>
+    <string name="vid115" translatable="false">ewQAJtbgr7w</string>
+    <string name="vid116" translatable="false">YWKlqO9niuY</string>
+    <string name="vid117" translatable="false">1RGlXh9eC5E</string>
+    <string name="vid118" translatable="false">VMv44bIBdQI</string>
+</resources>
