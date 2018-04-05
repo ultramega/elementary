@@ -1,4 +1,9 @@
-﻿- v.0.8.4 (1/10/18):
+﻿- v.0.8.5 (4/5/18):
+   * Updated Brazilian Portuguese translation ([amalvarenga](https://github.com/amalvarenga))
+   * Updated German translation ([andim2](https://github.com/andim2))
+   * Fixed incorrect block assignments for La, Ac, Lu, Lr
+   * Replaced video links with direct YouTube links
+- v.0.8.4 (1/10/18):
    * Fixed digits being cut off in the electron configurations
    * Allowed legend items to fill available space
    * Fixed some potential crashes
