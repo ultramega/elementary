@@ -1,4 +1,7 @@
-﻿- v.0.8.5 (4/5/18):
+﻿- v.0.8.6 (6/26/18):
+   * Updated video for Promethium
+   * Updated video for Nitrogen
+- v.0.8.5 (4/5/18):
    * Updated Brazilian Portuguese translation ([amalvarenga](https://github.com/amalvarenga))
    * Updated German translation ([andim2](https://github.com/andim2))
    * Fixed incorrect block assignments for La, Ac, Lu, Lr
