@@ -44,6 +44,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.EdgeEffect;
 import android.widget.Scroller;
 
 import com.ultramegatech.ey.R;
@@ -261,13 +262,13 @@ public class PeriodicTableView extends View {
      * Edge effects to provide visual indicators that an edge has been reached
      */
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectTop;
+    private final EdgeEffect mEdgeEffectTop;
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectBottom;
+    private final EdgeEffect mEdgeEffectBottom;
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectLeft;
+    private final EdgeEffect mEdgeEffectLeft;
     @NonNull
-    private final EdgeEffectCompat mEdgeEffectRight;
+    private final EdgeEffect mEdgeEffectRight;
 
     /**
      * The accessibility delegate for this View
@@ -323,10 +324,10 @@ public class PeriodicTableView extends View {
         mZoomer = new Zoomer(context);
         mScroller = new Scroller(context);
 
-        mEdgeEffectLeft = new EdgeEffectCompat(context);
-        mEdgeEffectTop = new EdgeEffectCompat(context);
-        mEdgeEffectRight = new EdgeEffectCompat(context);
-        mEdgeEffectBottom = new EdgeEffectCompat(context);
+        mEdgeEffectLeft = new EdgeEffect(context);
+        mEdgeEffectTop = new EdgeEffect(context);
+        mEdgeEffectRight = new EdgeEffect(context);
+        mEdgeEffectBottom = new EdgeEffect(context);
 
         mAccessibilityDelegate = new AccessibilityDelegate(this);
         ViewCompat.setAccessibilityDelegate(this, mAccessibilityDelegate);
@@ -430,19 +431,21 @@ public class PeriodicTableView extends View {
 
                 if(mContentRect.height() > getHeight()) {
                     if(distanceY < 0 && mContentRect.top == 0) {
-                        mEdgeEffectTop.onPull(-distanceY / getHeight(), e2.getX() / getWidth());
+                        EdgeEffectCompat.onPull(mEdgeEffectTop, -distanceY / getHeight(),
+                                e2.getX() / getWidth());
                     } else if(distanceY > 0 && mContentRect.bottom == getHeight()) {
-                        mEdgeEffectBottom.onPull(-distanceY / getHeight(),
+                        EdgeEffectCompat.onPull(mEdgeEffectBottom, -distanceY / getHeight(),
                                 1f - (e2.getX() / getWidth()));
                     }
                 }
 
                 if(mContentRect.width() > getWidth()) {
                     if(distanceX < 0 && mContentRect.left == 0) {
-                        mEdgeEffectLeft.onPull(-distanceX / getWidth(),
+                        EdgeEffectCompat.onPull(mEdgeEffectLeft, -distanceX / getWidth(),
                                 1f - (e2.getY() / getHeight()));
                     } else if(distanceX > 0 && mContentRect.right == getWidth()) {
-                        mEdgeEffectRight.onPull(-distanceX / getWidth(), e2.getY() / getHeight());
+                        EdgeEffectCompat.onPull(mEdgeEffectRight, -distanceX / getWidth(),
+                                e2.getY() / getHeight());
                     }
                 }
 
