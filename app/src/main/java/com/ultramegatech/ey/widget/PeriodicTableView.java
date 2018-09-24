@@ -31,11 +31,9 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.widget.EdgeEffectCompat;
@@ -330,10 +328,8 @@ public class PeriodicTableView extends View {
         mEdgeEffectRight = new EdgeEffectCompat(context);
         mEdgeEffectBottom = new EdgeEffectCompat(context);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            mAccessibilityDelegate = new AccessibilityDelegate(this);
-            ViewCompat.setAccessibilityDelegate(this, mAccessibilityDelegate);
-        }
+        mAccessibilityDelegate = new AccessibilityDelegate(this);
+        ViewCompat.setAccessibilityDelegate(this, mAccessibilityDelegate);
     }
 
     /**
@@ -1025,7 +1021,6 @@ public class PeriodicTableView extends View {
          */
         private String[] mCatNames;
 
-        @RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
         AccessibilityDelegate(View host) {
             super(host);
             mUnknownString = getResources().getString(R.string.unknown);

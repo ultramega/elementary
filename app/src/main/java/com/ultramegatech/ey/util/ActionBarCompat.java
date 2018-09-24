@@ -24,7 +24,6 @@ package com.ultramegatech.ey.util;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.os.Build;
 import android.support.annotation.NonNull;
 
 /**
@@ -42,11 +41,9 @@ public class ActionBarCompat {
     @SuppressWarnings("SameParameterValue")
     public static void setDisplayHomeAsUpEnabled(@NonNull Activity activity,
                                                  boolean displayHomeAsUp) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            final ActionBar actionBar = activity.getActionBar();
-            if(actionBar != null) {
-                actionBar.setDisplayHomeAsUpEnabled(displayHomeAsUp);
-            }
+        final ActionBar actionBar = activity.getActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(displayHomeAsUp);
         }
     }
 }
