@@ -23,30 +23,26 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="LightTheme" parent="android:Theme.Light">
+    <style name="LightTheme" parent="android:Theme.DeviceDefault.Light">
         <item name="iconWikipedia">@drawable/ic_wikipedia_black</item>
         <item name="iconVideo">@drawable/ic_video_black</item>
     </style>
 
-    <style name="LightTheme.TableView">
-        <item name="android:windowNoTitle">true</item>
-    </style>
+    <style name="LightTheme.TableView" />
 
-    <style name="LightTheme.Preferences" parent="android:Theme.Light" />
+    <style name="LightTheme.Preferences" parent="android:Theme.DeviceDefault.Light.DialogWhenLarge" />
 
-    <style name="DarkTheme" parent="android:Theme.Black">
+    <style name="DarkTheme" parent="android:Theme.DeviceDefault">
         <item name="android:colorBackground">@android:color/black</item>
         <item name="fgColor">@android:color/primary_text_dark</item>
         <item name="bgColor">@android:color/black</item>
-        <item name="iconWikipedia">@drawable/ic_wikipedia_black</item>
-        <item name="iconVideo">@drawable/ic_video_black</item>
+        <item name="iconWikipedia">@drawable/ic_wikipedia_white</item>
+        <item name="iconVideo">@drawable/ic_video_white</item>
     </style>
 
-    <style name="DarkTheme.TableView">
-        <item name="android:windowNoTitle">true</item>
-    </style>
+    <style name="DarkTheme.TableView" />
 
-    <style name="DarkTheme.Preferences" parent="android:Theme.Black" />
+    <style name="DarkTheme.Preferences" parent="android:Theme.DeviceDefault.DialogWhenLarge" />
 
     <style name="ElementDetails" parent="android:TextAppearance.Medium">
         <item name="android:paddingLeft">4dp</item>
