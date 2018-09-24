@@ -125,7 +125,7 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
         if(convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(layout, parent, false);
             final ViewHolder holder = new ViewHolder();
-            holder.text = (TextView)convertView.findViewById(android.R.id.text1);
+            holder.text = convertView.findViewById(android.R.id.text1);
             convertView.setTag(holder);
         }
         ((ViewHolder)convertView.getTag()).text.setText(mHelper.getItem(position));

@@ -200,30 +200,30 @@ public class ElementDetailsFragment extends DialogFragment
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_element_details, container, false);
 
-        mTxtHeader = (TextView)root.findViewById(R.id.header);
+        mTxtHeader = root.findViewById(R.id.header);
 
-        mElementBlock = (RelativeLayout)root.findViewById(R.id.elementBlock);
-        mTxtElementSymbol = (TextView)root.findViewById(R.id.elementSymbol);
-        mTxtElementNumber = (TextView)root.findViewById(R.id.elementNumber);
-        mTxtElementWeight = (TextView)root.findViewById(R.id.elementWeight);
-        mTxtElementElectrons = (TextView)root.findViewById(R.id.elementElectrons);
+        mElementBlock = root.findViewById(R.id.elementBlock);
+        mTxtElementSymbol = root.findViewById(R.id.elementSymbol);
+        mTxtElementNumber = root.findViewById(R.id.elementNumber);
+        mTxtElementWeight = root.findViewById(R.id.elementWeight);
+        mTxtElementElectrons = root.findViewById(R.id.elementElectrons);
 
-        mTxtNumber = (TextView)root.findViewById(R.id.number);
-        mTxtSymbol = (TextView)root.findViewById(R.id.symbol);
-        mTxtName = (TextView)root.findViewById(R.id.name);
-        mTxtWeight = (TextView)root.findViewById(R.id.weight);
-        mTxtConfiguration = (TextView)root.findViewById(R.id.config);
-        mTxtElectrons = (TextView)root.findViewById(R.id.electrons);
-        mTxtCategory = (TextView)root.findViewById(R.id.category);
-        mTxtGPB = (TextView)root.findViewById(R.id.gpb);
-        mTxtDensity = (TextView)root.findViewById(R.id.density);
-        mTxtMelt = (TextView)root.findViewById(R.id.melt);
-        mTxtBoil = (TextView)root.findViewById(R.id.boil);
-        mTxtHeat = (TextView)root.findViewById(R.id.heat);
-        mTxtNegativity = (TextView)root.findViewById(R.id.negativity);
-        mTxtAbundance = (TextView)root.findViewById(R.id.abundance);
+        mTxtNumber = root.findViewById(R.id.number);
+        mTxtSymbol = root.findViewById(R.id.symbol);
+        mTxtName = root.findViewById(R.id.name);
+        mTxtWeight = root.findViewById(R.id.weight);
+        mTxtConfiguration = root.findViewById(R.id.config);
+        mTxtElectrons = root.findViewById(R.id.electrons);
+        mTxtCategory = root.findViewById(R.id.category);
+        mTxtGPB = root.findViewById(R.id.gpb);
+        mTxtDensity = root.findViewById(R.id.density);
+        mTxtMelt = root.findViewById(R.id.melt);
+        mTxtBoil = root.findViewById(R.id.boil);
+        mTxtHeat = root.findViewById(R.id.heat);
+        mTxtNegativity = root.findViewById(R.id.negativity);
+        mTxtAbundance = root.findViewById(R.id.abundance);
 
-        mIsoTable = (TableLayout)root.findViewById(R.id.isoTable);
+        mIsoTable = root.findViewById(R.id.isoTable);
 
         root.findViewById(R.id.videoButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -496,10 +496,10 @@ public class ElementDetailsFragment extends DialogFragment
                 final TableRow tableRow =
                         (TableRow)inflater.inflate(R.layout.isotope_table_row, mIsoTable, false);
 
-                final TextView symbolText = (TextView)tableRow.findViewById(R.id.isoSymbol);
+                final TextView symbolText = tableRow.findViewById(R.id.isoSymbol);
                 symbolText.setText(isotope.getSymbol());
 
-                final TextView massText = (TextView)tableRow.findViewById(R.id.isoMass);
+                final TextView massText = tableRow.findViewById(R.id.isoMass);
                 massText.setText(DECIMAL_FORMAT.format(isotope.mass));
 
                 mIsoTable.addView(tableRow);
