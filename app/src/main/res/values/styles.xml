@@ -28,8 +28,6 @@
         <item name="iconVideo">@drawable/ic_video_black</item>
     </style>
 
-    <style name="LightTheme.TableView" />
-
     <style name="LightTheme.Preferences" parent="android:Theme.DeviceDefault.Light.DialogWhenLarge" />
 
     <style name="DarkTheme" parent="android:Theme.DeviceDefault">
@@ -39,8 +37,6 @@
         <item name="iconWikipedia">@drawable/ic_wikipedia_white</item>
         <item name="iconVideo">@drawable/ic_video_white</item>
     </style>
-
-    <style name="DarkTheme.TableView" />
 
     <style name="DarkTheme.Preferences" parent="android:Theme.DeviceDefault.DialogWhenLarge" />
 

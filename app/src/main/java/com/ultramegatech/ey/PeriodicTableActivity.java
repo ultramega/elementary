@@ -121,7 +121,7 @@ public class PeriodicTableActivity extends FragmentActivity
     public void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme();
-        setTheme(darkTheme ? R.style.DarkTheme_TableView : R.style.LightTheme_TableView);
+        setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
 
         super.onCreate(savedInstanceState);
 
