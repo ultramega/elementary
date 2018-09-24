@@ -59,8 +59,11 @@ public class ElementListActivity extends FragmentActivity {
 
         if(findViewById(R.id.elementDetails) != null) {
             mTwoPane = true;
-            ((ElementListFragment)getSupportFragmentManager().findFragmentById(R.id.elementList))
-                    .setActivateOnItemClick(true);
+            final ElementListFragment fragment = (ElementListFragment)getSupportFragmentManager()
+                    .findFragmentById(R.id.elementList);
+            if(fragment != null) {
+                fragment.setActivateOnItemClick(true);
+            }
         }
     }
 

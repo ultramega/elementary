@@ -71,7 +71,7 @@ public class ElementDetailsActivity extends FragmentActivity {
                         .getInstance(intent.getIntExtra(EXTRA_ATOMIC_NUMBER, 0));
             } else if(getIntent().getData() != null) {
                 final Uri uri = getIntent().getData();
-                if(uri.getHost().equals("element")) {
+                if("element".equals(uri.getHost())) {
                     final String path = uri.getPathSegments().get(0);
                     if(TextUtils.isDigitsOnly(path)) {
                         try {
