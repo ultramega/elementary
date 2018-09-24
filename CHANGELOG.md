@@ -1,4 +1,9 @@
-﻿- v.0.8.6 (6/26/18):
+﻿- v.0.9.0 (9/24/18):
+   * Updated video for Argon
+   * Updated video for Tin
+   * Updated video for Dubnium
+   * Increased minimum supported version of Android to 4.0
+- v.0.8.6 (6/26/18):
    * Updated video for Promethium
    * Updated video for Nitrogen
 - v.0.8.5 (4/5/18):
