@@ -20,9 +20,9 @@
 -->
 <resources>
     <string name="titleAbout">Om Elementary</string>
-    <string name="titleElementDetails" formatted="true">Elementdetaljer for %s</string>
+    <string name="titleElementDetails" formatted="true">Grunnstoffdetaljer for %s</string>
     <string name="titlePeriodicTable">Det periodiske system</string>
-    <string name="titleElementList">Elementliste</string>
+    <string name="titleElementList">Grunnstoffliste</string>
     <string name="titleSettings">Elementary-innstillinger</string>
     <string name="titleSort">Sorter etter</string>
 
@@ -39,10 +39,10 @@
     <string name="prefTitleDarkTheme">Mørkt tema</string>
     <string name="prefTitleTemp">Temperaturenhet</string>
     <string name="prefSummaryTemp">Enheter brukt til å vise temperaturverdier</string>
-    <string name="prefTitleColors">Elementfarger</string>
-    <string name="prefSummaryColors">Egenskap brukt til å farge elementene</string>
+    <string name="prefTitleColors">Grunnstoffarger</string>
+    <string name="prefSummaryColors">Egenskap brukt til å farge grunnstoffene</string>
     <string name="prefTitleSubtextValue">Blokkverdi</string>
-    <string name="prefSummarySubtextValue">Verdien å vise under elementsymbolet</string>
+    <string name="prefSummarySubtextValue">Verdien å vise under grunnstoffsymbolet</string>
     <string name="prefTitleShowControls">Kontroller for Det periodiske system</string>
     <string name="prefSummaryShowControls">Vis betjeningskontroller for Det periodiske system i tabellvisningen</string>
 
