@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <string name="titleAbout">Om Elementary</string>
+    <string name="titleElementDetails" formatted="true">Grunnstoffdetaljer for %s</string>
+    <string name="titlePeriodicTable">Det periodiske system</string>
+    <string name="titleElementList">Grunnstoffliste</string>
+    <string name="titleSettings">Elementary-innstillinger</string>
+    <string name="titleSort">Sorter etter</string>
+
+    <string name="buttonVideo">Video</string>
+    <string name="buttonWiki">Wikipedia</string>
+    <string name="buttonSort">Sorter</string>
+    <string name="buttonZoom">Zoom</string>
+
+    <string name="menuAbout">Om</string>
+    <string name="menuSettings">Innstillinger</string>
+    <string name="menuList">Listevisning</string>
+    <string name="menuTable">Tabellvisning</string>
+
+    <string name="prefTitleDarkTheme">Mørkt tema</string>
+    <string name="prefTitleTemp">Temperaturenhet</string>
+    <string name="prefSummaryTemp">Enheter brukt til å vise temperaturverdier</string>
+    <string name="prefTitleColors">Grunnstoffarger</string>
+    <string name="prefSummaryColors">Egenskap brukt til å farge grunnstoffene</string>
+    <string name="prefTitleSubtextValue">Blokkverdi</string>
+    <string name="prefSummarySubtextValue">Verdien å vise under grunnstoffsymbolet</string>
+    <string name="prefTitleShowControls">Kontroller for Det periodiske system</string>
+    <string name="prefSummaryShowControls">Vis betjeningskontroller for Det periodiske system i tabellvisningen</string>
+
+    <string name="labelNumber">Atomnummer</string>
+    <string name="labelSymbol">Symbol</string>
+    <string name="labelName">Navn</string>
+    <string name="labelWeight">Atomvekt</string>
+    <string name="labelCategory">Serie</string>
+    <string name="labelGPB">Gruppe, periode, blokk</string>
+    <string name="labelConfiguration">Elektronkonfigurasjon</string>
+    <string name="labelElectrons">Elektroner per skall</string>
+    <string name="labelDensity">Tetthet</string>
+    <string name="labelMelt">Smeltepunkt</string>
+    <string name="labelBoil">Kokepunkt</string>
+    <string name="labelHeat">Spesifikk varme</string>
+    <string name="labelNegativity">Elektronegativitet</string>
+    <string name="labelAbundance">Forekomst</string>
+    <string name="labelIsotopes">Vanlige isotoper</string>
+
+    <string name="labelSubtextValue">Vis</string>
+    <string name="labelBlockColors">Farg etter</string>
+
+    <string name="hintFilter">Filtrer etter navn eller symbol</string>
+
+    <string name="aboutVersion">Versjon</string>
+    <string name="aboutWebsite">Nettsted</string>
+    <string name="aboutLicense">Lisens</string>
+    <string name="aboutSources">Kilder</string>
+
+    <string name="descGroup">gruppe</string>
+    <string name="descPeriod">periode</string>
+    <string name="descBlock">blokk</string>
+
+    <string name="unknown">ukjent</string>
+</resources>
