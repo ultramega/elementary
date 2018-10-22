@@ -17,6 +17,12 @@ Elementary is a simple Periodic Table and element reference application for Andr
 
 Videos provided by Periodic Table of Videos (http://www.periodicvideos.com/)
 
+## Donate
+
+If you find this application useful, please consider supporting the project by donating.
+
+[![Donate via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=76UJ7AX8VJT5Q)
+
 ## Credits
 
 - German translation: [C4R2T3N](https://github.com/C4R2T3N)
