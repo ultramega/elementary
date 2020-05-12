@@ -22,7 +22,7 @@
  */
 package com.ultramegatech.ey.widget;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ultramegatech.ey.provider.Element;
 

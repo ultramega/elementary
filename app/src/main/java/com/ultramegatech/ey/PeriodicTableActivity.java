@@ -31,8 +31,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,6 +39,9 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.ZoomControls;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 import com.ultramegatech.ey.provider.Element;
 import com.ultramegatech.ey.provider.Elements;

@@ -32,12 +32,6 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.EdgeEffectCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
@@ -46,6 +40,13 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.EdgeEffect;
 import android.widget.Scroller;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.widget.EdgeEffectCompat;
+import androidx.customview.widget.ExploreByTouchHelper;
 
 import com.ultramegatech.ey.R;
 import com.ultramegatech.ey.provider.Element;

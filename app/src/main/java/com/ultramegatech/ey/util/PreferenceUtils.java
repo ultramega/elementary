@@ -25,7 +25,8 @@ package com.ultramegatech.ey.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Helpers for the shared preferences of the application.

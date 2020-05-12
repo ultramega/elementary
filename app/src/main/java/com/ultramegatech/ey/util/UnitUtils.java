@@ -22,7 +22,7 @@
  */
 package com.ultramegatech.ey.util;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Utility to convert values between different units.

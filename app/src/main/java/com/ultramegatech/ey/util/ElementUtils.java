@@ -24,7 +24,8 @@ package com.ultramegatech.ey.util;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.ultramegatech.ey.R;
 import com.ultramegatech.ey.provider.Element;

@@ -24,9 +24,10 @@ package com.ultramegatech.ey.widget;
 
 import android.content.Context;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
+
+import androidx.annotation.NonNull;
 
 /**
  * Handles interpolating between arbitrary zoom levels.

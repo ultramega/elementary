@@ -23,9 +23,10 @@
 package com.ultramegatech.ey.provider;
 
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.text.Html;
 import android.text.Spanned;
+
+import androidx.annotation.NonNull;
 
 import java.util.Locale;
 

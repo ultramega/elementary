@@ -24,7 +24,8 @@ package com.ultramegatech.ey.util;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Compatibility layer for the ActionBar.

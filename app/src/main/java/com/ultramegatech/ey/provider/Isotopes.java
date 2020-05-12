@@ -22,7 +22,7 @@
  */
 package com.ultramegatech.ey.provider;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Contains data on the common isotopes.

@@ -40,7 +40,7 @@
         android:contentDescription="@string/buttonZoom"
         android:src="@android:drawable/ic_menu_zoom" />
 
-    <android.support.v4.widget.Space
+    <Space
         android:layout_width="10dp"
         android:layout_height="wrap_content" />
 
@@ -57,7 +57,7 @@
         android:prompt="@string/labelSubtextValue"
         android:spinnerMode="dialog" />
 
-    <android.support.v4.widget.Space
+    <Space
         android:layout_width="20dp"
         android:layout_height="match_parent" />
 </LinearLayout>

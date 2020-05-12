@@ -29,8 +29,9 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 
 import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.PreferenceUtils;
