@@ -112,7 +112,7 @@ class PeriodicTableLegend {
         final int cols = (int)Math.ceil(count / (double)rows);
         final int boxHeight = (rect.bottom - rect.top) / rows;
 
-        mTextPaint.setTextSize(boxHeight / 2);
+        mTextPaint.setTextSize(boxHeight / 2f);
 
         int boxWidth = 0;
         if(cols < 2) {
@@ -142,8 +142,8 @@ class PeriodicTableLegend {
             mPaint.setColor(ElementUtils.getKeyColor(entry.getKey()));
             canvas.drawRect(mRect, mPaint);
 
-            canvas.drawText(entry.getValue(), mRect.left + boxWidth / 20,
-                    mRect.bottom - boxHeight / 2 + mTextPaint.getTextSize() / 2, mTextPaint);
+            canvas.drawText(entry.getValue(), mRect.left + boxWidth / 20f,
+                    mRect.bottom - boxHeight / 2f + mTextPaint.getTextSize() / 2, mTextPaint);
 
             n++;
         }

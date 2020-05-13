@@ -708,17 +708,17 @@ public class PeriodicTableView extends View {
      * @param canvas The Canvas
      */
     private void writeHeaders(@NonNull Canvas canvas) {
-        mHeaderPaint.setTextSize(mBlockSize / 4);
+        mHeaderPaint.setTextSize(mBlockSize / 4f);
 
         for(int i = 1; i <= mNumCols; i++) {
             canvas.drawText(String.valueOf(i),
                     mBlockSize * i + mContentRect.left + mContentOffset.x,
-                    mPadding / 2 + mContentRect.top + mContentOffset.y,
+                    mPadding / 2f + mContentRect.top + mContentOffset.y,
                     mHeaderPaint);
         }
         for(int i = 1; i <= mNumRows - 2; i++) {
             canvas.drawText(String.valueOf(i),
-                    mPadding / 2 + mContentRect.left + mContentOffset.x,
+                    mPadding / 2f + mContentRect.left + mContentOffset.x,
                     mBlockSize * i + mContentRect.top + mContentOffset.y,
                     mHeaderPaint);
         }
@@ -743,7 +743,7 @@ public class PeriodicTableView extends View {
      */
     private void writeTitle(@NonNull Canvas canvas) {
         canvas.drawText(mTitle, 0, mTitle.length(),
-                mBlockSize * mNumCols / 2 + mContentRect.left + mContentOffset.x,
+                mBlockSize * mNumCols / 2f + mContentRect.left + mContentOffset.x,
                 mBlockSize + mContentRect.top + mContentOffset.y,
                 mTitlePaint);
     }
@@ -762,7 +762,7 @@ public class PeriodicTableView extends View {
         }
         if(!mEdgeEffectBottom.isFinished()) {
             canvas.save();
-            canvas.rotate(180, getWidth() / 2, getHeight() / 2);
+            canvas.rotate(180, getWidth() / 2f, getHeight() / 2f);
             mEdgeEffectBottom.draw(canvas);
             canvas.restore();
             invalidate = true;
@@ -856,10 +856,10 @@ public class PeriodicTableView extends View {
                 Math.max(0, (mContentRect.height() - realHeight) / 2));
         fillViewport();
 
-        mTitlePaint.setTextSize(mBlockSize / 2);
-        mSymbolPaint.setTextSize(mBlockSize / 2);
-        mNumberPaint.setTextSize(mBlockSize / 4);
-        mSmallTextPaint.setTextSize(mBlockSize / 5);
+        mTitlePaint.setTextSize(mBlockSize / 2f);
+        mSymbolPaint.setTextSize(mBlockSize / 2f);
+        mNumberPaint.setTextSize(mBlockSize / 4f);
+        mSmallTextPaint.setTextSize(mBlockSize / 5f);
     }
 
     /**
@@ -979,18 +979,18 @@ public class PeriodicTableView extends View {
 
             canvas.drawRect(mRect, mBlockPaint);
 
-            canvas.drawText(block.element.symbol, mRect.left + mBlockSize / 2,
+            canvas.drawText(block.element.symbol, mRect.left + mBlockSize / 2f,
                     mRect.bottom - (int)(mBlockSize / 2.8), mSymbolPaint);
 
-            canvas.drawText(String.valueOf(block.element.number), mRect.left + mBlockSize / 20,
+            canvas.drawText(String.valueOf(block.element.number), mRect.left + mBlockSize / 20f,
                     mRect.top + mNumberPaint.getTextSize(), mNumberPaint);
 
-            canvas.drawText(block.subtext, mRect.left + mBlockSize / 2,
-                    mRect.bottom - mBlockSize / 20, mSmallTextPaint);
+            canvas.drawText(block.subtext, mRect.left + mBlockSize / 2f,
+                    mRect.bottom - mBlockSize / 20f, mSmallTextPaint);
         }
 
         if(mBlockSelected != null) {
-            mSelectedPaint.setStrokeWidth(mBlockSize / 10);
+            mSelectedPaint.setStrokeWidth(mBlockSize / 10f);
             findBlockPosition(mBlockSelected);
             canvas.drawRect(mRect, mSelectedPaint);
         }
