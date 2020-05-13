@@ -99,7 +99,6 @@ public class BlockSubtextValueListAdapter extends BaseAdapter
         return -1;
     }
 
-    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         return createView(position, convertView, parent,

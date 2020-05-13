@@ -341,7 +341,6 @@ public class PeriodicTableView extends View {
      */
     @NonNull
     private ScaleGestureDetector.OnScaleGestureListener getOnScaleGestureListener() {
-        //noinspection MethodDoesntCallSuperMethod
         return new ScaleGestureDetector.SimpleOnScaleGestureListener() {
             /**
              * The initial span of the scale gesture
@@ -383,7 +382,6 @@ public class PeriodicTableView extends View {
      */
     @NonNull
     private GestureDetector.OnGestureListener getOnGestureListener() {
-        //noinspection MethodDoesntCallSuperMethod
         return new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {

@@ -55,7 +55,6 @@ public class AboutFragment extends DialogFragment {
         fragment.show(fm, TAG);
     }
 
-    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @SuppressLint("InflateParams")
     @Nullable
     @Override

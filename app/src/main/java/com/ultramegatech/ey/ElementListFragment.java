@@ -251,7 +251,6 @@ public class ElementListFragment extends ListFragment
      * Dialog for setting the sort parameter for the list.
      */
     public static class SortDialog extends DialogFragment {
-        @SuppressWarnings("MethodDoesntCallSuperMethod")
         @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
