@@ -162,7 +162,8 @@ public class ElementUtils {
      * @return The color value
      */
     public static int getKeyColor(@NonNull Object key) {
-        return COLOR_MAP.get(key.toString());
+        final Integer color = COLOR_MAP.get(key.toString());
+        return color == null ? 0 : color;
     }
 
     /**
@@ -172,7 +173,8 @@ public class ElementUtils {
      * @return The color value
      */
     public static int getElementColor(@NonNull Element element) {
-        return COLOR_MAP.get(getColorKey(element));
+        final Integer color = COLOR_MAP.get(getColorKey(element));
+        return color == null ? 0 : color;
     }
 
     /**
