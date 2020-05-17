@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   The MIT License (MIT)
   Copyright © 2012 Steve Guidetti
 
@@ -21,13 +20,13 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 -->
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="UnusedAttribute">
     <item
         android:id="@+id/menu_list"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/menuList" />
+        android:title="@string/menuList"
+        app:showAsAction="ifRoom|withText" />
 </menu>
