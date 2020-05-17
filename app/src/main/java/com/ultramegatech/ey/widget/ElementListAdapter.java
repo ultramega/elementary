@@ -229,7 +229,7 @@ public class ElementListAdapter extends BaseAdapter implements ListAdapter, Filt
      * @param sortBy  One of the SORT_ constants
      * @param reverse Whether to sort items in reverse order
      */
-    private void sortList(int sortBy, boolean reverse) {
+    private synchronized void sortList(int sortBy, boolean reverse) {
         mSort = sortBy;
         mSortReverse = reverse;
 
