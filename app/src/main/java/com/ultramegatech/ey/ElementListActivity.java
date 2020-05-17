@@ -28,10 +28,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
-import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
 
@@ -41,7 +40,7 @@ import com.ultramegatech.ey.util.PreferenceUtils;
  *
  * @author Steve Guidetti
  */
-public class ElementListActivity extends FragmentActivity {
+public class ElementListActivity extends AppCompatActivity {
     /**
      * Whether the Activity has a two-pane layout
      */
@@ -53,8 +52,6 @@ public class ElementListActivity extends FragmentActivity {
         setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
 
         super.onCreate(savedInstanceState);
-
-        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
 
         setContentView(R.layout.activity_element_list);
 

@@ -1,17 +1,17 @@
 /*
  * The MIT License (MIT)
  * Copyright © 2012 Steve Guidetti
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the “Software”), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,53 +26,48 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
-import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.PreferenceUtils;
-import com.ultramegatech.ey.util.SubtextValuesHelper;
 
-/**
- * Simple implementation of PreferenceActivity for setting general application settings.
- *
- * @author Steve Guidetti
- */
-public class SettingsActivity extends PreferenceActivity
-        implements SharedPreferences.OnSharedPreferenceChangeListener,
-        SubtextValuesHelper.OnSubtextValuesChangedListener {
-    /**
-     * The Preference for setting the block subtext value
-     */
-    private ListPreference mSubtextValuePreference;
-
+public class SettingsActivity extends AppCompatActivity
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefs.registerOnSharedPreferenceChangeListener(this);
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         final boolean darkTheme = PreferenceUtils.getPrefDarkTheme();
         setTheme(darkTheme ? R.style.DarkTheme_Preferences : R.style.LightTheme_Preferences);
 
         super.onCreate(savedInstanceState);
 
-        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
-        addPreferencesFromResource(R.xml.preferences);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
 
-        mSubtextValuePreference = (ListPreference)findPreference(PreferenceUtils.KEY_SUBTEXT_VALUE);
-        final SubtextValuesHelper subtextValuesHelper = new SubtextValuesHelper(this, this);
-        mSubtextValuePreference.setEntries(subtextValuesHelper.getList());
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(android.R.id.content, new SettingsFragment()).commit();
+        }
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressLint("ApplySharedPref")
@@ -87,20 +82,5 @@ public class SettingsActivity extends PreferenceActivity
 
             Runtime.getRuntime().exit(0);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onSubtextValuesChanged(@NonNull SubtextValuesHelper helper) {
-        mSubtextValuePreference.setEntries(helper.getList());
     }
 }

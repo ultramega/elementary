@@ -41,7 +41,7 @@ import android.widget.Spinner;
 import android.widget.ZoomControls;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ultramegatech.ey.provider.Element;
 import com.ultramegatech.ey.provider.Elements;
@@ -61,7 +61,7 @@ import java.util.ArrayList;
  *
  * @author Steve Guidetti
  */
-public class PeriodicTableActivity extends FragmentActivity
+public class PeriodicTableActivity extends AppCompatActivity
         implements OnSharedPreferenceChangeListener {
     /**
      * Delay in milliseconds before entering or re-entering immersive full screen mode

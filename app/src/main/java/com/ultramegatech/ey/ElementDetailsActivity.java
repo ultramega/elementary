@@ -31,10 +31,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
-import com.ultramegatech.ey.util.ActionBarCompat;
 import com.ultramegatech.ey.util.CommonMenuHandler;
 import com.ultramegatech.ey.util.PreferenceUtils;
 
@@ -44,7 +43,7 @@ import com.ultramegatech.ey.util.PreferenceUtils;
  *
  * @author Steve Guidetti
  */
-public class ElementDetailsActivity extends FragmentActivity {
+public class ElementDetailsActivity extends AppCompatActivity {
     /**
      * The tag to identify the Activity
      */
@@ -61,8 +60,6 @@ public class ElementDetailsActivity extends FragmentActivity {
         setTheme(darkTheme ? R.style.DarkTheme : R.style.LightTheme);
 
         super.onCreate(savedInstanceState);
-
-        ActionBarCompat.setDisplayHomeAsUpEnabled(this, true);
 
         if(savedInstanceState == null) {
             final Intent intent = getIntent();
