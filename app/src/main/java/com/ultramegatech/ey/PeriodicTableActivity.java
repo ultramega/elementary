@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -118,6 +119,7 @@ public class PeriodicTableActivity extends AppCompatActivity
         DECIMAL_FORMAT.setMaximumFractionDigits(4);
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
