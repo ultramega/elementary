@@ -61,6 +61,7 @@ import java.util.Locale;
  *
  * @author Steve Guidetti
  */
+@SuppressWarnings("WeakerAccess")
 public class ElementDetailsFragment extends DialogFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
     /**
