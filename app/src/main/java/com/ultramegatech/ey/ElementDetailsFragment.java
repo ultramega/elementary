@@ -23,6 +23,7 @@
 package com.ultramegatech.ey;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -180,8 +181,11 @@ public class ElementDetailsFragment extends DialogFragment
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NO_TITLE, 0);
 
-        PreferenceManager.getDefaultSharedPreferences(getContext())
-                .registerOnSharedPreferenceChangeListener(this);
+        final Context context = getContext();
+        if (context != null) {
+            PreferenceManager.getDefaultSharedPreferences(context)
+                    .registerOnSharedPreferenceChangeListener(this);
+        }
 
         final Bundle args = getArguments();
         if(args != null) {
@@ -250,8 +254,11 @@ public class ElementDetailsFragment extends DialogFragment
     @Override
     public void onDestroy() {
         super.onDestroy();
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        prefs.unregisterOnSharedPreferenceChangeListener(this);
+        final Context context = getContext();
+        if (context != null) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            prefs.unregisterOnSharedPreferenceChangeListener(this);
+        }
     }
 
     /**

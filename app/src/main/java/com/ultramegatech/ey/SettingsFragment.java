@@ -22,6 +22,7 @@
  */
 package com.ultramegatech.ey;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,8 +48,12 @@ public class SettingsFragment extends PreferenceFragmentCompat
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         mSubtextValuePreference = findPreference(PreferenceUtils.KEY_SUBTEXT_VALUE);
-        final SubtextValuesHelper subtextValuesHelper = new SubtextValuesHelper(getContext(), this);
-        mSubtextValuePreference.setEntries(subtextValuesHelper.getList());
+
+        final Context context = getContext();
+        if (context != null) {
+            final SubtextValuesHelper subtextValuesHelper = new SubtextValuesHelper(getContext(), this);
+            mSubtextValuePreference.setEntries(subtextValuesHelper.getList());
+        }
     }
 
     @Override

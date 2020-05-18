@@ -134,8 +134,11 @@ public class ElementListFragment extends ListFragment
     @Override
     public void onDestroy() {
         super.onDestroy();
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        prefs.unregisterOnSharedPreferenceChangeListener(this);
+        final Context context = getContext();
+        if (context != null) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            prefs.unregisterOnSharedPreferenceChangeListener(this);
+        }
     }
 
     @Override
