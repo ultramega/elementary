@@ -221,7 +221,7 @@ public class ElementListFragment extends ListFragment
      * state when touched.
      */
     @SuppressWarnings("SameParameterValue")
-    public void setActivateOnItemClick(boolean activateOnItemClick) {
+    void setActivateOnItemClick(boolean activateOnItemClick) {
         getListView().setChoiceMode(activateOnItemClick
                 ? ListView.CHOICE_MODE_SINGLE
                 : ListView.CHOICE_MODE_NONE);
