@@ -54,12 +54,17 @@ public class ElementListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_element_list);
+    }
 
-        if(findViewById(R.id.elementDetails) != null) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (findViewById(R.id.elementDetails) != null) {
             mTwoPane = true;
-            final ElementListFragment fragment = (ElementListFragment)getSupportFragmentManager()
+            final ElementListFragment fragment = (ElementListFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.elementList);
-            if(fragment != null) {
+            if (fragment != null) {
                 fragment.setActivateOnItemClick(true);
             }
         }

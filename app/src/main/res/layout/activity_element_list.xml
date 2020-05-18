@@ -29,7 +29,7 @@
 
     <include layout="@layout/element_list_head" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/elementList"
         android:name="com.ultramegatech.ey.ElementListFragment"
         android:layout_width="match_parent"
