@@ -98,6 +98,7 @@ public class PeriodicTableActivity extends AppCompatActivity
     /**
      * The zoom controls
      */
+    @SuppressWarnings("deprecation")
     private ZoomControls mZoomControls;
 
     /**
@@ -141,6 +142,7 @@ public class PeriodicTableActivity extends AppCompatActivity
                 ElementDetailsFragment.showDialog(getSupportFragmentManager(), item.element.number);
             }
 
+            @SuppressWarnings("deprecation")
             @Override
             public void onZoomEnd(@NonNull PeriodicTableView periodicTableView) {
                 mZoomControls.setIsZoomInEnabled(periodicTableView.canZoomIn());
@@ -163,8 +165,10 @@ public class PeriodicTableActivity extends AppCompatActivity
     /**
      * Set up the controls for zooming in and out.
      */
+    @SuppressWarnings("deprecation")
     private void setupZoomControls() {
         final Runnable hideZoom = new Runnable() {
+            @SuppressWarnings("deprecation")
             @Override
             public void run() {
                 mZoomControls.hide();
@@ -185,6 +189,7 @@ public class PeriodicTableActivity extends AppCompatActivity
             }
         });
         mZoomControls.setOnZoomOutClickListener(new View.OnClickListener() {
+            @SuppressWarnings("deprecation")
             @Override
             public void onClick(View view) {
                 mHandler.removeCallbacks(hideZoom);
