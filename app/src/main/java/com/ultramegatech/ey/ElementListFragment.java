@@ -195,11 +195,11 @@ public class ElementListFragment extends ListFragment
      * Display the sorting dialog.
      */
     private void openSortDialog() {
-        final FragmentManager fm = getFragmentManager();
-        if(fm == null) {
+        if (!isAdded()) {
             return;
         }
 
+        final FragmentManager fm = getParentFragmentManager();
         final DialogFragment fragment = new SortDialog();
         fragment.setTargetFragment(this, 0);
         fragment.show(fm, null);
