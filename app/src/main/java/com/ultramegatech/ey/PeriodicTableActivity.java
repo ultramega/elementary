@@ -350,11 +350,11 @@ public class PeriodicTableActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int id = item.getItemId();
-        switch(id) {
-            case R.id.menu_list:
-                startActivity(new Intent(this, ElementListActivity.class));
-                return true;
+        if (id == R.id.menu_list) {
+            startActivity(new Intent(this, ElementListActivity.class));
+            return true;
         }
+
         return CommonMenuHandler.handleSelect(this, id) || super.onOptionsItemSelected(item);
     }
 

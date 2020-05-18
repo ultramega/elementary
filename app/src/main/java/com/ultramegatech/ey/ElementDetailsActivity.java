@@ -100,11 +100,11 @@ public class ElementDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                return true;
+        if (id == android.R.id.home) {
+            finish();
+            return true;
         }
+
         return CommonMenuHandler.handleSelect(this, id) || super.onOptionsItemSelected(item);
     }
 }

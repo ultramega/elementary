@@ -1147,13 +1147,14 @@ public class PeriodicTableView extends View {
         @Override
         protected boolean onPerformActionForVirtualView(int virtualViewId, int action,
                                                         Bundle arguments) {
-            switch(action) {
-                case AccessibilityNodeInfoCompat.ACTION_CLICK:
-                    if(mPeriodicTableListener != null) {
-                        mPeriodicTableListener.onItemClick(mPeriodicTableBlocks.get(virtualViewId));
-                    }
-                    return true;
+            if (action == AccessibilityNodeInfoCompat.ACTION_CLICK) {
+                if (mPeriodicTableListener != null) {
+                    mPeriodicTableListener.onItemClick(mPeriodicTableBlocks.get(virtualViewId));
+                }
+
+                return true;
             }
+
             return false;
         }
     }
