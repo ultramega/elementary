@@ -7,8 +7,8 @@ android {
         applicationId "com.ultramegatech.ey"
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 34
-        versionName '0.9.1'
+        versionCode 35
+        versionName '0.10.0'
     }
     buildTypes {
         release {
