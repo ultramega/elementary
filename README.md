@@ -2,16 +2,24 @@
 
 Elementary is a simple Periodic Table and element reference application for Android.
 
-[![Google Play](https://raw.githubusercontent.com/ultramega/elementary/master/badges/en-play-badge.png)](https://play.google.com/store/apps/details?id=com.ultramegatech.ey) [![Amazon Appstore](https://raw.githubusercontent.com/ultramega/elementary/master/badges/en-amazon-badge.png)](http://www.amazon.com/gp/mas/dl/android?p=com.ultramegatech.ey) [![F-Droid](https://raw.githubusercontent.com/ultramega/elementary/master/badges/en-fdroid-badge.png)](https://f-droid.org/repository/browse/?fdid=com.ultramegatech.ey)
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+    alt="Get it on Google Play"
+    height="80">](https://play.google.com/store/apps/details?id=com.ultramegatech.ey)
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/packages/com.ultramegatech.ey/)
+[<img src="https://i.imgur.com/WGGKLxD.png"
+    alt="Get it on Amazon"
+    height="80">](https://www.amazon.com/gp/product/B00A3HPLWW)
 
-[Also available for Windows 10](https://github.com/ultramega/elementary-uwp)
+[Also available for Windows 10](https://github.com/ultramega/elementary-uwp).
 
 ## Features
 
 - Zoomable Periodic Table of the Elements
 - Tap an element to view some basic details
 - Easy access to Wikipedia and a YouTube video on the element
-- Free and open source
+- Free and open-source
 
 ## Notes
 
