@@ -1,17 +1,17 @@
 /*
  * The MIT License (MIT)
  * Copyright © 2012 Steve Guidetti
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the “Software”), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -167,48 +167,34 @@ public class PeriodicTableActivity extends AppCompatActivity
      */
     @SuppressWarnings("deprecation")
     private void setupZoomControls() {
-        final Runnable hideZoom = new Runnable() {
-            @SuppressWarnings("deprecation")
-            @Override
-            public void run() {
-                mZoomControls.hide();
-                mZoomControls.setVisibility(View.INVISIBLE);
-            }
+        final Runnable hideZoom = () -> {
+            mZoomControls.hide();
+            mZoomControls.setVisibility(View.INVISIBLE);
         };
 
         mZoomControls = findViewById(R.id.zoom);
         mZoomControls.setVisibility(View.INVISIBLE);
         mZoomControls.setIsZoomOutEnabled(false);
-        mZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mHandler.removeCallbacks(hideZoom);
-                mPeriodicTableView.zoomIn();
-                mZoomControls.setIsZoomOutEnabled(true);
-                mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
-            }
+        mZoomControls.setOnZoomInClickListener(view -> {
+            mHandler.removeCallbacks(hideZoom);
+            mPeriodicTableView.zoomIn();
+            mZoomControls.setIsZoomOutEnabled(true);
+            mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
         });
-        mZoomControls.setOnZoomOutClickListener(new View.OnClickListener() {
-            @SuppressWarnings("deprecation")
-            @Override
-            public void onClick(View view) {
-                mHandler.removeCallbacks(hideZoom);
-                mPeriodicTableView.zoomOut();
-                mZoomControls.setIsZoomInEnabled(true);
-                mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
-            }
+        mZoomControls.setOnZoomOutClickListener(view -> {
+            mHandler.removeCallbacks(hideZoom);
+            mPeriodicTableView.zoomOut();
+            mZoomControls.setIsZoomInEnabled(true);
+            mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
         });
 
-        findViewById(R.id.zoomButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mHandler.removeCallbacks(hideZoom);
-                if(mZoomControls.getVisibility() == View.INVISIBLE) {
-                    mZoomControls.show();
-                    mZoomControls.setVisibility(View.VISIBLE);
-                }
-                mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
+        findViewById(R.id.zoomButton).setOnClickListener(view -> {
+            mHandler.removeCallbacks(hideZoom);
+            if(mZoomControls.getVisibility() == View.INVISIBLE) {
+                mZoomControls.show();
+                mZoomControls.setVisibility(View.VISIBLE);
             }
+            mHandler.postDelayed(hideZoom, ZOOM_BUTTON_DELAY);
         });
     }
 
@@ -278,12 +264,7 @@ public class PeriodicTableActivity extends AppCompatActivity
      */
     private void setupImmersiveMode() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            mImmersiveModeCallback = new Runnable() {
-                @Override
-                public void run() {
-                    hideSystemUi();
-                }
-            };
+            mImmersiveModeCallback = this::hideSystemUi;
 
             getWindow().addFlags(
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
@@ -295,26 +276,20 @@ public class PeriodicTableActivity extends AppCompatActivity
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             );
             getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(
-                    new View.OnSystemUiVisibilityChangeListener() {
-                        @Override
-                        public void onSystemUiVisibilityChange(int visibility) {
-                            mHandler.removeCallbacks(mImmersiveModeCallback);
-                            if((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
-                                mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
-                            }
+                    visibility -> {
+                        mHandler.removeCallbacks(mImmersiveModeCallback);
+                        if((visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
+                            mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
                         }
                     });
 
             final ActionBar actionBar = getActionBar();
             if(actionBar != null) {
-                actionBar.addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
-                    @Override
-                    public void onMenuVisibilityChanged(boolean isVisible) {
-                        if(isVisible) {
-                            mHandler.removeCallbacks(mImmersiveModeCallback);
-                        } else {
-                            mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
-                        }
+                actionBar.addOnMenuVisibilityListener(isVisible -> {
+                    if(isVisible) {
+                        mHandler.removeCallbacks(mImmersiveModeCallback);
+                    } else {
+                        mHandler.postDelayed(mImmersiveModeCallback, IMMERSIVE_MODE_DELAY);
                     }
                 });
             }

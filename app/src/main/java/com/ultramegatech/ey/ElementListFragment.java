@@ -26,7 +26,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -187,11 +186,7 @@ public class ElementListFragment extends ListFragment
         }
 
         final Button sortButton = activity.findViewById(R.id.sort);
-        sortButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                openSortDialog();
-            }
-        });
+        sortButton.setOnClickListener(v -> openSortDialog());
     }
 
     /**
@@ -259,16 +254,14 @@ public class ElementListFragment extends ListFragment
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.titleSort)
-                    .setItems(R.array.sortFieldNames, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            final ElementListFragment fragment =
-                                    (ElementListFragment)getTargetFragment();
-                            if(fragment != null) {
-                                fragment.setSort(item);
-                            }
-
-                            dialog.dismiss();
+                    .setItems(R.array.sortFieldNames, (dialog, item) -> {
+                        final ElementListFragment fragment =
+                                (ElementListFragment)getTargetFragment();
+                        if(fragment != null) {
+                            fragment.setSort(item);
                         }
+
+                        dialog.dismiss();
                     })
                     .create();
         }
