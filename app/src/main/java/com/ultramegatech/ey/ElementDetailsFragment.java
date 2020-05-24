@@ -230,17 +230,9 @@ public class ElementDetailsFragment extends DialogFragment
 
         mIsoTable = root.findViewById(R.id.isoTable);
 
-        root.findViewById(R.id.videoButton).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showVideo();
-            }
-        });
+        root.findViewById(R.id.videoButton).setOnClickListener(v -> showVideo());
 
-        root.findViewById(R.id.wikiButton).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showWikipedia();
-            }
-        });
+        root.findViewById(R.id.wikiButton).setOnClickListener(v -> showWikipedia());
 
         return root;
     }

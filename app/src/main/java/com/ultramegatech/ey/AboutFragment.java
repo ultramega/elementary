@@ -64,18 +64,8 @@ public class AboutFragment extends DialogFragment {
         final View root = inflater.inflate(R.layout.fragment_about, null, false);
 
         ((TextView)root.findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
-        root.findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openWebsite();
-            }
-        });
-        root.findViewById(R.id.license).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLicense();
-            }
-        });
+        root.findViewById(R.id.website).setOnClickListener(v -> openWebsite());
+        root.findViewById(R.id.license).setOnClickListener(v -> openLicense());
 
         return root;
     }
