@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+  
+  Translated by Ed Driesen ed.driesen@telenet.be (For Daan's exams!)
+-->
+<resources>
+    <string-array name="ptCategories">
+        <item>Niet-metalen</item>
+        <item>Noble gas</item>
+        <item>Alkalimetalen</item>
+        <item>Aardalkalimetalen</item>
+        <item>metalloïden</item>
+        <item>Halogenen</item>
+        <item>Hoofdgroepmetalen</item>
+        <item>Overgangsmetalen</item>
+        <item>Lanthaniden</item>
+        <item>Actiniden</item>
+    </string-array>
+    <string-array name="elementColorNames">
+        <item>Reeks</item>
+        <item>Blok</item>
+    </string-array>
+    <string-array name="subtextValueNames">
+        <item>Atoom massa</item>
+        <item>Dichtheid (g/cm³)</item>
+        <item>Smeltpunt (K)</item>
+        <item>Kookpunt (K)</item>
+        <item>Soortelijke warmte (J/g·K)</item>
+        <item>Elektronegativiteit (Pauling)</item>
+        <item>Abundantie (mg/kg)</item>
+    </string-array>
+    <string-array name="sortFieldNames">
+        <item>Atoomnummer</item>
+        <item>Element naam</item>
+    </string-array>
+</resources>

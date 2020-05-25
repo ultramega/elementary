@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+  
+  Translated by Ed Driesen ed.driesen@telenet.be (For Daan's exams!)
+-->
+<resources>
+    <string name="titleAbout">Over Elementary</string>
+    <string name="titleElementDetails" formatted="true">Element details voor %s</string>
+    <string name="titlePeriodicTable">Periodiek systeem der elementen</string>
+    <string name="titleElementList">Lijst van elementen</string>
+    <string name="titleSettings">Elementary instellingen</string>
+    <string name="titleSort">Sorteer op</string>
+
+    <string name="buttonVideo">Kijk video</string>
+    <string name="buttonWiki">Wikipedia</string>
+    <string name="buttonSort">Sorteer</string>
+    <string name="buttonZoom">Zoom</string>
+
+    <string name="menuAbout">Over</string>
+    <string name="menuSettings">Instellingen</string>
+    <string name="menuList">Lijst</string>
+    <string name="menuTable">Tabel</string>
+
+    <string name="prefTitleDarkTheme">Donker thema</string>
+    <string name="prefTitleTemp">Temperatuur eenheden</string>
+    <string name="prefSummaryTemp">Eenheden om temperatuurwaarden weer te geven</string>
+    <string name="prefTitleColors">Element kleuren</string>
+    <string name="prefSummaryColors">Eigenschappen gebruikt om de elementen te kleuren</string>
+    <string name="prefTitleSubtextValue">Blok waarde</string>
+    <string name="prefSummarySubtextValue">De waarde om onder het element symbool weer te geven</string>
+    <string name="prefTitleShowControls">Periodieke tabel besturing</string>
+    <string name="prefSummaryShowControls">Toon de besturing voor de Periodieke Tabel in Tabel weergave</string>
+
+    <string name="labelNumber">Atoomnummer</string>
+    <string name="labelSymbol">Symbool</string>
+    <string name="labelName">Naam</string>
+    <string name="labelWeight">Atoommassa</string>
+    <string name="labelCategory">Reeks</string>
+    <string name="labelGPB">Groep, periode, blok</string>
+    <string name="labelConfiguration">Elektronenconfiguratie</string>
+    <string name="labelElectrons">Elektronen per schil</string>
+    <string name="labelDensity">Dichtheid</string>
+    <string name="labelMelt">Smeltpunt</string>
+    <string name="labelBoil">Kookpunt</string>
+    <string name="labelHeat">Soortelijke warmte</string>
+    <string name="labelNegativity">Elektronegativiteit</string>
+    <string name="labelAbundance">Abundantie</string>
+    <string name="labelIsotopes">Gemeenschappelijke isotopen</string>
+
+    <string name="labelSubtextValue">Geef weer</string>
+    <string name="labelBlockColors">Kleur per</string>
+
+    <string name="hintFilter">Filter per naam of symbool</string>
+
+    <string name="aboutVersion">Versie</string>
+    <string name="aboutWebsite">Website</string>
+    <string name="aboutLicense">Licentie</string>
+    <string name="aboutSources">Bronnen</string>
+    
+    <string name="descGroup">groep</string>
+    <string name="descPeriod">periode</string>
+    <string name="descBlock">blok</string>
+
+    <string name="unknown">onbekend</string>
+</resources>

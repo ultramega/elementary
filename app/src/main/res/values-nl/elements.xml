@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+  
+  Translated by Ed Driesen ed.driesen@telenet.be (For Daan's exams!)
+-->
+<resources>
+    <string name="el001">Waterstof</string>
+    <string name="el002">Helium</string>
+    <string name="el003">Lithium</string>
+    <string name="el004">Beryllium</string>
+    <string name="el005">Boor</string>
+    <string name="el006">Koolstof</string>
+    <string name="el007">Stikstof</string>
+    <string name="el008">Zuurstof</string>
+    <string name="el009">Fluor</string>
+    <string name="el010">Neon</string>
+    <string name="el011">Natrium</string>
+    <string name="el012">Magnesium</string>
+    <string name="el013">Aluminium</string>
+    <string name="el014">Silicium</string>
+    <string name="el015">Fosfor</string>
+    <string name="el016">Zwavel</string>
+    <string name="el017">Chloor</string>
+    <string name="el018">Argon</string>
+    <string name="el019">Kalium</string>
+    <string name="el020">Calcium</string>
+    <string name="el021">Scandium</string>
+    <string name="el022">Titanium</string>
+    <string name="el023">Vanadium</string>
+    <string name="el024">Chroom</string>
+    <string name="el025">Mangaan</string>
+    <string name="el026">IJzer</string>
+    <string name="el027">Kobalt</string>
+    <string name="el028">Nikkel</string>
+    <string name="el029">Koper</string>
+    <string name="el030">Zink</string>
+    <string name="el031">Gallium</string>
+    <string name="el032">Germanium</string>
+    <string name="el033">Arseen</string>
+    <string name="el034">Seleen</string>
+    <string name="el035">Broom</string>
+    <string name="el036">Krypton</string>
+    <string name="el037">Rubidium</string>
+    <string name="el038">Strontium</string>
+    <string name="el039">Yttrium</string>
+    <string name="el040">Zirconium</string>
+    <string name="el041">Niobium</string>
+    <string name="el042">Molybdeen</string>
+    <string name="el043">Technetium</string>
+    <string name="el044">Ruthenium</string>
+    <string name="el045">Rodium</string>
+    <string name="el046">Palladium</string>
+    <string name="el047">Zilver</string>
+    <string name="el048">Cadmium</string>
+    <string name="el049">Indium</string>
+    <string name="el050">Tin</string>
+    <string name="el051">Antimoon</string>
+    <string name="el052">Telluur</string>
+    <string name="el053">Jodium</string>
+    <string name="el054">Xenon</string>
+    <string name="el055">Cesium</string>
+    <string name="el056">Barium</string>
+    <string name="el057">Lanthaan</string>
+    <string name="el058">Cerium</string>
+    <string name="el059">Praseodymium</string>
+    <string name="el060">Neodymium</string>
+    <string name="el061">Promethium</string>
+    <string name="el062">Samarium</string>
+    <string name="el063">Europium</string>
+    <string name="el064">Gadolinium</string>
+    <string name="el065">Terbium</string>
+    <string name="el066">Dysprosium</string>
+    <string name="el067">Holmium</string>
+    <string name="el068">Erbium</string>
+    <string name="el069">Thulium</string>
+    <string name="el070">Ytterbium</string>
+    <string name="el071">Lutetium</string>
+    <string name="el072">Hafnium</string>
+    <string name="el073">Tantaal</string>
+    <string name="el074">Wolfraam</string>
+    <string name="el075">Rhenium</string>
+    <string name="el076">Osmium</string>
+    <string name="el077">Iridium</string>
+    <string name="el078">Platina</string>
+    <string name="el079">Goud</string>
+    <string name="el080">Kwik</string>
+    <string name="el081">Thallium</string>
+    <string name="el082">Lood</string>
+    <string name="el083">Bismut</string>
+    <string name="el084">Polonium</string>
+    <string name="el085">Astaat</string>
+    <string name="el086">Radon</string>
+    <string name="el087">Francium</string>
+    <string name="el088">Radium</string>
+    <string name="el089">Actinium</string>
+    <string name="el090">Thorium</string>
+    <string name="el091">Protactinium</string>
+    <string name="el092">Uranium</string>
+    <string name="el093">Neptunium</string>
+    <string name="el094">Plutonium</string>
+    <string name="el095">Americium</string>
+    <string name="el096">Curium</string>
+    <string name="el097">Berkelium</string>
+    <string name="el098">Californium</string>
+    <string name="el099">Einsteinium</string>
+    <string name="el100">Fermium</string>
+    <string name="el101">Mendelevium</string>
+    <string name="el102">Nobelium</string>
+    <string name="el103">Lawrencium</string>
+    <string name="el104">Rutherfordium</string>
+    <string name="el105">Dubnium</string>
+    <string name="el106">Seaborgium</string>
+    <string name="el107">Bohrium</string>
+    <string name="el108">Hassium</string>
+    <string name="el109">Meitnerium</string>
+    <string name="el110">Darmstadtium</string>
+    <string name="el111">Roentgenium</string>
+    <string name="el112">Copernicium</string>
+    <string name="el113">Nihonium</string>
+    <string name="el114">Flerovium</string>
+    <string name="el115">Moscovium</string>
+    <string name="el116">Livermorium</string>
+    <string name="el117">Tennessine</string>
+    <string name="el118">Oganesson</string>
+
+    <string name="wikiLang">nl</string>
+
+    <string name="wiki001">Waterstof_(element)</string>
+    <string name="wiki002">Helium</string>
+    <string name="wiki003">Lithium_(element)</string>
+    <string name="wiki004">Beryllium</string>
+    <string name="wiki005">Boor_(element)</string>
+    <string name="wiki006">Koolstof</string>
+    <string name="wiki007">Stikstof_(element)</string>
+    <string name="wiki008">Zuurstof_(element)</string>
+    <string name="wiki009">Fluor_(element)</string>
+    <string name="wiki010">Neon_(element)</string>
+    <string name="wiki011">Natrium</string>
+    <string name="wiki012">Magnesium</string>
+    <string name="wiki013">Aluminium</string>
+    <string name="wiki014">Silicium</string>
+    <string name="wiki015">Fosfor</string>
+    <string name="wiki016">Zwavel</string>
+    <string name="wiki017">Chloor_(element)</string>
+    <string name="wiki018">Argon</string>
+    <string name="wiki019">Kalium</string>
+    <string name="wiki020">Calcium</string>
+    <string name="wiki021">Scandium</string>
+    <string name="wiki022">Titanium</string>
+    <string name="wiki023">Vanadium</string>
+    <string name="wiki024">Chroom_(element)</string>
+    <string name="wiki025">Mangaan</string>
+    <string name="wiki026">IJzer_(element)</string>
+    <string name="wiki027">Kobalt</string>
+    <string name="wiki028">Nikkel</string>
+    <string name="wiki029">Koper_(element)</string>
+    <string name="wiki030">Zink_(element)</string>
+    <string name="wiki031">Gallium</string>
+    <string name="wiki032">Germanium</string>
+    <string name="wiki033">Arseen</string>
+    <string name="wiki034">Seleen</string>
+    <string name="wiki035">Broom_(element)</string>
+    <string name="wiki036">Krypton_(element)</string>
+    <string name="wiki037">Rubidium</string>
+    <string name="wiki038">Strontium</string>
+    <string name="wiki039">Yttrium</string>
+    <string name="wiki040">Zirconium</string>
+    <string name="wiki041">Niobium</string>
+    <string name="wiki042">Molybdeen</string>
+    <string name="wiki043">Technetium</string>
+    <string name="wiki044">Ruthenium</string>
+    <string name="wiki045">Rodium</string>
+    <string name="wiki046">Palladium_(element)</string>
+    <string name="wiki047">Zilver</string>
+    <string name="wiki048">Cadmium</string>
+    <string name="wiki049">Indium</string>
+    <string name="wiki050">Tin_(element)</string>
+    <string name="wiki051">Antimoon</string>
+    <string name="wiki052">Telluur</string>
+    <string name="wiki053">Jodium_(element)</string>
+    <string name="wiki054">Xenon</string>
+    <string name="wiki055">Cesium</string>
+    <string name="wiki056">Barium</string>
+    <string name="wiki057">Lanthaan</string>
+    <string name="wiki058">Cerium</string>
+    <string name="wiki059">Praseodymium</string>
+    <string name="wiki060">Neodymium</string>
+    <string name="wiki061">Promethium</string>
+    <string name="wiki062">Samarium</string>
+    <string name="wiki063">Europium</string>
+    <string name="wiki064">Gadolinium</string>
+    <string name="wiki065">Terbium</string>
+    <string name="wiki066">Dysprosium</string>
+    <string name="wiki067">Holmium</string>
+    <string name="wiki068">Erbium</string>
+    <string name="wiki069">Thulium</string>
+    <string name="wiki070">Ytterbium</string>
+    <string name="wiki071">Lutetium</string>
+    <string name="wiki072">Hafnium</string>
+    <string name="wiki073">Tantaal</string>
+    <string name="wiki074">Wolfraam</string>
+    <string name="wiki075">Rhenium</string>
+    <string name="wiki076">Osmium</string>
+    <string name="wiki077">Iridium_(element)</string>
+    <string name="wiki078">Platina</string>
+    <string name="wiki079">Goud</string>
+    <string name="wiki080">Kwik_(element)</string>
+    <string name="wiki081">Thallium</string>
+    <string name="wiki082">Lood_(element)</string>
+    <string name="wiki083">Bismut</string>
+    <string name="wiki084">Polonium</string>
+    <string name="wiki085">Astaat</string>
+    <string name="wiki086">Radon_(element)</string>
+    <string name="wiki087">Francium</string>
+    <string name="wiki088">Radium</string>
+    <string name="wiki089">Actinium</string>
+    <string name="wiki090">Thorium</string>
+    <string name="wiki091">Protactinium</string>
+    <string name="wiki092">Uranium</string>
+    <string name="wiki093">Neptunium</string>
+    <string name="wiki094">Plutonium</string>
+    <string name="wiki095">Americium</string>
+    <string name="wiki096">Curium</string>
+    <string name="wiki097">Berkelium</string>
+    <string name="wiki098">Californium</string>
+    <string name="wiki099">Einsteinium</string>
+    <string name="wiki100">Fermium</string>
+    <string name="wiki101">Mendelevium</string>
+    <string name="wiki102">Nobelium</string>
+    <string name="wiki103">Lawrencium</string>
+    <string name="wiki104">Rutherfordium</string>
+    <string name="wiki105">Dubnium</string>
+    <string name="wiki106">Seaborgium</string>
+    <string name="wiki107">Bohrium</string>
+    <string name="wiki108">Hassium</string>
+    <string name="wiki109">Meitnerium</string>
+    <string name="wiki110">Darmstadtium</string>
+    <string name="wiki111">Roentgenium</string>
+    <string name="wiki112">Copernicium</string>
+    <string name="wiki113">Nihonium</string>
+    <string name="wiki114">Flerovium</string>
+    <string name="wiki115">Moscovium</string>
+    <string name="wiki116">Livermorium</string>
+    <string name="wiki117">Tennessine</string>
+    <string name="wiki118">Oganesson</string>
+</resources>
