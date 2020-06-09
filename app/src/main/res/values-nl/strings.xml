@@ -66,6 +66,7 @@
     <string name="labelNegativity">Elektronegativiteit</string>
     <string name="labelAbundance">Abundantie</string>
     <string name="labelIsotopes">Gemeenschappelijke isotopen</string>
+    <string name="labelIsoComp">Isotopische samenstelling</string>
 
     <string name="labelSubtextValue">Geef weer</string>
     <string name="labelBlockColors">Kleur per</string>

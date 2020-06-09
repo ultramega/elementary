@@ -64,6 +64,7 @@
     <string name="labelNegativity">Elettronegatività</string>
     <string name="labelAbundance">Abondanza</string>
     <string name="labelIsotopes">Isotopi più comuni</string>
+    <string name="labelIsoComp">Composizione isotopica</string>
 
     <string name="labelSubtextValue">Mostrare</string>
     <string name="labelBlockColors">Colorare per</string>

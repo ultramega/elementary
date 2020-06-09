@@ -502,6 +502,11 @@ public class ElementDetailsFragment extends DialogFragment
                 final TextView massText = tableRow.findViewById(R.id.isoMass);
                 massText.setText(DECIMAL_FORMAT.format(isotope.mass));
 
+                if (isotope.ic != null) {
+                    final TextView icText = tableRow.findViewById(R.id.isoComp);
+                    icText.setText(DECIMAL_FORMAT.format(isotope.ic));
+                }
+
                 mIsoTable.addView(tableRow);
             }
         }

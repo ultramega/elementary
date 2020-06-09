@@ -64,6 +64,7 @@
     <string name="labelNegativity">電気陰性度</string>
     <string name="labelAbundance">存在度</string>
     <string name="labelIsotopes">共通同位体</string>
+    <string name="labelIsoComp">同位体組成</string>
 
     <string name="labelSubtextValue">表示</string>
     <string name="labelBlockColors">色</string>

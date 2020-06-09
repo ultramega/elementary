@@ -65,6 +65,7 @@
     <string name="labelNegativity">Электроотрицательность</string>
     <string name="labelAbundance">Abundance</string>
     <string name="labelIsotopes">Общие изотопы</string>
+    <string name="labelIsoComp">Изотопная композиция</string>
 
     <string name="labelSubtextValue">Отображение</string>
     <string name="labelBlockColors">Раскраска по</string>

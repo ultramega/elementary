@@ -240,6 +240,13 @@
                         style="@android:style/TextAppearance.Small"
                         android:gravity="center"
                         android:text="@string/labelWeight" />
+
+                    <Space android:layout_width="12dp" />
+
+                    <TextView
+                        style="@android:style/TextAppearance.Small"
+                        android:gravity="center"
+                        android:text="@string/labelIsoComp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

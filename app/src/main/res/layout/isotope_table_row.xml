@@ -38,4 +38,12 @@
         android:id="@+id/isoMass"
         style="@style/ElementDetails.Value"
         android:saveEnabled="false" />
+
+    <Space android:layout_width="12dp" />
+
+    <TextView
+        android:id="@+id/isoComp"
+        style="@style/ElementDetails.Value"
+        android:text="@string/unknown"
+        android:saveEnabled="false" />
 </TableRow>

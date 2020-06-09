@@ -27,6 +27,7 @@ import android.text.Html;
 import android.text.Spanned;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.Locale;
 
@@ -53,14 +54,21 @@ public class Isotope {
     public final double mass;
 
     /**
+     * The isotopic composition of the isotope
+     */
+    @Nullable
+    public final Double ic;
+
+    /**
      * @param number The mass number of the isotope
      * @param symbol The symbol for the isotope
      * @param mass   The relative atomic mass of the isotope
      */
-    Isotope(int number, @NonNull String symbol, double mass) {
+    Isotope(int number, @NonNull String symbol, double mass, @Nullable Double ic) {
         this.number = number;
         this.symbol = symbol;
         this.mass = mass;
+        this.ic = ic;
     }
 
     /**

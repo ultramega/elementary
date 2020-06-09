@@ -64,6 +64,7 @@
     <string name="labelNegativity">Elektronegativitet</string>
     <string name="labelAbundance">Forekomst</string>
     <string name="labelIsotopes">Vanlige isotoper</string>
+    <string name="labelIsoComp">Isotopisk sammensetning</string>
 
     <string name="labelSubtextValue">Vis</string>
     <string name="labelBlockColors">Farg etter</string>
