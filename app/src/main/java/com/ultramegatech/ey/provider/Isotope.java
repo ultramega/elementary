@@ -63,6 +63,7 @@ public class Isotope {
      * @param number The mass number of the isotope
      * @param symbol The symbol for the isotope
      * @param mass   The relative atomic mass of the isotope
+     * @param ic     The isotopic composition of the isotope
      */
     Isotope(int number, @NonNull String symbol, double mass, @Nullable Double ic) {
         this.number = number;
