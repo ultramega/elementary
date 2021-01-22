@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The MIT License (MIT)
+  Copyright © 2012 Steve Guidetti
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the “Software”), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
+<resources>
+    <string name="app_name" translatable="false">Elementary</string>
+
+    <string name="titleAbout">Elementary Hakkında</string>
+    <string name="titleElementDetails" formatted="true">%s için element detayları</string>
+    <string name="titlePeriodicTable">Elementlerin Periyodik Tablosu</string>
+    <string name="titleElementList">Elementlerin listesi</string>
+    <string name="titleSettings">Elementary ayarları</string>
+    <string name="titleSort">Sırala</string>
+
+    <string name="buttonVideo">Video izle</string>
+    <string name="buttonWiki">Vikipedi</string>
+    <string name="buttonSort">Sırala</string>
+    <string name="buttonZoom">Yakınlaştır</string>
+
+    <string name="menuAbout">Hakkında</string>
+    <string name="menuSettings">Ayarlar</string>
+    <string name="menuList">Liste görünümü</string>
+    <string name="menuTable">Tablo görünümü</string>
+
+    <string name="prefKeyDarkTheme" translatable="false">theme</string>
+    <string name="prefTitleDarkTheme">Karanlık tema</string>
+    <string name="prefKeyTemp" translatable="false">tempUnit</string>
+    <string name="prefTitleTemp">Sıcaklık birimleri</string>
+    <string name="prefSummaryTemp">Sıcaklık değerlerini görüntülemek için kullanılan birimler</string>
+    <string name="prefKeyColors" translatable="false">elementColors</string>
+    <string name="prefTitleColors">Element renkleri</string>
+    <string name="prefSummaryColors">Elementleri renklendirmek için kullanılan özellik</string>
+    <string name="prefKeySubtextValue" translatable="false">subtextValue</string>
+    <string name="prefTitleSubtextValue">Blok değeri</string>
+    <string name="prefSummarySubtextValue">Element sembolünün altında görüntülenecek değer</string>
+    <string name="prefKeyShowControls" translatable="false">showControls</string>
+    <string name="prefTitleShowControls">Periyodik tablo kontrolleri</string>
+    <string name="prefSummaryShowControls">Tablo görünümünde periyodik tablo için kontrolleri göster</string>
+
+    <string name="labelNumber">Atom numarası</string>
+    <string name="labelSymbol">Sembol</string>
+    <string name="labelName">Ad</string>
+    <string name="labelWeight">Atom ağırlığı</string>
+    <string name="labelCategory">Kategori</string>
+    <string name="labelGPB">Grup, periyot, blok</string>
+    <string name="labelConfiguration">Elektron dizilimi</string>
+    <string name="labelElectrons">Her bir kabuk için elektronlar</string>
+    <string name="labelDensity">Yoğunluk</string>
+    <string name="labelMelt">Erime noktası</string>
+    <string name="labelBoil">Kaynama noktası</string>
+    <string name="labelHeat">Özısı</string>
+    <string name="labelNegativity">Elektronegatiflik</string>
+    <string name="labelAbundance">Bolluk</string>
+    <string name="labelIsotopes">Yaygın izotoplar</string>
+    <string name="labelIsoComp">İzotopik bileşim</string>
+
+    <string name="labelSubtextValue">Görüntüle</string>
+    <string name="labelBlockColors">Renklendir</string>
+
+    <string name="hintFilter">Ad ya da sembole göre filtrele</string>
+
+    <string name="aboutVersion">Versiyon</string>
+    <string name="aboutWebsite">Site</string>
+    <string name="aboutLicense">Lisans</string>
+    <string name="aboutSources">Kaynaklar</string>
+    <string name="aboutWebsiteUrl" translatable="false">https://github.com/ultramega/elementary</string>
+    <string name="aboutLicenseName" translatable="false">MIT License</string>
+    <string name="aboutLicenseUrl" translatable="false">https://raw.githubusercontent.com/ultramega/elementary/master/LICENSE.txt</string>
+    <string name="aboutCopyright" translatable="false">Copyright © 2017 UltraMega Software</string>
+    <string name="aboutCitations" translatable="false"><![CDATA[Coursey, J.S., Schwab, D.J., Tsai, J.J., and Dragoset, R.A. (2015), Atomic Weights and Isotopic Compositions (version 4.1). [Online] Available: http://physics.nist.gov/Comp [2016, December 17]. National Institute of Standards and Technology, Gaithersburg, MD.
+\n\nDayah, M. (1997, October 1). Dynamic Periodic Table. Retrieved December 18, 2016, from Ptable: http://www.ptable.com]]></string>
+
+    <string name="descTableBlock" formatted="true" translatable="false">%1$d, %2$s, %3$s, %4$s %5$s, %6$s %7$s</string>
+    <string name="descGroup">grup</string>
+    <string name="descPeriod">periyot</string>
+    <string name="descBlock">blok</string>
+
+    <string name="unknown">bilinmeyen</string>
+</resources>
