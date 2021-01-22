@@ -63,7 +63,7 @@
     <string name="labelCategory">Kategori</string>
     <string name="labelGPB">Grup, periyot, blok</string>
     <string name="labelConfiguration">Elektron dizilimi</string>
-    <string name="labelElectrons">Her bir kabuk için elektronlar</string>
+    <string name="labelElectrons">Katman başına elektron</string>
     <string name="labelDensity">Yoğunluk</string>
     <string name="labelMelt">Erime noktası</string>
     <string name="labelBoil">Kaynama noktası</string>
